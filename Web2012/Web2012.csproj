@@ -58,6 +58,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Canvas\ComponentUI.html" />
+    <Content Include="DashBoard\DashBoard.htm" />
+    <Content Include="imgs\A4.png" />
+    <Content Include="imgs\BiggThenA4.png" />
+    <Content Include="imgs\searchclear.gif" />
+    <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\Site.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
