@@ -3,10 +3,69 @@
 <head>
     <title></title>
     <link href="../Styles/jquery-ui.css" rel="stylesheet" />
-    <script src="../Scripts/jquery-1.8.3.js"></script>
-    <script src="../Scripts/jquery-ui.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui.js"></script>
     <link href="../Styles/layout.css" rel="stylesheet" />
-    
+
+    <script>
+        var dropBox;
+        var drag;
+        var maxEventsInMonth = 10;
+        var maxDataRow = 6;
+        var dragClone = false;
+        var dragElement = false;
+
+        var events = [{ id: '1', name: 'Event1', icon: 'http://yeeeah.com/wp-content/uploads/2012/12/88116PCN_WillKate10.jpg', duedate: 'date1', responsible: 'ABC1', conditions: 'Cond-1', status: 'Pedning' },
+                { id: '2', name: 'Event2', icon: 'http://yeeeah.com/wp-content/uploads/2012/12/88116PCN_WillKate11.jpg', duedate: 'date2', responsible: 'DEF2', conditions: 'Cond-2', status: 'Completed' },
+                { id: '3', name: 'Event3', icon: 'http://yeeeah.com/wp-content/uploads/2012/12/88116PCN_WillKate12.jpg', duedate: 'date3', responsible: 'LMN3', conditions: 'Cond-3', status: 'Pedning' },
+                { id: '4', name: 'Event4', icon: 'http://yeeeah.com/wp-content/uploads/2012/12/88116PCN_WillKate13.jpg', duedate: 'date4', responsible: 'PQR4', conditions: 'Cond-4', status: 'Pedning' },
+                { id: '5', name: 'Event5', icon: 'http://yeeeah.com/wp-content/uploads/2012/12/88116PCN_WillKate14.jpg', duedate: 'date5', responsible: 'CDE5', conditions: 'Cond-5', status: 'In Progress' },
+                { id: '6', name: 'Event6', icon: 'http://yeeeah.com/wp-content/uploads/2012/12/88116PCN_WillKate15.jpg', duedate: 'date6', responsible: 'XYZ6', conditions: 'Cond-6', status: 'Pedning' }
+        ];
+        $(function () {
+            dropBox = $('.drop');drag = $('#drag');
+
+            $.each(events, function (index, event) {
+                drag.append('<li id=event_' + event.id + '><img src=' + event.icon + ' height=50 width=80 title=' + event.name + ' alt=' + event.name + '> </li>');
+            });
+
+            $('#drag li').draggable({
+                revert: "invalid",
+                appendTo: 'body',
+                containment: 'window',
+                scroll: false,
+                helper: 'clone',
+                cursor: "move",
+                start: function () {
+                   // $(this).hide();
+                    dragClone = $(this).clone();
+                    dragElement = $(this);
+                },
+                stop: function () {
+                   // $(this).show()
+                }
+
+
+            });
+
+            dropBox.droppable({
+                accept: "#drag li",
+                scroll: true,
+                drop: function (event, ui) {
+
+                    var pos = ui.draggable.position();
+                    var pos = dragClone.position();
+                        alert('top: ' + pos.to+ ', left: ' + pos.left); 
+
+                   // $(this).html(dragClone);
+                    dragElement.remove();
+                    // // handleDrop($(this), event, ui);
+
+                    return true;
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <!--
@@ -15,15 +74,16 @@
 
 A4	210 × 297 MM	8.27 × 11.69 INCH
 -->
-  <div class="header">
-    </div>
+    <div class="header"></div>
     <div class="centreposition">
-        <div  class="Screen centrecontent">
-            <div class="Issue"></div>
+        <div class="left">
+                       <ul id="drag"></ul>
+        </div>
+        <div class="Screen centrecontent">
+            <div class="drop Issue"></div>
         </div>
     </div>
     <div class="footer">Footer - This is the footer.</div>
-    <div class="left">Left - for the navigation</div>
 
 </body>
 </html>
