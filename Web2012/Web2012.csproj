@@ -58,14 +58,70 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Canvas\ComponentUI.html" />
+    <Content Include="Canvas\DashBoard.htm" />
     <Content Include="DashBoard\DashBoard.htm" />
     <Content Include="imgs\A4-SHISHI48.png" />
     <Content Include="imgs\A4.png" />
     <Content Include="imgs\BiggThenA4.png" />
+    <Content Include="imgs\icons\disabled\bold.png" />
+    <Content Include="imgs\icons\disabled\box.png" />
+    <Content Include="imgs\icons\disabled\bullet-orange.png" />
+    <Content Include="imgs\icons\disabled\bullets.png" />
+    <Content Include="imgs\icons\disabled\delete-page.png" />
+    <Content Include="imgs\icons\disabled\delete-table.png" />
+    <Content Include="imgs\icons\disabled\italic.png" />
+    <Content Include="imgs\icons\disabled\new-page.png" />
+    <Content Include="imgs\icons\disabled\new-table.png" />
+    <Content Include="imgs\icons\disabled\open-page.png" />
+    <Content Include="imgs\icons\disabled\open-table.png" />
+    <Content Include="imgs\icons\disabled\repeat.png" />
+    <Content Include="imgs\icons\disabled\run.png" />
+    <Content Include="imgs\icons\disabled\save-page.png" />
+    <Content Include="imgs\icons\disabled\save.png" />
+    <Content Include="imgs\icons\disabled\script.png" />
+    <Content Include="imgs\icons\disabled\underline.png" />
+    <Content Include="imgs\icons\disabled\web_sheet.png" />
+    <Content Include="imgs\icons\hot\bold.png" />
+    <Content Include="imgs\icons\hot\box.png" />
+    <Content Include="imgs\icons\hot\bullet-orange.png" />
+    <Content Include="imgs\icons\hot\bullets.png" />
+    <Content Include="imgs\icons\hot\delete-page.png" />
+    <Content Include="imgs\icons\hot\delete-table.png" />
+    <Content Include="imgs\icons\hot\italic.png" />
+    <Content Include="imgs\icons\hot\new-page.png" />
+    <Content Include="imgs\icons\hot\new-table.png" />
+    <Content Include="imgs\icons\hot\open-page.png" />
+    <Content Include="imgs\icons\hot\open-table.png" />
+    <Content Include="imgs\icons\hot\repeat.png" />
+    <Content Include="imgs\icons\hot\run.png" />
+    <Content Include="imgs\icons\hot\save.png" />
+    <Content Include="imgs\icons\hot\script.png" />
+    <Content Include="imgs\icons\hot\underline.png" />
+    <Content Include="imgs\icons\hot\web_sheet.png" />
+    <Content Include="imgs\icons\normal\bold.png" />
+    <Content Include="imgs\icons\normal\box.png" />
+    <Content Include="imgs\icons\normal\bullet-orange.png" />
+    <Content Include="imgs\icons\normal\bullets.png" />
+    <Content Include="imgs\icons\normal\delete-page.png" />
+    <Content Include="imgs\icons\normal\delete-table.png" />
+    <Content Include="imgs\icons\normal\italic.png" />
+    <Content Include="imgs\icons\normal\new-page.png" />
+    <Content Include="imgs\icons\normal\new-table.png" />
+    <Content Include="imgs\icons\normal\open-page.png" />
+    <Content Include="imgs\icons\normal\open-table.png" />
+    <Content Include="imgs\icons\normal\repeat.png" />
+    <Content Include="imgs\icons\normal\run.png" />
+    <Content Include="imgs\icons\normal\save-page.png" />
+    <Content Include="imgs\icons\normal\save.png" />
+    <Content Include="imgs\icons\normal\script.png" />
+    <Content Include="imgs\icons\normal\underline.png" />
+    <Content Include="imgs\icons\normal\web_sheet.png" />
     <Content Include="imgs\searchclear.gif" />
-    <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.8.3.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Styles\jquery-ui.css" />
+    <Content Include="Styles\layout.css" />
+    <Content Include="Styles\ribbon.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -79,6 +135,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Server\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
