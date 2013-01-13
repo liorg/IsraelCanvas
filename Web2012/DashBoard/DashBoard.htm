@@ -5,19 +5,13 @@
     <link href="../Styles/jquery-ui.css" rel="stylesheet" />
     <script type="text/javascript" src="../Scripts/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="../Scripts/jquery-ui.js"></script>
-    <script  type="text/javascript" language="javascript" src="../Scripts/linq.js"></script>
+    <script type="text/javascript" language="javascript" src="../Scripts/linq.js"></script>
     <link href="../Styles/layout.css" rel="stylesheet" />
 
     <script type="text/javascript" language="javascript">
         function getAdvertisementById(id) {
-            
-            //var row= Enumerable.From(context.Advertisement)
-            //                               .Where(function (x) { return x.Id.toUpperCase() == id.toUpperCase() })
-            //                               .Select(function (x) { return x.Name; })
-            //                               .FirstOrDefault();
             var row = jQuery.grep(context.Advertisement, function (n, i) {
-                return (n.Id ==id
-                    );
+                return (n.Id == id);
             });
             return row[0];
         }
@@ -25,14 +19,14 @@
         var drag;
         var dragClone;
         var dragElement;
-       
+
         var AdvertisementWidth = "100px";
         var AdvertisementHeight = "20px";
 
         var section = {};
         var advertisement = [
             { Id: '1', Name: 'הליכוד חרטתנו', IsDeleted: false, Size: '123x223', Top: null, Left: null, Width: AdvertisementWidth, Height: AdvertisementHeight },
-            { Id: '2', Name: 'אגיס', IsDeleted: false, Size: '1666x4454', Top: null, Left: null  ,Width: AdvertisementWidth, Height: AdvertisementHeight },
+            { Id: '2', Name: 'אגיס', IsDeleted: false, Size: '1666x4454', Top: null, Left: null, Width: AdvertisementWidth, Height: AdvertisementHeight },
             { Id: '3', Name: 'דיסקונט', IsDeleted: false, Size: '2222x999', Top: null, Left: null, Width: AdvertisementWidth, Height: AdvertisementHeight },
             { Id: '4', Name: 'לאומי דיגיטל', IsDeleted: false, Size: '5555x3232', Top: null, Left: null, Width: AdvertisementWidth, Height: AdvertisementHeight },
 
@@ -43,6 +37,7 @@
             UriTemplate: "",
         };
         $(function () {
+
             dropBox = $('.drop'); drag = $('#drag');
 
             $.each(context.Advertisement, function (index, advertisement) {
@@ -68,28 +63,23 @@
 
 
             var zIndex = 5000;
-            
-
             dropBox.droppable({
                 accept: "#drag li, .ui-widget-content",
                 scroll: true,
                 refreshPositions: true,
                 drop: function (event, ui) {
-                    var x = event.pageX - $(this).offset().left - 11;//- eWidth;
+                    var x = event.pageX - $(this).offset().left;//- eWidth;
                     var y = event.pageY - $(this).offset().top; //- eHeight/2;
 
                     var left = x + "px";
                     var top = y + "px";
-                    //    var eWidth = ui.draggable.outerWidth();
-                    //     var eHeight = ui.draggable.outerHeight();
-                    if (ui.draggable.hasClass("ui-widget-content")) {
+                    if (ui.draggable.hasClass("myWidget")) {
                         var row = getAdvertisementById(dragClone.find('span').attr('id'));
-                        //$(this).css({
                         row.Top = top;
                         row.Left = left;
                         return true;
                     }
-                   
+
                     dragClone.css({
                         position: 'absolute',
                         left: left,
@@ -97,9 +87,8 @@
                     });
 
 
-                    dragClone.addClass("ui-widget-content");
+                    dragClone.addClass("ui-widget-content").addClass("myWidget");
                     var row = getAdvertisementById(dragClone.find('span').attr('id'));
-                    //$(this).css({
                     row.Top = top;
                     row.Left = left;
 
@@ -108,38 +97,17 @@
                             containment: '.drop'
                         });
 
-
-                    dragClone.resizable(
-                            {
+                    dragClone.resizable( {
                                 containment: '.drop',
                                 appendTo: '.drop',
-                                resize: function () {
-                                    // your positioning code here
-                                    // debugger
-
-                                },
-                                start: function (event, ui) {
-                                    //$(this).css({
-                                    //    position: "relative !important",
-                                    //    top: "0 !important",
-                                    //    left: "0 !important"
-
-                                },
                                 stop: function (event, ui) {
                                     var row = getAdvertisementById($(this).find('span').attr('id'));
                                     row.Width = $(this).outerWidth();
                                     row.Height = $(this).outerHeight();
-                                    $(this).css({
-                                        position: 'absolute',
-                                        left: row.Left,
-                                        top: row.Top
-                                    });
                                 }
+                    });
 
-                            });
                     dragClone.appendTo(this);
-
-
                     dragElement.remove();
                     return true;
                 }
@@ -154,16 +122,15 @@
 
 A4	210 × 297 MM	8.27 × 11.69 INCH
 -->
-    <div class="header"></div>
     <div class="centreposition">
         <div class="left">
             <ul id="drag"></ul>
         </div>
-        <div style="position: absolute" class="Screen centrecontent">
+    <div style="position: absolute" class="Screen centrecontent">
 
-            <div class="drop Issue">
-            </div>
+        <div style="position: relative" class="drop Issue">
         </div>
+    </div>
     </div>
 
 </body>
