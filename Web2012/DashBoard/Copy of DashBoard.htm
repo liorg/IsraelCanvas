@@ -31,8 +31,8 @@
 
             $('#drag li').draggable({
                 revert: "invalid",
-                appendTo: '.drop',
-                containment: '.drop',
+                appendTo: 'body',
+                containment: 'window',
                 scroll: false,
                 helper: 'clone',
                 cursor: "move",
@@ -53,27 +53,52 @@
             dropBox.droppable({
                 accept: "#drag li",
                 scroll: true,
-                refreshPositions: true,
                 drop: function (event, ui) {
+
+                    //var pos1 = ui.draggable.position();
+                    //var pos2 = dragElement.position();
+                    //var pos3 = dragClone.position();
+                    //    alert('top: ' + pos2.top+ ', left: ' + pos2.left); 
+
                     var eWidth = ui.draggable.outerWidth();
                     var eHeight = ui.draggable.outerHeight();
+                    var mWidth = $(this).outerWidth();
 
+                    var x = event.pageX - $(this).offset().left;
+                    var y = event.pageY - $(this).offset().top;
+                 //   $('<div style="margin-top:' + y + 'px; margin-left:' + x + 'px; "></div>').html(ui.draggable.html()).appendTo(this);
 
-                    var x = event.pageX - $(this).offset().left-11;//- eWidth;
-                    var y = event.pageY - $(this).offset().top; //- eHeight/2;
-                   
                     var left = x + "px";
-                    var top = y + "px";
+                    var top =y + "px";
+                    //show the menu directly over the placeholder  
+                    //ui.draggable.css({
+                    //    position: 'relative',
+                    //    zIndex: 5000,
+                    //    left: left,
+                    //    top: top
+                    //});
+                    //absolute
+                    //dragClone.css({
+                    //    position: 'fixed',
+                    //    zIndex: zIndex++,
+                    //    left: left,
+                    //    top: top,
+                    //    width: 35+ "px"
+                    //});
+                    dragClone.draggable();
 
-                    dragClone.css({
-                        position: 'absolute',
-                        left: left,
-                        top: top
-                    });
-
-                    dragClone.draggable({ containment: '.drop' } );
+                    // $('.drop').append( ui.draggable.clone());
                     dragClone.appendTo(this);
+
+                   
+                   // ui.draggable.clone().appendTo('.drop');
+                  //  dragElement.appendTo(this);
+                   // $(this).html(dragElement.html());
+                     //   $(this).html(dragElement[0].innerHTML);
                     dragElement.remove();
+                    // // handleDrop($(this), event, ui);
+                   // appendTo(this).remove();
+                  //  ui.draggable.remove();
 
 
                     return true;
@@ -94,12 +119,12 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
         <div class="left">
                        <ul id="drag"></ul>
         </div>
-        <div style="position:absolute"  class="Screen centrecontent">
+        <div class="Screen centrecontent">
           
-            <div  class="drop Issue">
-            </div>
+            <div class="drop Issue">  <div style="top:450px;left:300px">xxxx</div></div>
         </div>
     </div>
-   
+    <div class="footer">Footer - This is the footer.</div>
+
 </body>
 </html>

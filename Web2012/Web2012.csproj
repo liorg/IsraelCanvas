@@ -60,6 +60,8 @@
     <Content Include="Canvas\ComponentUI.html" />
     <Content Include="Canvas\DashBoard.htm" />
     <Content Include="Canvas\HtmlPage1.html" />
+    <Content Include="DashBoard\Copy of DashBoard.htm" />
+    <Content Include="DashBoard\DashBoard2.htm" />
     <Content Include="DashBoard\DashBoard.htm" />
     <Content Include="imgs\A4-SHISHI48.png" />
     <Content Include="imgs\A4.png" />
