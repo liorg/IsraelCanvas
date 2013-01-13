@@ -5,28 +5,48 @@
     <link href="../Styles/jquery-ui.css" rel="stylesheet" />
     <script type="text/javascript" src="../Scripts/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="../Scripts/jquery-ui.js"></script>
+    <script  type="text/javascript" language="javascript" src="../Scripts/linq.js"></script>
     <link href="../Styles/layout.css" rel="stylesheet" />
 
-    <script>
+    <script type="text/javascript" language="javascript">
+        function getAdvertisementById(id) {
+            
+            //var row= Enumerable.From(context.Advertisement)
+            //                               .Where(function (x) { return x.Id.toUpperCase() == id.toUpperCase() })
+            //                               .Select(function (x) { return x.Name; })
+            //                               .FirstOrDefault();
+            var row = jQuery.grep(context.Advertisement, function (n, i) {
+                return (n.Id ==id
+                    );
+            });
+            return row[0];
+        }
         var dropBox;
         var drag;
-        var maxEventsInMonth = 10;
-        var maxDataRow = 6;
         var dragClone;
-        var dragElement = false;
+        var dragElement;
+       
+        var AdvertisementWidth = "100px";
+        var AdvertisementHeight = "20px";
 
-        var events = [{ id: '1', name: 'Event1', icon: 'http://yeeeah.com/wp-content/uploads/2012/12/88116PCN_WillKate10.jpg', duedate: 'date1', responsible: 'ABC1', conditions: 'Cond-1', status: 'Pedning' },
-                { id: '2', name: 'Event2', icon: 'http://yeeeah.com/wp-content/uploads/2012/12/88116PCN_WillKate11.jpg', duedate: 'date2', responsible: 'DEF2', conditions: 'Cond-2', status: 'Completed' },
-                { id: '3', name: 'Event3', icon: 'http://yeeeah.com/wp-content/uploads/2012/12/88116PCN_WillKate12.jpg', duedate: 'date3', responsible: 'LMN3', conditions: 'Cond-3', status: 'Pedning' },
-                { id: '4', name: 'Event4', icon: 'http://yeeeah.com/wp-content/uploads/2012/12/88116PCN_WillKate13.jpg', duedate: 'date4', responsible: 'PQR4', conditions: 'Cond-4', status: 'Pedning' },
-                { id: '5', name: 'Event5', icon: 'http://yeeeah.com/wp-content/uploads/2012/12/88116PCN_WillKate14.jpg', duedate: 'date5', responsible: 'CDE5', conditions: 'Cond-5', status: 'In Progress' },
-                { id: '6', name: 'Event6', icon: 'http://yeeeah.com/wp-content/uploads/2012/12/88116PCN_WillKate15.jpg', duedate: 'date6', responsible: 'XYZ6', conditions: 'Cond-6', status: 'Pedning' }
+        var section = {};
+        var advertisement = [
+            { Id: '1', Name: 'הליכוד חרטתנו', IsDeleted: false, Size: '123x223', Top: null, Left: null, Width: AdvertisementWidth, Height: AdvertisementHeight },
+            { Id: '2', Name: 'אגיס', IsDeleted: false, Size: '1666x4454', Top: null, Left: null  ,Width: AdvertisementWidth, Height: AdvertisementHeight },
+            { Id: '3', Name: 'דיסקונט', IsDeleted: false, Size: '2222x999', Top: null, Left: null, Width: AdvertisementWidth, Height: AdvertisementHeight },
+            { Id: '4', Name: 'לאומי דיגיטל', IsDeleted: false, Size: '5555x3232', Top: null, Left: null, Width: AdvertisementWidth, Height: AdvertisementHeight },
+
         ];
+        var context = {
+            Section: section,
+            Advertisement: advertisement,
+            UriTemplate: "",
+        };
         $(function () {
-            dropBox = $('.drop');drag = $('#drag');
+            dropBox = $('.drop'); drag = $('#drag');
 
-            $.each(events, function (index, event) {
-                drag.append('<li style="width:100px;height:20px" id=event_' + event.id + '>' + event.name+'</li>');
+            $.each(context.Advertisement, function (index, advertisement) {
+                drag.append('<li style="width:' + AdvertisementWidth + ';height:' + AdvertisementHeight + '"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
             });
 
             $('#drag li').draggable({
@@ -37,45 +57,90 @@
                 helper: 'clone',
                 cursor: "move",
                 start: function () {
-                   // $(this).hide();
+                    // $(this).hide();
                     dragClone = $(this).clone();
                     dragElement = $(this);
                 },
                 stop: function () {
-                   // $(this).show()
+                    // $(this).show()
                 }
             });
 
-           
 
+            var zIndex = 5000;
+            
 
-            var zIndex=5000;
             dropBox.droppable({
-                accept: "#drag li",
+                accept: "#drag li, .ui-widget-content",
                 scroll: true,
                 refreshPositions: true,
                 drop: function (event, ui) {
-                    var eWidth = ui.draggable.outerWidth();
-                    var eHeight = ui.draggable.outerHeight();
-
-
-                    var x = event.pageX - $(this).offset().left-11;//- eWidth;
+                    var x = event.pageX - $(this).offset().left - 11;//- eWidth;
                     var y = event.pageY - $(this).offset().top; //- eHeight/2;
-                   
+
                     var left = x + "px";
                     var top = y + "px";
-
+                    //    var eWidth = ui.draggable.outerWidth();
+                    //     var eHeight = ui.draggable.outerHeight();
+                    if (ui.draggable.hasClass("ui-widget-content")) {
+                        var row = getAdvertisementById(dragClone.find('span').attr('id'));
+                        //$(this).css({
+                        row.Top = top;
+                        row.Left = left;
+                        return true;
+                    }
+                   
                     dragClone.css({
                         position: 'absolute',
                         left: left,
                         top: top
                     });
 
-                    dragClone.draggable({ containment: '.drop' } );
+
+                    dragClone.addClass("ui-widget-content");
+                    var row = getAdvertisementById(dragClone.find('span').attr('id'));
+                    //$(this).css({
+                    row.Top = top;
+                    row.Left = left;
+
+                    dragClone.draggable(
+                        {
+                            containment: '.drop'
+                        });
+
+
+                    dragClone.resizable(
+                            {
+                                containment: '.drop',
+                                appendTo: '.drop',
+                                resize: function () {
+                                    // your positioning code here
+                                    // debugger
+
+                                },
+                                start: function (event, ui) {
+                                    //$(this).css({
+                                    //    position: "relative !important",
+                                    //    top: "0 !important",
+                                    //    left: "0 !important"
+
+                                },
+                                stop: function (event, ui) {
+                                    var row = getAdvertisementById($(this).find('span').attr('id'));
+                                    row.Width = $(this).outerWidth();
+                                    row.Height = $(this).outerHeight();
+                                    $(this).css({
+                                        position: 'absolute',
+                                        left: row.Left,
+                                        top: row.Top
+                                    });
+                                }
+
+                            });
                     dragClone.appendTo(this);
+
+
                     dragElement.remove();
-
-
                     return true;
                 }
             });
@@ -92,14 +157,14 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
     <div class="header"></div>
     <div class="centreposition">
         <div class="left">
-                       <ul id="drag"></ul>
+            <ul id="drag"></ul>
         </div>
-        <div style="position:absolute"  class="Screen centrecontent">
-          
-            <div  class="drop Issue">
+        <div style="position: absolute" class="Screen centrecontent">
+
+            <div class="drop Issue">
             </div>
         </div>
     </div>
-   
+
 </body>
 </html>

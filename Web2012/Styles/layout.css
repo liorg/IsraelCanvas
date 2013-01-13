@@ -61,7 +61,6 @@ div.Issue
     background-position: 0px 0px;
     width: 297mm;
     height: 210mm;
-
 }
 
 div.Screen
@@ -73,3 +72,29 @@ div.Screen
     height: 450px;
 }
 /* Computer-Zen www.computer-zen.com is part of the VORD Web Design Network www.vordweb.co.uk */
+ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+    ul li
+    {
+        list-style: url(/images/bullet.gif);
+        vertical-align: middle;
+        padding-left: 0.5em;
+    }
+
+#sidebar ul
+{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+}
+    /* this keeps WIN IE6 happy */
+    #sidebar ul li
+    {
+        list-style: none;
+    }
+/* this keeps WIN Firefox happy */
