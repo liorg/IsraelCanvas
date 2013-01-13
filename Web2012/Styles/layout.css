@@ -1,0 +1,103 @@
+﻿body
+{
+    margin: 0px;
+}
+
+.header
+{
+    height: 100px;
+}
+
+.centreposition
+{
+    padding-right: 20px;
+    padding-left: 22%;
+    background-color: #FFFFF7;
+}
+
+/* The centrecontent style is set up for a 2 column layout.  
+If you want a 3 column layout then change the centreposition style like this:   padding-right: 200px; 
+<div id="right"> Write the content for your right hand column inside an id-"right" div like this </div> */
+
+.centrecontent
+{
+    z-index: 100;
+    min-width: 1px;
+    background-color: #FFFFFF;
+    border: 1px solid #999999;
+    padding: 10px;
+}
+
+.footer
+{
+    padding-left: 175px;
+    background-color: #FFFFF7;
+}
+
+.left
+{
+    width: 20%;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    padding: 10px 0px 10px 6px;
+}
+
+
+
+.right
+{
+    width: 130px;
+    position: absolute;
+    top: 100px;
+    right: 0px;
+    height: 200px;
+}
+
+div.Issue
+{
+    background-repeat: no-repeat;
+    background-image: url('/imgs/A4-SHISHI48.png');
+    background-position: 0px 0px;
+    width: 297mm;
+    height: 210mm;
+}
+
+div.Screen
+{
+    overflow-style: scrollbar;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width: 700px;
+    height: 450px;
+}
+/* Computer-Zen www.computer-zen.com is part of the VORD Web Design Network www.vordweb.co.uk */
+ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+    ul li
+    {
+        list-style: url(/images/bullet.gif);
+        vertical-align: middle;
+        padding-left: 0.5em;
+    }
+
+#sidebar ul
+{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+}
+    /* this keeps WIN IE6 happy */
+    #sidebar ul li
+    {
+        list-style: none;
+    }
+/* this keeps WIN Firefox happy */
+.myWidget
+{
+}
