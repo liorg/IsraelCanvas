@@ -6,13 +6,13 @@
     BORDER-TOP: 0px;
     CURSOR: default;
     BORDER-RIGHT: 0px;
+     FONT-FAMILY: Tahoma, Arial;
+    FONT-SIZE: 11px;
 }
 
 
 .centreposition {
-    padding-right: 20px;
-    padding-left: 22%;
-    background-color: #FFFFF7;
+    
 }
 
 
@@ -35,8 +35,9 @@ div.Screen {
     overflow-style: scrollbar;
     overflow-x: scroll;
     overflow-y: scroll;
-    width: 700px;
-    height: 450px;
+    width: 750px;
+    height: 400px;
+    float:right;
 }
 /* Computer-Zen www.computer-zen.com is part of the VORD Web Design Network www.vordweb.co.uk */
 UL {
@@ -44,16 +45,11 @@ UL {
     LIST-STYLE-TYPE: none;
     MARGIN: 0px;
     PADDING-LEFT: 0px;
-    PADDING-RIGHT: 0px;
+    PADDING-RIGHT: 15px;
     PADDING-TOP: 0px;
 }
 
 .myWidget {
-}
-
-BODY {
-    FONT-FAMILY: Tahoma, Arial;
-    FONT-SIZE: 11px;
 }
 
 INPUT {
