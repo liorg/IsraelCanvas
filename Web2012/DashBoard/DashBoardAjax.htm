@@ -12,9 +12,24 @@
     <script type="text/javascript" language="javascript">
 
         var context;
-
+        function OnField(node) {
+            node.style.backgroundColor = "#c4ddff";
+        }
+        function OffField(node) {
+            node.style.backgroundColor = "";
+        }
         $(function () {
             dropBox = $('.drop'); drag = $('#drag');
+            $("#tabs").tabs();
+
+            // fix the classes
+            $(".tabs-bottom .ui-tabs-nav, .tabs-bottom .ui-tabs-nav > *")
+              .removeClass("ui-corner-all ui-corner-top")
+              .addClass("ui-corner-bottom");
+
+            // move the nav to the bottom
+            $(".tabs-bottom .ui-tabs-nav").appendTo(".tabs-bottom");
+
             $.ajax({
                 type: "POST",
                 url: "MockData.ashx?id=2b841240-eef8-43ec-ad0b-ef812238c8af",
@@ -83,10 +98,33 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
             </div>
 
         </div>
+        <div id="tabs" class="tabs-bottom leftFloat">
+            <ul>
+                <li><a href="#tabs-1">פרסום</a></li>
+                <li><a href="#tabs-2">מדורים</a></li>
+            </ul>
+            <div class="tabs-spacer"></div>
+            <div id="tabs-1">
 
-        <div class="leftFloat">
-            <ul id="drag"></ul>
+                <ul id="drag"></ul>
+            </div>
+            <div id="tabs-2">
+                <ul>
+                    <li style="WIDTH: 200px; PADDING-RIGHT: 5px" id="field_territorycode" onmouseover="OnField(this)" title="שם תצוגה:אזור&#13;&#10;שם:territorycode&#13;&#10;סוג:picklist" onmouseout="OffField(this)">
+                        <img class="dlg_create_RenderListItem_img" alt="" src="/imgs/ico_18_attributes.gif">ספורט</li>
+                    <li style="WIDTH: 200px; PADDING-RIGHT: 5px" id="field_pager" onmouseover="OnField(this)" title="שם תצוגה:איתורית&#13;&#10;שם:pager&#13;&#10;סוג:text" onmouseout="OffField(this)">
+                        <img class="dlg_create_RenderListItem_img" alt="" src="/imgs/ico_18_attributes.gif">רכילות</li>
+                    <li style="WIDTH: 200px; PADDING-RIGHT: 5px" id="field_donotbulkpostalmail" onmouseover="OnField(this)" title="שם תצוגה:אל תאפשר הודעות דואר לרשימת תפוצה&#13;&#10;שם:donotbulkpostalmail&#13;&#10;סוג:boolean" onmouseout="OffField(this)">
+                        <img class="dlg_create_RenderListItem_img" alt="" src="/imgs/ico_18_attributes.gif">פוליטי/מדיני</li>
+                    <li style="WIDTH: 200px; PADDING-RIGHT: 5px" id="field_ftpsiteurl" onmouseover="OnField(this)" title="שם תצוגה:אתר FTP&#13;&#10;שם:ftpsiteurl&#13;&#10;סוג:text" onmouseout="OffField(this)">
+                        <img class="dlg_create_RenderListItem_img" alt="" src="/imgs/ico_18_attributes.gif">מוסף</li>
+                    <li style="WIDTH: 200px; PADDING-RIGHT: 5px" id="field_websiteurl" onmouseover="OnField(this)" title="שם תצוגה:אתר אינטרנט&#13;&#10;שם:websiteurl&#13;&#10;סוג:text" onmouseout="OffField(this)">
+                        <img class="dlg_create_RenderListItem_img" alt="" src="/imgs/ico_18_attributes.gif">בישול</li>
+
+                </ul>
+            </div>
         </div>
+
         <div class="Screen">
             <div style="position: relative" class="drop Issue">
             </div>

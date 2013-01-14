@@ -6,22 +6,43 @@
     BORDER-TOP: 0px;
     CURSOR: default;
     BORDER-RIGHT: 0px;
-     FONT-FAMILY: Tahoma, Arial;
+    FONT-FAMILY: Tahoma, Arial;
     FONT-SIZE: 11px;
 }
 
 
 .centreposition {
-    
 }
 
+/* force a height so the tabs don't jump as content height changes */
+#tabs .tabs-spacer {
+    float: left;
+    height: 200px;
+}
 
+.tabs-bottom .ui-tabs-nav {
+    clear: left;
+    padding: 0 .2em .2em .2em;
+}
+
+.tabs-bottom .ui-tabs-nav li {
+        top: auto;
+        bottom: 0;
+        margin: 0 .2em 1px 0;
+        border-top: 0;
+}
+
+.tabs-bottom .ui-tabs-nav li.ui-tabs-active {
+            margin-top: -1px;
+            padding-top: 1px;
+}
 
 .leftFloat {
     float: right;
+    width: 180px;
+    PADDING-RIGHT: 1px;
+    PADDING-LEFT: 1px;
 }
-
-
 
 div.Issue {
     background-repeat: no-repeat;
@@ -37,7 +58,7 @@ div.Screen {
     overflow-y: scroll;
     width: 750px;
     height: 400px;
-    float:right;
+    float: right;
 }
 /* Computer-Zen www.computer-zen.com is part of the VORD Web Design Network www.vordweb.co.uk */
 UL {
@@ -86,42 +107,42 @@ A {
     TEXT-DECORATION: none;
 }
 
-    A:link IMG {
+A:link IMG {
+        FONT-WEIGHT: normal;
+        TEXT-DECORATION: none;
+}
+
+A:link {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:link {
+A:visited IMG {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:visited IMG {
+A:visited {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:visited {
+A:active IMG {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:active IMG {
+A:active {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:active {
+A:hover IMG {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:hover IMG {
-        FONT-WEIGHT: normal;
-        TEXT-DECORATION: none;
-    }
-
-    A:hover {
+A:hover {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
