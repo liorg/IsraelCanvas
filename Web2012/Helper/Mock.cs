@@ -12,7 +12,9 @@ namespace Web2012.Helper
 {
     public class Mock
     {
-        private string _urlTemplate = "/imgs/A4-SHISHI48.png";
+      private string _urlTemplate = "/imgs/A4-SHISHI48.png";
+        //private string _urlTemplate = "/imgs/A4.png";
+        //private string _urlTemplate = "/imgs/BiggThenA4.png";
          String ConvertImageURLToBase64(String url)
         {
             StringBuilder _sb = new StringBuilder();

@@ -6,118 +6,30 @@
     <script type="text/javascript" src="../Scripts/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="../Scripts/jquery-ui.js"></script>
     <script type="text/javascript" language="javascript" src="../Scripts/linq.js"></script>
-    <script src="../Scripts/DashBoard.js"></script>
+    <script type="text/javascript" src="../Scripts/DashBoard.js"></script>
     <link href="../Styles/layout.css" rel="stylesheet" />
-
-
     <script type="text/javascript" language="javascript">
-        function getAdvertisementById(id) {
-            var row = jQuery.grep(context.Advertisements, function (n, i) {
-                return (n.Id == id);
-            });
-            return row[0];
-        }
-        var dropBox;
-        var drag;
-        var dragClone;
-        var dragElement;
 
-        var AdvertisementWidth = "100px";
-        var AdvertisementHeight = "20px";
+        var context;
 
-        var section = {};
-        var advertisement = [
-            { Id: '1', Name: 'הליכוד ביתנו', IsDeleted: false, Size: '123x223', Top: null, Left: null, Width: AdvertisementWidth, Height: AdvertisementHeight },
-            { Id: '2', Name: 'אגיס', IsDeleted: false, Size: '1666x4454', Top: null, Left: null, Width: AdvertisementWidth, Height: AdvertisementHeight },
-            { Id: '3', Name: 'דיסקונט', IsDeleted: false, Size: '2222x999', Top: null, Left: null, Width: AdvertisementWidth, Height: AdvertisementHeight },
-            { Id: '4', Name: 'לאומי דיגיטל', IsDeleted: false, Size: '5555x3232', Top: null, Left: null, Width: AdvertisementWidth, Height: AdvertisementHeight },
-
-        ];
-        var context = {
-            Current:{},
-            Sections: section,
-            Advertisements: advertisement,
-            UriTemplate: "",
-        };
         $(function () {
-
             dropBox = $('.drop'); drag = $('#drag');
-
-            $.each(context.Advertisements, function (index, advertisement) {
-                drag.append('<li style="width:' + AdvertisementWidth + ';height:' + AdvertisementHeight + '"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
-            });
-
-            $('#drag li').draggable({
-                revert: "invalid",
-                appendTo: '.drop',
-                containment: '.drop',
-                scroll: false,
-                handle: "span" ,
-                helper: 'clone',
-                cursorAt: { bottom: 0 },
-                start: function () {
-                    // $(this).hide();
-                    dragClone = $(this).clone();
-                    dragElement = $(this);
+            $.ajax({
+                type: "POST",
+                url: "MockData.ashx?id=2b841240-eef8-43ec-ad0b-ef812238c8af",
+                cache: false,
+                contentType: "application/json; charset=utf-8",
+                data: "{}",
+                dataType: "json",
+                success: function (data, status) {
+                    context = data;
+                    setToolbar();
+                    loadElementEvents();
+                    setImageTemplate();
                 },
-                stop: function () {
-                    // $(this).show()
-                }
-            });
-
-
-            var zIndex = 5000;
-            dropBox.droppable({
-                accept: "#drag li, .ui-widget-content",
-                scroll: true,
-                refreshPositions: true,
-                drop: function (event, ui) {
-                    var eWidth = ui.draggable.outerWidth();
-                    var eHeight = ui.draggable.outerHeight();
-                    var x = event.pageX - $(this).offset().left- (eWidth/2);
-                    var y = event.pageY - $(this).offset().top - (eHeight/2);
-
-                    var left = x + "px";
-                    var top = y + "px";
-                    if (ui.draggable.hasClass("myWidget")) {
-                        var row = getAdvertisementById(dragClone.find('span').attr('id'));
-                        row.Top = top;
-                        row.Left = left;
-                        return true;
-                    }
-
-                    dragClone.css({
-                        position: 'absolute',
-                        left: left,
-                        top: top
-                    });
-
-
-                    dragClone.addClass("ui-widget-content").addClass("myWidget");
-                    var row = getAdvertisementById(dragClone.find('span').attr('id'));
-                    row.Top = top;
-                    row.Left = left;
-
-                    dragClone.draggable(
-                        {
-                            containment: '.drop', cursor: "move",
-                        });
-
-                    dragClone.resizable( {
-                                containment: '.drop',
-                               // appendTo: '.drop',
-                                stop: function (event, ui) {
-                                    var row = getAdvertisementById($(this).find('span').attr('id'));
-                                    row.Width = $(this).outerWidth();
-                                    row.Height = $(this).outerHeight();
-                                }
-                    });
-
-                    dragClone.appendTo(this);
-                    dragElement.remove();
-                    return true;
-                }
-            });
+                error: ajaxFailed
+            }
+            );
         });
     </script>
 </head>
@@ -132,11 +44,11 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
         <div class="left">
             <ul id="drag"></ul>
         </div>
-    <div style="position: absolute" class="Screen centrecontent">
+        <div style="position: absolute" class="Screen centrecontent">
 
-        <div style="position: relative" class="drop Issue">
+            <div style="position: relative" class="drop Issue">
+            </div>
         </div>
-    </div>
     </div>
 
 </body>

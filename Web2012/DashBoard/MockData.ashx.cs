@@ -19,7 +19,10 @@ namespace Web2012.Server
             context.Response.ContentType = "text/plain";
             if (context.Request.Params["Current"] == null)
             {
-                var mockService = new AdvertismentAreaServiceMock(Guid.NewGuid());
+               // context.Request.Params["id"]==null:Guid.NewGuid()
+                var id = context.Request.QueryString["id"];
+
+                var mockService = new AdvertismentAreaServiceMock(Guid.Parse(id));
 
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 string d = serializer.Serialize(mockService.Get());
@@ -27,7 +30,6 @@ namespace Web2012.Server
             }
             else
             context.Response.Redirect("fin.html");
-            //context.Server.MapPath
         }
 
         public bool IsReusable
