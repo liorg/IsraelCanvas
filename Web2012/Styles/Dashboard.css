@@ -1,0 +1,139 @@
+﻿BODY {
+    BORDER-BOTTOM: 0px;
+    BORDER-LEFT: 0px;
+    MARGIN: 0px;
+    DIRECTION: rtl;
+    BORDER-TOP: 0px;
+    CURSOR: default;
+    BORDER-RIGHT: 0px;
+}
+
+
+.centreposition {
+    padding-right: 20px;
+    padding-left: 22%;
+    background-color: #FFFFF7;
+}
+
+
+
+.leftFloat {
+    float: right;
+}
+
+
+
+div.Issue {
+    background-repeat: no-repeat;
+    background-image: url('/imgs/A4-SHISHI48.png');
+    background-position: 0px 0px;
+    width: 297mm;
+    height: 210mm;
+}
+
+div.Screen {
+    overflow-style: scrollbar;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width: 700px;
+    height: 450px;
+}
+/* Computer-Zen www.computer-zen.com is part of the VORD Web Design Network www.vordweb.co.uk */
+UL {
+    PADDING-BOTTOM: 0px;
+    LIST-STYLE-TYPE: none;
+    MARGIN: 0px;
+    PADDING-LEFT: 0px;
+    PADDING-RIGHT: 0px;
+    PADDING-TOP: 0px;
+}
+
+.myWidget {
+}
+
+BODY {
+    FONT-FAMILY: Tahoma, Arial;
+    FONT-SIZE: 11px;
+}
+
+INPUT {
+    FONT-FAMILY: Tahoma, Arial;
+    FONT-SIZE: 11px;
+}
+
+SELECT {
+    FONT-FAMILY: Tahoma, Arial;
+    FONT-SIZE: 11px;
+}
+
+TEXTAREA {
+    FONT-FAMILY: Tahoma, Arial;
+    FONT-SIZE: 11px;
+}
+
+TABLE.ms-crm-Loading {
+    FONT-FAMILY: Tahoma, Arial;
+    FONT-SIZE: 11px;
+}
+
+TD {
+    FONT-SIZE: 11px;
+}
+
+TH {
+    FONT-SIZE: 11px;
+    FONT-WEIGHT: normal;
+}
+
+A {
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none;
+}
+
+    A:link IMG {
+        FONT-WEIGHT: normal;
+        TEXT-DECORATION: none;
+    }
+
+    A:link {
+        FONT-WEIGHT: normal;
+        TEXT-DECORATION: none;
+    }
+
+    A:visited IMG {
+        FONT-WEIGHT: normal;
+        TEXT-DECORATION: none;
+    }
+
+    A:visited {
+        FONT-WEIGHT: normal;
+        TEXT-DECORATION: none;
+    }
+
+    A:active IMG {
+        FONT-WEIGHT: normal;
+        TEXT-DECORATION: none;
+    }
+
+    A:active {
+        FONT-WEIGHT: normal;
+        TEXT-DECORATION: none;
+    }
+
+    A:hover IMG {
+        FONT-WEIGHT: normal;
+        TEXT-DECORATION: none;
+    }
+
+    A:hover {
+        FONT-WEIGHT: normal;
+        TEXT-DECORATION: none;
+    }
+
+H2 {
+    FONT-SIZE: 16px;
+}
+
+BUTTON {
+    FONT-SIZE: 11px;
+}

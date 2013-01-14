@@ -1,15 +1,17 @@
-﻿body
-{
-    margin: 0px;
+﻿BODY {
+    BORDER-BOTTOM: 0px;
+    BORDER-LEFT: 0px;
+    MARGIN: 0px;
+    DIRECTION: rtl;
+    BORDER-TOP: 0px;
+    CURSOR: default;
+    BORDER-RIGHT: 0px;
 }
-
-.header
-{
+.header {
     height: 100px;
 }
 
-.centreposition
-{
+.centreposition {
     padding-right: 20px;
     padding-left: 22%;
     background-color: #FFFFF7;
@@ -19,34 +21,32 @@
 If you want a 3 column layout then change the centreposition style like this:   padding-right: 200px; 
 <div id="right"> Write the content for your right hand column inside an id-"right" div like this </div> */
 
-.centrecontent
-{
+.centrecontent {
     z-index: 100;
     min-width: 1px;
     background-color: #FFFFFF;
-    border: 1px solid #999999;
+    border: 3px solid #999999;
     padding: 10px;
 }
 
-.footer
-{
+.footer {
     padding-left: 175px;
     background-color: #FFFFF7;
 }
 
-.left
-{
+.left {
     width: 20%;
     position: absolute;
     top: 100px;
     left: 0px;
     padding: 10px 0px 10px 6px;
 }
+.leftFloat {
+    float:right;
+}
 
 
-
-.right
-{
+.right {
     width: 130px;
     position: absolute;
     top: 100px;
@@ -54,8 +54,7 @@ If you want a 3 column layout then change the centreposition style like this:   
     height: 200px;
 }
 
-div.Issue
-{
+div.Issue {
     background-repeat: no-repeat;
     background-image: url('/imgs/A4-SHISHI48.png');
     background-position: 0px 0px;
@@ -63,8 +62,7 @@ div.Issue
     height: 210mm;
 }
 
-div.Screen
-{
+div.Screen {
     overflow-style: scrollbar;
     overflow-x: scroll;
     overflow-y: scroll;
@@ -72,32 +70,14 @@ div.Screen
     height: 450px;
 }
 /* Computer-Zen www.computer-zen.com is part of the VORD Web Design Network www.vordweb.co.uk */
-ul
-{
-    margin: 0;
-    padding: 0;
+UL {
+    PADDING-BOTTOM: 0px;
+    LIST-STYLE-TYPE: none;
+    MARGIN: 0px;
+    PADDING-LEFT: 0px;
+    PADDING-RIGHT: 0px;
+    PADDING-TOP: 0px;
 }
 
-ul li
-    {
-        list-style: url(/images/bullet.gif);
-        vertical-align: middle;
-        padding-left: 0.5em;
-    }
-
-#sidebar ul
-{
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    list-style: none;
-}
-    /* this keeps WIN IE6 happy */
-    #sidebar ul li
-    {
-        list-style: none;
-    }
-/* this keeps WIN Firefox happy */
-.myWidget
-{
+.myWidget {
 }
