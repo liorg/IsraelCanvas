@@ -78,7 +78,7 @@ ul
     padding: 0;
 }
 
-    ul li
+ul li
     {
         list-style: url(/images/bullet.gif);
         vertical-align: middle;
