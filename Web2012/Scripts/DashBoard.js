@@ -3,8 +3,8 @@ var drag;
 var dragClone;
 var dragElement;
 
-var AdvertisementWidth = "100px";
-var AdvertisementHeight = "20px";
+//var AdvertisementWidth = "100px";
+//var AdvertisementHeight = "20px";
 
 function getAdvertisementById(id) {
     var row = jQuery.grep(context.Advertisements, function (n, i) {
@@ -12,7 +12,6 @@ function getAdvertisementById(id) {
     });
     return row[0];
 }
-
 
 function setTempalateImage(base64Image, IsLandscape) {
     var ss = document.styleSheets;
@@ -26,7 +25,6 @@ function setTempalateImage(base64Image, IsLandscape) {
                 if (!IsLandscape) {
                     rules[j].style.width = "210mm";
                     rules[j].style.height = "297mm";
-
                 }
             }
         }
