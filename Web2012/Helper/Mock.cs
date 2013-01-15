@@ -156,7 +156,57 @@ namespace Web2012.Helper
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
                 Id = Guid.NewGuid(),
-                Name = "אגיס",
+                Name = "the voice 2",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "שלי יחמוביץ -עבודה",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "בנט הבית היהודי",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "פלא-פון",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "סלקום",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "מטרנה",
 
             });
             data.Advertisements.Add(new Advertisement
@@ -176,7 +226,7 @@ namespace Web2012.Helper
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
                 Id = Guid.NewGuid(),
-                Name = "אגיס",
+                Name = "Nike",
 
             });
             data.Advertisements.Add(new Advertisement
@@ -186,7 +236,107 @@ namespace Web2012.Helper
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
                 Id = Guid.NewGuid(),
+                Name = "מוצר ישראלי",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "ש''ס לחלשים",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אונג'",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "רמי לוי שקמה",
+
+            });  
+           data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אושר עד",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
                 Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "עלית",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "על כיפק",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "מי ברק",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "בר אילן",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "שלום עכשיו",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "תקומה",
 
             });
             data.Advertisements.Add(new Advertisement
@@ -196,183 +346,7 @@ namespace Web2012.Helper
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
                 Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            });
-            data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            });
-            data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            });
-            data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            });
-            data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            }); data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "אגיס",
-
-            });
-            data.Advertisements.Add(new Advertisement
-            {
-                Color = ConstVar.ColorDefaultAdvertisemen,
-                Height = ConstVar.HeightDefaultAdvertisement,
-                Width = ConstVar.WidthDefaultAdvertisement,
-                IsDeleted = false,
-                Id = Guid.NewGuid(),
-                Name = "xxxx",
+                Name = "סוף הדרך",
 
 
             });

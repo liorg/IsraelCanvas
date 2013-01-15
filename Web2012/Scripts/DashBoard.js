@@ -37,7 +37,7 @@ function ajaxFailed(xmlRequest) {
 }
 function setToolbar() {
     $.each(context.Advertisements, function (index, advertisement) {
-        drag.append('<li style="width:' + advertisement.Width + ';height:' + advertisement.Height + '"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+        drag.append('<li  class="MenuItem"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
     });
 }
 function setImageTemplate() {

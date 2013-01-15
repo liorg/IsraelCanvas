@@ -38,9 +38,9 @@
         }
 
 .leftFloat {
-    position:absolute;
-    top:auto;
-    right:2px;
+    position: absolute;
+    top: auto;
+    right: 2px;
     float: right;
     width: 180px;
     PADDING-RIGHT: 1px;
@@ -56,35 +56,45 @@ div.Issue {
 }
 
 div.Screen {
-     position:absolute;
-    top:auto;
-    right:190px;
+    position: absolute;
+    top: auto;
+    right: 190px;
     overflow-style: scrollbar;
     overflow-x: scroll;
     overflow-y: scroll;
     width: 750px;
     height: 400px;
-    float:  left;
-    padding-left:5px;
+    float: left;
+    padding-left: 5px;
 }
 /* Computer-Zen www.computer-zen.com is part of the VORD Web Design Network www.vordweb.co.uk */
 UL.ToolBar {
     PADDING-BOTTOM: 0px;
     LIST-STYLE-TYPE: none;
-    MARGIN: 0px;
+    MARGIN: 1px;
     PADDING-LEFT: 0px;
     PADDING-RIGHT: 15px;
     PADDING-TOP: 0px;
     height: 300px;
     overflow: auto;
     border: 1px solid grey;
+    
 }
 
-li {
+li.MenuItem {
+    /*background-image: url('/imgs/ico_18_attributes.gif');
+    background-repeat: no-repeat;
+    background-position: right  ;
+    margin: 1em 0;
+    text-align: left;*/
+
     border-bottom: 1px dotted grey;
     border-left: 1px dotted grey;
     border-right: 1px dotted grey;
+    border-top: 1px dotted grey;
+
 }
+
 
 /*li:last-child {
         border: none;
