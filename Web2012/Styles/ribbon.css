@@ -12,7 +12,6 @@ body
 	-moz-box-shadow: #000000 0px 0px 10px;
 	box-shadow: #000000 0px 0px 10px;
 	background: #FFF;
-	behavior: url(/PIE.htc);
 }
 
 #ribbon

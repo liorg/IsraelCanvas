@@ -12,7 +12,7 @@ namespace Web2012.Helper
 {
     public class Mock
     {
-      private string _urlTemplate = "/imgs/A4-SHISHI48.png";
+        private string _urlTemplate = "/imgs/A4-SHISHI48-title.png";
         //private string _urlTemplate = "/imgs/A4.png";
         //private string _urlTemplate = "/imgs/BiggThenA4.png";
          String ConvertImageURLToBase64(String url)
@@ -149,6 +149,233 @@ namespace Web2012.Helper
                 Name = "פוליטי/מדיני"
             });
 
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            }); data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "אגיס",
+
+            });
+            data.Advertisements.Add(new Advertisement
+            {
+                Color = ConstVar.ColorDefaultAdvertisemen,
+                Height = ConstVar.HeightDefaultAdvertisement,
+                Width = ConstVar.WidthDefaultAdvertisement,
+                IsDeleted = false,
+                Id = Guid.NewGuid(),
+                Name = "xxxx",
+
+
+            });
             return data;
         }
 

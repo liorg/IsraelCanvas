@@ -25,19 +25,22 @@
     padding: 0 .2em .2em .2em;
 }
 
-.tabs-bottom .ui-tabs-nav li {
+    .tabs-bottom .ui-tabs-nav li {
         top: auto;
         bottom: 0;
         margin: 0 .2em 1px 0;
         border-top: 0;
-}
+    }
 
-.tabs-bottom .ui-tabs-nav li.ui-tabs-active {
+        .tabs-bottom .ui-tabs-nav li.ui-tabs-active {
             margin-top: -1px;
             padding-top: 1px;
-}
+        }
 
 .leftFloat {
+    position:absolute;
+    top:auto;
+    right:2px;
     float: right;
     width: 180px;
     PADDING-RIGHT: 1px;
@@ -53,22 +56,39 @@ div.Issue {
 }
 
 div.Screen {
+     position:absolute;
+    top:auto;
+    right:190px;
     overflow-style: scrollbar;
     overflow-x: scroll;
     overflow-y: scroll;
     width: 750px;
     height: 400px;
-    float: right;
+    float:  left;
+    padding-left:5px;
 }
 /* Computer-Zen www.computer-zen.com is part of the VORD Web Design Network www.vordweb.co.uk */
-UL {
+UL.ToolBar {
     PADDING-BOTTOM: 0px;
     LIST-STYLE-TYPE: none;
     MARGIN: 0px;
     PADDING-LEFT: 0px;
     PADDING-RIGHT: 15px;
     PADDING-TOP: 0px;
+    height: 300px;
+    overflow: auto;
+    border: 1px solid grey;
 }
+
+li {
+    border-bottom: 1px dotted grey;
+    border-left: 1px dotted grey;
+    border-right: 1px dotted grey;
+}
+
+/*li:last-child {
+        border: none;
+    }*/
 
 .myWidget {
 }
@@ -107,42 +127,42 @@ A {
     TEXT-DECORATION: none;
 }
 
-A:link IMG {
-        FONT-WEIGHT: normal;
-        TEXT-DECORATION: none;
-}
-
-A:link {
+    A:link IMG {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-A:visited IMG {
+    A:link {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-A:visited {
+    A:visited IMG {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-A:active IMG {
+    A:visited {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-A:active {
+    A:active IMG {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-A:hover IMG {
+    A:active {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-A:hover {
+    A:hover IMG {
+        FONT-WEIGHT: normal;
+        TEXT-DECORATION: none;
+    }
+
+    A:hover {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }

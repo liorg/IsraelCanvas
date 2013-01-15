@@ -68,6 +68,7 @@
     <Content Include="DashBoard\DashBoard2.htm" />
     <Content Include="DashBoard\DashBoard.htm" />
     <Content Include="DashBoard\Fin.html" />
+    <Content Include="imgs\A4-SHISHI48-title.png" />
     <Content Include="imgs\A4-SHISHI48.png" />
     <Content Include="imgs\A4.png" />
     <Content Include="imgs\app_back.png" />
