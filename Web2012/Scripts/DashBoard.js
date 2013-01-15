@@ -3,6 +3,7 @@ var drag;
 var dragClone;
 var dragElement;
 
+var c_drop = ".drop";
 //var AdvertisementWidth = "100px";
 //var AdvertisementHeight = "20px";
 
@@ -37,19 +38,20 @@ function ajaxFailed(xmlRequest) {
 }
 function setToolbar() {
     $.each(context.Advertisements, function (index, advertisement) {
-        drag.append('<li  class="MenuItem"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+        drag.append('<li  class="MenuItem" style="height:' + advertisement.Height + ';width:' + advertisement.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
     });
 }
 function setImageTemplate() {
     setTempalateImage(context.UriTemplate, context.IsLandscape);
 }
 function loadElementEvents() {
+
     $('#drag li').draggable({
         revert: "invalid",
-        appendTo: '.drop',
-        containment: '.drop',
+        appendTo: c_drop,
+        containment: c_drop,
         scroll: false,
-        handle: "span",
+       // handle: "span",
         helper: 'clone',
         cursorAt: { bottom: 0 },
         start: function () {

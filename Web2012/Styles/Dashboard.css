@@ -82,12 +82,12 @@ UL.ToolBar {
 }
 
 li.MenuItem {
-    /*background-image: url('/imgs/ico_18_attributes.gif');
+    background-image: url('/imgs/ico_18_attributes.gif');
     background-repeat: no-repeat;
     background-position: right  ;
-    margin: 1em 0;
-    text-align: left;*/
-
+ 
+    text-align: left;
+     margin: 1em 0;
     border-bottom: 1px dotted grey;
     border-left: 1px dotted grey;
     border-right: 1px dotted grey;
