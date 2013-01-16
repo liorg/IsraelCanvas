@@ -1,4 +1,5 @@
-﻿BODY {
+﻿BODY
+{
     BORDER-BOTTOM: 0px;
     BORDER-LEFT: 0px;
     MARGIN: 0px;
@@ -11,33 +12,39 @@
 }
 
 
-.centreposition {
+.centreposition
+{
 }
 
 /* force a height so the tabs don't jump as content height changes */
-#tabs .tabs-spacer {
+#tabs .tabs-spacer
+{
     float: left;
     height: 200px;
 }
 
-.tabs-bottom .ui-tabs-nav {
+.tabs-bottom .ui-tabs-nav
+{
     clear: left;
     padding: 0 .2em .2em .2em;
 }
 
-    .tabs-bottom .ui-tabs-nav li {
+    .tabs-bottom .ui-tabs-nav li
+    {
         top: auto;
         bottom: 0;
         margin: 0 .2em 1px 0;
         border-top: 0;
     }
 
-        .tabs-bottom .ui-tabs-nav li.ui-tabs-active {
+        .tabs-bottom .ui-tabs-nav li.ui-tabs-active
+        {
             margin-top: -1px;
             padding-top: 1px;
         }
 
-.leftFloat {
+.leftFloat
+{
     position: absolute;
     top: auto;
     right: 2px;
@@ -47,15 +54,18 @@
     PADDING-LEFT: 1px;
 }
 
-div.Issue {
+div.Issue
+{
     background-repeat: no-repeat;
     background-image: url('/imgs/A4-SHISHI48.png');
     background-position: 0px 0px;
     width: 297mm;
     height: 210mm;
+    list-style-type: none;
 }
 
-div.Screen {
+div.Screen
+{
     position: absolute;
     top: auto;
     right: 190px;
@@ -68,7 +78,8 @@ div.Screen {
     padding-left: 5px;
 }
 /* Computer-Zen www.computer-zen.com is part of the VORD Web Design Network www.vordweb.co.uk */
-UL.ToolBar {
+UL.ToolBar
+{
     PADDING-BOTTOM: 0px;
     LIST-STYLE-TYPE: none;
     MARGIN: 1px;
@@ -78,21 +89,35 @@ UL.ToolBar {
     height: 300px;
     overflow: auto;
     border: 1px solid grey;
-    
 }
 
-li.MenuItem {
+span.advertisment-title
+{
+   
+}
+
+span.advertisment-size
+{
+      PADDING-RIGHT: 15px; PADDING-BOTTOM: 0px;
+}
+
+li.drag-li
+{
+    background-color: ActiveBorder;
+}
+
+li.MenuItem
+{
     background-image: url('/imgs/ico_18_attributes.gif');
     background-repeat: no-repeat;
-    background-position: right  ;
- 
+    background-position: right;
+    text-indent: -2em;
     text-align: left;
-     margin: 1em 0;
+    margin: 1em 0;
     border-bottom: 1px dotted grey;
     border-left: 1px dotted grey;
     border-right: 1px dotted grey;
     border-top: 1px dotted grey;
-
 }
 
 
@@ -100,87 +125,105 @@ li.MenuItem {
         border: none;
     }*/
 
-.myWidget {
+.myWidget
+{
 }
 
-INPUT {
+INPUT
+{
     FONT-FAMILY: Tahoma, Arial;
     FONT-SIZE: 11px;
 }
 
-SELECT {
+SELECT
+{
     FONT-FAMILY: Tahoma, Arial;
     FONT-SIZE: 11px;
 }
 
-TEXTAREA {
+TEXTAREA
+{
     FONT-FAMILY: Tahoma, Arial;
     FONT-SIZE: 11px;
 }
 
-TABLE.ms-crm-Loading {
+TABLE.ms-crm-Loading
+{
     FONT-FAMILY: Tahoma, Arial;
     FONT-SIZE: 11px;
 }
 
-TD {
+TD
+{
     FONT-SIZE: 11px;
 }
 
-TH {
+TH
+{
     FONT-SIZE: 11px;
     FONT-WEIGHT: normal;
 }
 
-A {
+A
+{
     FONT-WEIGHT: normal;
     TEXT-DECORATION: none;
 }
 
-    A:link IMG {
+    A:link IMG
+    {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:link {
+    A:link
+    {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:visited IMG {
+    A:visited IMG
+    {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:visited {
+    A:visited
+    {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:active IMG {
+    A:active IMG
+    {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:active {
+    A:active
+    {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:hover IMG {
+    A:hover IMG
+    {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-    A:hover {
+    A:hover
+    {
         FONT-WEIGHT: normal;
         TEXT-DECORATION: none;
     }
 
-H2 {
+H2
+{
     FONT-SIZE: 16px;
 }
 
-BUTTON {
+BUTTON
+{
     FONT-SIZE: 11px;
 }

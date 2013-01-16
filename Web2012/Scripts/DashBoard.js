@@ -14,7 +14,7 @@ function getAdvertisementById(id) {
     return row[0];
 }
 
-function setTempalateImage(base64Image, IsLandscape) {
+function setTempalateImageOld(base64Image, IsLandscape) {
     var ss = document.styleSheets;
     for (var i = 0; i < ss.length; i++) {
         var rules = ss[i].cssRules || ss[i].rules;
@@ -30,6 +30,18 @@ function setTempalateImage(base64Image, IsLandscape) {
             }
         }
     }
+}
+function setTempalateImage(base64Image, IsLandscape) {
+
+    var url = "url(data:image/png;base64," + base64Image + "=);";
+    var ele = $("div.Issue")[0];
+    ele.style.backgroundImage = url;
+
+    if (!IsLandscape) {
+        ele.style.width = "210mm";
+        ele.style.height = "297mm";
+    }
+
 }
 function ajaxFailed(xmlRequest) {
     alert(xmlRequest.status + ' \n\r ' +
@@ -51,7 +63,7 @@ function loadElementEvents() {
         appendTo: c_drop,
         containment: c_drop,
         scroll: false,
-       // handle: "span",
+        // handle: "span",
         helper: 'clone',
         cursorAt: { bottom: 0 },
         start: function () {
@@ -85,16 +97,18 @@ function loadElementEvents() {
                 return true;
             }
 
+           
+         
+            var row = getAdvertisementById(dragClone.find('span').attr('id'));
+            row.Top = top;
+            row.Left = left;
+            dragClone = dragClone.replaceWith("<div class='ui-draggable'><span id='" + dragClone.find("span").attr('id') + "'><span  class='advertisment-title'>" + dragClone.text() + "</span><br><br><span class='advertisment-size'>" + row.Size + "</span></div>");
+            dragClone.addClass("ui-widget-content").addClass("myWidget");
             dragClone.css({
                 position: 'absolute',
                 left: left,
                 top: top
             });
-            dragClone.addClass("ui-widget-content").addClass("myWidget");
-            var row = getAdvertisementById(dragClone.find('span').attr('id'));
-            row.Top = top;
-            row.Left = left;
-
             dragClone.draggable(
                 {
                     containment: '.drop', cursor: "move",
