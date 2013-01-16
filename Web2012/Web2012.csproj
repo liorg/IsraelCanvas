@@ -131,7 +131,7 @@
     <Content Include="Scripts\DashBoard.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-ui.js" />
-    <Content Include="Scripts\linq.js" />
+    <Content Include="Server\Classes\Bll\linq.js" />
     <Content Include="Styles\Dashboard.css" />
     <Content Include="Styles\fonts.css" />
     <Content Include="Styles\formeditor.css" />
