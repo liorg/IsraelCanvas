@@ -19,33 +19,10 @@
             node.style.backgroundColor = "";
         }
         $(function () {
-            dropBox = $('.drop'); drag = $('#drag');
-            $("#tabs").tabs();
-
-            // fix the classes
-            $(".tabs-bottom .ui-tabs-nav, .tabs-bottom .ui-tabs-nav > *")
-              .removeClass("ui-corner-all ui-corner-top")
-              .addClass("ui-corner-bottom");
-
-            // move the nav to the bottom
-            $(".tabs-bottom .ui-tabs-nav").appendTo(".tabs-bottom");
-
-            $.ajax({
-                type: "POST",
-                url: "MockData.ashx?id=2b841240-eef8-43ec-ad0b-ef812238c8af",
-                cache: false,
-                contentType: "application/json; charset=utf-8",
-                data: "{}",
-                dataType: "json",
-                success: function (data, status) {
-                    context = data;
-                    setToolbar();
-                    loadElementEvents();
-                    setImageTemplate();
-                },
-                error: ajaxFailed
-            }
-            );
+            setGlobalVar();
+            setToolboxUi();
+            loadAjax();
+          
         });
     </script>
 </head>

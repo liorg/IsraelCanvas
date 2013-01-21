@@ -14,5 +14,6 @@ namespace Guardian.Advertisment.DataModel
         public string Width { get; set; }
         public string Height { get; set; }
         public string Color { get; set; }
+        public bool IsShurtcutArea { get; set; }
     }
 }

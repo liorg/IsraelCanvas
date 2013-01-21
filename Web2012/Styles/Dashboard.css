@@ -119,14 +119,10 @@ li.MenuItem
     border-right: 1px dotted grey;
     border-top: 1px dotted grey;
 }
-
-
-/*li:last-child {
-        border: none;
-    }*/
-
 .myWidget
 {
+    /*width:15px; */
+    overflow:hidden;
 }
 
 INPUT
@@ -134,13 +130,11 @@ INPUT
     FONT-FAMILY: Tahoma, Arial;
     FONT-SIZE: 11px;
 }
-
 SELECT
 {
     FONT-FAMILY: Tahoma, Arial;
     FONT-SIZE: 11px;
 }
-
 TEXTAREA
 {
     FONT-FAMILY: Tahoma, Arial;
@@ -169,61 +163,53 @@ A
     FONT-WEIGHT: normal;
     TEXT-DECORATION: none;
 }
+A:link IMG
+{
+     FONT-WEIGHT: normal;
+     TEXT-DECORATION: none;
+}
+A:link
+{
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none;
+}
+ A:visited IMG
+{
+     FONT-WEIGHT: normal;
+    TEXT-DECORATION: none;
+}
 
-    A:link IMG
-    {
-        FONT-WEIGHT: normal;
-        TEXT-DECORATION: none;
-    }
-
-    A:link
-    {
-        FONT-WEIGHT: normal;
-        TEXT-DECORATION: none;
-    }
-
-    A:visited IMG
-    {
-        FONT-WEIGHT: normal;
-        TEXT-DECORATION: none;
-    }
-
-    A:visited
-    {
-        FONT-WEIGHT: normal;
-        TEXT-DECORATION: none;
-    }
-
-    A:active IMG
-    {
-        FONT-WEIGHT: normal;
-        TEXT-DECORATION: none;
-    }
-
-    A:active
-    {
-        FONT-WEIGHT: normal;
-        TEXT-DECORATION: none;
-    }
-
-    A:hover IMG
-    {
-        FONT-WEIGHT: normal;
-        TEXT-DECORATION: none;
-    }
-
-    A:hover
-    {
-        FONT-WEIGHT: normal;
-        TEXT-DECORATION: none;
-    }
-
+A:visited
+{
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: none;
+}
+A:active IMG
+{
+   FONT-WEIGHT: normal;
+   TEXT-DECORATION: none;
+}
+A:active
+{
+   FONT-WEIGHT: normal;
+   TEXT-DECORATION: none;
+}
+A:hover IMG
+{
+   FONT-WEIGHT: normal;
+   TEXT-DECORATION: none;
+}
+A:hover
+{
+  FONT-WEIGHT: normal;
+  TEXT-DECORATION: none;
+}
 H2
 {
-    FONT-SIZE: 16px;
+  FONT-SIZE: 16px;
 }
 
 BUTTON
 {
-    FONT-SIZE: 11px;
+   FONT-SIZE: 11px;
 }
