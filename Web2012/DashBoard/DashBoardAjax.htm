@@ -20,6 +20,9 @@
             node.style.backgroundColor = "";
         }
         $(function () {
+
+            registerDocumentEvents();
+            registerMenubarEvents();
             setGlobalVar();
             setToolboxUi();
             loadAjax();
@@ -44,15 +47,8 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
 
                 <div class="ribbon-section" unselectable="on">
                     <span class="section-title" unselectable="on">Tables</span>
-                    <div id="add-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
-
-                        <span class="button-help" unselectable="on">Delete</span>
-                        <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/delete-page.png">
-                        <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/delete-page.png">
-                        <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/delete-page.png">
-                        <span class="button-title" unselectable="on">מחק</span>
-                    </div>
-                    <div id="open-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
+                   
+                    <div id="save-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
 
                         <span class="button-help" unselectable="on">Save.</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/save-page.png">
@@ -60,13 +56,26 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/save-page.png">
                         <span class="button-title" unselectable="on">שמור</span>
                     </div>
-                    <div id="del-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
-
-                        <span class="button-help" unselectable="on">This button will remove the selected table from your document.</span>
+                    <div id="copy-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
+                        <span class="button-help" unselectable="on">Copy</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/open-table.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/open-table.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/open-table.png">
                         <span class="button-title" unselectable="on">העתק</span>
+                    </div>
+                     <div id="paste-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
+                        <span class="button-help" unselectable="on">paste</span>
+                        <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/paste.png">
+                        <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/paste.png">
+                        <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/paste.png">
+                        <span class="button-title" unselectable="on">הדבק</span>
+                    </div>
+                     <div id="del-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
+                        <span class="button-help" unselectable="on">Delete</span>
+                        <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/delete-page.png">
+                        <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/delete-page.png">
+                        <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/delete-page.png">
+                        <span class="button-title" unselectable="on">מחק</span>
                     </div>
                 </div>
                 <div class="ribbon-section-sep" unselectable="on"></div>

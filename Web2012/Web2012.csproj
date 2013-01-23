@@ -57,12 +57,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Canvas\ComponentUI.html" />
-    <Content Include="Canvas\DashBoard.htm" />
-    <Content Include="Canvas\DashBoardAjaxWithMenu.htm" />
-    <Content Include="Canvas\HtmlPage1.html" />
-    <Content Include="Canvas\TestBae64.html" />
-    <Content Include="Canvas\ToolBar.html" />
+    <Content Include="DashBoard\Canvas\ComponentUI.html" />
+    <Content Include="DashBoard\Canvas\DashBoard.htm" />
+    <Content Include="DashBoard\Canvas\DashBoardAjaxWithMenu.htm" />
+    <Content Include="DashBoard\Canvas\HtmlPage1.html" />
+    <Content Include="DashBoard\Canvas\TestBae64.html" />
+    <Content Include="DashBoard\Canvas\ToolBar.html" />
     <Content Include="DashBoard\DashBoardAjax.htm" />
     <Content Include="DashBoard\Copy of DashBoard.htm" />
     <Content Include="DashBoard\DashBoard2.htm" />
@@ -84,6 +84,7 @@
     <Content Include="imgs\icons\disabled\new-table.png" />
     <Content Include="imgs\icons\disabled\open-page.png" />
     <Content Include="imgs\icons\disabled\open-table.png" />
+    <Content Include="imgs\icons\disabled\paste.png" />
     <Content Include="imgs\icons\disabled\repeat.png" />
     <Content Include="imgs\icons\disabled\run.png" />
     <Content Include="imgs\icons\disabled\save-page.png" />
@@ -102,6 +103,7 @@
     <Content Include="imgs\icons\hot\new-table.png" />
     <Content Include="imgs\icons\hot\open-page.png" />
     <Content Include="imgs\icons\hot\open-table.png" />
+    <Content Include="imgs\icons\hot\paste.png" />
     <Content Include="imgs\icons\hot\repeat.png" />
     <Content Include="imgs\icons\hot\run.png" />
     <Content Include="imgs\icons\hot\save.png" />
@@ -119,6 +121,7 @@
     <Content Include="imgs\icons\normal\new-table.png" />
     <Content Include="imgs\icons\normal\open-page.png" />
     <Content Include="imgs\icons\normal\open-table.png" />
+    <Content Include="imgs\icons\normal\paste.png" />
     <Content Include="imgs\icons\normal\repeat.png" />
     <Content Include="imgs\icons\normal\run.png" />
     <Content Include="imgs\icons\normal\save-page.png" />
@@ -132,7 +135,7 @@
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.qtip-1.0.0-rc3.min.js" />
-    <Content Include="Server\Classes\Bll\linq.js" />
+    <Content Include="Scripts\linq.js" />
     <Content Include="Styles\Dashboard.css" />
     <Content Include="Styles\fonts.css" />
     <Content Include="Styles\formeditor.css" />

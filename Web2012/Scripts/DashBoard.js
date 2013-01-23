@@ -3,10 +3,16 @@ var drag;
 var dragClone;
 var dragElement;
 var c_drop = ".drop";
+var c_AdvertisingSpace = "myWidget";
+var c_focusObject = "focus-object";
+var c_copy_table_btn = "copy-table-btn";
+var c_paste_table_btn = "paste-table-btn";
+var ctrlDown = false;
+var ctrlKey = 17, vKey = 86, cKey = 67;
 
-$(document).on('keypress', '.advertisment-size', function (e) {
-    return e.which != 13;
-});
+var elementCopy;
+
+
 
 function getAdvertisementById(id) {
     var row = jQuery.grep(context.Advertisements, function (n, i) {
@@ -67,8 +73,53 @@ function loadAjax() {
 function setGlobalVar() {
     dropBox = $('.drop'); drag = $('#drag');
 }
+
+function registerMenubarEvents() {
+    $("#" + c_copy_table_btn).click(function () {
+        copyHandler();
+    });
+    $("#" + c_paste_table_btn).click(function () {
+        pasteHandler();
+    });
+}
+function enabledCopyButton(enabled) {
+    if (enabled) {
+        $("#" + c_copy_table_btn).removeClass("disabled");
+        return;
+    }
+    $("#" + c_copy_table_btn).addClass("disabled");
+}
+function enabledPasteButton(enabled) {
+    if (enabled) {
+        $("#" + c_paste_table_btn).removeClass("disabled");
+        return;
+    }
+    $("#" + c_paste_table_btn).addClass("disabled");
+}
+function registerDocumentEvents() {
+    $(document).keydown(function (e) {
+        if (e.keyCode == ctrlKey) ctrlDown = true;
+    }).keyup(function (e) {
+        if (e.keyCode == ctrlKey) ctrlDown = false;
+    });
+
+    $(document).on('keypress', '.advertisment-size', function (e) {
+        return e.which != 13;
+    });
+
+
+    $(document).live('keydown', "." + c_AdvertisingSpace, function (e) {
+        if (ctrlDown && e.keyCode == cKey) {
+            copyHandler();
+        }
+        else if (ctrlDown && e.keyCode == vKey) {
+            pasteHandler();
+        }
+    });
+}
 function registerElementEvents() {
     var maxChar = 7;
+
     $('.advertisment-size').live("keyup", function () { checkCharcount($(this), maxChar); });
     $('.advertisment-size').live("keydown", function () { checkCharcount($(this), maxChar); });
     $('.advertisment-size').live("dblclick", function () { $(this).selectText(); });
@@ -85,8 +136,8 @@ function registerElementEvents() {
             dragElement = $(this);
         },
         stop: function (event, ui) {
-            var w=$(c_drop).outerWidth();
-    }
+            var w = $(c_drop).outerWidth();
+        }
     });
 
     dropBox.droppable({
@@ -94,12 +145,13 @@ function registerElementEvents() {
         scroll: true,
         refreshPositions: true,
         drop: function (event, ui) {
+            enabledCopyButton(true);
             var currPoint = getCurrentPointOnScreen(this, event, ui);
             var row = getAdvertisementById(dragClone.find('span').attr('id'));
             row.Top = currPoint.top;
-            row.Left =currPoint.left;
+            row.Left = currPoint.left;
 
-            if (ui.draggable.hasClass("myWidget")) {
+            if (ui.draggable.hasClass(c_AdvertisingSpace)) {
                 return true;
             }
             editAdvertismentOnIssue(this, dragClone, row, currPoint);
@@ -119,33 +171,39 @@ function getCurrentPointOnScreen(issue, event, ui) {
     var x = event.pageX - $(issue).offset().left - (eWidth / 2);
     var y = event.pageY - $(issue).offset().top - (eHeight / 2);
 
-    var left = x>0?x:0 + "px";
-    var top = y>0?y:0 + "px";
+    var left = x > 0 ? x : 0 + "px";
+    var top = y > 0 ? y : 0 + "px";
     return { top: top, left: left };
 }
 
-function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint) {
-    dragClone = dragClone.replaceWith("<div data-title='" + dragClone.text() + "'  class='ui-draggable'><span id='" + dragClone.find("span").attr('id') + "'><span   class='advertisment-title'>" + dragClone.text() + "</span><br><span contenteditable='true'   class='advertisment-size'>" + currentRow.Size + "</span></div>");
-    dragClone.addClass("ui-widget-content").addClass("myWidget");
+function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) {
+    var isCopy = copy || false;
+    if (!isCopy) {
+        dragClone = dragClone.replaceWith("<div data-title='" + dragClone.text() + "'  class='ui-draggable'><span id='" + dragClone.find("span").attr('id') + "'><span   class='advertisment-title'>" + dragClone.text() + "</span><br><span contenteditable='true'   class='advertisment-size'>" + currentRow.Size + "</span></div>");
+    }
+    else {
+        dragClone.addClass("ui-draggable");
+    }
+    dragClone.addClass("ui-widget-content").addClass(c_AdvertisingSpace);
     dragClone.css({
         position: 'absolute',
         left: currPoint.left,
         top: currPoint.top
     });
+
     dragClone.qtip({
         content: currentRow.Name + " <br/>" + currentRow.Size,
         show: 'mouseover',
         hide: 'mouseout'
-    })
-    dragClone.draggable(
+    }).draggable(
         {
-            containment: '.drop', cursor: "move", scroll: false,
-        }).bind('click', function () {
-            // var advertismentSize = $(this).find(".advertisment-size").focus(); 
+            containment: c_drop, cursor: "move", scroll: false,
+        }).bind('mousedown', function () {
+            $("." + c_AdvertisingSpace).removeClass(c_focusObject);
+            $(this).addClass(c_focusObject);
         }
         ).resizable({
             containment: c_drop,
-            
             stop: function (event, ui) {
                 ui.originalElement;
                 ui.element;
@@ -155,18 +213,18 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint) {
                 if (row.MaxFontSizeUi == undefined) {
                     row.MaxFontSizeUi = row.MaxSizeName.rect();
                 }
-                else if(row.MaxFontSizeUi.Width==0 && row.MaxFontSizeUi.Height==0){
-                    var size= row.MaxSizeName.rect();
+                else if (row.MaxFontSizeUi.Width == 0 && row.MaxFontSizeUi.Height == 0) {
+                    var size = row.MaxSizeName.rect();
                     row.MaxFontSizeUi.Width = size.Width;
                     row.MaxFontSizeUi.Height = size.Height;
                 }
                 if (row.MaxFontSizeUi.Width > $(this).outerWidth()) {
                     //  title.text(row.NameShortcut + "...");
-                    title.text( "...");
+                    title.text("...");
                 }
                 else if (row.MaxFontSizeUi.Height > $(this).outerHeight()) {
                     //  title.text(row.NameShortcut + "...");
-                    title.text( "...");
+                    title.text("...");
                 }
                 else {
                     title.text(row.Name);
@@ -177,6 +235,24 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint) {
             }
         });
     dragClone.appendTo(issue);
+}
+
+function pasteHandler() {
+    if (elementCopy != null) {
+        var currPoint = {};
+        currPoint.top = 0;
+        currPoint.left = 0;
+        var row = getAdvertisementById(dragClone.find('span').attr('id'));
+        editAdvertismentOnIssue($(c_drop), elementCopy, row, currPoint,true);
+        elementCopy.removeClass(c_focusObject);
+    }
+}
+function copyHandler() {
+    var obj = $("." + c_AdvertisingSpace + "." + c_focusObject);
+    if (obj.length == 1) {
+        elementCopy = obj.clone();
+        enabledPasteButton(true);
+    }
 }
 
 jQuery.fn.selectText = function () {
@@ -200,9 +276,9 @@ String.prototype.rect = function (font) {
               .css({ 'position': 'absolute', 'float': 'left', 'white-space': 'nowrap', 'visibility': 'hidden', 'font': f })
               .appendTo($('body')),
         w = o.width();
-        h = o.height();
+    h = o.height();
     o.remove();
 
-    return {Width:w,Height:h};
+    return { Width: w, Height: h };
 }
 
