@@ -99,7 +99,7 @@ namespace Web2012.Helper
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
                 Id = Guid.NewGuid(),
-                Name = "ציפי ליבני התקווה",Size="12x12",IsDrop=false
+                Name = "ציפי   ליבני     התקווה",Size="12x12",IsDrop=false
             });
             data.Advertisements.Add(new Advertisement
             {

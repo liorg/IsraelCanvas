@@ -131,6 +131,7 @@
     <Content Include="Scripts\DashBoard.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.qtip-1.0.0-rc3.min.js" />
     <Content Include="Server\Classes\Bll\linq.js" />
     <Content Include="Styles\Dashboard.css" />
     <Content Include="Styles\fonts.css" />
@@ -172,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DashBoard\MockData.ashx" />
+    <None Include="Properties\PublishProfiles\dashboard.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -179,7 +181,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="examples\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

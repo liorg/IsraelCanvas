@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 
 namespace Guardian.Advertisment.DataModel
 {
+    
     public class ElementAreaBase
     {
+
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Top { get; set; }
@@ -14,6 +17,43 @@ namespace Guardian.Advertisment.DataModel
         public string Width { get; set; }
         public string Height { get; set; }
         public string Color { get; set; }
-        public bool IsShurtcutArea { get; set; }
+
+        public string MaxSizeName{
+            get
+            {
+               
+                if(!String.IsNullOrWhiteSpace(Name)){
+                    string[] strings = Name.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (strings != null && strings.Length > 0)
+                    {
+                        return strings.OrderByDescending(s => s.Length).First();
+                    }
+                    return Name;
+                }
+
+                return "";
+            }
+    }
+    
+        public string NameShortcut
+        {
+            get
+            {
+                if (!String.IsNullOrWhiteSpace(Name))
+                {
+                    string[] strings = Name.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (strings != null && strings.Length > 0)
+                    {
+                        return strings.First();
+                    }
+                    return Name;
+                }
+
+                return "";
+            }
+        }
+
+        public Size MaxFontSizeUi { get; set; }
+   
     }
 }
