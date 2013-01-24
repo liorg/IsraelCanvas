@@ -331,16 +331,23 @@ function deleteHandler() {
         del.qtip("destroy");
         del.draggable("destroy");
         del.remove();
-        enabledDeleteButton(false);
-        enabledPasteButton(false);
-        if (isEmptyOnDropElement()) {
-            enabledCopyButton(false);
-        }
+        menuButtonsHandlerAFterDelElemnts();
+        elementCopy = null;
     }
 }
+
+function menuButtonsHandlerAFterDelElemnts() {
+    enabledDeleteButton(false);
+    enabledPasteButton(false);
+    if (isEmptyOnDropElement()) {
+        enabledCopyButton(false);
+    }
+}
+
 function isEmptyOnDropElement() {
     return $(c_drop +" "+ c_AdvertisingSpace_className).length > 0?false:true;
 }
+
 function pasteHandler() {
     if (elementCopy != null) {
         var currPoint = {};
