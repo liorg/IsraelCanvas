@@ -178,12 +178,19 @@ function getCurrentPointOnScreen(issue, event, ui) {
 
 function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) {
     var isCopy = copy || false;
-    if (!isCopy) {
-        dragClone = dragClone.replaceWith("<div data-title='" + dragClone.text() + "'  class='ui-draggable'><span id='" + dragClone.find("span").attr('id') + "'><span   class='advertisment-title'>" + dragClone.text() + "</span><br><span contenteditable='true'   class='advertisment-size'>" + currentRow.Size + "</span></div>");
+    var title = dragClone.text();
+    var size = currentRow.Size;
+    var id = dragClone.find("span").attr('id');
+
+    if (isCopy) {
+        title = dragClone.find(".advertisment-title").text();
+        size = dragClone.find(".advertisment-size").text();
+        id = dragClone.find(".advertisment-id").attr('id');
     }
-    else {
-        dragClone.addClass("ui-draggable");
-    }
+
+    dragClone = dragClone.replaceWith("<div data-title='" + title + "'  class='ui-draggable'><span class='advertisment-id' id='" + id + "'><span   class='advertisment-title'>" + title + "</span><br><span contenteditable='true'   class='advertisment-size'>" + size + "</span></div>");
+
+
     dragClone.addClass("ui-widget-content").addClass(c_AdvertisingSpace);
     dragClone.css({
         position: 'absolute',
@@ -208,7 +215,7 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) 
                 ui.originalElement;
                 ui.element;
                 var title = $(this).find('span.advertisment-title');
-                var row = getAdvertisementById($(this).find('span').attr('id'));
+                var row = getAdvertisementById($(this).find(".advertisment-id").attr('id'));
 
                 if (row.MaxFontSizeUi == undefined) {
                     row.MaxFontSizeUi = row.MaxSizeName.rect();
@@ -243,7 +250,7 @@ function pasteHandler() {
         currPoint.top = 0;
         currPoint.left = 0;
         var row = getAdvertisementById(dragClone.find('span').attr('id'));
-        editAdvertismentOnIssue($(c_drop), elementCopy, row, currPoint,true);
+        editAdvertismentOnIssue($(c_drop), elementCopy, row, currPoint, true);
         elementCopy.removeClass(c_focusObject);
     }
 }
