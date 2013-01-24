@@ -8,6 +8,7 @@ var c_focusObject = "focus-object";
 var c_copy_table_btn = "copy-table-btn";
 var c_paste_table_btn = "paste-table-btn";
 var c_del_table_btn = "del-table-btn";
+var c_destroy="destroy";
 var ctrlDown = false;
 var ctrlKey = 17, vKey = 86, cKey = 67; var deleteKey = 46;
 
@@ -48,6 +49,9 @@ var c_span = "span";
 var c_li = "li";
 var c_div = "div";
 
+var c_mouseover = "mouseover";
+var c_mouseout = "mouseout";
+var c_mousedown = "mousedown";
 
 var advertisementSize = { Height: 10,Width:20 };
 
@@ -274,13 +278,13 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) 
 
     dragClone.qtip({
         content: currentRow.Name + " <br/>" + currentRow.Size,
-        show: 'mouseover',
-        hide: 'mouseout'
+        show: c_mouseover,
+        hide: c_mouseout
     }).draggable(
         {
             containment: c_drop, cursor: "move", scroll: false,
-        }).bind('mousedown', function () {
-            $("." + c_AdvertisingSpace).removeClass(c_focusObject);
+        }).bind(c_mousedown, function () {
+            $(c_AdvertisingSpace_className).removeClass(c_focusObject);
             $(this).addClass(c_focusObject);
             enabledDeleteButton(true);
         }
@@ -327,9 +331,9 @@ function deleteHandler() {
         appendAdvertisementsToDragToolBox(row);
         var selector = c_AdvertisingSpace_className+ ":has([id='" + elementsToDelById + "'])";
         var del = $(selector);
-        del.resizable("destroy");
-        del.qtip("destroy");
-        del.draggable("destroy");
+        del.resizable(c_destroy);
+        del.qtip(c_destroy);
+        del.draggable(c_destroy);
         del.remove();
         menuButtonsHandlerAFterDelElemnts();
         elementCopy = null;
