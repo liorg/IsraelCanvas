@@ -2,16 +2,54 @@
 var drag;
 var dragClone;
 var dragElement;
-var c_drop = ".drop";
-var c_AdvertisingSpace = "myWidget";
+var elementCopy;
+
 var c_focusObject = "focus-object";
 var c_copy_table_btn = "copy-table-btn";
 var c_paste_table_btn = "paste-table-btn";
+var c_del_table_btn = "del-table-btn";
 var ctrlDown = false;
-var ctrlKey = 17, vKey = 86, cKey = 67;
+var ctrlKey = 17, vKey = 86, cKey = 67; var deleteKey = 46;
 
-var elementCopy;
+var c_jquery_id = "#";
+var c_jquery_class = ".";
+var c_issue = "Issue";
 
+var c_portrait_width = "210mm";
+var c_portrait_height = "297mm";
+
+var c_dropable = "drop";
+var c_dragable = "drag";
+var c_drop = c_jquery_class + c_dropable;
+var c_drag = c_jquery_id + c_dragable;
+var c_disabled = "disabled";
+var c_clone = "clone";
+
+var c_keypress = "keypress";
+var c_keydown = "keydown";
+var c_AdvertisingSpace = "myWidget";
+var c_advertisment_size = "advertisment-size";
+
+var c_advertisment_size_className = c_jquery_class + c_advertisment_size;
+var c_AdvertisingSpace_className = c_jquery_class + c_AdvertisingSpace;
+var c_keyup = "keyup";
+var c_dblclick = "dblclick";
+var c_invalid = "invalid";
+var c_ui_widget_content = "ui-widget-content";
+var c_advertisment_title = "advertisment-title";
+var c_advertisment_title_className = c_jquery_class + c_advertisment_title;
+var c_advertisment_id = "advertisment-id";
+var c_advertisment_id_className = c_jquery_class + c_advertisment_id;
+
+var c_absolute = "absolute";
+var c_px = "px";
+var c_id = "id";
+var c_span = "span";
+var c_li = "li";
+var c_div = "div";
+
+
+var advertisementSize = { Height: 10,Width:20 };
 
 
 function getAdvertisementById(id) {
@@ -23,27 +61,36 @@ function getAdvertisementById(id) {
 
 function setTemplateImage(base64Image, IsLandscape) {
     var url = "url(data:image/png;base64," + base64Image + "=);";
-    var ele = $("div.Issue")[0];
+    var ele = $(c_div +" "+ c_jquery_class + c_issue)[0];
     ele.style.backgroundImage = url;
 
     if (!IsLandscape) {
-        ele.style.width = "210mm";
-        ele.style.height = "297mm";
+        ele.style.width = c_portrait_width;
+        ele.style.height = c_portrait_height;
     }
 }
+
 function ajaxFailed(xmlRequest) {
     alert(xmlRequest.status + ' \n\r ' +
           xmlRequest.statusText + '\n\r' +
           xmlRequest.responseText);
 }
-function setToolbarData() {
+
+function setAdvertisementsToolbarData() {
     $.each(context.Advertisements, function (index, advertisement) {
-        drag.append('<li class="MenuItem" style="height:' + advertisement.Height + ';width:' + advertisement.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+       // drag.append('<li class="MenuItem" style="height:' + advertisement.Height + ';width:' + advertisement.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+        appendAdvertisementsToDragToolBox(advertisement);
     });
 }
+
+function appendAdvertisementsToDragToolBox(advertisement) {
+    drag.append('<li class="MenuItem" style="height:' + advertisementSize.Height + ';width:' + advertisementSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+}
+
 function setImageTemplate() {
     setTemplateImage(context.UriTemplate, context.IsLandscape);
 }
+
 function setToolboxUi() {
     $("#tabs").tabs();
     // fix the classes
@@ -53,6 +100,7 @@ function setToolboxUi() {
     // move the nav to the bottom
     $(".tabs-bottom .ui-tabs-nav").appendTo(".tabs-bottom");
 }
+
 function loadAjax() {
     $.ajax({
         type: "POST",
@@ -63,52 +111,68 @@ function loadAjax() {
         dataType: "json",
         success: function (data, status) {
             context = data;
-            setToolbarData();
+            setAdvertisementsToolbarData();
             registerElementEvents();
             setImageTemplate();
         },
         error: ajaxFailed
     });
 }
+
 function setGlobalVar() {
-    dropBox = $('.drop'); drag = $('#drag');
+    dropBox = $(c_drop); drag = $(c_drag);
+}
+
+function enabledDeleteButton(enabled) {
+    if (enabled) {
+        $(c_jquery_id + c_del_table_btn).removeClass(c_disabled);
+        return;
+    }
+    $(c_jquery_id + c_del_table_btn).addClass(c_disabled);
+}
+
+function enabledCopyButton(enabled) {
+    if (enabled) {
+        $(c_jquery_id + c_copy_table_btn).removeClass(c_disabled);
+        return;
+    }
+    $(c_jquery_id + c_copy_table_btn).addClass(c_disabled);
+}
+
+function enabledPasteButton(enabled) {
+    if (enabled) {
+        $(c_jquery_id + c_paste_table_btn).removeClass(c_disabled);
+        return;
+    }
+    $(c_jquery_id + c_paste_table_btn).addClass(c_disabled);
 }
 
 function registerMenubarEvents() {
-    $("#" + c_copy_table_btn).click(function () {
+    $(c_jquery_id + c_copy_table_btn).click(function () {
         copyHandler();
     });
-    $("#" + c_paste_table_btn).click(function () {
+    $(c_jquery_id + c_paste_table_btn).click(function () {
         pasteHandler();
     });
+    $(c_jquery_id + c_del_table_btn).click(function () {
+        deleteHandler();
+    });
 }
-function enabledCopyButton(enabled) {
-    if (enabled) {
-        $("#" + c_copy_table_btn).removeClass("disabled");
-        return;
-    }
-    $("#" + c_copy_table_btn).addClass("disabled");
-}
-function enabledPasteButton(enabled) {
-    if (enabled) {
-        $("#" + c_paste_table_btn).removeClass("disabled");
-        return;
-    }
-    $("#" + c_paste_table_btn).addClass("disabled");
-}
+
 function registerDocumentEvents() {
     $(document).keydown(function (e) {
         if (e.keyCode == ctrlKey) ctrlDown = true;
     }).keyup(function (e) {
         if (e.keyCode == ctrlKey) ctrlDown = false;
+        if (e.keyCode == deleteKey) {
+            deleteHandler();
+        }
     });
 
-    $(document).on('keypress', '.advertisment-size', function (e) {
+    $(document).on(c_keypress,c_advertisment_size_className, function (e) {
         return e.which != 13;
     });
-
-
-    $(document).live('keydown', "." + c_AdvertisingSpace, function (e) {
+    $(document).live(c_keydown, c_jquery_class + c_AdvertisingSpace, function (e) {
         if (ctrlDown && e.keyCode == cKey) {
             copyHandler();
         }
@@ -117,19 +181,14 @@ function registerDocumentEvents() {
         }
     });
 }
-function registerElementEvents() {
-    var maxChar = 7;
 
-    $('.advertisment-size').live("keyup", function () { checkCharcount($(this), maxChar); });
-    $('.advertisment-size').live("keydown", function () { checkCharcount($(this), maxChar); });
-    $('.advertisment-size').live("dblclick", function () { $(this).selectText(); });
-
-    $('#drag li').draggable({
-        revert: "invalid",
+function registerDragElement() {
+    $(c_drag + " " + c_li).liveDraggable({
+        revert: c_invalid,
         appendTo: c_drop,
         containment: c_drop,
         scroll: false,
-        helper: 'clone',
+        helper: c_clone,
         cursorAt: { bottom: 0 },
         start: function (event, ui) {
             dragClone = $(this).clone();
@@ -139,15 +198,17 @@ function registerElementEvents() {
             var w = $(c_drop).outerWidth();
         }
     });
+}
 
+function registerDropElement() {
     dropBox.droppable({
-        accept: "#drag li, .ui-widget-content",
+        accept: c_drag + " " + c_li + ", " + c_jquery_class + c_ui_widget_content,
         scroll: true,
         refreshPositions: true,
         drop: function (event, ui) {
             enabledCopyButton(true);
             var currPoint = getCurrentPointOnScreen(this, event, ui);
-            var row = getAdvertisementById(dragClone.find('span').attr('id'));
+            var row = getAdvertisementById(dragClone.find(c_span).attr(c_id));
             row.Top = currPoint.top;
             row.Left = currPoint.left;
 
@@ -160,19 +221,33 @@ function registerElementEvents() {
         }
     });
 }
+
+function registerElementEvents() {
+    var maxChar = 7;
+
+    $(c_advertisment_size_className).live(c_keyup, function () { checkCharcount($(this), maxChar); });
+    $(c_advertisment_size_className).live(c_keydown, function () { checkCharcount($(this), maxChar); });
+    $(c_advertisment_size_className).live(c_dblclick, function () { $(this).selectText(); });
+
+    registerDragElement();
+    registerDropElement();
+   
+}
+
 function checkCharcount(content, max) {
     if (content.text().length > max) {
         content.text(content.text().substring(0, max));
     }
 }
+
 function getCurrentPointOnScreen(issue, event, ui) {
     var eWidth = ui.draggable.outerWidth();
     var eHeight = ui.draggable.outerHeight();
     var x = event.pageX - $(issue).offset().left - (eWidth / 2);
     var y = event.pageY - $(issue).offset().top - (eHeight / 2);
 
-    var left = x > 0 ? x : 0 + "px";
-    var top = y > 0 ? y : 0 + "px";
+    var left = x > 0 ? x : 0 +c_px;
+    var top = y > 0 ? y : 0 + c_px;
     return { top: top, left: left };
 }
 
@@ -180,20 +255,19 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) 
     var isCopy = copy || false;
     var title = dragClone.text();
     var size = currentRow.Size;
-    var id = dragClone.find("span").attr('id');
+    var id = dragClone.find(c_span).attr(c_id);
 
     if (isCopy) {
-        title = dragClone.find(".advertisment-title").text();
-        size = dragClone.find(".advertisment-size").text();
-        id = dragClone.find(".advertisment-id").attr('id');
+        title = dragClone.find(c_advertisment_title_className).text();
+        size = dragClone.find(c_advertisment_size_className).text();
+        id = dragClone.find(c_advertisment_id_className).attr(c_id);
     }
 
-    dragClone = dragClone.replaceWith("<div data-title='" + title + "'  class='ui-draggable'><span class='advertisment-id' id='" + id + "'><span   class='advertisment-title'>" + title + "</span><br><span contenteditable='true'   class='advertisment-size'>" + size + "</span></div>");
+    dragClone = dragClone.replaceWith("<div data-title='" + title + "'  class='ui-draggable'><span class='"+c_advertisment_id+"' id='" + id + "'><span   class='"+c_advertisment_title+"'>" + title + "</span><br><span contenteditable='true'   class='"+c_advertisment_size+"'>" + size + "</span></div>");
 
-
-    dragClone.addClass("ui-widget-content").addClass(c_AdvertisingSpace);
+    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
     dragClone.css({
-        position: 'absolute',
+        position: c_absolute,
         left: currPoint.left,
         top: currPoint.top
     });
@@ -208,14 +282,15 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) 
         }).bind('mousedown', function () {
             $("." + c_AdvertisingSpace).removeClass(c_focusObject);
             $(this).addClass(c_focusObject);
+            enabledDeleteButton(true);
         }
         ).resizable({
             containment: c_drop,
             stop: function (event, ui) {
                 ui.originalElement;
                 ui.element;
-                var title = $(this).find('span.advertisment-title');
-                var row = getAdvertisementById($(this).find(".advertisment-id").attr('id'));
+                var title = $(this).find(c_advertisment_title_className);
+                var row = getAdvertisementById($(this).find(c_advertisment_id_className).attr(c_id));
 
                 if (row.MaxFontSizeUi == undefined) {
                     row.MaxFontSizeUi = row.MaxSizeName.rect();
@@ -244,22 +319,54 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) 
     dragClone.appendTo(issue);
 }
 
+function deleteHandler() {
+    var obj = getEleOnFocus();
+    if (obj != null) {
+        var elementsToDelById = obj.find(c_advertisment_id_className).attr(c_id);
+        var row=getAdvertisementById(elementsToDelById);
+        appendAdvertisementsToDragToolBox(row);
+        var selector = c_AdvertisingSpace_className+ ":has([id='" + elementsToDelById + "'])";
+        var del = $(selector);
+        del.resizable("destroy");
+        del.qtip("destroy");
+        del.draggable("destroy");
+        del.remove();
+        enabledDeleteButton(false);
+        enabledPasteButton(false);
+        if (isEmptyOnDropElement()) {
+            enabledCopyButton(false);
+        }
+    }
+}
+function isEmptyOnDropElement() {
+    return $(c_drop +" "+ c_AdvertisingSpace_className).length > 0?false:true;
+}
 function pasteHandler() {
     if (elementCopy != null) {
         var currPoint = {};
         currPoint.top = 0;
         currPoint.left = 0;
-        var row = getAdvertisementById(dragClone.find('span').attr('id'));
+        var id = elementCopy.find(c_advertisment_id_className).attr(c_id);
+        var row = getAdvertisementById(id);
         editAdvertismentOnIssue($(c_drop), elementCopy, row, currPoint, true);
         elementCopy.removeClass(c_focusObject);
     }
 }
+
 function copyHandler() {
-    var obj = $("." + c_AdvertisingSpace + "." + c_focusObject);
-    if (obj.length == 1) {
+    var obj = getEleOnFocus();
+    if (obj !=null) {
         elementCopy = obj.clone();
         enabledPasteButton(true);
     }
+}
+
+function getEleOnFocus() {
+    var obj = $(c_jquery_class + c_AdvertisingSpace + c_jquery_class + c_focusObject);
+    if (obj.length == 1) {
+        return obj;
+    }
+    return null;
 }
 
 jQuery.fn.selectText = function () {
@@ -288,4 +395,13 @@ String.prototype.rect = function (font) {
 
     return { Width: w, Height: h };
 }
+
+jQuery.fn.liveDraggable = function (opts) {
+    this.live("mouseover", function () {
+        if (!$(this).data("init")) {
+            $(this).data("init", true).draggable(opts);
+        }
+    });
+    return $();
+};
 
