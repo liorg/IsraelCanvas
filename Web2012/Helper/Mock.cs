@@ -99,7 +99,7 @@ namespace Web2012.Helper
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
                 Id = Guid.NewGuid(),
-                Name = "ציפי   ליבני     התקווה",Size="12x12",IsDrop=false
+                Name = "ציפי   ליבני     התקווה",Size="12x12",IsDroped=false
             });
             data.Advertisements.Add(new Advertisement
             {
@@ -110,7 +110,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "טויטה קורולה",
                 Size = "12x12",
-                IsDrop = false
+                IsDroped = false
             });
             data.Advertisements.Add(new Advertisement
             {
@@ -119,7 +119,7 @@ namespace Web2012.Helper
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
                 Id = Guid.NewGuid(),
-                Name = "מודעה חדשה",Size="12x12",IsDrop=false
+                Name = "מודעה חדשה",Size="12x12",IsDroped=false
             });
 
             data.IsLandscape = true;
@@ -163,7 +163,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "the voice 2",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             });
             data.Advertisements.Add(new Advertisement
@@ -175,7 +175,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "שלי יחמוביץ -עבודה",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             });
             data.Advertisements.Add(new Advertisement
@@ -187,7 +187,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "בנט הבית היהודי",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             });
             data.Advertisements.Add(new Advertisement
@@ -199,7 +199,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "פלא-פון",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             });
             data.Advertisements.Add(new Advertisement
@@ -211,7 +211,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "סלקום",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             });
             data.Advertisements.Add(new Advertisement
@@ -223,7 +223,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "מטרנה",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             });
             data.Advertisements.Add(new Advertisement
@@ -235,7 +235,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "אגיס",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             });
             data.Advertisements.Add(new Advertisement
@@ -247,7 +247,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "Nike",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             });
             data.Advertisements.Add(new Advertisement
@@ -259,7 +259,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "מוצר ישראלי",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             }); data.Advertisements.Add(new Advertisement
             {
@@ -270,7 +270,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "ש''ס לחלשים",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             }); data.Advertisements.Add(new Advertisement
             {
@@ -281,7 +281,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "אונג'",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             }); data.Advertisements.Add(new Advertisement
             {
@@ -292,7 +292,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "רמי לוי שקמה",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             });  
            data.Advertisements.Add(new Advertisement
@@ -304,7 +304,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "אושר עד",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             }); data.Advertisements.Add(new Advertisement
             {
@@ -324,7 +324,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "עלית",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             }); data.Advertisements.Add(new Advertisement
             {
@@ -333,7 +333,7 @@ namespace Web2012.Helper
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
                 Id = Guid.NewGuid(),
-                Name = "על כיפק",Size="4x4",IsDrop=false
+                Name = "על כיפק",Size="4x4",IsDroped=false
 
             }); data.Advertisements.Add(new Advertisement
             {
@@ -344,7 +344,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "מי ברק",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
             }); data.Advertisements.Add(new Advertisement
             {
                 Color = ConstVar.ColorDefaultAdvertisemen,
@@ -354,7 +354,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "בר אילן",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             }); data.Advertisements.Add(new Advertisement
             {
@@ -365,7 +365,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "שלום עכשיו",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             }); data.Advertisements.Add(new Advertisement
             {
@@ -376,7 +376,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "תקומה",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
             });
             data.Advertisements.Add(new Advertisement
@@ -388,7 +388,7 @@ namespace Web2012.Helper
                 Id = Guid.NewGuid(),
                 Name = "סוף הדרך",
                 Size = "4x4",
-                IsDrop = false
+                IsDroped = false
 
 
             });

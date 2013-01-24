@@ -122,6 +122,7 @@
     <Content Include="imgs\icons\normal\open-page.png" />
     <Content Include="imgs\icons\normal\open-table.png" />
     <Content Include="imgs\icons\normal\paste.png" />
+    <Content Include="imgs\icons\normal\Preview.png" />
     <Content Include="imgs\icons\normal\repeat.png" />
     <Content Include="imgs\icons\normal\run.png" />
     <Content Include="imgs\icons\normal\save-page.png" />

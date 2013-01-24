@@ -54,6 +54,8 @@ namespace Guardian.Advertisment.DataModel
         }
 
         public Size MaxFontSizeUi { get; set; }
+
+        public int ItemsCount { get; set; }
    
     }
 }

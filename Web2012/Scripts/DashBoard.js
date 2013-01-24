@@ -4,43 +4,48 @@ var dragClone;
 var dragElement;
 var elementCopy;
 
-var c_focusObject = "focus-object";
-var c_copy_table_btn = "copy-table-btn";
-var c_paste_table_btn = "paste-table-btn";
-var c_del_table_btn = "del-table-btn";
-var c_destroy="destroy";
+var advertisementSize = { Height: 10, Width: 20 };
+
 var ctrlDown = false;
 var ctrlKey = 17, vKey = 86, cKey = 67; var deleteKey = 46;
 
+var c_copy_table_btn = "copy-table-btn";
+var c_paste_table_btn = "paste-table-btn";
+var c_del_table_btn = "del-table-btn";
+var c_save_table_btn = "save-table-btn";
+var c_prev_table_btn = "prev-table-btn";
+
+var c_destroy="destroy";
+var c_invalid = "invalid";
+var c_disabled = "disabled";
+var c_clone = "clone";
+var c_focusObject = "focus-object";
+
 var c_jquery_id = "#";
 var c_jquery_class = ".";
-var c_issue = "Issue";
 
 var c_portrait_width = "210mm";
 var c_portrait_height = "297mm";
 
+var c_issue = "Issue";
 var c_dropable = "drop";
 var c_dragable = "drag";
-var c_drop = c_jquery_class + c_dropable;
-var c_drag = c_jquery_id + c_dragable;
-var c_disabled = "disabled";
-var c_clone = "clone";
 
-var c_keypress = "keypress";
-var c_keydown = "keydown";
+
 var c_AdvertisingSpace = "myWidget";
-var c_advertisment_size = "advertisment-size";
-
-var c_advertisment_size_className = c_jquery_class + c_advertisment_size;
-var c_AdvertisingSpace_className = c_jquery_class + c_AdvertisingSpace;
-var c_keyup = "keyup";
-var c_dblclick = "dblclick";
-var c_invalid = "invalid";
-var c_ui_widget_content = "ui-widget-content";
-var c_advertisment_title = "advertisment-title";
-var c_advertisment_title_className = c_jquery_class + c_advertisment_title;
 var c_advertisment_id = "advertisment-id";
-var c_advertisment_id_className = c_jquery_class + c_advertisment_id;
+var c_advertisment_size = "advertisment-size";
+var c_advertisment_title = "advertisment-title";
+
+var c_keyup     = "keyup";
+var c_dblclick  = "dblclick";
+var c_keypress  = "keypress";
+var c_keydown   = "keydown";
+var c_mouseover = "mouseover";
+var c_mouseout  = "mouseout";
+var c_mousedown = "mousedown";
+
+var c_ui_widget_content = "ui-widget-content";
 
 var c_absolute = "absolute";
 var c_px = "px";
@@ -49,11 +54,12 @@ var c_span = "span";
 var c_li = "li";
 var c_div = "div";
 
-var c_mouseover = "mouseover";
-var c_mouseout = "mouseout";
-var c_mousedown = "mousedown";
-
-var advertisementSize = { Height: 10,Width:20 };
+var c_drop = c_jquery_class + c_dropable;
+var c_drag = c_jquery_id + c_dragable;
+var c_AdvertisingSpace_className = c_jquery_class + c_AdvertisingSpace;
+var c_advertisment_id_className = c_jquery_class + c_advertisment_id;
+var c_advertisment_size_className = c_jquery_class + c_advertisment_size;
+var c_advertisment_title_className = c_jquery_class + c_advertisment_title;
 
 
 function getAdvertisementById(id) {
@@ -64,7 +70,9 @@ function getAdvertisementById(id) {
 }
 
 function setTemplateImage(base64Image, IsLandscape) {
-    var url = "url(data:image/png;base64," + base64Image + "=);";
+    var url = "url(data:image/png;base64," + base64Image + ")";//+ "=);" 
+    //url = "url(data:image/gif;base64,R0lGODlhCwALAIABAAAAAP///yH5BAEAAAEALAAAAAALAAsAAAIUhI8Wy6zdHlxyqnTBdHqHCoERlhQAOw==)";
+
     var ele = $(c_div +" "+ c_jquery_class + c_issue)[0];
     ele.style.backgroundImage = url;
 
@@ -160,6 +168,12 @@ function registerMenubarEvents() {
     });
     $(c_jquery_id + c_del_table_btn).click(function () {
         deleteHandler();
+    });
+    $(c_jquery_id + c_save_table_btn).click(function () {
+        saveHandler();
+    });
+    $(c_jquery_id + c_prev_table_btn).click(function () {
+        prevHandler();
     });
 }
 
@@ -380,6 +394,13 @@ function getEleOnFocus() {
     return null;
 }
 
+function saveHandler() {
+    alert(1);
+}
+
+function prevHandler() {
+    alert(2);
+}
 jQuery.fn.selectText = function () {
     var range, selection;
     if (document.body.createTextRange) {

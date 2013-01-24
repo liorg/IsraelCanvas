@@ -9,8 +9,8 @@ namespace Guardian.Advertisment.DataModel
     {
         public bool IsDeleted { get; set; }
         public string Size { get; set; }
-        public bool IsDrop { get; set; }
-       
+        public bool IsDroped { get; set; }
+        
     }
 
 }
