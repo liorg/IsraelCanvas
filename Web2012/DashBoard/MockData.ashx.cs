@@ -22,10 +22,10 @@ namespace Web2012.Server
                // context.Request.Params["id"]==null:Guid.NewGuid()
                 var id = context.Request.QueryString["id"];
 
-                var mockService = new AdvertismentAreaServiceMock(Guid.Parse(id));
+                var mockService = new AdvertismentAreaServiceMock();
 
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
-                string d = serializer.Serialize(mockService.Get());
+                string d = serializer.Serialize(mockService.Get(Guid.Parse(id)));
                 context.Response.Write(d);
             }
             else
@@ -41,3 +41,6 @@ namespace Web2012.Server
         }
     }
 }
+
+ 
+        

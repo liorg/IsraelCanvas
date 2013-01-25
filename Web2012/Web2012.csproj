@@ -161,6 +161,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DashBoard\upload.ashx.cs">
+      <DependentUpon>upload.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Helper\AdvertismentAreaServiceMock.cs" />
     <Compile Include="Helper\Mock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,7 +180,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DashBoard\MockData.ashx" />
-    <None Include="Properties\PublishProfiles\dashboard.pubxml" />
+    <Content Include="DashBoard\upload.ashx" />
+    <None Include="Properties\PublishProfiles\dashboard.pubxml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

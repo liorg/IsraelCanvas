@@ -19,7 +19,6 @@ namespace Guardian.Advertisment.DataModel
     }
     public class AdvertismentAreaContext : AdvertismentBase
     {
-        public int AdvertismentAreaContextId { get; set; }
-        public int IssueId { get; set; }
+        public Guid IssueId { get; set; }
     }
 }

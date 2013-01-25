@@ -9,7 +9,6 @@ namespace Guardian.Advertisment.DataModel
     
     public class ElementAreaBase
     {
-
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Top { get; set; }
@@ -55,7 +54,7 @@ namespace Guardian.Advertisment.DataModel
 
         public Size MaxFontSizeUi { get; set; }
 
-        public int ItemsCount { get; set; }
+      //  public int ItemsCount { get; set; }
    
     }
 }

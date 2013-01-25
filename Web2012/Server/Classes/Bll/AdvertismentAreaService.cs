@@ -10,11 +10,12 @@ namespace Guardian.Advertisment.Service
 {
     public class AdvertismentAreaService : IAdvertismentAreaService
     {
-        public AdvertismentAreaService(Guid id)
+        public AdvertismentAreaService()
         {
 
         }
-        public AdvertismentArea Get(){
+        public AdvertismentArea Get(Guid? id = null)
+        {
             return null;
 
         }

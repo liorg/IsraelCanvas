@@ -3,7 +3,8 @@ var drag;
 var dragClone;
 var dragElement;
 var elementCopy;
-
+var currentId;
+var context;
 var advertisementSize = { Height: 10, Width: 20 };
 
 var ctrlDown = false;
@@ -15,7 +16,7 @@ var c_del_table_btn = "del-table-btn";
 var c_save_table_btn = "save-table-btn";
 var c_prev_table_btn = "prev-table-btn";
 
-var c_destroy="destroy";
+var c_destroy = "destroy";
 var c_invalid = "invalid";
 var c_disabled = "disabled";
 var c_clone = "clone";
@@ -37,12 +38,12 @@ var c_advertisment_id = "advertisment-id";
 var c_advertisment_size = "advertisment-size";
 var c_advertisment_title = "advertisment-title";
 
-var c_keyup     = "keyup";
-var c_dblclick  = "dblclick";
-var c_keypress  = "keypress";
-var c_keydown   = "keydown";
+var c_keyup = "keyup";
+var c_dblclick = "dblclick";
+var c_keypress = "keypress";
+var c_keydown = "keydown";
 var c_mouseover = "mouseover";
-var c_mouseout  = "mouseout";
+var c_mouseout = "mouseout";
 var c_mousedown = "mousedown";
 
 var c_ui_widget_content = "ui-widget-content";
@@ -61,7 +62,6 @@ var c_advertisment_id_className = c_jquery_class + c_advertisment_id;
 var c_advertisment_size_className = c_jquery_class + c_advertisment_size;
 var c_advertisment_title_className = c_jquery_class + c_advertisment_title;
 
-
 function getAdvertisementById(id) {
     var row = jQuery.grep(context.Advertisements, function (n, i) {
         return (n.Id == id);
@@ -73,7 +73,7 @@ function setTemplateImage(base64Image, IsLandscape) {
     var url = "url(data:image/png;base64," + base64Image + ")";//+ "=);" 
     //url = "url(data:image/gif;base64,R0lGODlhCwALAIABAAAAAP///yH5BAEAAAEALAAAAAALAAsAAAIUhI8Wy6zdHlxyqnTBdHqHCoERlhQAOw==)";
 
-    var ele = $(c_div +" "+ c_jquery_class + c_issue)[0];
+    var ele = $(c_div + " " + c_jquery_class + c_issue)[0];
     ele.style.backgroundImage = url;
 
     if (!IsLandscape) {
@@ -90,7 +90,7 @@ function ajaxFailed(xmlRequest) {
 
 function setAdvertisementsToolbarData() {
     $.each(context.Advertisements, function (index, advertisement) {
-       // drag.append('<li class="MenuItem" style="height:' + advertisement.Height + ';width:' + advertisement.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+        // drag.append('<li class="MenuItem" style="height:' + advertisement.Height + ';width:' + advertisement.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
         appendAdvertisementsToDragToolBox(advertisement);
     });
 }
@@ -101,6 +101,7 @@ function appendAdvertisementsToDragToolBox(advertisement) {
 
 function setImageTemplate() {
     setTemplateImage(context.UriTemplate, context.IsLandscape);
+    //context.UriTemplate = null;
 }
 
 function setToolboxUi() {
@@ -116,7 +117,7 @@ function setToolboxUi() {
 function loadAjax() {
     $.ajax({
         type: "POST",
-        url: "MockData.ashx?id=2b841240-eef8-43ec-ad0b-ef812238c8af",
+        url: "MockData.ashx?id="+currentId,
         cache: false,
         contentType: "application/json; charset=utf-8",
         data: "{}",
@@ -187,7 +188,7 @@ function registerDocumentEvents() {
         }
     });
 
-    $(document).on(c_keypress,c_advertisment_size_className, function (e) {
+    $(document).on(c_keypress, c_advertisment_size_className, function (e) {
         return e.which != 13;
     });
     $(document).live(c_keydown, c_jquery_class + c_AdvertisingSpace, function (e) {
@@ -249,7 +250,7 @@ function registerElementEvents() {
 
     registerDragElement();
     registerDropElement();
-   
+
 }
 
 function checkCharcount(content, max) {
@@ -264,7 +265,7 @@ function getCurrentPointOnScreen(issue, event, ui) {
     var x = event.pageX - $(issue).offset().left - (eWidth / 2);
     var y = event.pageY - $(issue).offset().top - (eHeight / 2);
 
-    var left = x > 0 ? x : 0 +c_px;
+    var left = x > 0 ? x : 0 + c_px;
     var top = y > 0 ? y : 0 + c_px;
     return { top: top, left: left };
 }
@@ -281,7 +282,7 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) 
         id = dragClone.find(c_advertisment_id_className).attr(c_id);
     }
 
-    dragClone = dragClone.replaceWith("<div data-title='" + title + "'  class='ui-draggable'><span class='"+c_advertisment_id+"' id='" + id + "'><span   class='"+c_advertisment_title+"'>" + title + "</span><br><span contenteditable='true'   class='"+c_advertisment_size+"'>" + size + "</span></div>");
+    dragClone = dragClone.replaceWith("<div data-title='" + title + "'  class='ui-draggable'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>");
 
     dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
     dragClone.css({
@@ -341,10 +342,9 @@ function deleteHandler() {
     var obj = getEleOnFocus();
     if (obj != null) {
         var elementsToDelById = obj.find(c_advertisment_id_className).attr(c_id);
-        var row=getAdvertisementById(elementsToDelById);
+        var row = getAdvertisementById(elementsToDelById);
         appendAdvertisementsToDragToolBox(row);
-        var selector = c_AdvertisingSpace_className+ ":has([id='" + elementsToDelById + "'])";
-        var del = $(selector);
+        var del = getAllAdvertisingSpaceElementById(elementsToDelById);
         del.resizable(c_destroy);
         del.qtip(c_destroy);
         del.draggable(c_destroy);
@@ -352,6 +352,11 @@ function deleteHandler() {
         menuButtonsHandlerAFterDelElemnts();
         elementCopy = null;
     }
+}
+
+function getAllAdvertisingSpaceElementById(id) {
+    var selector = c_AdvertisingSpace_className + ":has([id='" + id + "'])";
+    return $(selector);
 }
 
 function menuButtonsHandlerAFterDelElemnts() {
@@ -363,7 +368,7 @@ function menuButtonsHandlerAFterDelElemnts() {
 }
 
 function isEmptyOnDropElement() {
-    return $(c_drop +" "+ c_AdvertisingSpace_className).length > 0?false:true;
+    return $(c_drop + " " + c_AdvertisingSpace_className).length > 0 ? false : true;
 }
 
 function pasteHandler() {
@@ -380,7 +385,7 @@ function pasteHandler() {
 
 function copyHandler() {
     var obj = getEleOnFocus();
-    if (obj !=null) {
+    if (obj != null) {
         elementCopy = obj.clone();
         enabledPasteButton(true);
     }
@@ -394,13 +399,64 @@ function getEleOnFocus() {
     return null;
 }
 
+function messageBox(s) {
+    alert(s);
+}
 function saveHandler() {
-    alert(1);
+    if (isEmptyOnDropElement()) {
+        messageBox("לא נבחרו שטחי פרסום");
+        return false;
+    }
+    $(c_jquery_class + c_AdvertisingSpace).each(function (i) {
+        var ele = $(this);
+        var data = dragDetailsUi.getDataByAdvertisementDragElement(ele);
+        var row = getAdvertisementById(data.id);
+       // row.ItemsCount++;
+        row.isDroped = true;
+        row.Width = data.width;
+        row.Height = data.height;
+        row.Top = data.top;
+        row.Left = data.left;
+        row.Size = data.size;
+        row.Size = data.size;
+       // row.IsDeleted = false;
+        loadContext();
+        context.Current.Advertisements.push(row);
+    });
+
+    upload();
+}
+
+function upload() {
+    $.ajax({
+        type: "POST",
+        url: "upload.ashx",
+        cache: false,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(context),
+        dataType: "json",
+        success: function (data, status) {
+            var d = data;
+            
+        },
+        error: ajaxFailed
+    });
+}
+
+function loadContext() {
+    if (context.Current == null) {
+        context.Current = {};
+        context.Current.Title = context.Title;
+        context.Current.IssueId = currentId;
+        context.Current.Advertisements = [];
+        context.Current.Sections = [];
+    }
 }
 
 function prevHandler() {
     alert(2);
 }
+
 jQuery.fn.selectText = function () {
     var range, selection;
     if (document.body.createTextRange) {
@@ -437,3 +493,20 @@ jQuery.fn.liveDraggable = function (opts) {
     return $();
 };
 
+var dragDetailsUi = {
+     getDataByDragElement: function (dragElement) {
+        var obj = {};
+        this.title = dragElement.find(c_advertisment_title_className).text();
+        obj.id = dragElement.find(c_advertisment_id_className).attr(c_id);
+        obj.width = dragElement.outerWidth();
+        obj.height = dragElement.outerHeight();
+        obj.top = dragElement.position().top;
+        obj.left = dragElement.position().left;
+        return obj;
+    },
+     getDataByAdvertisementDragElement: function (dragElement) {
+        var obj=this.getDataByDragElement(dragElement);
+        obj.size = dragElement.find(c_advertisment_size_className).text();
+        return obj;
+    }
+};

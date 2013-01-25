@@ -10,11 +10,11 @@ namespace Guardian.Advertisment.Service
 {
     public class AdvertismentAreaServiceMock : IAdvertismentAreaService
     {
-        public AdvertismentAreaServiceMock(Guid id)
+        public AdvertismentAreaServiceMock()
         {
 
         }
-        public AdvertismentArea Get(){
+        public AdvertismentArea Get(Guid? id=null){
             Mock mockData = new Mock();
             return mockData.Data;
 
