@@ -1,4 +1,6 @@
-﻿var dropBox;
+﻿var uploadHandler = "mockUpload.ashx";
+var downloadHandler = "MockData.ashx";
+var dropBox;
 var drag;
 var dragClone;
 var dragElement;
@@ -121,7 +123,7 @@ function setToolboxUi() {
 function loadAjax() {
     $.ajax({
         type: "POST",
-        url: "MockData.ashx?id="+currentId,
+        url:downloadHandler+"?id="+currentId,
         cache: false,
         contentType: "application/json; charset=utf-8",
         data: "{}",
@@ -295,10 +297,10 @@ function setCurrent() {
                 $(d).appendTo(c_issue_className);
                 $(d).css({
                     position: c_absolute,
-                    left: advertisement.Left+"px",
-                    top: advertisement.Top+"px",
-                    width: advertisement.Width+"px",
-                    height: advertisement.Height+"px"
+                    left: advertisement.Left+c_px,
+                    top: advertisement.Top + c_px,
+                    width: advertisement.Width + c_px,
+                    height: advertisement.Height + c_px
                 });
               
             });
@@ -316,7 +318,7 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) 
         size = dragClone.find(c_advertisment_size_className).text();
         id = dragClone.find(c_advertisment_id_className).attr(c_id);
     }
-    //ui-draggable ui-widget-content myWidget ui-resizable
+
     dragClone = dragClone.replaceWith(generateAdvertismentOnIssue(title, id, size));
     dragClone.css({
         position: c_absolute,
@@ -466,7 +468,7 @@ function saveHandler() {
 function upload() {
     $.ajax({
         type: "POST",
-        url: "upload.ashx",
+        url:uploadHandler,
         cache: false,
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(context.Current),
