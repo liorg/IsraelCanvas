@@ -36,6 +36,17 @@
       <Size>ddd</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
+    <Advertisement>
+      <Id>e5fbbc06-8f81-0000-0005-f56bb52ed361</Id>
+      <Name>the voice 2</Name>
+      <Top>180</Top>
+      <Left>622</Left>
+      <Width>55</Width>
+      <Height>29</Height>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
   </Advertisements>
   <Sections />
 </AdvertismentAreaContext>

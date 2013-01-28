@@ -15,20 +15,30 @@ namespace Web2012.Helper.RepositoryMock
         string path = "/Helper/PathCurrent/";
         public AdvertismentAreaContext Find(Guid id)
         {
-            var xmlCurrent=HttpContext.Current.Server.MapPath(path + "" + id.ToString() + ".xml");
-            // Create a new XmlSerializer instance with the type of the test class
-            // Create a new file stream for reading the XML file
-            FileStream ReadFileStream = new FileStream(xmlCurrent, FileMode.Open, FileAccess.Read, FileShare.Read);
-            // Create a new XmlSerializer instance with the type of the test class
-            XmlSerializer SerializerObj = new XmlSerializer(typeof(AdvertismentAreaContext));
-            // Load the object saved abAdvertismentAreaContextove by using the Deserialize function
-            AdvertismentAreaContext LoadedObj = (AdvertismentAreaContext)SerializerObj.Deserialize(ReadFileStream);
+            try
+            {
+                var xmlCurrent = HttpContext.Current.Server.MapPath(path + "" + id.ToString() + ".xml");
 
-            // Cleanup
-            ReadFileStream.Close();
-            return LoadedObj;
+                // Create a new XmlSerializer instance with the type of the test class
+                // Create a new file stream for reading the XML file
+                FileStream ReadFileStream = new FileStream(xmlCurrent, FileMode.Open, FileAccess.Read, FileShare.Read);
+                // Create a new XmlSerializer instance with the type of the test class
+                XmlSerializer SerializerObj = new XmlSerializer(typeof(AdvertismentAreaContext));
+                // Load the object saved abAdvertismentAreaContextove by using the Deserialize function
+                AdvertismentAreaContext LoadedObj = (AdvertismentAreaContext)SerializerObj.Deserialize(ReadFileStream);
+
+                // Cleanup
+                ReadFileStream.Close();
+                return LoadedObj;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+           
         }
-        public List<AdvertismentArea> AdvertisementAreas
+        public IEnumerable<AdvertismentArea> AdvertisementAreas
         {
             get
             {
@@ -62,6 +72,15 @@ namespace Web2012.Helper.RepositoryMock
             urlsTemplate.Add("/imgs/A4-SHISHI48-title.png");
             urlsTemplate.Add("/imgs/BiggThenA4.png");
             urlsTemplate.Add("/imgs/A4.png");
+
+            data.Add(new AdvertismentArea
+            {
+                IssueId = new Guid("2b841240-eef8-43ec-ad0b-ef812238c8af"),
+                Title = "test1",
+                Current = Find(new Guid("2b841240-eef8-43ec-ad0b-ef812238c8af")),
+                IsLandscape = true,
+                UriTemplate = ConvertImageURLToBase64(urlsTemplate[0])
+            });
 
             data.Add(new AdvertismentArea
             {                   

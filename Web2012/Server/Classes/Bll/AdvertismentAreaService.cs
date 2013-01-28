@@ -19,7 +19,7 @@ namespace Guardian.Advertisment.Service
             return null;
 
         }
-        public void Set(AdvertismentArea item)
+        public void Set(AdvertismentAreaContext item)
         {
            
 

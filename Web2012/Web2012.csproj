@@ -169,6 +169,7 @@
     <Compile Include="Helper\Mock.cs" />
     <Compile Include="Helper\RepositoryMock\AdvertisementMockRepository.cs" />
     <Compile Include="Helper\RepositoryMock\IssueMockRepository.cs" />
+    <Compile Include="Server\Classes\Bll\Merger.cs" />
     <Compile Include="Server\Classes\Dal\ISectionMockRepository.cs" />
     <Compile Include="Server\Classes\Dal\IAdvertisementRepository.cs" />
     <Compile Include="Helper\RepositoryMock\SectionMockRepository.cs" />

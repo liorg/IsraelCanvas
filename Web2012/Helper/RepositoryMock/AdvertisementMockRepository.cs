@@ -8,7 +8,8 @@ namespace Web2012.Helper.RepositoryMock
 {
     public class AdvertisementMockRepository : IAdvertisementRepository
     {
-        public List<Advertisement> Advertisements { 
+        public IEnumerable<Advertisement> Advertisements
+        { 
             get {
                 return GetDataMock();
         } }

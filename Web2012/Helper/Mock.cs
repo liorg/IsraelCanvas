@@ -72,13 +72,13 @@ namespace Web2012.Helper
             var data = new AdvertismentArea();
             data.Title = "test";
             data.Current = null;
-            data.Advertisements = new AdvertisementMockRepository().Advertisements;
+            data.Advertisements = new AdvertisementMockRepository().Advertisements.ToList();
           
             data.IsLandscape = true;
 
             data.UriTemplate = ConvertImageURLToBase64(_urlTemplate);
 
-            data.Sections = new SectionMockRepository().Sections ;
+            data.Sections = new SectionMockRepository().Sections.ToList() ;
             
           
             return data;

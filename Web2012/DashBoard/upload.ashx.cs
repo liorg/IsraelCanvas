@@ -7,7 +7,9 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Xml;
 using Guardian.Advertisment;
+using Guardian.Advertisment.Contract;
 using Guardian.Advertisment.DataModel;
+using Guardian.Advertisment.Service;
 
 namespace Web2012.DashBoard
 {
@@ -38,12 +40,15 @@ namespace Web2012.DashBoard
 
             HttpContext.Current.Response.Write(jsonSerializer.Serialize(resp));
 
-            string s = ContextHelper.SaveAdvertismentAreaToXml(upload);
-            string path = "/Helper/PathCurrent/";
-            var xmlCurrent = context.Server.MapPath(path);
-            XmlDocument xdoc = new XmlDocument();
-            xdoc.LoadXml(s);
-            xdoc.Save(xmlCurrent+"/"+upload.IssueId.ToString() + ".xml");
+            //string s = ContextHelper.SaveAdvertismentAreaToXml(upload);
+            //string path = "/Helper/PathCurrent/";
+            //var xmlCurrent = context.Server.MapPath(path);
+            //XmlDocument xdoc = new XmlDocument();
+            //xdoc.LoadXml(s);
+            //xdoc.Save(xmlCurrent+"/"+upload.IssueId.ToString() + ".xml");
+            IAdvertismentAreaService mockService = new AdvertismentAreaServiceMock();
+            
+            mockService.Set(upload);
 
             context.Response.Write("File Save");
         }

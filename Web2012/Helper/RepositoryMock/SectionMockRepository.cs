@@ -8,7 +8,7 @@ namespace Web2012.Helper.RepositoryMock
 {
     public class SectionMockRepository : ISectionRepository
     {
-        public List<Section> Sections
+        public IEnumerable<Section> Sections
         { 
             get
             {
