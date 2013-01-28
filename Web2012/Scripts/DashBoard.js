@@ -433,7 +433,7 @@ function upload() {
         url: "upload.ashx",
         cache: false,
         contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(context),
+        data: JSON.stringify(context.Current),
         dataType: "json",
         success: function (data, status) {
             var d = data;

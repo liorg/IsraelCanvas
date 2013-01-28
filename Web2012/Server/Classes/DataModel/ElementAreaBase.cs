@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace Guardian.Advertisment.DataModel
 {
@@ -15,7 +16,7 @@ namespace Guardian.Advertisment.DataModel
         public string Left { get; set; }
         public string Width { get; set; }
         public string Height { get; set; }
-        public string Color { get; set; }
+       // public string Color { get; set; }
 
         public string MaxSizeName{
             get
@@ -52,6 +53,7 @@ namespace Guardian.Advertisment.DataModel
             }
         }
 
+        [XmlIgnore]
         public Size MaxFontSizeUi { get; set; }
 
       //  public int ItemsCount { get; set; }

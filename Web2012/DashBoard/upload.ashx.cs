@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Script.Serialization;
+using System.Xml;
+using Guardian.Advertisment;
 using Guardian.Advertisment.DataModel;
 
 namespace Web2012.DashBoard
@@ -17,10 +19,8 @@ namespace Web2012.DashBoard
 
         public void ProcessRequest(HttpContext context)
         {
-            
             context.Response.ContentType = "text/plain";
             JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
-
             string jsonString = String.Empty;
 
             HttpContext.Current.Request.InputStream.Position = 0;
@@ -29,8 +29,7 @@ namespace Web2012.DashBoard
                 jsonString = inputStream.ReadToEnd();
             }
 
-
-            var upload = jsonSerializer.Deserialize<AdvertismentArea>(jsonString);
+            var upload = jsonSerializer.Deserialize<AdvertismentAreaContext>(jsonString);
 
             string resp = "ok";
             
@@ -39,7 +38,14 @@ namespace Web2012.DashBoard
 
             HttpContext.Current.Response.Write(jsonSerializer.Serialize(resp));
 
-            context.Response.Write("Hello World");
+            string s = ContextHelper.SaveAdvertismentAreaToXml(upload);
+            string path = "/Helper/PathCurrent/";
+            var xmlCurrent = context.Server.MapPath(path);
+            XmlDocument xdoc = new XmlDocument();
+            xdoc.LoadXml(s);
+            xdoc.Save(xmlCurrent+"/"+upload.IssueId.ToString() + ".xml");
+
+            context.Response.Write("File Save");
         }
 
         public bool IsReusable

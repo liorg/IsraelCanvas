@@ -17,7 +17,6 @@ namespace Guardian.Advertisment.Service
         public AdvertismentArea Get(Guid? id=null){
             Mock mockData = new Mock();
             return mockData.Data;
-
         }
         public void Set(AdvertismentArea item)
         {

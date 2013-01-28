@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AdvertismentAreaContext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <IssueId>2b841240-eef8-43ec-ad0b-ef812238c8af</IssueId>
+  <Title>test</Title>
+  <Advertisements>
+    <Advertisement>
+      <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
+      <Name>טויטה קורולה</Name>
+      <Top>130</Top>
+      <Left>846</Left>
+      <Width>83</Width>
+      <Height>82</Height>
+      <IsDeleted>false</IsDeleted>
+      <Size>54534</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
+      <Name>בנט הבית היהודי</Name>
+      <Top>272</Top>
+      <Left>768</Left>
+      <Width>93</Width>
+      <Height>59</Height>
+      <IsDeleted>false</IsDeleted>
+      <Size>4444</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
+      <Name>מטרנה</Name>
+      <Top>78</Top>
+      <Left>510</Left>
+      <Width>107</Width>
+      <Height>122</Height>
+      <IsDeleted>false</IsDeleted>
+      <Size>ddd</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+  </Advertisements>
+  <Sections />
+</AdvertismentAreaContext>

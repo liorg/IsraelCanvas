@@ -7,6 +7,7 @@ using System.Text;
 using System.Web;
 using Guardian.Advertisment.DataModel;
 using Guardian.Advertisments.Common;
+using Web2012.Helper.RepositoryMock;
 
 namespace Web2012.Helper
 {
@@ -66,8 +67,24 @@ namespace Web2012.Helper
                 return GetDataMock();
             }
         }
-
         AdvertismentArea GetDataMock()
+        {
+            var data = new AdvertismentArea();
+            data.Title = "test";
+            data.Current = null;
+            data.Advertisements = new AdvertisementMockRepository().Advertisements;
+          
+            data.IsLandscape = true;
+
+            data.UriTemplate = ConvertImageURLToBase64(_urlTemplate);
+
+            data.Sections = new SectionMockRepository().Sections ;
+            
+          
+            return data;
+        }
+   
+        AdvertismentArea GetDataMockOld()
         {
             var data = new AdvertismentArea();
             data.Title = "test";
@@ -75,7 +92,7 @@ namespace Web2012.Helper
             data.Advertisements = new List<Advertisement>();
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+                //Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -84,7 +101,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -94,7 +111,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -103,7 +120,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -114,7 +131,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -129,7 +146,7 @@ namespace Web2012.Helper
             data.Sections = new List<Section>();
             data.Sections.Add(new Section
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 Id = Guid.NewGuid(),
@@ -137,7 +154,7 @@ namespace Web2012.Helper
             });
             data.Sections.Add(new Section
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 Id = Guid.NewGuid(),
@@ -146,7 +163,7 @@ namespace Web2012.Helper
             });
             data.Sections.Add(new Section
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 Id = Guid.NewGuid(),
@@ -156,7 +173,7 @@ namespace Web2012.Helper
 
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+                //Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -168,7 +185,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -180,7 +197,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -192,7 +209,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -204,7 +221,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+                //Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -216,7 +233,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -228,7 +245,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+              //  Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -240,7 +257,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+                //Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -252,7 +269,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+                //Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -263,7 +280,7 @@ namespace Web2012.Helper
 
             }); data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+                //Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -274,7 +291,7 @@ namespace Web2012.Helper
 
             }); data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+                //Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -285,7 +302,7 @@ namespace Web2012.Helper
 
             }); data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+                //Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -297,7 +314,7 @@ namespace Web2012.Helper
             });  
            data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+                //Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -308,7 +325,7 @@ namespace Web2012.Helper
 
             }); data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+                //Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -317,7 +334,7 @@ namespace Web2012.Helper
 
             }); data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+                //Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -328,7 +345,7 @@ namespace Web2012.Helper
 
             }); data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -337,7 +354,7 @@ namespace Web2012.Helper
 
             }); data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -347,7 +364,7 @@ namespace Web2012.Helper
                 IsDroped = false
             }); data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+             //   Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -358,7 +375,7 @@ namespace Web2012.Helper
 
             }); data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -369,7 +386,7 @@ namespace Web2012.Helper
 
             }); data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+               // Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,
@@ -381,7 +398,7 @@ namespace Web2012.Helper
             });
             data.Advertisements.Add(new Advertisement
             {
-                Color = ConstVar.ColorDefaultAdvertisemen,
+                //Color = ConstVar.ColorDefaultAdvertisemen,
                 Height = ConstVar.HeightDefaultAdvertisement,
                 Width = ConstVar.WidthDefaultAdvertisement,
                 IsDeleted = false,

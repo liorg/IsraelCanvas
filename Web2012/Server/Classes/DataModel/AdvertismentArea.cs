@@ -7,6 +7,7 @@ namespace Guardian.Advertisment.DataModel
 {
     public class AdvertismentBase
     {
+        public Guid IssueId { get; set; }
         public string Title { get; set; }
         public List<Advertisement> Advertisements { get; set; }
         public List<Section> Sections { get; set; }
@@ -19,6 +20,6 @@ namespace Guardian.Advertisment.DataModel
     }
     public class AdvertismentAreaContext : AdvertismentBase
     {
-        public Guid IssueId { get; set; }
+    //    public Guid IssueId { get; set; }
     }
 }
