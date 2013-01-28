@@ -33,12 +33,12 @@ namespace Web2012.DashBoard
 
             var upload = jsonSerializer.Deserialize<AdvertismentAreaContext>(jsonString);
 
-            string resp = "ok";
+            //string resp = "ok";
             
             HttpContext.Current.Response.ContentType = "application/json";
             HttpContext.Current.Response.ContentEncoding = Encoding.UTF8;
 
-            HttpContext.Current.Response.Write(jsonSerializer.Serialize(resp));
+           // HttpContext.Current.Response.Write(jsonSerializer.Serialize(resp));
 
             //string s = ContextHelper.SaveAdvertismentAreaToXml(upload);
             //string path = "/Helper/PathCurrent/";

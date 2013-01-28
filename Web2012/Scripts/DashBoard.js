@@ -61,7 +61,7 @@ var c_AdvertisingSpace_className = c_jquery_class + c_AdvertisingSpace;
 var c_advertisment_id_className = c_jquery_class + c_advertisment_id;
 var c_advertisment_size_className = c_jquery_class + c_advertisment_size;
 var c_advertisment_title_className = c_jquery_class + c_advertisment_title;
-
+var c_issue_className = c_jquery_class + c_issue;
 function getAdvertisementById(id) {
     var row = jQuery.grep(context.Advertisements, function (n, i) {
         return (n.Id == id);
@@ -73,7 +73,7 @@ function setTemplateImage(base64Image, IsLandscape) {
     var url = "url(data:image/png;base64," + base64Image + ")";//+ "=);" 
     //url = "url(data:image/gif;base64,R0lGODlhCwALAIABAAAAAP///yH5BAEAAAEALAAAAAALAAsAAAIUhI8Wy6zdHlxyqnTBdHqHCoERlhQAOw==)";
 
-    var ele = $(c_div + " " + c_jquery_class + c_issue)[0];
+    var ele = $(c_div + " " + c_issue_className)[0];
     ele.style.backgroundImage = url;
 
     if (!IsLandscape) {
@@ -90,10 +90,14 @@ function ajaxFailed(xmlRequest) {
 
 function setAdvertisementsToolbarData() {
     $.each(context.Advertisements, function (index, advertisement) {
-        // drag.append('<li class="MenuItem" style="height:' + advertisement.Height + ';width:' + advertisement.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
-        appendAdvertisementsToDragToolBox(advertisement);
+        if (!advertisement.IsDroped)
+            // drag.append('<li class="MenuItem" style="height:' + advertisement.Height + ';width:' + advertisement.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+            appendAdvertisementsToDragToolBox(advertisement);
     });
 }
+
+
+
 
 function appendAdvertisementsToDragToolBox(advertisement) {
     drag.append('<li class="MenuItem" style="height:' + advertisementSize.Height + ';width:' + advertisementSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
@@ -125,8 +129,10 @@ function loadAjax() {
         success: function (data, status) {
             context = data;
             setAdvertisementsToolbarData();
+            setCurrent();
             registerElementEvents();
             setImageTemplate();
+            
         },
         error: ajaxFailed
     });
@@ -227,7 +233,12 @@ function registerDropElement() {
         drop: function (event, ui) {
             enabledCopyButton(true);
             var currPoint = getCurrentPointOnScreen(this, event, ui);
-            var row = getAdvertisementById(dragClone.find(c_span).attr(c_id));
+            var id;
+            if (typeof (dragclone) == "undefined")
+                id = ui.draggable.find(c_span).attr(c_id);
+            else
+                id = dragClone.find(c_span).attr(c_id);
+            var row = getAdvertisementById(id);
             row.Top = currPoint.top;
             row.Left = currPoint.left;
 
@@ -270,6 +281,30 @@ function getCurrentPointOnScreen(issue, event, ui) {
     return { top: top, left: left };
 }
 
+function generateAdvertismentOnIssue(title, id, size) {
+    return  "<div data-title='" + title + "'  class='ui-draggable'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
+
+}
+function setCurrent() {
+    if (context.Current) {
+        if (context.Advertisements.length > 0) {
+            $.each(context.Current.Advertisements, function (index, advertisement) {
+                var createDiv = generateAdvertismentOnIssue(advertisement.Name, advertisement.Id, advertisement.Size);
+                var d = $(createDiv).appendTo(c_issue_className);
+                createAdvertisingItem(d, advertisement);
+                $(d).appendTo(c_issue_className);
+                $(d).css({
+                    position: c_absolute,
+                    left: advertisement.Left+"px",
+                    top: advertisement.Top+"px",
+                    width: advertisement.Width+"px",
+                    height: advertisement.Height+"px"
+                });
+              
+            });
+        }
+    }
+}
 function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) {
     var isCopy = copy || false;
     var title = dragClone.text();
@@ -281,15 +316,21 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) 
         size = dragClone.find(c_advertisment_size_className).text();
         id = dragClone.find(c_advertisment_id_className).attr(c_id);
     }
-
-    dragClone = dragClone.replaceWith("<div data-title='" + title + "'  class='ui-draggable'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>");
-
-    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+    //ui-draggable ui-widget-content myWidget ui-resizable
+    dragClone = dragClone.replaceWith(generateAdvertismentOnIssue(title, id, size));
     dragClone.css({
         position: c_absolute,
         left: currPoint.left,
         top: currPoint.top
     });
+    createAdvertisingItem(dragClone,currentRow);
+    dragClone.appendTo(issue);
+}
+
+function createAdvertisingItem(dragClone, currentRow) {
+
+    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+    
 
     dragClone.qtip({
         content: currentRow.Name + " <br/>" + currentRow.Size,
@@ -331,13 +372,11 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) 
                     title.text(row.Name);
                 }
                 title.focus();
-                row.Width = $(this).outerWidth();
-                row.Height = $(this).outerHeight();
+                // row.Width = $(this).outerWidth();
+                // row.Height = $(this).outerHeight();
             }
         });
-    dragClone.appendTo(issue);
 }
-
 function deleteHandler() {
     var obj = getEleOnFocus();
     if (obj != null) {
@@ -411,15 +450,12 @@ function saveHandler() {
         var ele = $(this);
         var data = dragDetailsUi.getDataByAdvertisementDragElement(ele);
         var row = getAdvertisementById(data.id);
-       // row.ItemsCount++;
         row.isDroped = true;
         row.Width = data.width;
         row.Height = data.height;
         row.Top = data.top;
         row.Left = data.left;
         row.Size = data.size;
-        row.Size = data.size;
-       // row.IsDeleted = false;
         loadContext();
         context.Current.Advertisements.push(row);
     });
@@ -494,7 +530,7 @@ jQuery.fn.liveDraggable = function (opts) {
 };
 
 var dragDetailsUi = {
-     getDataByDragElement: function (dragElement) {
+    getDataByDragElement: function (dragElement) {
         var obj = {};
         this.title = dragElement.find(c_advertisment_title_className).text();
         obj.id = dragElement.find(c_advertisment_id_className).attr(c_id);
@@ -504,7 +540,7 @@ var dragDetailsUi = {
         obj.left = dragElement.position().left;
         return obj;
     },
-     getDataByAdvertisementDragElement: function (dragElement) {
+    getDataByAdvertisementDragElement: function (dragElement) {
         var obj=this.getDataByDragElement(dragElement);
         obj.size = dragElement.find(c_advertisment_size_className).text();
         return obj;

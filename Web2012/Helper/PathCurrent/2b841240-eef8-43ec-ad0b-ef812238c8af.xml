@@ -15,36 +15,14 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
-      <Name>בנט הבית היהודי</Name>
-      <Top>272</Top>
-      <Left>768</Left>
-      <Width>93</Width>
-      <Height>59</Height>
+      <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
+      <Name>טויטה קורולה</Name>
+      <Top>29</Top>
+      <Left>80</Left>
+      <Width>71</Width>
+      <Height>84</Height>
       <IsDeleted>false</IsDeleted>
-      <Size>4444</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
-      <Name>מטרנה</Name>
-      <Top>78</Top>
-      <Left>510</Left>
-      <Width>107</Width>
-      <Height>122</Height>
-      <IsDeleted>false</IsDeleted>
-      <Size>ddd</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Id>e5fbbc06-8f81-0000-0005-f56bb52ed361</Id>
-      <Name>the voice 2</Name>
-      <Top>180</Top>
-      <Left>622</Left>
-      <Width>55</Width>
-      <Height>29</Height>
-      <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
+      <Size>54534</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
   </Advertisements>
