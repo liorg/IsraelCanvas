@@ -52,7 +52,7 @@
     PADDING-LEFT: 1px;
 }
 
-div.Issue
+div.Issue 
 {
     background-repeat: no-repeat;
     background-image: url('/imgs/A4.png');
@@ -90,10 +90,11 @@ UL.ToolBar
 }
 .focus-object
 {
-    border-bottom: 1px dotted red;
-    border-left: 1px dotted red;
-    border-right: 1px dotted red;
-    border-top: 1px dotted red;
+    /*border-bottom: 1px dotted black;
+    border-left: 1px dotted black;
+    border-right: 1px dotted black;
+    border-top: 1px dotted black;*/
+    border:1px dotted black;
 }
 span.advertisment-title
 {
@@ -222,4 +223,9 @@ BUTTON
 	overflow: hidden;
 	text-overflow: ellipsis;  
 	-o-text-overflow: ellipsis; 
+}
+div.deleted-advertisement
+{
+    background-image:none;
+    background-color: red;
 }

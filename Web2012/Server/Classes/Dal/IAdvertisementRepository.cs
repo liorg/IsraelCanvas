@@ -3,6 +3,6 @@ namespace Guardian.Advertisment.Dal
 {
     interface IAdvertisementRepository
     {
-        System.Collections.Generic.IEnumerable<Guardian.Advertisment.DataModel.Advertisement> Advertisements { get; }
+        System.Collections.Generic.ICollection<Guardian.Advertisment.DataModel.Advertisement> Advertisements { get; }
     }
 }

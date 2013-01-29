@@ -24,6 +24,7 @@ var c_invalid = "invalid";
 var c_disabled = "disabled";
 var c_clone = "clone";
 var c_focusObject = "focus-object";
+var c_deleted_advertisement = "deleted-advertisement";
 
 var c_jquery_id = "#";
 var c_jquery_class = ".";
@@ -34,7 +35,7 @@ var c_portrait_height = "297mm";
 var c_issue = "Issue";
 var c_dropable = "drop";
 var c_dragable = "drag";
-
+var c_blur="blur";
 
 var c_AdvertisingSpace = "myWidget";
 var c_advertisment_id = "advertisment-id";
@@ -65,6 +66,7 @@ var c_AdvertisingSpace_className = c_jquery_class + c_AdvertisingSpace;
 var c_advertisment_id_className = c_jquery_class + c_advertisment_id;
 var c_advertisment_size_className = c_jquery_class + c_advertisment_size;
 var c_advertisment_title_className = c_jquery_class + c_advertisment_title;
+var c_deleted_advertisement_className = c_jquery_class + c_deleted_advertisement;
 var c_issue_className = c_jquery_class + c_issue;
 
 var onfocusOnSizeLabel = false;
@@ -97,7 +99,7 @@ function ajaxFailed(xmlRequest) {
 
 function setAdvertisementsToolbarData() {
     $.each(context.Advertisements, function (index, advertisement) {
-        if (!advertisement.IsDroped)
+        if (!advertisement.IsDroped && !advertisement.IsDeleted)
             // drag.append('<li class="MenuItem" style="height:' + advertisement.Height + ';width:' + advertisement.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
             appendAdvertisementsToDragToolBox(advertisement);
     });
@@ -275,7 +277,7 @@ function registerElementEvents() {
     $(c_advertisment_size_className).live(c_keyup, function () { checkCharcount($(this), maxChar); });
     $(c_advertisment_size_className).live(c_keydown, function () { checkCharcount($(this), maxChar); });
     $(c_advertisment_size_className).live(c_dblclick, function () { $(this).selectText(); onfocusOnSizeLabel = true; });
-    $(c_advertisment_size_className).live("blur", function () { onfocusOnSizeLabel = false; });
+    $(c_advertisment_size_className).live(c_blur, function () { onfocusOnSizeLabel = false; });
 
     registerDragElement();
     registerDropElement();
@@ -300,7 +302,6 @@ function getCurrentPointOnScreen(issue, event, ui) {
 
 function generateAdvertismentOnIssue(title, id, size) {
     return "<div data-title='" + title + "'  class='ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
-
 }
 function setCurrent(extendPropAdvertisingItemHandler) {
     if (context.Current) {
@@ -308,7 +309,10 @@ function setCurrent(extendPropAdvertisingItemHandler) {
             $.each(context.Current.Advertisements, function (index, advertisement) {
                 var createDiv = generateAdvertismentOnIssue(advertisement.Name, advertisement.Id, advertisement.Size);
                 var d = $(createDiv).appendTo(c_issue_className);
-                if (typeof (extendPropAdvertisingItemHandler) == 'function') 
+                if (advertisement.IsDeleted) {
+                    $(d).addClass(c_deleted_advertisement);
+                }
+                if (typeof(extendPropAdvertisingItemHandler) == 'function')
                      extendPropAdvertisingItemHandler(d, advertisement);
             
                 $(d).addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
@@ -401,7 +405,8 @@ function deleteHandler() {
     if (obj != null) {
         var elementsToDelById = obj.find(c_advertisment_id_className).attr(c_id);
         var row = getAdvertisementById(elementsToDelById);
-        appendAdvertisementsToDragToolBox(row);
+        if(!row.IsDeleted)
+            appendAdvertisementsToDragToolBox(row);
         var del = getAllAdvertisingSpaceElementById(elementsToDelById);
         del.resizable(c_destroy);
         del.qtip(c_destroy);
@@ -444,6 +449,10 @@ function pasteHandler() {
 function copyHandler() {
     var obj = getEleOnFocus();
     if (obj != null) {
+        if (obj.hasClass(c_deleted_advertisement_className)) {
+            messageBox("לא ניתן להעתיק שטח פרסום מחוק");
+            return;
+        }
         elementCopy = obj.clone();
         enabledPasteButton(true);
     }
@@ -476,7 +485,6 @@ function saveHandler() {
         row.Top = data.top;
         row.Left = data.left;
         row.Size = data.size;
-   
         context.Current.Advertisements.push(row);
     });
 

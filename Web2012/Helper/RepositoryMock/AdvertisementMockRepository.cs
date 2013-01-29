@@ -8,7 +8,7 @@ namespace Web2012.Helper.RepositoryMock
 {
     public class AdvertisementMockRepository : IAdvertisementRepository
     {
-        public IEnumerable<Advertisement> Advertisements
+        public ICollection<Advertisement> Advertisements
         { 
             get {
                 return GetDataMock();
@@ -23,7 +23,8 @@ namespace Web2012.Helper.RepositoryMock
                 
                 IsDeleted = false,
                 Id = new Guid("e5fbbc06-8f81-0000-0000-f56bb52ed361"),
-                Name = "הליכוד ביתנו"
+                Name = "הליכוד ביתנו",
+                  Size = "1233x1233",
             });
             advertisements.Add(new Advertisement
             {
@@ -31,29 +32,24 @@ namespace Web2012.Helper.RepositoryMock
                 IsDeleted = false,
                 Id = new Guid("e5fbbc06-8f81-0000-0001-f56bb52ed361"),
                 Name = "אגיס",
-
+                Size = "12x12",
             });
             advertisements.Add(new Advertisement
             {
-      
                 IsDeleted = false,
                 Id = new Guid("e5fbbc06-8f81-0000-0002-f56bb52ed361"),
                 Name = "ציפי   ליבני     התקווה",
-                Size = "12x12",
-                IsDroped = false
+                Size = "12x12"
             });
             advertisements.Add(new Advertisement
             {
-             
                 IsDeleted = false,
                 Id = new Guid("e5fbbc06-8f81-0000-0003-f56bb52ed361"),
                 Name = "טויטה קורולה",
                 Size = "12x12",
-                IsDroped = false
             });
             advertisements.Add(new Advertisement
             {
-             
                 IsDeleted = false,
                 Id = new Guid("e5fbbc06-8f81-0000-0004-f56bb52ed361"),
                 Name = "מודעה חדשה",
@@ -62,16 +58,14 @@ namespace Web2012.Helper.RepositoryMock
             });
 
             
-            advertisements.Add(new Advertisement
-            {
-               
-                IsDeleted = false,
-                Id = new Guid("e5fbbc06-8f81-0000-0005-f56bb52ed361"),
-                Name = "the voice 2",
-                Size = "4x4",
-                IsDroped = false
-
-            });
+            //advertisements.Add(new Advertisement
+            //{
+            //    IsDeleted = false,
+            //    Id = new Guid("e5fbbc06-8f81-0000-0005-f56bb52ed361"),
+            //    Name = "the voice 2",
+            //    Size = "4x4",
+            //    IsDroped = false
+            //});
             advertisements.Add(new Advertisement
             {
                
@@ -92,16 +86,16 @@ namespace Web2012.Helper.RepositoryMock
                 IsDroped = false
 
             });
-            advertisements.Add(new Advertisement
-            {
-                
-                IsDeleted = false,
-                Id = new Guid("e5fbbc06-8f81-0000-0008-f56bb52ed361"),
-                Name = "פלא-פון",
-                Size = "4x4",
-                IsDroped = false
+            //advertisements.Add(new Advertisement
+            //{
 
-            });
+            //    IsDeleted = false,
+            //    Id = new Guid("e5fbbc06-8f81-0000-0008-f56bb52ed361"),
+            //    Name = "פלא-פון",
+            //    Size = "4x4",
+            //    IsDroped = false
+
+            //});
             advertisements.Add(new Advertisement
             {
            
