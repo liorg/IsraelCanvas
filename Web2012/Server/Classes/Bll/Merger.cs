@@ -11,7 +11,10 @@ namespace Web2012.Server.Classes.Bll
     {
         public static AdvertismentArea Merge(AdvertismentArea crm, IEnumerable<Section> sections, IEnumerable<Advertisement> advertisements)
         {
+            if (crm.Current != null)
+            {
 
+            }
             //crm.Current = current;
             crm.Advertisements = advertisements.ToList();
             crm.Sections = sections.ToList();

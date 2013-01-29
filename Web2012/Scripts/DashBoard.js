@@ -1,5 +1,6 @@
 ﻿var uploadHandler = "mockUpload.ashx";
 var downloadHandler = "MockData.ashx";
+var preview="Preview.htm";
 var dropBox;
 var drag;
 var dragClone;
@@ -53,6 +54,7 @@ var c_ui_widget_content = "ui-widget-content";
 var c_absolute = "absolute";
 var c_px = "px";
 var c_id = "id";
+var c_issueid = "id";
 var c_span = "span";
 var c_li = "li";
 var c_div = "div";
@@ -508,8 +510,9 @@ function loadContext() {
 }
 
 function prevHandler() {
-    window.open("Preview.htm?id='" + currentId+"'");
-
+   // window.open("Preview.htm"+"?"+id=" + currentId+"");
+    window.open(preview+"?"+ c_issueid+ "=" +currentId);
+    
 }
 function delredsHandler() {
     alert(3);
@@ -577,4 +580,11 @@ function getQueryString() {
     }
 
     return result;
+}
+
+function getCurrentId() {
+    //  currentId = '2b841240-eef8-43ec-ad0b-ef812238c8af';
+    var r = getQueryString();
+   return r[c_issueid];
+    
 }
