@@ -18,7 +18,6 @@ namespace Web2012.Helper.RepositoryMock
             try
             {
                 var xmlCurrent = HttpContext.Current.Server.MapPath(path + "" + id.ToString() + ".xml");
-
                 // Create a new XmlSerializer instance with the type of the test class
                 // Create a new file stream for reading the XML file
                 FileStream ReadFileStream = new FileStream(xmlCurrent, FileMode.Open, FileAccess.Read, FileShare.Read);

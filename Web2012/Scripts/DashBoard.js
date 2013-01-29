@@ -10,14 +10,14 @@ var context;
 var advertisementSize = { Height: 10, Width: 20 };
 
 var ctrlDown = false;
-var ctrlKey = 17, vKey = 86, cKey = 67; var deleteKey = 46;
+var ctrlKey = 17, vKey = 86, cKey = 67; var deleteKey = 46; var savkey = 83;
 
 var c_copy_table_btn = "copy-table-btn";
 var c_paste_table_btn = "paste-table-btn";
 var c_del_table_btn = "del-table-btn";
 var c_save_table_btn = "save-table-btn";
 var c_prev_table_btn = "prev-table-btn";
-
+var c_del_red_table_btn = "del-red-table-btn";
 var c_destroy = "destroy";
 var c_invalid = "invalid";
 var c_disabled = "disabled";
@@ -64,6 +64,9 @@ var c_advertisment_id_className = c_jquery_class + c_advertisment_id;
 var c_advertisment_size_className = c_jquery_class + c_advertisment_size;
 var c_advertisment_title_className = c_jquery_class + c_advertisment_title;
 var c_issue_className = c_jquery_class + c_issue;
+
+var onfocusOnSizeLabel = false;
+
 function getAdvertisementById(id) {
     var row = jQuery.grep(context.Advertisements, function (n, i) {
         return (n.Id == id);
@@ -74,8 +77,8 @@ function getAdvertisementById(id) {
 function setTemplateImage(base64Image, IsLandscape) {
     var url = "url(data:image/png;base64," + base64Image + ")";//+ "=);" 
     //url = "url(data:image/gif;base64,R0lGODlhCwALAIABAAAAAP///yH5BAEAAAEALAAAAAALAAsAAAIUhI8Wy6zdHlxyqnTBdHqHCoERlhQAOw==)";
-
-    var ele = $(c_div + " " + c_issue_className)[0];
+    // var ele = $(c_div + " " + c_issue_className)[0];
+    var ele = $(c_issue_className)[0];
     ele.style.backgroundImage = url;
 
     if (!IsLandscape) {
@@ -98,16 +101,12 @@ function setAdvertisementsToolbarData() {
     });
 }
 
-
-
-
 function appendAdvertisementsToDragToolBox(advertisement) {
     drag.append('<li class="MenuItem" style="height:' + advertisementSize.Height + ';width:' + advertisementSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
 }
 
 function setImageTemplate() {
     setTemplateImage(context.UriTemplate, context.IsLandscape);
-    //context.UriTemplate = null;
 }
 
 function setToolboxUi() {
@@ -120,24 +119,31 @@ function setToolboxUi() {
     $(".tabs-bottom .ui-tabs-nav").appendTo(".tabs-bottom");
 }
 
-function loadAjax() {
+function loadAjax(successHandler) {
     $.ajax({
         type: "POST",
-        url:downloadHandler+"?id="+currentId,
+        url: downloadHandler + "?id=" + currentId,
         cache: false,
         contentType: "application/json; charset=utf-8",
         data: "{}",
         dataType: "json",
-        success: function (data, status) {
-            context = data;
-            setAdvertisementsToolbarData();
-            setCurrent();
-            registerElementEvents();
-            setImageTemplate();
-            
-        },
+        success: successHandler,
         error: ajaxFailed
     });
+}
+
+function onSuccessHandler(data, status) {
+    context = data;
+    setAdvertisementsToolbarData();
+    setImageTemplate();
+    setCurrent(extendAdvertisingItem);
+    registerElementEvents();
+}
+
+function onSuccessPrevHandler(data, status) {
+    context = data;
+    setImageTemplate();
+    setCurrent();
 }
 
 function setGlobalVar() {
@@ -184,6 +190,9 @@ function registerMenubarEvents() {
     $(c_jquery_id + c_prev_table_btn).click(function () {
         prevHandler();
     });
+    $(c_jquery_id + c_del_red_table_btn).click(function () {
+        delredsHandler();
+    });
 }
 
 function registerDocumentEvents() {
@@ -192,7 +201,8 @@ function registerDocumentEvents() {
     }).keyup(function (e) {
         if (e.keyCode == ctrlKey) ctrlDown = false;
         if (e.keyCode == deleteKey) {
-            deleteHandler();
+            if(!onfocusOnSizeLabel)
+             deleteHandler();
         }
     });
 
@@ -206,6 +216,9 @@ function registerDocumentEvents() {
         else if (ctrlDown && e.keyCode == vKey) {
             pasteHandler();
         }
+        //else if (ctrlDown && e.keyCode == savkey) {
+        //    saveHandler();
+        //}
     });
 }
 
@@ -259,11 +272,11 @@ function registerElementEvents() {
 
     $(c_advertisment_size_className).live(c_keyup, function () { checkCharcount($(this), maxChar); });
     $(c_advertisment_size_className).live(c_keydown, function () { checkCharcount($(this), maxChar); });
-    $(c_advertisment_size_className).live(c_dblclick, function () { $(this).selectText(); });
+    $(c_advertisment_size_className).live(c_dblclick, function () { $(this).selectText(); onfocusOnSizeLabel = true; });
+    $(c_advertisment_size_className).live("blur", function () { onfocusOnSizeLabel = false; });
 
     registerDragElement();
     registerDropElement();
-
 }
 
 function checkCharcount(content, max) {
@@ -284,16 +297,19 @@ function getCurrentPointOnScreen(issue, event, ui) {
 }
 
 function generateAdvertismentOnIssue(title, id, size) {
-    return  "<div data-title='" + title + "'  class='ui-draggable'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
+    return "<div data-title='" + title + "'  class='ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
 
 }
-function setCurrent() {
+function setCurrent(extendPropAdvertisingItemHandler) {
     if (context.Current) {
         if (context.Advertisements.length > 0) {
             $.each(context.Current.Advertisements, function (index, advertisement) {
                 var createDiv = generateAdvertismentOnIssue(advertisement.Name, advertisement.Id, advertisement.Size);
                 var d = $(createDiv).appendTo(c_issue_className);
-                createAdvertisingItem(d, advertisement);
+                if (typeof (extendPropAdvertisingItemHandler) == 'function') 
+                     extendPropAdvertisingItemHandler(d, advertisement);
+            
+                $(d).addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
                 $(d).appendTo(c_issue_className);
                 $(d).css({
                     position: c_absolute,
@@ -302,7 +318,6 @@ function setCurrent() {
                     width: advertisement.Width + c_px,
                     height: advertisement.Height + c_px
                 });
-              
             });
         }
     }
@@ -325,15 +340,12 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) 
         left: currPoint.left,
         top: currPoint.top
     });
-    createAdvertisingItem(dragClone,currentRow);
+    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+    extendAdvertisingItem(dragClone, currentRow);
     dragClone.appendTo(issue);
 }
 
-function createAdvertisingItem(dragClone, currentRow) {
-
-    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
-    
-
+function extendAdvertisingItem(dragClone, currentRow) {
     dragClone.qtip({
         content: currentRow.Name + " <br/>" + currentRow.Size,
         show: c_mouseover,
@@ -341,6 +353,9 @@ function createAdvertisingItem(dragClone, currentRow) {
     }).draggable(
         {
             containment: c_drop, cursor: "move", scroll: false,
+            start: function (event, ui) {
+                ui.helper.qtip("hide");
+            },
         }).bind(c_mousedown, function () {
             $(c_AdvertisingSpace_className).removeClass(c_focusObject);
             $(this).addClass(c_focusObject);
@@ -348,34 +363,34 @@ function createAdvertisingItem(dragClone, currentRow) {
         }
         ).resizable({
             containment: c_drop,
+            start: function (event, ui) {
+                ui.helper.qtip("hide");
+            },
             stop: function (event, ui) {
-                ui.originalElement;
-                ui.element;
+                //ui.helper.qtip("show");
                 var title = $(this).find(c_advertisment_title_className);
-                var row = getAdvertisementById($(this).find(c_advertisment_id_className).attr(c_id));
+                //var row = getAdvertisementById($(this).find(c_advertisment_id_className).attr(c_id));
 
-                if (row.MaxFontSizeUi == undefined) {
-                    row.MaxFontSizeUi = row.MaxSizeName.rect();
-                }
-                else if (row.MaxFontSizeUi.Width == 0 && row.MaxFontSizeUi.Height == 0) {
-                    var size = row.MaxSizeName.rect();
-                    row.MaxFontSizeUi.Width = size.Width;
-                    row.MaxFontSizeUi.Height = size.Height;
-                }
-                if (row.MaxFontSizeUi.Width > $(this).outerWidth()) {
-                    //  title.text(row.NameShortcut + "...");
-                    title.text("...");
-                }
-                else if (row.MaxFontSizeUi.Height > $(this).outerHeight()) {
-                    //  title.text(row.NameShortcut + "...");
-                    title.text("...");
-                }
-                else {
-                    title.text(row.Name);
-                }
+                //if (row.MaxFontSizeUi == undefined) {
+                //    row.MaxFontSizeUi = row.MaxSizeName.rect();
+                //}
+                //else if (row.MaxFontSizeUi.Width == 0 && row.MaxFontSizeUi.Height == 0) {
+                //    var size = row.MaxSizeName.rect();
+                //    row.MaxFontSizeUi.Width = size.Width;
+                //    row.MaxFontSizeUi.Height = size.Height;
+                //}
+                //if (row.MaxFontSizeUi.Width > $(this).outerWidth()) {
+                //    //  title.text(row.NameShortcut + "...");
+                //    title.text("...");
+                //}
+                //else if (row.MaxFontSizeUi.Height > $(this).outerHeight()) {
+                //    //  title.text(row.NameShortcut + "...");
+                //    title.text("...");
+                //}
+                //else {
+                //    title.text(row.Name);
+                //}
                 title.focus();
-                // row.Width = $(this).outerWidth();
-                // row.Height = $(this).outerHeight();
             }
         });
 }
@@ -448,6 +463,7 @@ function saveHandler() {
         messageBox("לא נבחרו שטחי פרסום");
         return false;
     }
+    loadContext();
     $(c_jquery_class + c_AdvertisingSpace).each(function (i) {
         var ele = $(this);
         var data = dragDetailsUi.getDataByAdvertisementDragElement(ele);
@@ -458,7 +474,7 @@ function saveHandler() {
         row.Top = data.top;
         row.Left = data.left;
         row.Size = data.size;
-        loadContext();
+   
         context.Current.Advertisements.push(row);
     });
 
@@ -486,15 +502,18 @@ function loadContext() {
         context.Current = {};
         context.Current.Title = context.Title;
         context.Current.IssueId = currentId;
-        context.Current.Advertisements = [];
-        context.Current.Sections = [];
     }
+    context.Current.Advertisements = [];
+    context.Current.Sections = [];
 }
 
 function prevHandler() {
-    alert(2);
-}
+    window.open("Preview.htm?id='" + currentId+"'");
 
+}
+function delredsHandler() {
+    alert(3);
+}
 jQuery.fn.selectText = function () {
     var range, selection;
     if (document.body.createTextRange) {
@@ -548,3 +567,14 @@ var dragDetailsUi = {
         return obj;
     }
 };
+
+function getQueryString() {
+    var result = {}, queryString = location.search.substring(1),
+        re = /([^&=]+)=([^&]*)/g, m;
+
+    while (m = re.exec(queryString)) {
+        result[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+    }
+
+    return result;
+}

@@ -7,7 +7,7 @@
     <script type="text/javascript" src="../Scripts/jquery-ui.js"></script>
     <script type="text/javascript" language="javascript" src="../Scripts/linq.js"></script>
     <script type="text/javascript" src="../Scripts/DashBoard.js"></script>
-    <script src="/Scripts/jquery.qtip-1.0.0-rc3.min.js"></script>
+    <script src="../Scripts/jquery.qtip-1.0.0-rc3.min.js"></script>
     <link href="../Styles/Dashboard.css" rel="stylesheet" />
     <link href="../Styles/ribbon.css" rel="stylesheet" />
     <script type="text/javascript" language="javascript">
@@ -25,7 +25,8 @@
             registerMenubarEvents();
             setGlobalVar();
             setToolboxUi();
-            loadAjax();
+            loadAjax(onSuccessHandler);
+
 
         });
     </script>
@@ -39,10 +40,11 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
 -->
     <div style="position: absolute" class="centreposition">
         <div id="ribbon" unselectable="on">
-            <span class="ribbon-window-title" unselectable="on">Dashboard</span><div id="ribbon-tab-header-strip" unselectable="on">
+            <!-- 
+            <span class="ribbon-window-title" unselectable="on">Dashboard</span ><div id="ribbon-tab-header-strip" unselectable="on">
                 <div id="ribbon-tab-header-1" class="ribbon-tab-header sel" unselectable="on"><span class="ribbon-title" unselectable="on">Format</span></div>
             </div>
-
+                -->
             <div style="display: block;" id="format-tab" class="ribbon-tab" unselectable="on">
 
                 <div class="ribbon-section" unselectable="on">
@@ -82,6 +84,13 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/delete-page.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/delete-page.png">
                         <span class="button-title" unselectable="on">מחק</span>
+                    </div>
+                       <div id="del-red-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
+                        <span class="button-help" unselectable="on">Delete all reds</span>
+                        <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/delete-page.png">
+                        <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/delete-page.png">
+                        <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/delete-page.png">
+                        <span class="button-title" unselectable="on">מחק כל האדומים</span>
                     </div>
                 </div>
                 <div class="ribbon-section-sep" unselectable="on"></div>
