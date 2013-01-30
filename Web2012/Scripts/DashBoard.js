@@ -29,8 +29,12 @@ var c_deleted_advertisement = "deleted-advertisement";
 var c_jquery_id = "#";
 var c_jquery_class = ".";
 
+
 var c_portrait_width = "210mm";
 var c_portrait_height = "297mm";
+
+//width: 297mm;
+//height: 210mm;
 
 var c_issue = "Issue";
 var c_dropable = "drop";

@@ -6,10 +6,10 @@
     <Advertisement>
       <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
       <Name>טויטה קורולה</Name>
-      <Top>163</Top>
-      <Left>650</Left>
-      <Width>70</Width>
-      <Height>76</Height>
+      <Top>973</Top>
+      <Left>6</Left>
+      <Width>72</Width>
+      <Height>119</Height>
       <IsDeleted>false</IsDeleted>
       <Size>12x12</Size>
       <IsDroped>true</IsDroped>
@@ -19,8 +19,8 @@
       <Name>סלקום</Name>
       <Top>38</Top>
       <Left>570</Left>
-      <Width>223</Width>
-      <Height>69</Height>
+      <Width>221</Width>
+      <Height>72</Height>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
@@ -28,10 +28,10 @@
     <Advertisement>
       <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
       <Name>סלקום</Name>
-      <Top>156</Top>
-      <Left>284</Left>
-      <Width>146</Width>
-      <Height>128</Height>
+      <Top>157</Top>
+      <Left>285</Left>
+      <Width>68</Width>
+      <Height>116</Height>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
@@ -41,8 +41,19 @@
       <Name>סלקום</Name>
       <Top>4</Top>
       <Left>5</Left>
-      <Width>70</Width>
-      <Height>119</Height>
+      <Width>75</Width>
+      <Height>125</Height>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
+      <Name>אגיס</Name>
+      <Top>1099</Top>
+      <Left>0</Left>
+      <Width>294</Width>
+      <Height>24</Height>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
