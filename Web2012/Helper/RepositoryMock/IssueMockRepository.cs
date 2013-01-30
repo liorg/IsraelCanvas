@@ -86,8 +86,8 @@ namespace Web2012.Helper.RepositoryMock
                 IssueId=new Guid("00000000-0000-0000-0000-000000000001"),
                 Title = "test1",
                 Current = Find(new Guid("00000000-0000-0000-0000-000000000001")),
-                IsLandscape = true,
-                UriTemplate = ConvertImageURLToBase64(urlsTemplate[0])
+                IsLandscape = false,
+                UriTemplate = ConvertImageURLToBase64(urlsTemplate[2])
             });
             data.Add(new AdvertismentArea
             {
@@ -103,7 +103,7 @@ namespace Web2012.Helper.RepositoryMock
                 Title = "test3",
                 Current = Find(new Guid("00000000-0000-0000-0000-000000000003")),
                 IsLandscape = false,
-                UriTemplate = ConvertImageURLToBase64(urlsTemplate[2])
+                UriTemplate = ConvertImageURLToBase64(urlsTemplate[0])
             });
 
             return data;

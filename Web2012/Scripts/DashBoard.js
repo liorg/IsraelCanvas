@@ -387,29 +387,7 @@ function extendAdvertisingItem(dragClone, currentRow) {
                 ui.helper.qtip("hide");
             },
             stop: function (event, ui) {
-                //ui.helper.qtip("show");
                 var title = $(this).find(c_advertisment_title_className);
-                //var row = getAdvertisementById($(this).find(c_advertisment_id_className).attr(c_id));
-
-                //if (row.MaxFontSizeUi == undefined) {
-                //    row.MaxFontSizeUi = row.MaxSizeName.rect();
-                //}
-                //else if (row.MaxFontSizeUi.Width == 0 && row.MaxFontSizeUi.Height == 0) {
-                //    var size = row.MaxSizeName.rect();
-                //    row.MaxFontSizeUi.Width = size.Width;
-                //    row.MaxFontSizeUi.Height = size.Height;
-                //}
-                //if (row.MaxFontSizeUi.Width > $(this).outerWidth()) {
-                //    //  title.text(row.NameShortcut + "...");
-                //    title.text("...");
-                //}
-                //else if (row.MaxFontSizeUi.Height > $(this).outerHeight()) {
-                //    //  title.text(row.NameShortcut + "...");
-                //    title.text("...");
-                //}
-                //else {
-                //    title.text(row.Name);
-                //}
                 title.focus();
             }
         });
@@ -514,13 +492,23 @@ function saveHandler() {
         var ele = $(this);
         var data = dragDetailsUi.getDataByAdvertisementDragElement(ele);
         var row = getAdvertisementById(data.id);
-        row.isDroped = true;
-        row.Width = data.width;
-        row.Height = data.height;
-        row.Top = data.top;
-        row.Left = data.left;
-        row.Size = data.size;
-        context.Current.Advertisements.push(row);
+        var ele = {};
+        ele.Id = row.Id;
+        ele.Name = row.Name;
+        ele.isDroped = true;
+        ele.Width = data.width;
+        ele.Height = data.height;
+        ele.Top = data.top;
+        ele.Left = data.left;
+        ele.Size = data.size;
+
+        //row.isDroped = true;
+        //row.Width = data.width;
+        //row.Height = data.height;
+        //row.Top = data.top;
+        //row.Left = data.left;
+        //row.Size = data.size;
+        context.Current.Advertisements.push(ele);
     });
 
     upload();
@@ -533,7 +521,8 @@ function getDeleteAdvsAndSections() {
 }
 
 function prevHandler() {
-    window.open(preview + "?" + c_issueid + "=" + currentId + "&" + c_hidefirma+"=1");
+    //  window.open(preview + "?" + c_issueid + "=" + currentId + "&" + c_hidefirma+"=1");
+    window.open(preview + "?" + c_issueid + "=" + currentId);
 }
 
 function delredsHandler() {
@@ -541,7 +530,6 @@ function delredsHandler() {
     destroyExtendItems(delRedObjs);
     delRedObjs.remove();
     onEmptyDropAreaHandler();
-
 }
 function upload() {
     $.ajax({
@@ -553,7 +541,6 @@ function upload() {
         dataType: "json",
         success: function (data, status) {
             var d = data;
-
         },
         error: ajaxFailed
     });

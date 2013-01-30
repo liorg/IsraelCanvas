@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AdvertismentAreaContext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <IssueId>00000000-0000-0000-0000-000000000001</IssueId>
+  <Title>test1</Title>
+  <Advertisements>
+    <Advertisement>
+      <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
+      <Name>טויטה קורולה</Name>
+      <Top>163</Top>
+      <Left>650</Left>
+      <Width>70</Width>
+      <Height>76</Height>
+      <IsDeleted>false</IsDeleted>
+      <Size>12x12</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
+      <Name>סלקום</Name>
+      <Top>38</Top>
+      <Left>570</Left>
+      <Width>223</Width>
+      <Height>69</Height>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
+      <Name>סלקום</Name>
+      <Top>156</Top>
+      <Left>284</Left>
+      <Width>146</Width>
+      <Height>128</Height>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
+      <Name>סלקום</Name>
+      <Top>4</Top>
+      <Left>5</Left>
+      <Width>70</Width>
+      <Height>119</Height>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+  </Advertisements>
+  <Sections />
+</AdvertismentAreaContext>

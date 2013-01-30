@@ -67,9 +67,11 @@
     <Content Include="DashBoard\Canvas\DashBoard2.htm" />
     <Content Include="DashBoard\Canvas\DashBoardxx.htm" />
     <Content Include="DashBoard\Preview.htm" />
+    <Content Include="Helper\PathCurrent\00000000-0000-0000-0000-000000000001.xml" />
     <Content Include="Helper\PathCurrent\2b841240-eef8-43ec-ad0b-ef812238c8af.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Helper\PathCurrent\JavaScript1.js" />
     <Content Include="imgs\A4-SHISHI48-title.png" />
     <Content Include="imgs\A4-SHISHI48.png" />
     <Content Include="imgs\A4.png" />
@@ -133,6 +135,7 @@
     <Content Include="imgs\icons\normal\underline.png" />
     <Content Include="imgs\icons\normal\web_sheet.png" />
     <Content Include="imgs\ico_18_attributes.gif" />
+    <Content Include="imgs\progress2013.gif" />
     <Content Include="imgs\searchclear.gif" />
     <Content Include="Scripts\DashBoard.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
