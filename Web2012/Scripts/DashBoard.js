@@ -68,8 +68,10 @@ var c_advertisment_size_className = c_jquery_class + c_advertisment_size;
 var c_advertisment_title_className = c_jquery_class + c_advertisment_title;
 var c_deleted_advertisement_className = c_jquery_class + c_deleted_advertisement;
 var c_issue_className = c_jquery_class + c_issue;
+var c_hidefirma = "hd";
 
 var onfocusOnSizeLabel = false;
+var isHideFirma = false;
 
 function getAdvertisementById(id) {
     var row = jQuery.grep(context.Advertisements, function (n, i) {
@@ -301,7 +303,11 @@ function getCurrentPointOnScreen(issue, event, ui) {
 }
 
 function generateAdvertismentOnIssue(title, id, size) {
-    return "<div data-title='" + title + "'  class='ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
+    var display = "none";
+    if (isHideFirma==false) {
+         display = "block";
+    }
+    return "<div data-title='" + title + "'  class='ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span style='display: " + display + ";'  class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
 }
 function setCurrent(extendPropAdvertisingItemHandler) {
     if (context.Current) {
@@ -449,7 +455,7 @@ function pasteHandler() {
 function copyHandler() {
     var obj = getEleOnFocus();
     if (obj != null) {
-        if (obj.hasClass(c_deleted_advertisement_className)) {
+        if (obj.hasClass(c_deleted_advertisement)) {
             messageBox("לא ניתן להעתיק שטח פרסום מחוק");
             return;
         }
@@ -519,7 +525,7 @@ function loadContext() {
 
 function prevHandler() {
    // window.open("Preview.htm"+"?"+id=" + currentId+"");
-    window.open(preview+"?"+ c_issueid+ "=" +currentId);
+    window.open(preview + "?" + c_issueid + "=" + currentId + "&" + c_hidefirma+"=1");
     
 }
 function delredsHandler() {
@@ -594,5 +600,12 @@ function getCurrentId() {
     //  currentId = '2b841240-eef8-43ec-ad0b-ef812238c8af';
     var r = getQueryString();
    return r[c_issueid];
-    
+}
+function getHideFirma() {
+    //  currentId = '2b841240-eef8-43ec-ad0b-ef812238c8af';
+    var r = getQueryString();
+    if (typeof r[c_hidefirma] != "undefined") {
+        if (r[c_hidefirma] == 1) return true;
+    }
+    return false;
 }
