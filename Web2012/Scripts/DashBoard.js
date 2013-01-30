@@ -102,7 +102,6 @@ function ajaxFailed(xmlRequest) {
 function setAdvertisementsToolbarData() {
     $.each(context.Advertisements, function (index, advertisement) {
         if (!advertisement.IsDroped && !advertisement.IsDeleted)
-            // drag.append('<li class="MenuItem" style="height:' + advertisement.Height + ';width:' + advertisement.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
             appendAdvertisementsToDragToolBox(advertisement);
     });
 }
@@ -178,6 +177,14 @@ function enabledPasteButton(enabled) {
         return;
     }
     $(c_jquery_id + c_paste_table_btn).addClass(c_disabled);
+}
+
+function enabledDelRedButton(enabled) {
+    if (enabled) {
+        $(c_jquery_id + c_del_red_table_btn).removeClass(c_disabled);
+        return;
+    }
+    $(c_jquery_id + c_del_red_table_btn).addClass(c_disabled);
 }
 
 function registerMenubarEvents() {
@@ -332,6 +339,7 @@ function setCurrent(extendPropAdvertisingItemHandler) {
                 });
             });
         }
+        onAnyElementsOnDropAreaHandler();
     }
 }
 function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) {
@@ -414,13 +422,17 @@ function deleteHandler() {
         if(!row.IsDeleted)
             appendAdvertisementsToDragToolBox(row);
         var del = getAllAdvertisingSpaceElementById(elementsToDelById);
-        del.resizable(c_destroy);
-        del.qtip(c_destroy);
-        del.draggable(c_destroy);
+        destroyExtendItems(del);
         del.remove();
         menuButtonsHandlerAFterDelElemnts();
         elementCopy = null;
     }
+}
+
+function destroyExtendItems(del) {
+    del.resizable(c_destroy);
+    del.qtip(c_destroy);
+    del.draggable(c_destroy);
 }
 
 function getAllAdvertisingSpaceElementById(id) {
@@ -429,13 +441,26 @@ function getAllAdvertisingSpaceElementById(id) {
 }
 
 function menuButtonsHandlerAFterDelElemnts() {
-    enabledDeleteButton(false);
-    enabledPasteButton(false);
+   // enabledDeleteButton(false);
+   // enabledPasteButton(false);
+    onEmptyDropAreaHandler();
+}
+function onEmptyDropAreaHandler() {
     if (isEmptyOnDropElement()) {
         enabledCopyButton(false);
+        enabledDelRedButton(false);
+        enabledDeleteButton(false);
+        enabledDelRedButton(false);
     }
 }
-
+function onAnyElementsOnDropAreaHandler() {
+    if (!isEmptyOnDropElement()) {
+        enabledCopyButton(true);
+        if (hasDeleteAdvsAndSections()) {
+            enabledDelRedButton(true);
+        }
+    }
+}
 function isEmptyOnDropElement() {
     return $(c_drop + " " + c_AdvertisingSpace_className).length > 0 ? false : true;
 }
@@ -480,6 +505,10 @@ function saveHandler() {
         messageBox("לא נבחרו שטחי פרסום");
         return false;
     }
+    if (hasDeleteAdvsAndSections()) {
+        messageBox("יש שטחים של מחיקה");
+        return false;
+    }
     loadContext();
     $(c_jquery_class + c_AdvertisingSpace).each(function (i) {
         var ele = $(this);
@@ -496,18 +525,35 @@ function saveHandler() {
 
     upload();
 }
+function hasDeleteAdvsAndSections() {
+    return (getDeleteAdvsAndSections().length > 0);
+}
+function getDeleteAdvsAndSections() {
+    return $(c_deleted_advertisement_className);
+}
 
+function prevHandler() {
+    window.open(preview + "?" + c_issueid + "=" + currentId + "&" + c_hidefirma+"=1");
+}
+
+function delredsHandler() {
+    var delRedObjs = getDeleteAdvsAndSections();
+    destroyExtendItems(delRedObjs);
+    delRedObjs.remove();
+    onEmptyDropAreaHandler();
+
+}
 function upload() {
     $.ajax({
         type: "POST",
-        url:uploadHandler,
+        url: uploadHandler,
         cache: false,
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(context.Current),
         dataType: "json",
         success: function (data, status) {
             var d = data;
-            
+
         },
         error: ajaxFailed
     });
@@ -523,14 +569,6 @@ function loadContext() {
     context.Current.Sections = [];
 }
 
-function prevHandler() {
-   // window.open("Preview.htm"+"?"+id=" + currentId+"");
-    window.open(preview + "?" + c_issueid + "=" + currentId + "&" + c_hidefirma+"=1");
-    
-}
-function delredsHandler() {
-    alert(3);
-}
 jQuery.fn.selectText = function () {
     var range, selection;
     if (document.body.createTextRange) {
@@ -588,11 +626,9 @@ var dragDetailsUi = {
 function getQueryString() {
     var result = {}, queryString = location.search.substring(1),
         re = /([^&=]+)=([^&]*)/g, m;
-
     while (m = re.exec(queryString)) {
         result[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
     }
-
     return result;
 }
 
@@ -602,7 +638,6 @@ function getCurrentId() {
    return r[c_issueid];
 }
 function getHideFirma() {
-    //  currentId = '2b841240-eef8-43ec-ad0b-ef812238c8af';
     var r = getQueryString();
     if (typeof r[c_hidefirma] != "undefined") {
         if (r[c_hidefirma] == 1) return true;

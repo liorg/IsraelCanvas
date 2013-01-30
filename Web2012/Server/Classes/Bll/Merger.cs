@@ -12,23 +12,28 @@ namespace Web2012.Server.Classes.Bll
     {
         public static AdvertismentArea Merge(AdvertismentArea crm, ICollection<Section> sections, ICollection<Advertisement> advertisements)
         {
-            SetIsDeletedAdvertisements(crm, advertisements);
+            SetIsDeletedAdvertisements(crm,ref advertisements);
 
             crm.Advertisements = advertisements.ToList();
             crm.Sections = sections.ToList();
             return crm;
         }
 
-        static void SetIsDeletedAdvertisements(AdvertismentArea crm, ICollection<Advertisement> advertisements)
+        static void SetIsDeletedAdvertisements(AdvertismentArea crm,ref ICollection<Advertisement> advertisements)
         {
-            if (advertisements!=null && advertisements.Any() && crm.Current != null && crm.Current.Advertisements != null &&   crm.Current.Advertisements.Any())
+            if (!(advertisements != null && advertisements.Any()))
+            {
+                advertisements = new List<Advertisement>();
+            }
+            var advertisementsTemp = advertisements;
+            if (crm.Current != null && crm.Current.Advertisements != null &&   crm.Current.Advertisements.Any())
             {
                 (from currAdv in crm.Current.Advertisements
-                 where !(from adv in advertisements select adv.Id).Contains(currAdv.Id)
+                 where !(from adv in advertisementsTemp select adv.Id).Contains(currAdv.Id)
                  select currAdv).ToList().ForEach(e =>
                                             {
                                                 e.IsDeleted = true;
-                                                advertisements.Add(e);
+                                                advertisementsTemp.Add(e);
                                             });
 
             }
