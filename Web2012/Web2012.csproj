@@ -79,6 +79,8 @@
     <Content Include="imgs\A4.png" />
     <Content Include="imgs\app_back.png" />
     <Content Include="imgs\BiggThenA4.png" />
+    <Content Include="imgs\clear.png" />
+    <Content Include="imgs\section.png" />
     <Content Include="imgs\icons\disabled\bold.png" />
     <Content Include="imgs\icons\disabled\box.png" />
     <Content Include="imgs\icons\disabled\bullet-orange.png" />
@@ -136,7 +138,7 @@
     <Content Include="imgs\icons\normal\script.png" />
     <Content Include="imgs\icons\normal\underline.png" />
     <Content Include="imgs\icons\normal\web_sheet.png" />
-    <Content Include="imgs\ico_18_attributes.gif" />
+    <Content Include="imgs\adv.gif" />
     <Content Include="imgs\progress2013.gif" />
     <Content Include="imgs\searchclear.gif" />
     <Content Include="Scripts\DashBoard.js" />

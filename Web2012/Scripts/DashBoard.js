@@ -66,6 +66,7 @@ var c_div = "div";
 
 var c_drop = c_jquery_class + c_dropable;
 var c_drag = c_jquery_id + c_dragable;
+var c_toolbar_ClassName = c_jquery_class + "ToolBar";
 var c_AdvertisingSpace_className = c_jquery_class + c_AdvertisingSpace;
 var c_advertisment_id_className = c_jquery_class + c_advertisment_id;
 var c_advertisment_size_className = c_jquery_class + c_advertisment_size;
@@ -111,7 +112,7 @@ function setAdvertisementsToolbarData() {
 }
 
 function appendAdvertisementsToDragToolBox(advertisement) {
-    drag.append('<li class="MenuItem" style="height:' + advertisementSize.Height + ';width:' + advertisementSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+    drag.append('<li class="MenuItem adv-type" style="height:' + advertisementSize.Height + ';width:' + advertisementSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
 }
 
 function setImageTemplate() {
@@ -240,7 +241,11 @@ function registerDocumentEvents() {
 }
 
 function registerDragElement() {
-    $(c_drag + " " + c_li).liveDraggable({
+    c_toolbar_ClassName;
+    //var selector = c_drag + " " + c_li;
+    var selector = c_toolbar_ClassName + " " + c_li;
+
+    $(selector).liveDraggable({
         revert: c_invalid,
         appendTo: c_drop,
         containment: c_drop,
@@ -258,30 +263,69 @@ function registerDragElement() {
 }
 
 function registerDropElement() {
+    //var selector = c_drag + " " + c_li;
+    var selector = c_toolbar_ClassName + " " + c_li;
     dropBox.droppable({
-        accept: c_drag + " " + c_li + ", " + c_jquery_class + c_ui_widget_content,
+        accept: selector+ ", " + c_jquery_class + c_ui_widget_content,
         scroll: true,
         refreshPositions: true,
         drop: function (event, ui) {
             enabledCopyButton(true);
-            var currPoint = getCurrentPointOnScreen(this, event, ui);
-            var id;
-            if (typeof (dragclone) == "undefined")
-                id = ui.draggable.find(c_span).attr(c_id);
-            else
-                id = dragClone.find(c_span).attr(c_id);
-            var row = getAdvertisementById(id);
-            row.Top = currPoint.top;
-            row.Left = currPoint.left;
-
-            if (ui.draggable.hasClass(c_AdvertisingSpace)) {
-                return true;
-            }
-            editAdvertismentOnIssue(this, dragClone, row, currPoint);
-            dragElement.remove();
-            return true;
+            return onDropHandler(this, event, ui);
         }
     });
+}
+
+function onDropHandler(issue,event, ui) {
+    var draggable=ui.draggable;
+    if (draggable.hasClass(c_AdvertisingSpace)) {
+        return true;
+    }
+    if (draggable.hasClass("adv-type")) {
+      return  onInitAdv(issue, event, ui);
+       
+    }
+    if (draggable.hasClass("cleaner-type")) {
+        return onInitCleaner(issue, event, ui);
+     
+    }
+}
+function onInitCleaner(issue, event, ui) {
+    var currPoint = getCurrentPointOnScreen(issue, event, ui);
+    dragClone = dragClone.replaceWith("<div style='width:25px;height:15px' class='cleaner-drag-type ui-draggable'></div>")
+    dragClone.css({
+        position: c_absolute,
+        left: currPoint.left,
+        top: currPoint.top
+    });
+    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+    dragClone.draggable(
+        {
+            containment: c_drop, cursor: "move", scroll: false,
+        }).bind(c_mousedown, onFocusElement).resizable({
+            containment: c_drop,
+        });
+    dragClone.appendTo(issue);
+    return true;
+}
+
+function onInitAdv(issue, event, ui) {
+    var currPoint = getCurrentPointOnScreen(issue, event, ui);
+    var id;
+    if (typeof (dragclone) == "undefined")
+        id = ui.draggable.find(c_span).attr(c_id);
+    else
+        id = dragClone.find(c_span).attr(c_id);
+    var row = getAdvertisementById(id);
+    //  row.Top = currPoint.top;
+    // row.Left = currPoint.left;
+
+    //if (ui.draggable.hasClass(c_AdvertisingSpace)) {
+    //    return true;
+    //}
+    editAdvertismentOnIssue(issue, dragClone, row, currPoint);
+    dragElement.remove();
+    return true;
 }
 
 function registerElementEvents() {
@@ -314,11 +358,10 @@ function getCurrentPointOnScreen(issue, event, ui) {
 }
 
 function generateAdvertismentOnIssue(title, id, size) {
-    var display = "none";
-    if (isHideFirma==false) {
-         display = "block";
+    if (isHideFirma==true) {
+        title = "";
     }
-    return "<div data-title='" + title + "'  class='ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span style='display: " + display + ";'  class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
+    return "<div data-title='" + title + "'  class='adv-drag-type ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
 }
 function setCurrent(extendPropAdvertisingItemHandler) {
     if (context.Current) {
@@ -368,6 +411,11 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) 
     extendAdvertisingItem(dragClone, currentRow);
     dragClone.appendTo(issue);
 }
+function onFocusElement() {
+    $(c_AdvertisingSpace_className).removeClass(c_focusObject);
+    $(this).addClass(c_focusObject);
+    enabledDeleteButton(true);
+}
 
 function extendAdvertisingItem(dragClone, currentRow) {
     dragClone.qtip({
@@ -380,12 +428,7 @@ function extendAdvertisingItem(dragClone, currentRow) {
             start: function (event, ui) {
                 ui.helper.qtip("hide");
             },
-        }).bind(c_mousedown, function () {
-            $(c_AdvertisingSpace_className).removeClass(c_focusObject);
-            $(this).addClass(c_focusObject);
-            enabledDeleteButton(true);
-        }
-        ).resizable({
+        }).bind(c_mousedown, onFocusElement).resizable({
             containment: c_drop,
             start: function (event, ui) {
                 ui.helper.qtip("hide");
@@ -401,7 +444,8 @@ function deleteHandler() {
     if (obj != null) {
         var elementsToDelById = obj.find(c_advertisment_id_className).attr(c_id);
         var row = getAdvertisementById(elementsToDelById);
-        if(!row.IsDeleted)
+
+        if (!row.IsDeleted)
             appendAdvertisementsToDragToolBox(row);
         var del = getAllAdvertisingSpaceElementById(elementsToDelById);
         destroyExtendItems(del);
@@ -423,8 +467,6 @@ function getAllAdvertisingSpaceElementById(id) {
 }
 
 function menuButtonsHandlerAFterDelElemnts() {
-   // enabledDeleteButton(false);
-   // enabledPasteButton(false);
     onEmptyDropAreaHandler();
 }
 function onEmptyDropAreaHandler() {
@@ -506,12 +548,6 @@ function saveHandler() {
         ele.Left = data.left;
         ele.Size = data.size;
 
-        //row.isDroped = true;
-        //row.Width = data.width;
-        //row.Height = data.height;
-        //row.Top = data.top;
-        //row.Left = data.left;
-        //row.Size = data.size;
         context.Current.Advertisements.push(ele);
     });
 

@@ -8,8 +8,8 @@
       <Name>טויטה קורולה</Name>
       <Top>973</Top>
       <Left>6</Left>
-      <Width>72</Width>
-      <Height>119</Height>
+      <Width>76</Width>
+      <Height>123</Height>
       <IsDeleted>false</IsDeleted>
       <Size>12x12</Size>
       <IsDroped>true</IsDroped>
@@ -19,8 +19,8 @@
       <Name>סלקום</Name>
       <Top>38</Top>
       <Left>570</Left>
-      <Width>221</Width>
-      <Height>72</Height>
+      <Width>225</Width>
+      <Height>76</Height>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
@@ -30,8 +30,8 @@
       <Name>סלקום</Name>
       <Top>157</Top>
       <Left>285</Left>
-      <Width>68</Width>
-      <Height>116</Height>
+      <Width>27</Width>
+      <Height>123</Height>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
@@ -41,8 +41,8 @@
       <Name>סלקום</Name>
       <Top>4</Top>
       <Left>5</Left>
-      <Width>75</Width>
-      <Height>125</Height>
+      <Width>79</Width>
+      <Height>129</Height>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
@@ -52,8 +52,30 @@
       <Name>אגיס</Name>
       <Top>1099</Top>
       <Left>0</Left>
-      <Width>294</Width>
-      <Height>24</Height>
+      <Width>298</Width>
+      <Height>28</Height>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Id>e5fbbc06-8f81-0000-0006-f56bb52ed361</Id>
+      <Name>שלי יחמוביץ -עבודה</Name>
+      <Top>239</Top>
+      <Left>630</Left>
+      <Width>32</Width>
+      <Height>47</Height>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
+      <Name>בנט הבית היהודי</Name>
+      <Top>197</Top>
+      <Left>508</Left>
+      <Width>59</Width>
+      <Height>39</Height>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>

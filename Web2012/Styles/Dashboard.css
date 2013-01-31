@@ -113,7 +113,7 @@ li.drag-li
 
 li.MenuItem
 {
-    background-image: url('/imgs/ico_18_attributes.gif');
+   
     background-repeat: no-repeat;
     background-position: right;
     text-indent: -2em;
@@ -229,3 +229,30 @@ div.deleted-advertisement
     background-image:none;
     background-color: red;
 }
+
+li.cleaner-type
+{
+     background-image: url('/imgs/clear.png');
+}
+li.adv-type
+{
+     background-image: url('/imgs/adv.gif');
+}
+li.section-type
+{
+    background-image: url('/imgs/section.png');
+}
+
+div.cleaner-drag-type
+{
+   
+}
+div.adv-drag-type
+{
+     
+}
+div.section-drag-type
+{
+   
+}
+
