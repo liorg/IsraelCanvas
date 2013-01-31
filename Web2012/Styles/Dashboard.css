@@ -94,7 +94,7 @@ UL.ToolBar
     border-left: 1px dotted black;
     border-right: 1px dotted black;
     border-top: 1px dotted black;*/
-    border:1px dotted black;
+    border:1px dotted pink;
 }
 span.advertisment-title
 {
@@ -230,9 +230,9 @@ div.deleted-advertisement
     background-color: red;
 }
 
-li.cleaner-type
+li.whitespace-type
 {
-     background-image: url('/imgs/clear.png');
+     background-image: url('/imgs/whitespace.png');
 }
 li.adv-type
 {
@@ -243,7 +243,7 @@ li.section-type
     background-image: url('/imgs/section.png');
 }
 
-div.cleaner-drag-type
+div.whitespace-drag-type
 {
    
 }

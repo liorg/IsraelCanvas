@@ -33,19 +33,9 @@ namespace Web2012.DashBoard
 
             var upload = jsonSerializer.Deserialize<AdvertismentAreaContext>(jsonString);
 
-            //string resp = "ok";
-            
             HttpContext.Current.Response.ContentType = "application/json";
             HttpContext.Current.Response.ContentEncoding = Encoding.UTF8;
 
-           // HttpContext.Current.Response.Write(jsonSerializer.Serialize(resp));
-
-            //string s = ContextHelper.SaveAdvertismentAreaToXml(upload);
-            //string path = "/Helper/PathCurrent/";
-            //var xmlCurrent = context.Server.MapPath(path);
-            //XmlDocument xdoc = new XmlDocument();
-            //xdoc.LoadXml(s);
-            //xdoc.Save(xmlCurrent+"/"+upload.IssueId.ToString() + ".xml");
             IAdvertismentAreaService mockService = new AdvertismentAreaServiceMock();
             
             mockService.Set(upload);

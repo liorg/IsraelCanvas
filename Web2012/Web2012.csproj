@@ -79,7 +79,7 @@
     <Content Include="imgs\A4.png" />
     <Content Include="imgs\app_back.png" />
     <Content Include="imgs\BiggThenA4.png" />
-    <Content Include="imgs\clear.png" />
+    <Content Include="imgs\whitespace.png" />
     <Content Include="imgs\section.png" />
     <Content Include="imgs\icons\disabled\bold.png" />
     <Content Include="imgs\icons\disabled\box.png" />

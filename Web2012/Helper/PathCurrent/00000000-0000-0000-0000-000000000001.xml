@@ -4,82 +4,50 @@
   <Title>test1</Title>
   <Advertisements>
     <Advertisement>
-      <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
-      <Name>טויטה קורולה</Name>
-      <Top>973</Top>
-      <Left>6</Left>
-      <Width>76</Width>
-      <Height>123</Height>
-      <IsDeleted>false</IsDeleted>
-      <Size>12x12</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
-      <Name>סלקום</Name>
-      <Top>38</Top>
-      <Left>570</Left>
-      <Width>225</Width>
-      <Height>76</Height>
-      <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
-      <Name>סלקום</Name>
-      <Top>157</Top>
-      <Left>285</Left>
-      <Width>27</Width>
-      <Height>123</Height>
-      <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
-      <Name>סלקום</Name>
-      <Top>4</Top>
-      <Left>5</Left>
-      <Width>79</Width>
-      <Height>129</Height>
-      <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
-      <Name>אגיס</Name>
-      <Top>1099</Top>
-      <Left>0</Left>
-      <Width>298</Width>
-      <Height>28</Height>
-      <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
+      <Top>30</Top>
+      <Left>409</Left>
+      <Width>90</Width>
+      <Height>70</Height>
       <Id>e5fbbc06-8f81-0000-0006-f56bb52ed361</Id>
       <Name>שלי יחמוביץ -עבודה</Name>
-      <Top>239</Top>
-      <Left>630</Left>
-      <Width>32</Width>
-      <Height>47</Height>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
+      <Top>69</Top>
+      <Left>194</Left>
+      <Width>130</Width>
+      <Height>61</Height>
       <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
       <Name>בנט הבית היהודי</Name>
-      <Top>197</Top>
-      <Left>508</Left>
-      <Width>59</Width>
-      <Height>39</Height>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
   </Advertisements>
   <Sections />
+  <Colors>
+    <ElementColor>
+      <Top>21</Top>
+      <Left>570</Left>
+      <Width>228</Width>
+      <Height>72</Height>
+      <ColorName>white</ColorName>
+    </ElementColor>
+    <ElementColor>
+      <Top>153</Top>
+      <Left>712</Left>
+      <Width>82</Width>
+      <Height>76</Height>
+      <ColorName>white</ColorName>
+    </ElementColor>
+    <ElementColor>
+      <Top>346</Top>
+      <Left>364</Left>
+      <Width>99</Width>
+      <Height>27</Height>
+      <ColorName>white</ColorName>
+    </ElementColor>
+  </Colors>
 </AdvertismentAreaContext>

@@ -1,6 +1,6 @@
 ﻿var uploadHandler = "mockUpload.ashx";
 var downloadHandler = "MockData.ashx";
-var preview="Preview.htm";
+var preview = "Preview.htm";
 var dropBox;
 var drag;
 var dragClone;
@@ -39,7 +39,7 @@ var c_portrait_height = "297mm";
 var c_issue = "Issue";
 var c_dropable = "drop";
 var c_dragable = "drag";
-var c_blur="blur";
+var c_blur = "blur";
 
 var c_AdvertisingSpace = "myWidget";
 var c_advertisment_id = "advertisment-id";
@@ -63,6 +63,12 @@ var c_issueid = "id";
 var c_span = "span";
 var c_li = "li";
 var c_div = "div";
+
+var c_adv_drag_type = "adv-drag-type";
+var c_whitespace_drag_type = "whitespace-drag-type";
+var c_section_drag_type = "section-drag-type";
+var c_whitespace_type = "whitespace-type";
+var c_adv_type = "adv-type"
 
 var c_drop = c_jquery_class + c_dropable;
 var c_drag = c_jquery_id + c_dragable;
@@ -146,7 +152,7 @@ function onSuccessHandler(data, status) {
     context = data;
     setAdvertisementsToolbarData();
     setImageTemplate();
-    setCurrent(extendAdvertisingItem);
+    setCurrent(extendAdvertisingItem, extendBehaviourItem, extendBehaviourItem);
     registerElementEvents();
 }
 
@@ -219,8 +225,8 @@ function registerDocumentEvents() {
     }).keyup(function (e) {
         if (e.keyCode == ctrlKey) ctrlDown = false;
         if (e.keyCode == deleteKey) {
-            if(!onfocusOnSizeLabel)
-             deleteHandler();
+            if (!onfocusOnSizeLabel)
+                deleteHandler();
         }
     });
 
@@ -266,7 +272,7 @@ function registerDropElement() {
     //var selector = c_drag + " " + c_li;
     var selector = c_toolbar_ClassName + " " + c_li;
     dropBox.droppable({
-        accept: selector+ ", " + c_jquery_class + c_ui_widget_content,
+        accept: selector + ", " + c_jquery_class + c_ui_widget_content,
         scroll: true,
         refreshPositions: true,
         drop: function (event, ui) {
@@ -276,41 +282,32 @@ function registerDropElement() {
     });
 }
 
-function onDropHandler(issue,event, ui) {
-    var draggable=ui.draggable;
+function onDropHandler(issue, event, ui) {
+    var draggable = ui.draggable;
     if (draggable.hasClass(c_AdvertisingSpace)) {
         return true;
     }
-    if (draggable.hasClass("adv-type")) {
-      return  onInitAdv(issue, event, ui);
-       
+    if (draggable.hasClass(c_adv_type)) {
+        return onInitAdv(issue, event, ui);
     }
-    if (draggable.hasClass("cleaner-type")) {
-        return onInitCleaner(issue, event, ui);
-     
+    if (draggable.hasClass(c_whitespace_type)) {
+        return onInitWhiteSpace(issue, event, ui);
     }
 }
-function onInitCleaner(issue, event, ui) {
+
+function generateWhiteSpace() {
+    return "<div style='width:25px;height:15px' class='" + c_whitespace_drag_type + " ui-draggable'></div>";
+}
+
+function onInitWhiteSpace(issue, event, ui) {
     var currPoint = getCurrentPointOnScreen(issue, event, ui);
-    dragClone = dragClone.replaceWith("<div style='width:25px;height:15px' class='cleaner-drag-type ui-draggable'></div>")
-    dragClone.css({
-        position: c_absolute,
-        left: currPoint.left,
-        top: currPoint.top
-    });
-    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
-    dragClone.draggable(
-        {
-            containment: c_drop, cursor: "move", scroll: false,
-        }).bind(c_mousedown, onFocusElement).resizable({
-            containment: c_drop,
-        });
-    dragClone.appendTo(issue);
+    createWhiteSpaceOnIssue(issue, dragClone, currPoint);
     return true;
 }
 
 function onInitAdv(issue, event, ui) {
     var currPoint = getCurrentPointOnScreen(issue, event, ui);
+
     var id;
     if (typeof (dragclone) == "undefined")
         id = ui.draggable.find(c_span).attr(c_id);
@@ -323,7 +320,7 @@ function onInitAdv(issue, event, ui) {
     //if (ui.draggable.hasClass(c_AdvertisingSpace)) {
     //    return true;
     //}
-    editAdvertismentOnIssue(issue, dragClone, row, currPoint);
+    createAdvertismentOnIssue(issue, dragClone, row, currPoint);
     dragElement.remove();
     return true;
 }
@@ -358,38 +355,90 @@ function getCurrentPointOnScreen(issue, event, ui) {
 }
 
 function generateAdvertismentOnIssue(title, id, size) {
-    if (isHideFirma==true) {
+    if (isHideFirma == true) {
         title = "";
     }
     return "<div data-title='" + title + "'  class='adv-drag-type ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
 }
-function setCurrent(extendPropAdvertisingItemHandler) {
+
+function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHandler, extendPropSectionItemHandler) {
     if (context.Current) {
-        if (context.Advertisements.length > 0) {
-            $.each(context.Current.Advertisements, function (index, advertisement) {
-                var createDiv = generateAdvertismentOnIssue(advertisement.Name, advertisement.Id, advertisement.Size);
-                var d = $(createDiv).appendTo(c_issue_className);
-                if (advertisement.IsDeleted) {
-                    $(d).addClass(c_deleted_advertisement);
-                }
-                if (typeof(extendPropAdvertisingItemHandler) == 'function')
-                     extendPropAdvertisingItemHandler(d, advertisement);
-            
-                $(d).addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
-                $(d).appendTo(c_issue_className);
-                $(d).css({
-                    position: c_absolute,
-                    left: advertisement.Left+c_px,
-                    top: advertisement.Top + c_px,
-                    width: advertisement.Width + c_px,
-                    height: advertisement.Height + c_px
-                });
-            });
-        }
+        // if (context.Advertisements.length > 0) {
+        $.each(context.Current.Advertisements, function (index, advertisement) {
+            var createDiv = generateAdvertismentOnIssue(advertisement.Name, advertisement.Id, advertisement.Size);
+            var d = $(createDiv).appendTo(c_issue_className);
+            if (advertisement.IsDeleted) {
+                $(d).addClass(c_deleted_advertisement);
+            }
+            if (typeof (extendPropAdvertisingItemHandler) == 'function')
+                extendPropAdvertisingItemHandler(d, advertisement);
+
+            setPositionsElements(d, advertisement);
+            //$(d).addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+            //$(d).appendTo(c_issue_className);
+            //$(d).css({
+            //    position: c_absolute,
+            //    left: advertisement.Left + c_px,
+            //    top: advertisement.Top + c_px,
+            //    width: advertisement.Width + c_px,
+            //    height: advertisement.Height + c_px
+            //});
+        });
+        //   }
+        //    if (context.Colors.length > 0) {
+        $.each(context.Current.Colors, function (index, whiteColor) {
+            var createDiv = generateWhiteSpace();
+            var d = $(createDiv).appendTo(c_issue_className);
+
+            if (typeof (extendPropWhiteSpaceItemHandler) == 'function')
+                extendPropWhiteSpaceItemHandler(d, whiteColor);
+
+            setPositionsElements(d, whiteColor);
+            //$(d).addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+            //$(d).appendTo(c_issue_className);
+            //$(d).css({
+            //    position: c_absolute,
+            //    left: whiteColor.Left + c_px,
+            //    top: whiteColor.Top + c_px,
+            //    width: whiteColor.Width + c_px,
+            //    height: whiteColor.Height + c_px
+            //});
+        });
+        //  }
         onAnyElementsOnDropAreaHandler();
     }
 }
-function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) {
+
+function setPositionsElements(d, item) {
+
+    $(d).addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+    $(d).appendTo(c_issue_className);
+    $(d).css({
+        position: c_absolute,
+        left: item.Left + c_px,
+        top: item.Top + c_px,
+        width: item.Width + c_px,
+        height: item.Height + c_px
+    });
+}
+
+function createWhiteSpaceOnIssue(issue, dragClone, currPoint, copy) {
+    var isCopy = copy || false;
+    dragClone = dragClone.replaceWith(generateWhiteSpace())
+    dragClone.css({
+        position: c_absolute,
+        left: currPoint.left,
+        top: currPoint.top
+    });
+    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+
+    extendBehaviourItem(dragClone);
+
+    dragClone.appendTo(issue);
+
+}
+
+function createAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) {
     var isCopy = copy || false;
     var title = dragClone.text();
     var size = currentRow.Size;
@@ -411,6 +460,7 @@ function editAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) 
     extendAdvertisingItem(dragClone, currentRow);
     dragClone.appendTo(issue);
 }
+
 function onFocusElement() {
     $(c_AdvertisingSpace_className).removeClass(c_focusObject);
     $(this).addClass(c_focusObject);
@@ -418,46 +468,56 @@ function onFocusElement() {
 }
 
 function extendAdvertisingItem(dragClone, currentRow) {
+    //dragClone.qtip({
+    //    content: currentRow.Name + " <br/>" + currentRow.Size,
+    //    show: c_mouseover,
+    //    hide: c_mouseout
+    //}).draggable(
+    //    {
+    //        containment: c_drop, cursor: "move", scroll: false,
+    //        start: function (event, ui) {
+    //            ui.helper.qtip("hide");
+    //        },
+    //    }).bind(c_mousedown, onFocusElement).resizable({
+    //        containment: c_drop,
+    //        start: function (event, ui) {
+    //            ui.helper.qtip("hide");
+    //        },
+    //        stop: function (event, ui) {
+    //            var title = $(this).find(c_advertisment_title_className);
+    //            title.focus();
+    //        }
+    //    });
     dragClone.qtip({
         content: currentRow.Name + " <br/>" + currentRow.Size,
         show: c_mouseover,
         hide: c_mouseout
-    }).draggable(
+    });
+
+    extendBehaviourItem(dragClone,
+        function (event, ui) { ui.helper.qtip("hide"); },
+        function (event, ui) { ui.helper.qtip("hide"); },
+         function (event, ui) {
+             var title = $(this).find(c_advertisment_title_className);
+             title.focus();
+         });
+}
+
+function extendBehaviourItem(dragClone, draggableStartHandler, resizableStartHandler, resizableStopHandler) {
+    dragClone.draggable(
         {
             containment: c_drop, cursor: "move", scroll: false,
-            start: function (event, ui) {
-                ui.helper.qtip("hide");
-            },
+            start: draggableStartHandler,
         }).bind(c_mousedown, onFocusElement).resizable({
             containment: c_drop,
-            start: function (event, ui) {
-                ui.helper.qtip("hide");
-            },
-            stop: function (event, ui) {
-                var title = $(this).find(c_advertisment_title_className);
-                title.focus();
-            }
+            start: resizableStartHandler,
+            stop: resizableStopHandler
         });
-}
-function deleteHandler() {
-    var obj = getEleOnFocus();
-    if (obj != null) {
-        var elementsToDelById = obj.find(c_advertisment_id_className).attr(c_id);
-        var row = getAdvertisementById(elementsToDelById);
-
-        if (!row.IsDeleted)
-            appendAdvertisementsToDragToolBox(row);
-        var del = getAllAdvertisingSpaceElementById(elementsToDelById);
-        destroyExtendItems(del);
-        del.remove();
-        menuButtonsHandlerAFterDelElemnts();
-        elementCopy = null;
-    }
 }
 
 function destroyExtendItems(del) {
     del.resizable(c_destroy);
-    del.qtip(c_destroy);
+   
     del.draggable(c_destroy);
 }
 
@@ -469,6 +529,7 @@ function getAllAdvertisingSpaceElementById(id) {
 function menuButtonsHandlerAFterDelElemnts() {
     onEmptyDropAreaHandler();
 }
+
 function onEmptyDropAreaHandler() {
     if (isEmptyOnDropElement()) {
         enabledCopyButton(false);
@@ -477,6 +538,7 @@ function onEmptyDropAreaHandler() {
         enabledDelRedButton(false);
     }
 }
+
 function onAnyElementsOnDropAreaHandler() {
     if (!isEmptyOnDropElement()) {
         enabledCopyButton(true);
@@ -485,8 +547,50 @@ function onAnyElementsOnDropAreaHandler() {
         }
     }
 }
+
 function isEmptyOnDropElement() {
     return $(c_drop + " " + c_AdvertisingSpace_className).length > 0 ? false : true;
+}
+
+function delAdvHandler(obj) {
+    var elementsToDelById = obj.find(c_advertisment_id_className).attr(c_id);
+    var row = getAdvertisementById(elementsToDelById);
+
+    if (!row.IsDeleted)
+        appendAdvertisementsToDragToolBox(row);
+    var del = getAllAdvertisingSpaceElementById(elementsToDelById);
+    destroyExtendItems(del);
+    del.qtip(c_destroy);
+    return del;
+}
+function deleteHandler() {
+    var obj = getEleOnFocus();
+    if (obj != null) {
+        if (obj.hasClass(c_adv_drag_type)) {
+            del = delAdvHandler(obj);
+        }
+        else {
+            del = obj;
+        }
+        del.remove();
+
+        menuButtonsHandlerAFterDelElemnts();
+        elementCopy = null;
+    }
+}
+
+
+
+function copyAdvHandler(elementCopy, currPoint) {
+    var id = elementCopy.find(c_advertisment_id_className).attr(c_id);
+    var row = getAdvertisementById(id);
+    createAdvertismentOnIssue($(c_drop), elementCopy, row, currPoint, true);
+    elementCopy.removeClass(c_focusObject);
+}
+
+function copyWhitespaceHandler(elementCopy, currPoint) {
+    createWhiteSpaceOnIssue($(c_drop), elementCopy, currPoint, true);
+    elementCopy.removeClass(c_focusObject);
 }
 
 function pasteHandler() {
@@ -494,10 +598,12 @@ function pasteHandler() {
         var currPoint = {};
         currPoint.top = 0;
         currPoint.left = 0;
-        var id = elementCopy.find(c_advertisment_id_className).attr(c_id);
-        var row = getAdvertisementById(id);
-        editAdvertismentOnIssue($(c_drop), elementCopy, row, currPoint, true);
-        elementCopy.removeClass(c_focusObject);
+        if(elementCopy.hasClass(c_adv_drag_type)){
+            copyAdvHandler(elementCopy, currPoint);
+        }
+        else if (elementCopy.hasClass(c_whitespace_drag_type)) {
+            copyWhitespaceHandler(elementCopy, currPoint);
+        }
     }
 }
 
@@ -524,6 +630,7 @@ function getEleOnFocus() {
 function messageBox(s) {
     alert(s);
 }
+
 function saveHandler() {
     if (isEmptyOnDropElement()) {
         messageBox("לא נבחרו שטחי פרסום");
@@ -536,26 +643,48 @@ function saveHandler() {
     loadContext();
     $(c_jquery_class + c_AdvertisingSpace).each(function (i) {
         var ele = $(this);
-        var data = dragDetailsUi.getDataByAdvertisementDragElement(ele);
-        var row = getAdvertisementById(data.id);
-        var ele = {};
-        ele.Id = row.Id;
-        ele.Name = row.Name;
-        ele.isDroped = true;
-        ele.Width = data.width;
-        ele.Height = data.height;
-        ele.Top = data.top;
-        ele.Left = data.left;
-        ele.Size = data.size;
-
-        context.Current.Advertisements.push(ele);
+        if (ele.hasClass(c_adv_drag_type)) {
+            populateAdvertisementsOnContext(ele);
+        }
+        if (ele.hasClass(c_whitespace_drag_type)) {
+            populateWhiteSpacesOnContext(ele);
+        }
     });
-
     upload();
 }
+
+function populateWhiteSpacesOnContext(obj) {
+    var dataUi = dragDetailsUi.getDragElementPosition(obj);
+    var ele = {};
+    ele.ColorName = "white";
+    setElementBase(ele, dataUi);
+    context.Current.Colors.push(ele);
+
+}
+
+function populateAdvertisementsOnContext(obj) {
+    var dataUi = dragDetailsUi.getDataByAdvertisementDragElement(obj);
+    var row = getAdvertisementById(dataUi.id);
+    var ele = {};
+    ele.Id = row.Id;
+    ele.Name = row.Name;
+    ele.isDroped = true;
+    ele.Size = dataUi.size;
+    setElementBase(ele, dataUi);
+    context.Current.Advertisements.push(ele);
+}
+
+function setElementBase(ele, data) {
+    ele.Width = data.width;
+    ele.Height = data.height;
+    ele.Top = data.top;
+    ele.Left = data.left;
+}
+
 function hasDeleteAdvsAndSections() {
     return (getDeleteAdvsAndSections().length > 0);
 }
+
 function getDeleteAdvsAndSections() {
     return $(c_deleted_advertisement_className);
 }
@@ -571,6 +700,7 @@ function delredsHandler() {
     delRedObjs.remove();
     onEmptyDropAreaHandler();
 }
+
 function upload() {
     $.ajax({
         type: "POST",
@@ -594,6 +724,7 @@ function loadContext() {
     }
     context.Current.Advertisements = [];
     context.Current.Sections = [];
+    context.Current.Colors = [];
 }
 
 jQuery.fn.selectText = function () {
@@ -633,18 +764,22 @@ jQuery.fn.liveDraggable = function (opts) {
 };
 
 var dragDetailsUi = {
-    getDataByDragElement: function (dragElement) {
+    getDragElementPosition: function (dragElement) {
         var obj = {};
-        this.title = dragElement.find(c_advertisment_title_className).text();
-        obj.id = dragElement.find(c_advertisment_id_className).attr(c_id);
         obj.width = dragElement.outerWidth();
         obj.height = dragElement.outerHeight();
         obj.top = dragElement.position().top;
         obj.left = dragElement.position().left;
         return obj;
     },
+    getDataByDragElement: function (dragElement) {
+        var obj = this.getDragElementPosition(dragElement);
+        obj.title = dragElement.find(c_advertisment_title_className).text();
+        obj.id = dragElement.find(c_advertisment_id_className).attr(c_id);
+        return obj;
+    },
     getDataByAdvertisementDragElement: function (dragElement) {
-        var obj=this.getDataByDragElement(dragElement);
+        var obj = this.getDataByDragElement(dragElement);
         obj.size = dragElement.find(c_advertisment_size_className).text();
         return obj;
     }
@@ -662,8 +797,9 @@ function getQueryString() {
 function getCurrentId() {
     //  currentId = '2b841240-eef8-43ec-ad0b-ef812238c8af';
     var r = getQueryString();
-   return r[c_issueid];
+    return r[c_issueid];
 }
+
 function getHideFirma() {
     var r = getQueryString();
     if (typeof r[c_hidefirma] != "undefined") {

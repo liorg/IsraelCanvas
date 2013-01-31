@@ -21,5 +21,7 @@ namespace Guardian.Advertisment.DataModel
     public class AdvertismentAreaContext : AdvertismentBase
     {
     //    public Guid IssueId { get; set; }
+        public List<ElementColor> Colors { get; set; }
+        
     }
 }
