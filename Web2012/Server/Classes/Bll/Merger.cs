@@ -13,9 +13,15 @@ namespace Web2012.Server.Classes.Bll
         public static AdvertismentArea Merge(AdvertismentArea crm, ICollection<Section> sections, ICollection<Advertisement> advertisements)
         {
             SetIsDeletedAdvertisements(crm,ref advertisements);
-
-            crm.Advertisements = advertisements.ToList();
-            crm.Sections = sections.ToList();
+            SetIsDeletedSections(crm, ref sections);
+            if (advertisements.Any())
+            {
+                crm.Advertisements = advertisements.ToList();
+            }
+            if (sections.Any())
+            {
+                crm.Sections = sections.ToList();
+            }
             return crm;
         }
 
@@ -35,6 +41,26 @@ namespace Web2012.Server.Classes.Bll
                                                 e.IsDeleted = true;
                                                 advertisementsTemp.Add(e);
                                             });
+
+            }
+        }
+
+        static void SetIsDeletedSections(AdvertismentArea crm, ref ICollection<Section> sections)
+        {
+            if (!(sections != null && sections.Any()))
+            {
+                sections = new List<Section>();
+            }
+            var sectionsTemp = sections;
+            if (crm.Current != null && crm.Current.Sections != null && crm.Current.Sections.Any())
+            {
+                (from currSct in crm.Current.Sections
+                 where !(from sct in sectionsTemp select sct.Id).Contains(currSct.Id)
+                              select currSct).ToList().ForEach(e =>
+                 {
+                     e.IsDeleted = true;
+                     sectionsTemp.Add(e);
+                 });
 
             }
         }

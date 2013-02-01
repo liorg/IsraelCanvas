@@ -6,8 +6,8 @@
     <Advertisement>
       <Top>30</Top>
       <Left>409</Left>
-      <Width>90</Width>
-      <Height>70</Height>
+      <Width>96</Width>
+      <Height>76</Height>
       <Id>e5fbbc06-8f81-0000-0006-f56bb52ed361</Id>
       <Name>שלי יחמוביץ -עבודה</Name>
       <IsDeleted>false</IsDeleted>
@@ -17,8 +17,8 @@
     <Advertisement>
       <Top>69</Top>
       <Left>194</Left>
-      <Width>130</Width>
-      <Height>61</Height>
+      <Width>136</Width>
+      <Height>67</Height>
       <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
       <Name>בנט הבית היהודי</Name>
       <IsDeleted>false</IsDeleted>
@@ -26,27 +26,46 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
   </Advertisements>
-  <Sections />
+  <Sections>
+    <Section>
+      <Top>198</Top>
+      <Left>245</Left>
+      <Width>368</Width>
+      <Height>23</Height>
+      <Id>e5fbbc06-8f81-0003-0000-f56bb52ed361</Id>
+      <Name>פוליטי/מדיני</Name>
+      <IsDeleted>false</IsDeleted>
+    </Section>
+    <Section>
+      <Top>138</Top>
+      <Left>496</Left>
+      <Width>177</Width>
+      <Height>31</Height>
+      <Id>e5fbbc06-8f81-0003-0000-f56bb52ed361</Id>
+      <Name>פוליטי/מדיני</Name>
+      <IsDeleted>false</IsDeleted>
+    </Section>
+  </Sections>
   <Colors>
     <ElementColor>
       <Top>21</Top>
       <Left>570</Left>
-      <Width>228</Width>
-      <Height>72</Height>
+      <Width>234</Width>
+      <Height>78</Height>
       <ColorName>white</ColorName>
     </ElementColor>
     <ElementColor>
       <Top>153</Top>
       <Left>712</Left>
-      <Width>82</Width>
-      <Height>76</Height>
+      <Width>88</Width>
+      <Height>82</Height>
       <ColorName>white</ColorName>
     </ElementColor>
     <ElementColor>
       <Top>346</Top>
       <Left>364</Left>
-      <Width>99</Width>
-      <Height>27</Height>
+      <Width>105</Width>
+      <Height>33</Height>
       <ColorName>white</ColorName>
     </ElementColor>
   </Colors>

@@ -7,7 +7,6 @@ namespace Guardian.Advertisment.DataModel
 {
     public class Advertisement:ElementAreaBase
     {
-        public bool IsDeleted { get; set; }
         public string Size { get; set; }
         public bool IsDroped { get; set; }
     }

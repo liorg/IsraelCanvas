@@ -46,6 +46,8 @@ namespace Web2012.DashBoard
             //XmlDocument xdoc = new XmlDocument();
             //xdoc.LoadXml(s);
             //xdoc.Save(xmlCurrent+"/"+upload.IssueId.ToString() + ".xml");
+
+
             IAdvertismentAreaService mockService = new AdvertismentAreaServiceMock();
             
             mockService.Set(upload);

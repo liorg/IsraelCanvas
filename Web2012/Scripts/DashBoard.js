@@ -3,12 +3,13 @@ var downloadHandler = "MockData.ashx";
 var preview = "Preview.htm";
 var dropBox;
 var drag;
+var dragSections;
 var dragClone;
 var dragElement;
 var elementCopy;
 var currentId;
 var context;
-var advertisementSize = { Height: 10, Width: 20 };
+var menuItemSize = { Height: 10, Width: 20 };
 
 var ctrlDown = false;
 var ctrlKey = 17, vKey = 86, cKey = 67; var deleteKey = 46; var savkey = 83;
@@ -69,9 +70,11 @@ var c_whitespace_drag_type = "whitespace-drag-type";
 var c_section_drag_type = "section-drag-type";
 var c_whitespace_type = "whitespace-type";
 var c_adv_type = "adv-type"
-
+var c_section_type = "section-type";
 var c_drop = c_jquery_class + c_dropable;
 var c_drag = c_jquery_id + c_dragable;
+var c_dragSections = "dragSections";
+var c_dragSections_Id = c_jquery_id + c_dragSections;
 var c_toolbar_ClassName = c_jquery_class + "ToolBar";
 var c_AdvertisingSpace_className = c_jquery_class + c_AdvertisingSpace;
 var c_advertisment_id_className = c_jquery_class + c_advertisment_id;
@@ -86,6 +89,13 @@ var isHideFirma = false;
 
 function getAdvertisementById(id) {
     var row = jQuery.grep(context.Advertisements, function (n, i) {
+        return (n.Id == id);
+    });
+    return row[0];
+}
+
+function getSectionById(id) {
+    var row = jQuery.grep(context.Sections, function (n, i) {
         return (n.Id == id);
     });
     return row[0];
@@ -117,8 +127,20 @@ function setAdvertisementsToolbarData() {
     });
 }
 
+function setSectionsToolbarData() {
+    $.each(context.Sections, function (index, section) {
+        if (!section.IsDeleted)
+            appendSectionsToDragToolBox(section);
+    });
+}
+
+
 function appendAdvertisementsToDragToolBox(advertisement) {
-    drag.append('<li class="MenuItem adv-type" style="height:' + advertisementSize.Height + ';width:' + advertisementSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+    drag.append('<li class="MenuItem '+ c_adv_type+ '" style="height:' + menuItemSize.Height + ';width:' + menuItemSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+}
+
+function appendSectionsToDragToolBox(section) {
+    dragSections.append('<li class="MenuItem ' + c_section_type + '" style="height:' + menuItemSize.Height + ';width:' + menuItemSize.Width + ';"><span id=' + section.Id + '>' + section.Name + '</span></li>');
 }
 
 function setImageTemplate() {
@@ -151,8 +173,9 @@ function loadAjax(successHandler) {
 function onSuccessHandler(data, status) {
     context = data;
     setAdvertisementsToolbarData();
+    setSectionsToolbarData();
     setImageTemplate();
-    setCurrent(extendAdvertisingItem, extendBehaviourItem, extendBehaviourItem);
+    setCurrent(extendAdvertisingItem, extendBehaviourItem, extendSectionItem);
     registerElementEvents();
 }
 
@@ -163,7 +186,7 @@ function onSuccessPrevHandler(data, status) {
 }
 
 function setGlobalVar() {
-    dropBox = $(c_drop); drag = $(c_drag);
+    dropBox = $(c_drop); drag = $(c_drag); dragSections = $(c_dragSections_Id);
 }
 
 function enabledDeleteButton(enabled) {
@@ -293,6 +316,9 @@ function onDropHandler(issue, event, ui) {
     if (draggable.hasClass(c_whitespace_type)) {
         return onInitWhiteSpace(issue, event, ui);
     }
+    if (draggable.hasClass(c_section_type)) {
+        return onInitSection(issue, event, ui);
+    }
 }
 
 function generateWhiteSpace() {
@@ -304,6 +330,22 @@ function onInitWhiteSpace(issue, event, ui) {
     createWhiteSpaceOnIssue(issue, dragClone, currPoint);
     return true;
 }
+
+function onInitSection(issue, event, ui) {
+    var currPoint = getCurrentPointOnScreen(issue, event, ui);
+
+    var id;
+    if (typeof (dragclone) == "undefined")
+        id = ui.draggable.find(c_span).attr(c_id);
+    else
+        id = dragClone.find(c_span).attr(c_id);
+    var row = getSectionById(id);
+
+    createSectionOnIssue(issue, dragClone, row, currPoint);
+   // dragElement.remove();
+    return true;
+}
+
 
 function onInitAdv(issue, event, ui) {
     var currPoint = getCurrentPointOnScreen(issue, event, ui);
@@ -354,17 +396,20 @@ function getCurrentPointOnScreen(issue, event, ui) {
     return { top: top, left: left };
 }
 
+function generateSectionOnIssue(title, id) {
+   return "<div data-title='" + title + "'  class='"+c_section_drag_type+" ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span></div>";
+}
+
 function generateAdvertismentOnIssue(title, id, size) {
     if (isHideFirma == true) {
         title = "";
     }
-    return "<div data-title='" + title + "'  class='adv-drag-type ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
+    return "<div data-title='" + title + "'  class='"+c_adv_drag_type+" ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
 }
 
 function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHandler, extendPropSectionItemHandler) {
     if (context.Current) {
-        // if (context.Advertisements.length > 0) {
-        $.each(context.Current.Advertisements, function (index, advertisement) {
+       $.each(context.Current.Advertisements, function (index, advertisement) {
             var createDiv = generateAdvertismentOnIssue(advertisement.Name, advertisement.Id, advertisement.Size);
             var d = $(createDiv).appendTo(c_issue_className);
             if (advertisement.IsDeleted) {
@@ -384,8 +429,6 @@ function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHa
             //    height: advertisement.Height + c_px
             //});
         });
-        //   }
-        //    if (context.Colors.length > 0) {
         $.each(context.Current.Colors, function (index, whiteColor) {
             var createDiv = generateWhiteSpace();
             var d = $(createDiv).appendTo(c_issue_className);
@@ -394,17 +437,19 @@ function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHa
                 extendPropWhiteSpaceItemHandler(d, whiteColor);
 
             setPositionsElements(d, whiteColor);
-            //$(d).addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
-            //$(d).appendTo(c_issue_className);
-            //$(d).css({
-            //    position: c_absolute,
-            //    left: whiteColor.Left + c_px,
-            //    top: whiteColor.Top + c_px,
-            //    width: whiteColor.Width + c_px,
-            //    height: whiteColor.Height + c_px
-            //});
         });
-        //  }
+        $.each(context.Current.Sections, function (index, section) {
+            var createDiv = generateSectionOnIssue(section.Name, section.Id);
+            var d = $(createDiv).appendTo(c_issue_className);
+            if (section.IsDeleted) {
+                $(d).addClass(c_deleted_advertisement);
+            }
+            if (typeof (extendPropAdvertisingItemHandler) == 'function')
+                extendPropSectionItemHandler(d, section);
+
+            setPositionsElements(d, section);
+        });
+
         onAnyElementsOnDropAreaHandler();
     }
 }
@@ -438,6 +483,27 @@ function createWhiteSpaceOnIssue(issue, dragClone, currPoint, copy) {
 
 }
 
+function createSectionOnIssue(issue, dragClone, currentRow, currPoint, copy) {
+    var isCopy = copy || false;
+    var title = dragClone.text();
+    var id = dragClone.find(c_span).attr(c_id);
+
+    if (isCopy) {
+        title = dragClone.find(c_advertisment_title_className).text();
+        id = dragClone.find(c_advertisment_id_className).attr(c_id);
+    }
+
+    dragClone = dragClone.replaceWith(generateSectionOnIssue(title, id));
+    dragClone.css({
+        position: c_absolute,
+        left: currPoint.left,
+        top: currPoint.top
+    });
+    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+    extendSectionItem(dragClone, currentRow);
+    dragClone.appendTo(issue);
+}
+
 function createAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy) {
     var isCopy = copy || false;
     var title = dragClone.text();
@@ -465,6 +531,18 @@ function onFocusElement() {
     $(c_AdvertisingSpace_className).removeClass(c_focusObject);
     $(this).addClass(c_focusObject);
     enabledDeleteButton(true);
+}
+
+function extendSectionItem(dragClone, currentRow) {
+    dragClone.qtip({
+        content: currentRow.Name,
+        show: c_mouseover,
+        hide: c_mouseout
+    });
+
+    extendBehaviourItem(dragClone,
+        function (event, ui) { ui.helper.qtip("hide"); },
+        function (event, ui) { ui.helper.qtip("hide"); });
 }
 
 function extendAdvertisingItem(dragClone, currentRow) {
@@ -517,7 +595,6 @@ function extendBehaviourItem(dragClone, draggableStartHandler, resizableStartHan
 
 function destroyExtendItems(del) {
     del.resizable(c_destroy);
-   
     del.draggable(c_destroy);
 }
 
@@ -563,11 +640,25 @@ function delAdvHandler(obj) {
     del.qtip(c_destroy);
     return del;
 }
+
+function delSectionHandler(obj) {
+    var elementsToDelById = obj.find(c_advertisment_id_className).attr(c_id);
+    var row = getSectionById(elementsToDelById);
+    if (!row.IsDeleted)
+        appendAdvertisementsToDragToolBox(row);
+    destroyExtendItems(obj);
+    obj.qtip(c_destroy);
+    return obj;
+}
+
 function deleteHandler() {
     var obj = getEleOnFocus();
     if (obj != null) {
         if (obj.hasClass(c_adv_drag_type)) {
             del = delAdvHandler(obj);
+        }
+        if (obj.hasClass(c_section_drag_type)) {
+            del = delSectionHandler(obj);
         }
         else {
             del = obj;
@@ -579,14 +670,20 @@ function deleteHandler() {
     }
 }
 
-
-
 function copyAdvHandler(elementCopy, currPoint) {
     var id = elementCopy.find(c_advertisment_id_className).attr(c_id);
     var row = getAdvertisementById(id);
     createAdvertismentOnIssue($(c_drop), elementCopy, row, currPoint, true);
     elementCopy.removeClass(c_focusObject);
 }
+
+function copySectionHandler(elementCopy, currPoint) {
+    var id = elementCopy.find(c_advertisment_id_className).attr(c_id);
+    var row = getSectionById(id);
+    createSectionOnIssue($(c_drop), elementCopy, row, currPoint, true);
+    elementCopy.removeClass(c_focusObject);
+}
+
 
 function copyWhitespaceHandler(elementCopy, currPoint) {
     createWhiteSpaceOnIssue($(c_drop), elementCopy, currPoint, true);
@@ -600,6 +697,9 @@ function pasteHandler() {
         currPoint.left = 0;
         if(elementCopy.hasClass(c_adv_drag_type)){
             copyAdvHandler(elementCopy, currPoint);
+        }
+        else if (elementCopy.hasClass(c_section_drag_type)) {
+            copySectionHandler(elementCopy, currPoint);
         }
         else if (elementCopy.hasClass(c_whitespace_drag_type)) {
             copyWhitespaceHandler(elementCopy, currPoint);
@@ -649,8 +749,20 @@ function saveHandler() {
         if (ele.hasClass(c_whitespace_drag_type)) {
             populateWhiteSpacesOnContext(ele);
         }
+        if (ele.hasClass(c_section_drag_type)) {
+            populateSectionsOnContext(ele);
+        }
     });
     upload();
+}
+function populateSectionsOnContext(obj) {
+    var dataUi = dragDetailsUi.getDataByDragElement(obj);
+    var row = getSectionById(dataUi.id);
+    var ele = {};
+    ele.Id = row.Id;
+    ele.Name = row.Name;
+    setElementBase(ele, dataUi);
+    context.Current.Sections.push(ele);
 }
 
 function populateWhiteSpacesOnContext(obj) {
@@ -659,7 +771,6 @@ function populateWhiteSpacesOnContext(obj) {
     ele.ColorName = "white";
     setElementBase(ele, dataUi);
     context.Current.Colors.push(ele);
-
 }
 
 function populateAdvertisementsOnContext(obj) {

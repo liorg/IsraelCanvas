@@ -7,12 +7,12 @@
     <script type="text/javascript" src="../Scripts/jquery-ui.js"></script>
     <script type="text/javascript" language="javascript" src="../Scripts/linq.js"></script>
     <script type="text/javascript" src="../Scripts/DashBoard.js"></script>
-    <script src="../Scripts/jquery.qtip-1.0.0-rc3.min.js"></script>
+    <script language="javascript" src="../Scripts/jquery.qtip-1.0.0-rc3.min.js"></script>
     <link href="../Styles/Dashboard.css" rel="stylesheet" />
     <link href="../Styles/ribbon.css" rel="stylesheet" />
     <script type="text/javascript" language="javascript">
         $(function () {
-           // currentId = '2b841240-eef8-43ec-ad0b-ef812238c8af';
+            // currentId = '2b841240-eef8-43ec-ad0b-ef812238c8af';
             currentId = '00000000-0000-0000-0000-000000000001';
             //currentId = getCurrentId();
             registerDocumentEvents();
@@ -20,8 +20,6 @@
             setGlobalVar();
             setToolboxUi();
             loadAjax(onSuccessHandler);
-
-
         });
     </script>
 </head>
@@ -43,16 +41,15 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
 
                 <div class="ribbon-section" unselectable="on">
                     <span class="section-title" unselectable="on">Tables</span>
-                   
                     <div id="save-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
-                         <span class="button-help" unselectable="on">Save.</span>
+                        <span class="button-help" unselectable="on">Save.</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/save-page.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/normal/save-page.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/save-page.png">
                         <span class="button-title" unselectable="on">שמור</span>
                     </div>
                     <div id="prev-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
-                         <span class="button-help" unselectable="on">Preview.</span>
+                        <span class="button-help" unselectable="on">Preview.</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/Preview.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/normal/Preview.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/normal/Preview.png">
@@ -65,21 +62,21 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/open-table.png">
                         <span class="button-title" unselectable="on">העתק</span>
                     </div>
-                     <div id="paste-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
+                    <div id="paste-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
                         <span class="button-help" unselectable="on">paste</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/paste.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/paste.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/paste.png">
                         <span class="button-title" unselectable="on">הדבק</span>
                     </div>
-                     <div id="del-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
+                    <div id="del-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
                         <span class="button-help" unselectable="on">Delete</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/delete-page.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/delete-page.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/delete-page.png">
                         <span class="button-title" unselectable="on">מחק</span>
                     </div>
-                       <div id="del-red-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
+                    <div id="del-red-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
                         <span class="button-help" unselectable="on">Delete all reds</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/delete-page.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/delete-page.png">
@@ -88,11 +85,7 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
                     </div>
                 </div>
                 <div class="ribbon-section-sep" unselectable="on"></div>
-
-
-
             </div>
-
         </div>
         <div id="tabs" class="tabs-bottom leftFloat">
             <ul>
@@ -105,16 +98,15 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
                 <ul class="ToolBar" id="drag"></ul>
             </div>
             <div id="tabs-2">
-                <ul class="ToolBar">
+                <ul class="ToolBar" id="dragSections">
                 </ul>
             </div>
-             <div id="tabs-3">
+            <div id="tabs-3">
                 <ul class="ToolBar">
-                  <li class="MenuItem whitespace-type"><span id="cleanColorWhite">לבן</span></li>
+                    <li class="MenuItem whitespace-type"><span id="cleanColorWhite">לבן</span></li>
                 </ul>
             </div>
         </div>
-
         <div class="Screen">
             <div style="position: relative" class="drop Issue">
             </div>
