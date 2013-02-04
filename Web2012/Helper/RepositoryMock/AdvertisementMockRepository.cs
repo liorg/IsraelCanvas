@@ -69,16 +69,16 @@ namespace Web2012.Helper.RepositoryMock
             //    Size = "4x4",
             //    IsDroped = false
             //});
-            advertisements.Add(new Advertisement
-            {
+            //advertisements.Add(new Advertisement
+            //{
                
-                IsDeleted = false,
-                Id = new Guid("e5fbbc06-8f81-0000-0006-f56bb52ed361"),
-                Name = "שלי יחמוביץ -עבודה",
-                Size = "4x4",
-                IsDroped = false
+            //    IsDeleted = false,
+            //    Id = new Guid("e5fbbc06-8f81-0000-0006-f56bb52ed361"),
+            //    Name = "שלי יחמוביץ -עבודה",
+            //    Size = "4x4",
+            //    IsDroped = false
 
-            });
+            //});
             advertisements.Add(new Advertisement
             {
                

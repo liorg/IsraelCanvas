@@ -419,15 +419,6 @@ function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHa
                 extendPropAdvertisingItemHandler(d, advertisement);
 
             setPositionsElements(d, advertisement);
-            //$(d).addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
-            //$(d).appendTo(c_issue_className);
-            //$(d).css({
-            //    position: c_absolute,
-            //    left: advertisement.Left + c_px,
-            //    top: advertisement.Top + c_px,
-            //    width: advertisement.Width + c_px,
-            //    height: advertisement.Height + c_px
-            //});
         });
         $.each(context.Current.Colors, function (index, whiteColor) {
             var createDiv = generateWhiteSpace();
@@ -636,8 +627,9 @@ function delAdvHandler(obj) {
     if (!row.IsDeleted)
         appendAdvertisementsToDragToolBox(row);
     var del = getAllAdvertisingSpaceElementById(elementsToDelById);
-    destroyExtendItems(del);
     del.qtip(c_destroy);
+    destroyExtendItems(del);
+   
     return del;
 }
 
@@ -657,12 +649,13 @@ function deleteHandler() {
         if (obj.hasClass(c_adv_drag_type)) {
             del = delAdvHandler(obj);
         }
-        if (obj.hasClass(c_section_drag_type)) {
+        else if (obj.hasClass(c_section_drag_type)) {
             del = delSectionHandler(obj);
         }
         else {
             del = obj;
         }
+
         del.remove();
 
         menuButtonsHandlerAFterDelElemnts();
