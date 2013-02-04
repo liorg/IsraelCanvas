@@ -41,7 +41,7 @@ namespace Web2012.Helper.RepositoryMock
             {
                 IsDeleted = false,
                 Id = new Guid("e5fbbc06-8f81-0000-0002-f56bb52ed361"),
-                Name = "ציפי   ליבני     התקווה",
+                Name = "ציפי ליבני - התקווה",
                 Size = "12x12"
             });
             advertisements.Add(new Advertisement
@@ -84,7 +84,7 @@ namespace Web2012.Helper.RepositoryMock
                
                 IsDeleted = false,
                 Id = new Guid("e5fbbc06-8f81-0000-0007-f56bb52ed361"),
-                Name = "בנט הבית היהודי",
+                Name = " הבית היהודי",
                 Size = "4x4",
                 IsDroped = false
 

@@ -33,9 +33,6 @@ namespace Web2012.DashBoard
 
             var upload = jsonSerializer.Deserialize<AdvertismentAreaContext>(jsonString);
 
-            HttpContext.Current.Response.ContentType = "application/json";
-            HttpContext.Current.Response.ContentEncoding = Encoding.UTF8;
-
             IAdvertismentAreaService mockService = new AdvertismentAreaServiceMock();
             
             mockService.Set(upload);

@@ -35,9 +35,10 @@ namespace Web2012.DashBoard
 
             //string resp = "ok";
             
-            HttpContext.Current.Response.ContentType = "application/json";
-            HttpContext.Current.Response.ContentEncoding = Encoding.UTF8;
-
+            //HttpContext.Current.Response.ContentType = "application/json";
+            
+           // HttpContext.Current.Response.ContentEncoding = Encoding.UTF8;
+           
            // HttpContext.Current.Response.Write(jsonSerializer.Serialize(resp));
 
             //string s = ContextHelper.SaveAdvertismentAreaToXml(upload);
@@ -51,7 +52,7 @@ namespace Web2012.DashBoard
             IAdvertismentAreaService mockService = new AdvertismentAreaServiceMock();
             
             mockService.Set(upload);
-
+           // HttpContext.Current.Response.Status = "200";
             context.Response.Write("File Save");
         }
 

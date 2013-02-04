@@ -17,9 +17,7 @@ namespace Web2012.Server
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            if (context.Request.Params["Current"] == null)
-            {
-               // context.Request.Params["id"]==null:Guid.NewGuid()
+            // context.Request.Params["id"]==null:Guid.NewGuid()
                 var id = context.Request.QueryString["id"];
 
                 var mockService = new AdvertismentAreaServiceMock();
@@ -27,9 +25,7 @@ namespace Web2012.Server
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 string d = serializer.Serialize(mockService.Get(Guid.Parse(id)));
                 context.Response.Write(d);
-            }
-            else
-            context.Response.Redirect("fin.html");
+          
         }
 
         public bool IsReusable

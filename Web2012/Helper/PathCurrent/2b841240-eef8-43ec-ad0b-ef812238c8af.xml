@@ -4,38 +4,28 @@
   <Title>test</Title>
   <Advertisements>
     <Advertisement>
-      <Id>e5fbbc06-8f81-0000-0008-f56bb52ed361</Id>
-      <Name>פלא-פון</Name>
-      <Top>177</Top>
-      <Left>489</Left>
-      <Width>147</Width>
-      <Height>122</Height>
+      <Top>130</Top>
+      <Left>658</Left>
+      <Width>138</Width>
+      <Height>83</Height>
+      <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
+      <Name>מטרנה</Name>
       <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
+      <Size>908</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
-      <Name>בנט הבית היהודי</Name>
-      <Top>33</Top>
-      <Left>725</Left>
-      <Width>41</Width>
-      <Height>58</Height>
+      <Top>72</Top>
+      <Left>788</Left>
+      <Width>92</Width>
+      <Height>53</Height>
+      <Id>e5fbbc06-8f81-0000-0004-f56bb52ed361</Id>
+      <Name>מודעה חדשה</Name>
       <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Id>e5fbbc06-8f81-0000-0005-f56bb52ed361</Id>
-      <Name>the voice 2</Name>
-      <Top>179</Top>
-      <Left>693</Left>
-      <Width>46</Width>
-      <Height>55</Height>
-      <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
+      <Size>12x12</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
   </Advertisements>
   <Sections />
+  <Colors />
 </AdvertismentAreaContext>

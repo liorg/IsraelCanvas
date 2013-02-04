@@ -94,7 +94,7 @@ UL.ToolBar
     border-left: 1px dotted black;
     border-right: 1px dotted black;
     border-top: 1px dotted black;*/
-    border:1px dotted pink;
+    border:2px dotted blue;
 }
 span.advertisment-title
 {
@@ -253,7 +253,8 @@ div.adv-drag-type
 }
 div.section-drag-type
 {
-   
+ /*border-style:none;*/  
+ text-decoration:underline;
 }
 
 .draggable-id
@@ -263,4 +264,8 @@ div.section-drag-type
 .draggable-title
 {
    
+}
+.remove-border
+{
+   border-style:none;
 }
