@@ -51,8 +51,13 @@
     PADDING-RIGHT: 1px;
     PADDING-LEFT: 1px;
 }
-
-div.Issue 
+/*div.IssuePrint
+{
+     overflow:hidden;position:absolute;right:0;top:0;
+ width:250mm; height: 170mm; margin: 15px 30px;
+}*/
+/*
+    div.Issue 
 {
     background-repeat: no-repeat;
     background-image: url('/imgs/progress2013.gif');
@@ -60,8 +65,20 @@ div.Issue
     width: 297mm;
     height: 210mm;
     list-style-type: none;
-}
 
+}
+    */
+
+div.Issue 
+{
+    background-repeat: no-repeat;
+    background-image: url('/imgs/progress2013.gif');
+    background-position: 0px 0px;
+    width: 292mm;
+    height: 204mm;
+    list-style-type: none;margin: 4mm; overflow:hidden;padding:1mm;
+
+}
 div.Screen
 {
     position: absolute;
@@ -253,7 +270,6 @@ div.adv-drag-type
 }
 div.section-drag-type
 {
- /*border-style:none;*/  
  text-decoration:underline;
 }
 

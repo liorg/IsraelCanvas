@@ -4,10 +4,10 @@
   <Title>test</Title>
   <Advertisements>
     <Advertisement>
-      <Top>130</Top>
-      <Left>658</Left>
-      <Width>138</Width>
-      <Height>83</Height>
+      <Top>112</Top>
+      <Left>632</Left>
+      <Width>166</Width>
+      <Height>111</Height>
       <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
       <Name>מטרנה</Name>
       <IsDeleted>false</IsDeleted>
@@ -17,15 +17,89 @@
     <Advertisement>
       <Top>72</Top>
       <Left>788</Left>
-      <Width>92</Width>
-      <Height>53</Height>
+      <Width>122</Width>
+      <Height>83</Height>
       <Id>e5fbbc06-8f81-0000-0004-f56bb52ed361</Id>
       <Name>מודעה חדשה</Name>
       <IsDeleted>false</IsDeleted>
       <Size>12x12</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
+    <Advertisement>
+      <Top>231</Top>
+      <Left>745</Left>
+      <Width>265</Width>
+      <Height>72</Height>
+      <Id>e5fbbc06-8f81-0000-0013-f56bb52ed361</Id>
+      <Name>מוצר ישראלי</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>710</Top>
+      <Left>3</Left>
+      <Width>88</Width>
+      <Height>66</Height>
+      <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
+      <Name>אגיס</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>5555555</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>3</Top>
+      <Left>965</Left>
+      <Width>143</Width>
+      <Height>144</Height>
+      <Id>e5fbbc06-8f81-0000-0000-f56bb52ed361</Id>
+      <Name>הליכוד ביתנו</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>1233x1233</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>3</Top>
+      <Left>3</Left>
+      <Width>104</Width>
+      <Height>83</Height>
+      <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
+      <Name>סלקום</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>473</Top>
+      <Left>488</Left>
+      <Width>168</Width>
+      <Height>260</Height>
+      <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
+      <Name>Nike</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
   </Advertisements>
-  <Sections />
+  <Sections>
+    <Section>
+      <Top>8</Top>
+      <Left>508</Left>
+      <Width>112</Width>
+      <Height>35</Height>
+      <Id>e5fbbc06-8f81-0003-0000-f56bb52ed361</Id>
+      <Name>פוליטי/מדיני</Name>
+      <IsDeleted>false</IsDeleted>
+    </Section>
+    <Section>
+      <Top>39</Top>
+      <Left>719</Left>
+      <Width>34</Width>
+      <Height>29</Height>
+      <Id>e5fbbc06-8f81-0001-0000-f56bb52ed361</Id>
+      <Name>ספורט</Name>
+      <IsDeleted>false</IsDeleted>
+    </Section>
+  </Sections>
   <Colors />
 </AdvertismentAreaContext>

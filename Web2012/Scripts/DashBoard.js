@@ -32,8 +32,11 @@ var c_jquery_class = ".";
 
 var c_titleAlert = "הודעה";
 
+//var c_portrait_width = "210mm";
+//var c_portrait_height = "297mm";
+
 var c_portrait_width = "210mm";
-var c_portrait_height = "297mm";
+var c_portrait_height = "292mm";
 
 //width: 297mm;
 //height: 210mm;
@@ -72,6 +75,7 @@ var c_section_drag_type = "section-drag-type";
 var c_whitespace_type = "whitespace-type";
 var c_adv_type = "adv-type"
 var c_section_type = "section-type";
+var c_remover_border = "remove-border";
 var c_drop = c_jquery_class + c_dropable;
 var c_drag = c_jquery_id + c_dragable;
 var c_dragSections = "dragSections";
@@ -318,7 +322,6 @@ function registerDocumentEvents() {
 
 function registerDragElement() {
     c_toolbar_ClassName;
-    //var selector = c_drag + " " + c_li;
     var selector = c_toolbar_ClassName + " " + c_li;
 
     $(selector).liveDraggable({
@@ -339,7 +342,6 @@ function registerDragElement() {
 }
 
 function registerDropElement() {
-    //var selector = c_drag + " " + c_li;
     var selector = c_toolbar_ClassName + " " + c_li;
     dropBox.droppable({
         accept: selector + ", " + c_jquery_class + c_ui_widget_content,
@@ -380,14 +382,12 @@ function onInitWhiteSpace(issue, event, ui) {
 
 function onInitSection(issue, event, ui) {
     var currPoint = getCurrentPointOnScreen(issue, event, ui);
-
     var id;
     if (typeof (dragclone) == "undefined")
         id = ui.draggable.find(c_span).attr(c_id);
     else
         id = dragClone.find(c_span).attr(c_id);
     var row = getSectionById(id);
-
     createSectionOnIssue(issue, dragClone, row, currPoint);
 
     return true;
@@ -396,7 +396,6 @@ function onInitSection(issue, event, ui) {
 
 function onInitAdv(issue, event, ui) {
     var currPoint = getCurrentPointOnScreen(issue, event, ui);
-
     var id;
     if (typeof (dragclone) == "undefined")
         id = ui.draggable.find(c_span).attr(c_id);
@@ -411,7 +410,6 @@ function onInitAdv(issue, event, ui) {
 
 function registerElementEvents() {
     var maxChar = 7;
-
     $(c_advertisment_size_className).live(c_keyup, function () { checkCharcount($(this), maxChar); });
     $(c_advertisment_size_className).live(c_keydown, function () { checkCharcount($(this), maxChar); });
     $(c_advertisment_size_className).live(c_dblclick, function () { $(this).selectText(); onfocusOnSizeLabel = true; });
@@ -439,7 +437,7 @@ function getCurrentPointOnScreen(issue, event, ui) {
 }
 
 function generateSectionOnIssue(title, id) {
-    return "<div data-title='" + title + "'  class='" + c_section_drag_type + " ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span></div>";
+    return "<div data-title='" + title + "'  class='" + c_section_drag_type +" " + c_remover_border +" ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span></div>";
 }
 
 function generateAdvertismentOnIssue(title, id, size) {
@@ -559,7 +557,12 @@ function createAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy
 
 function onFocusElement() {
     $(c_AdvertisingSpace_className).removeClass(c_focusObject);
+    $(c_jquery_class+ c_section_drag_type).addClass(c_remover_border);
+    if ($(this).hasClass(c_section_drag_type)) {
+        $(this).removeClass(c_remover_border);
+    }
     $(this).addClass(c_focusObject);
+   
     enabledDeleteButton(true);
 }
 
@@ -939,7 +942,6 @@ function getQueryString() {
 }
 
 function getCurrentId() {
-    //  currentId = '2b841240-eef8-43ec-ad0b-ef812238c8af';
     var r = getQueryString();
     return r[c_issueid];
 }

@@ -4,10 +4,10 @@
   <Title>test1</Title>
   <Advertisements>
     <Advertisement>
-      <Top>159</Top>
-      <Left>98</Left>
-      <Width>71</Width>
-      <Height>122</Height>
+      <Top>3</Top>
+      <Left>17</Left>
+      <Width>75</Width>
+      <Height>126</Height>
       <Id>e5fbbc06-8f81-0000-0004-f56bb52ed361</Id>
       <Name>מודעה חדשה</Name>
       <IsDeleted>false</IsDeleted>
@@ -16,9 +16,9 @@
     </Advertisement>
     <Advertisement>
       <Top>1057</Top>
-      <Left>8</Left>
-      <Width>74</Width>
-      <Height>39</Height>
+      <Left>3</Left>
+      <Width>69</Width>
+      <Height>51</Height>
       <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
       <Name>Nike</Name>
       <IsDeleted>false</IsDeleted>
@@ -28,8 +28,8 @@
     <Advertisement>
       <Top>107</Top>
       <Left>430</Left>
-      <Width>46</Width>
-      <Height>51</Height>
+      <Width>50</Width>
+      <Height>55</Height>
       <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
       <Name>סלקום</Name>
       <IsDeleted>false</IsDeleted>
@@ -37,14 +37,25 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>14</Top>
-      <Left>417</Left>
-      <Width>77</Width>
-      <Height>42</Height>
+      <Top>3</Top>
+      <Left>715</Left>
+      <Width>83</Width>
+      <Height>59</Height>
       <Id>e5fbbc06-8f81-0000-0002-f56bb52ed361</Id>
-      <Name>ציפי   ליבני     התקווה</Name>
+      <Name>ציפי ליבני - התקווה</Name>
       <IsDeleted>false</IsDeleted>
       <Size>88888</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>986</Top>
+      <Left>535</Left>
+      <Width>243</Width>
+      <Height>124</Height>
+      <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
+      <Name>אגיס</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
   </Advertisements>
@@ -86,8 +97,8 @@
       <IsDeleted>false</IsDeleted>
     </Section>
     <Section>
-      <Top>35</Top>
-      <Left>51</Left>
+      <Top>13</Top>
+      <Left>97</Left>
       <Width>92</Width>
       <Height>47</Height>
       <Id>e5fbbc06-8f81-0003-0000-f56bb52ed361</Id>
@@ -97,10 +108,10 @@
   </Sections>
   <Colors>
     <ElementColor>
-      <Top>153</Top>
-      <Left>712</Left>
-      <Width>94</Width>
-      <Height>88</Height>
+      <Top>154</Top>
+      <Left>698</Left>
+      <Width>98</Width>
+      <Height>92</Height>
       <ColorName>white</ColorName>
     </ElementColor>
   </Colors>
