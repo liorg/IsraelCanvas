@@ -129,6 +129,15 @@ $.extend({
         }).html(message);
     }
 });
+function setResizeOnScreen() {
+    var width = screen.availWidth - $("#tabs").width() - "40";
+    var height = screen.availHeight - $("#ribbon").height() - "130";
+
+    $("#myScreen").width(width);
+    $("#tabs").height(height);
+    $("#myScreen").height(height);
+    $("#tabs .tabs-spacer").height(height - 30);
+}
 
 function confirm(s, okCancelHandler) {
     $.customConfirm(s, c_titleAlert, okCancelHandler);

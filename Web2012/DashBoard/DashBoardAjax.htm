@@ -14,13 +14,7 @@
             // currentId = '2b841240-eef8-43ec-ad0b-ef812238c8af';
             currentId = '00000000-0000-0000-0000-000000000001';
             //currentId = getCurrentId();
-            var width = screen.availWidth - $("#tabs").width() - "40";
-            //var height = screen.availHeight - $("#ribbon").height() - "90";
-
-            $("#mydiv").width(width);
-           // $("#tabs").height(height);
-           // $("#mydiv").height(height);
-
+            setResizeOnScreen();
             registerDocumentEvents();
             registerMenubarEvents();
             setGlobalVar();
@@ -40,67 +34,67 @@
 A4	210 × 297 MM	8.27 × 11.69 INCH
 -->
     <div style="position: absolute" class="centreposition">
-        <div id="ribbon" unselectable="on">
+        <div id="ribbon" >
             <!-- 
-            <span class="ribbon-window-title" unselectable="on">Dashboard</span ><div id="ribbon-tab-header-strip" unselectable="on">
-                <div id="ribbon-tab-header-1" class="ribbon-tab-header sel" unselectable="on"><span class="ribbon-title" unselectable="on">Format</span></div>
+            <span class="ribbon-window-title" >Dashboard</span ><div id="ribbon-tab-header-strip" >
+                <div id="ribbon-tab-header-1" class="ribbon-tab-header sel" ><span class="ribbon-title" >Format</span></div>
             </div>
                 -->
-            <div style="display: block;" id="format-tab" class="ribbon-tab" unselectable="on">
-                <div class="ribbon-section"  unselectable="on">
-                  <!--  <span class="section-title" unselectable="on">Tables</span>-->
+            <div style="display: block;" id="format-tab" class="ribbon-tab" >
+                <div class="ribbon-section"  >
+                  <!--  <span class="section-title" >Tables</span>-->
                    
                    
-                    <div id="copy-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
-                        <span class="button-help" unselectable="on">Copy</span>
+                    <div id="copy-table-btn" class="ribbon-button ribbon-button-large disabled" >
+                        <span class="button-help" >Copy</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/open-table.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/open-table.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/open-table.png">
-                        <span class="button-title" unselectable="on">העתק</span>
+                        <span class="button-title" >העתק</span>
                     </div>
-                    <div id="paste-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
-                        <span class="button-help" unselectable="on">paste</span>
+                    <div id="paste-table-btn" class="ribbon-button ribbon-button-large disabled" >
+                        <span class="button-help" >paste</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/paste.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/paste.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/paste.png">
-                        <span class="button-title" unselectable="on">הדבק</span>
+                        <span class="button-title" >הדבק</span>
                     </div>
-                    <div id="del-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
-                        <span class="button-help" unselectable="on">Delete</span>
+                    <div id="del-table-btn" class="ribbon-button ribbon-button-large disabled" >
+                        <span class="button-help" >Delete</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/delete-page.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/delete-page.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/delete-page.png">
-                        <span class="button-title" unselectable="on">הסר</span>
+                        <span class="button-title" >הסר</span>
                     </div>
-                    <div id="del-red-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
-                        <span class="button-help" unselectable="on">Delete all reds</span>
+                    <div id="del-red-table-btn" class="ribbon-button ribbon-button-large disabled" >
+                        <span class="button-help" >Delete all reds</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/delete-page.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/delete-page.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/delete-page.png">
-                        <span class="button-title" unselectable="on">הסר מודעות מבוטלות</span>
+                        <span class="button-title" >הסר מודעות מבוטלות</span>
                     </div>
-                     <div class="ribbon-section-sep" unselectable="on"></div>
-                     <div id="prev-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
-                        <span class="button-help" unselectable="on">Preview.</span>
+                     <div class="ribbon-section-sep" ></div>
+                     <div id="prev-table-btn" class="ribbon-button ribbon-button-large" >
+                        <span class="button-help" >Preview.</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/Preview.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/normal/Preview.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/normal/Preview.png">
-                        <span class="button-title" unselectable="on">תצוגה מקדימה</span>
+                        <span class="button-title" >תצוגה מקדימה</span>
                     </div>
-                      <div id="printer-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
-                        <span class="button-help" unselectable="on">Print</span>
+                      <div id="printer-table-btn" class="ribbon-button ribbon-button-large" >
+                        <span class="button-help" >Print</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/printer.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/printer.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/printer.png">
-                        <span class="button-title" unselectable="on">הדפס</span>
+                        <span class="button-title" >הדפס</span>
                     </div>   
-                    <div class="ribbon-section-sep" unselectable="on"></div>
-                     <div id="save-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
-                        <span class="button-help" unselectable="on">Save.</span>
+                    <div class="ribbon-section-sep" ></div>
+                     <div id="save-table-btn" class="ribbon-button ribbon-button-large" >
+                        <span class="button-help" >Save.</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/save-page.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/normal/save-page.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/save-page.png">
-                        <span class="button-title" unselectable="on">שמור</span>
+                        <span class="button-title" >שמור</span>
                     </div>
                       
                 </div>
@@ -127,7 +121,7 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
                 </ul>
             </div>
         </div>
-        <div id="mydiv"  class="Screen">
+        <div id="myScreen"  class="Screen">
             <div style="position: relative" class="drop Issue">
          </div>
         </div>
