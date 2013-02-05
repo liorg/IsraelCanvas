@@ -304,7 +304,7 @@ div.section-drag-type
 	-moz-box-shadow: #8b9097 0px 1px 3px;
 	box-shadow: #8b9097 0px 1px 3px;
 	overflow: hidden;
-	z-index: 25;
+	z-index: 2225;
 	position: fixed;
 	top: 0;
 	left: 0;

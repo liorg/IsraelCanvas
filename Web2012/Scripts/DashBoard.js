@@ -600,7 +600,7 @@ function extendAdvertisingItem(dragClone, currentRow) {
 function extendBehaviourItem(dragClone, draggableStartHandler, resizableStartHandler, resizableStopHandler) {
     dragClone.draggable(
         {
-            containment: c_drop, cursor: "move", scroll: false,
+            containment: c_drop, cursor: "move", scroll: true,
             start: draggableStartHandler,
         }).bind(c_mousedown, onFocusElement).resizable({
             containment: c_drop,
@@ -856,9 +856,6 @@ function upload() {
         success: uploadSuccessHandler,
         error: ajaxFailed
     });
-
-   
-
 }
 function uploadSuccessHandler(data, status) {
     var d = data;

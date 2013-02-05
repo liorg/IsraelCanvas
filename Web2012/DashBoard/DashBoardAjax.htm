@@ -14,12 +14,22 @@
             // currentId = '2b841240-eef8-43ec-ad0b-ef812238c8af';
             currentId = '00000000-0000-0000-0000-000000000001';
             //currentId = getCurrentId();
+            var width = screen.availWidth - $("#tabs").width() - "40";
+            //var height = screen.availHeight - $("#ribbon").height() - "20";
+
+            $("#mydiv").width(width);
+            ///$("#tabs").height(height);
+           // $("#mydiv").height(height);
+
             registerDocumentEvents();
             registerMenubarEvents();
             setGlobalVar();
             setToolboxUi();
+
             loadAjax(onSuccessHandler);
         });
+       
+
     </script>
 </head>
 <body>
@@ -118,7 +128,7 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
                 </ul>
             </div>
         </div>
-        <div class="Screen">
+        <div id="mydiv"  class="Screen">
             <div style="position: relative" class="drop Issue">
          </div>
         </div>
