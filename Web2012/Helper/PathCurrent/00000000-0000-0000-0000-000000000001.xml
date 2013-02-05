@@ -6,8 +6,8 @@
     <Advertisement>
       <Top>3</Top>
       <Left>3</Left>
-      <Width>81</Width>
-      <Height>132</Height>
+      <Width>87</Width>
+      <Height>138</Height>
       <Id>e5fbbc06-8f81-0000-0004-f56bb52ed361</Id>
       <Name>מודעה חדשה</Name>
       <IsDeleted>false</IsDeleted>
@@ -17,8 +17,8 @@
     <Advertisement>
       <Top>1057</Top>
       <Left>3</Left>
-      <Width>75</Width>
-      <Height>57</Height>
+      <Width>81</Width>
+      <Height>63</Height>
       <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
       <Name>Nike</Name>
       <IsDeleted>false</IsDeleted>
@@ -28,8 +28,8 @@
     <Advertisement>
       <Top>107</Top>
       <Left>430</Left>
-      <Width>104</Width>
-      <Height>32</Height>
+      <Width>110</Width>
+      <Height>38</Height>
       <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
       <Name>סלקום</Name>
       <IsDeleted>false</IsDeleted>
@@ -38,9 +38,9 @@
     </Advertisement>
     <Advertisement>
       <Top>3</Top>
-      <Left>711</Left>
-      <Width>89</Width>
-      <Height>63</Height>
+      <Left>703</Left>
+      <Width>95</Width>
+      <Height>69</Height>
       <Id>e5fbbc06-8f81-0000-0002-f56bb52ed361</Id>
       <Name>ציפי ליבני - התקווה</Name>
       <IsDeleted>false</IsDeleted>
@@ -48,41 +48,56 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>986</Top>
-      <Left>535</Left>
-      <Width>249</Width>
-      <Height>130</Height>
+      <Top>973</Top>
+      <Left>95</Left>
+      <Width>40</Width>
+      <Height>38</Height>
       <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
       <Name>אגיס</Name>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
+    <Advertisement>
+      <Top>116</Top>
+      <Left>558</Left>
+      <Width>120</Width>
+      <Height>52</Height>
+      <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
+      <Name>טויטה קורולה</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>12x12</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>13</Top>
+      <Left>276</Left>
+      <Width>73</Width>
+      <Height>51</Height>
+      <Id>e5fbbc06-8f81-0000-0001-f56bb52ed361</Id>
+      <Name>אגיס</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>12x12</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>0</Top>
+      <Left>0</Left>
+      <Width>50</Width>
+      <Height>33</Height>
+      <Id>e5fbbc06-8f81-0000-0001-f56bb52ed361</Id>
+      <Name>אגיס</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>12x12</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
   </Advertisements>
   <Sections>
     <Section>
-      <Top>157</Top>
-      <Left>469</Left>
-      <Width>145</Width>
-      <Height>80</Height>
-      <Id>e5fbbc06-8f81-0003-0000-f56bb52ed361</Id>
-      <Name>פוליטי/מדיני</Name>
-      <IsDeleted>false</IsDeleted>
-    </Section>
-    <Section>
-      <Top>249</Top>
-      <Left>499</Left>
-      <Width>145</Width>
-      <Height>45</Height>
-      <Id>e5fbbc06-8f81-0003-0000-f56bb52ed361</Id>
-      <Name>פוליטי/מדיני</Name>
-      <IsDeleted>false</IsDeleted>
-    </Section>
-    <Section>
       <Top>228</Top>
       <Left>291</Left>
-      <Width>29</Width>
-      <Height>45</Height>
+      <Width>130</Width>
+      <Height>51</Height>
       <Id>e5fbbc06-8f81-0001-0000-f56bb52ed361</Id>
       <Name>ספורט</Name>
       <IsDeleted>false</IsDeleted>
@@ -117,7 +132,7 @@
     <Section>
       <Top>163</Top>
       <Left>98</Left>
-      <Width>89</Width>
+      <Width>190</Width>
       <Height>21</Height>
       <Id>e5fbbc06-8f81-0001-0000-f56bb52ed361</Id>
       <Name>ספורט</Name>
@@ -126,10 +141,10 @@
   </Sections>
   <Colors>
     <ElementColor>
-      <Top>154</Top>
-      <Left>698</Left>
-      <Width>104</Width>
-      <Height>98</Height>
+      <Top>163</Top>
+      <Left>688</Left>
+      <Width>112</Width>
+      <Height>106</Height>
       <ColorName>white</ColorName>
     </ElementColor>
   </Colors>

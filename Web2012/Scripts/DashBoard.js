@@ -414,7 +414,7 @@ function registerElementEvents() {
     $(c_advertisment_size_className).live(c_keydown, function () { checkCharcount($(this), maxChar); });
     $(c_advertisment_size_className).live(c_dblclick, function () { $(this).selectText(); onfocusOnSizeLabel = true; });
     $(c_advertisment_size_className).live(c_blur, function () { onfocusOnSizeLabel = false; });
-
+  
     registerDragElement();
     registerDropElement();
 }
@@ -557,11 +557,14 @@ function createAdvertismentOnIssue(issue, dragClone, currentRow, currPoint, copy
 
 function onFocusElement() {
     $(c_AdvertisingSpace_className).removeClass(c_focusObject);
-    $(c_jquery_class+ c_section_drag_type).addClass(c_remover_border);
+  //  onfocusOnSizeLabel = false;
+   
+    $(c_jquery_class + c_section_drag_type).addClass(c_remover_border);
     if ($(this).hasClass(c_section_drag_type)) {
         $(this).removeClass(c_remover_border);
     }
     $(this).addClass(c_focusObject);
+
    
     enabledDeleteButton(true);
 }
@@ -657,8 +660,7 @@ function delAdvHandler(obj) {
 function delSectionHandler(obj) {
     var elementsToDelById = obj.find(c_advertisment_id_className).attr(c_id);
     var row = getSectionById(elementsToDelById);
-    if (!row.IsDeleted)
-        appendAdvertisementsToDragToolBox(row);
+
     destroyExtendItems(obj);
     obj.qtip(c_destroy);
     return obj;
@@ -747,7 +749,6 @@ function saveHandler() {
     var hasAnyAdvsOnToolBox= hasAdvsOnToolBox();
     var hasAnyDeleteAdvsAndSections= hasDeleteAdvsAndSections();
     if (hasAnyAdvsOnToolBox || hasAnyDeleteAdvsAndSections) {
-        // messageBox("יש שטחים של מחיקה");
         messageBuilder += hasAnyAdvsOnToolBox ? c_thereIsExtraAdvsMessage : "";
         messageBuilder += hasAnyAdvsOnToolBox ? c_newLine : "";
         messageBuilder += hasAnyDeleteAdvsAndSections ? c_hasDeleteAreaMessage : "";
@@ -880,14 +881,17 @@ jQuery.fn.selectText = function () {
         range = document.body.createTextRange();
         range.moveToElementText(this[0]);
         range.select();
+      //  this.addClass("selectedText");
     } else if (window.getSelection) {
         selection = window.getSelection();
         range = document.createRange();
         range.selectNodeContents(this[0]);
         selection.removeAllRanges();
         selection.addRange(range);
+      //  this.addClass("selectedText");
     }
 };
+
 
 String.prototype.rect = function (font) {
     var f = font || '11px Tahoma, Arial',
