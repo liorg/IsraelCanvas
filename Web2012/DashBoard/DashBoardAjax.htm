@@ -9,7 +9,7 @@
     <script type="text/javascript" src="../Scripts/DashBoard.js"></script>
     <script language="javascript" src="../Scripts/jquery.qtip-1.0.0-rc3.min.js"></script>
     <link href="../Styles/Dashboard.css" rel="stylesheet" />
-    <link href="../Styles/ribbon.css" rel="stylesheet" />
+
     <script type="text/javascript" language="javascript">
         $(function () {
             // currentId = '2b841240-eef8-43ec-ad0b-ef812238c8af';
@@ -38,23 +38,11 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
             </div>
                 -->
             <div style="display: block;" id="format-tab" class="ribbon-tab" unselectable="on">
-
-                <div class="ribbon-section" unselectable="on">
-                    <span class="section-title" unselectable="on">Tables</span>
-                    <div id="save-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
-                        <span class="button-help" unselectable="on">Save.</span>
-                        <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/save-page.png">
-                        <img class="ribbon-icon ribbon-hot" src="/imgs/icons/normal/save-page.png">
-                        <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/save-page.png">
-                        <span class="button-title" unselectable="on">שמור</span>
-                    </div>
-                    <div id="prev-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
-                        <span class="button-help" unselectable="on">Preview.</span>
-                        <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/Preview.png">
-                        <img class="ribbon-icon ribbon-hot" src="/imgs/icons/normal/Preview.png">
-                        <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/normal/Preview.png">
-                        <span class="button-title" unselectable="on">תצוגה מקדימה</span>
-                    </div>
+                 <div class="ribbon-section-sep" unselectable="on"></div>
+                <div class="ribbon-section"  unselectable="on">
+                  <!--  <span class="section-title" unselectable="on">Tables</span>-->
+                   
+                   
                     <div id="copy-table-btn" class="ribbon-button ribbon-button-large disabled" unselectable="on">
                         <span class="button-help" unselectable="on">Copy</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/open-table.png">
@@ -83,15 +71,32 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/delete-page.png">
                         <span class="button-title" unselectable="on">הסר מודעות מבוטלות</span>
                     </div>
+                     <div class="ribbon-section-sep" unselectable="on"></div>
+                     <div id="prev-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
+                        <span class="button-help" unselectable="on">Preview.</span>
+                        <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/Preview.png">
+                        <img class="ribbon-icon ribbon-hot" src="/imgs/icons/normal/Preview.png">
+                        <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/normal/Preview.png">
+                        <span class="button-title" unselectable="on">תצוגה מקדימה</span>
+                    </div>
                       <div id="printer-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
                         <span class="button-help" unselectable="on">Print</span>
                         <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/printer.png">
                         <img class="ribbon-icon ribbon-hot" src="/imgs/icons/hot/printer.png">
                         <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/printer.png">
                         <span class="button-title" unselectable="on">הדפס</span>
+                    </div>   
+                    <div class="ribbon-section-sep" unselectable="on"></div>
+                     <div id="save-table-btn" class="ribbon-button ribbon-button-large" unselectable="on">
+                        <span class="button-help" unselectable="on">Save.</span>
+                        <img class="ribbon-icon ribbon-normal" src="/imgs/icons/normal/save-page.png">
+                        <img class="ribbon-icon ribbon-hot" src="/imgs/icons/normal/save-page.png">
+                        <img class="ribbon-icon ribbon-disabled" src="/imgs/icons/disabled/save-page.png">
+                        <span class="button-title" unselectable="on">שמור</span>
                     </div>
+                      
                 </div>
-                <div class="ribbon-section-sep" unselectable="on"></div>
+               
             </div>
         </div>
         <div id="tabs" class="tabs-bottom leftFloat">
@@ -116,7 +121,7 @@ A4	210 × 297 MM	8.27 × 11.69 INCH
         </div>
         <div class="Screen">
             <div style="position: relative" class="drop Issue">
-            </div>
+         </div>
         </div>
     </div>
 

@@ -5,9 +5,9 @@
   <Advertisements>
     <Advertisement>
       <Top>3</Top>
-      <Left>17</Left>
-      <Width>75</Width>
-      <Height>126</Height>
+      <Left>3</Left>
+      <Width>81</Width>
+      <Height>132</Height>
       <Id>e5fbbc06-8f81-0000-0004-f56bb52ed361</Id>
       <Name>מודעה חדשה</Name>
       <IsDeleted>false</IsDeleted>
@@ -17,8 +17,8 @@
     <Advertisement>
       <Top>1057</Top>
       <Left>3</Left>
-      <Width>69</Width>
-      <Height>51</Height>
+      <Width>75</Width>
+      <Height>57</Height>
       <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
       <Name>Nike</Name>
       <IsDeleted>false</IsDeleted>
@@ -28,19 +28,19 @@
     <Advertisement>
       <Top>107</Top>
       <Left>430</Left>
-      <Width>50</Width>
-      <Height>55</Height>
+      <Width>104</Width>
+      <Height>32</Height>
       <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
       <Name>סלקום</Name>
       <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
+      <Size>676767</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
       <Top>3</Top>
-      <Left>715</Left>
-      <Width>83</Width>
-      <Height>59</Height>
+      <Left>711</Left>
+      <Width>89</Width>
+      <Height>63</Height>
       <Id>e5fbbc06-8f81-0000-0002-f56bb52ed361</Id>
       <Name>ציפי ליבני - התקווה</Name>
       <IsDeleted>false</IsDeleted>
@@ -50,8 +50,8 @@
     <Advertisement>
       <Top>986</Top>
       <Left>535</Left>
-      <Width>243</Width>
-      <Height>124</Height>
+      <Width>249</Width>
+      <Height>130</Height>
       <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
       <Name>אגיס</Name>
       <IsDeleted>false</IsDeleted>
@@ -97,12 +97,30 @@
       <IsDeleted>false</IsDeleted>
     </Section>
     <Section>
-      <Top>13</Top>
-      <Left>97</Left>
+      <Top>24</Top>
+      <Left>128</Left>
       <Width>92</Width>
       <Height>47</Height>
       <Id>e5fbbc06-8f81-0003-0000-f56bb52ed361</Id>
       <Name>פוליטי/מדיני</Name>
+      <IsDeleted>false</IsDeleted>
+    </Section>
+    <Section>
+      <Top>28</Top>
+      <Left>389</Left>
+      <Width>219</Width>
+      <Height>44</Height>
+      <Id>e5fbbc06-8f81-0003-0000-f56bb52ed361</Id>
+      <Name>פוליטי/מדיני</Name>
+      <IsDeleted>false</IsDeleted>
+    </Section>
+    <Section>
+      <Top>163</Top>
+      <Left>98</Left>
+      <Width>89</Width>
+      <Height>21</Height>
+      <Id>e5fbbc06-8f81-0001-0000-f56bb52ed361</Id>
+      <Name>ספורט</Name>
       <IsDeleted>false</IsDeleted>
     </Section>
   </Sections>
@@ -110,8 +128,8 @@
     <ElementColor>
       <Top>154</Top>
       <Left>698</Left>
-      <Width>98</Width>
-      <Height>92</Height>
+      <Width>104</Width>
+      <Height>98</Height>
       <ColorName>white</ColorName>
     </ElementColor>
   </Colors>
