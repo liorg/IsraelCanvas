@@ -4,23 +4,12 @@
   <Title>test1</Title>
   <Advertisements>
     <Advertisement>
-      <Top>10</Top>
-      <Left>328</Left>
-      <Width>25</Width>
-      <Height>82</Height>
-      <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
-      <Name>טויטה קורולה</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>12x12</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>157</Top>
-      <Left>540</Left>
-      <Width>70</Width>
-      <Height>44</Height>
-      <Id>e5fbbc06-8f81-0000-0004-f56bb52ed361</Id>
-      <Name>מודעה חדשה</Name>
+      <Top>163</Top>
+      <Left>285</Left>
+      <Width>68</Width>
+      <Height>33</Height>
+      <Id>e5fbbc06-8f81-0000-0002-f56bb52ed361</Id>
+      <Name>ציפי ליבני - התקווה</Name>
       <IsDeleted>false</IsDeleted>
       <Size>12x12</Size>
       <IsDroped>true</IsDroped>
@@ -36,6 +25,23 @@
       <Name>פוליטי/מדיני</Name>
       <IsDeleted>false</IsDeleted>
     </Section>
+    <Section>
+      <Top>3</Top>
+      <Left>253</Left>
+      <Width>66</Width>
+      <Height>18</Height>
+      <Id>e5fbbc06-8f81-0003-0000-f56bb52ed361</Id>
+      <Name>פוליטי/מדיני</Name>
+      <IsDeleted>false</IsDeleted>
+    </Section>
   </Sections>
-  <Colors />
+  <Colors>
+    <ElementColor>
+      <Top>68</Top>
+      <Left>673</Left>
+      <Width>25</Width>
+      <Height>15</Height>
+      <ColorName>white</ColorName>
+    </ElementColor>
+  </Colors>
 </AdvertismentAreaContext>

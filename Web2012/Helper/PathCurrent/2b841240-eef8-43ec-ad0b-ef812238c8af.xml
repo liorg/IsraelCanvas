@@ -4,8 +4,8 @@
   <Title>test</Title>
   <Advertisements>
     <Advertisement>
-      <Top>112</Top>
-      <Left>632</Left>
+      <Top>231</Top>
+      <Left>465</Left>
       <Width>166</Width>
       <Height>111</Height>
       <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
@@ -15,8 +15,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>72</Top>
-      <Left>788</Left>
+      <Top>29</Top>
+      <Left>428</Left>
       <Width>122</Width>
       <Height>83</Height>
       <Id>e5fbbc06-8f81-0000-0004-f56bb52ed361</Id>
@@ -26,10 +26,10 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>231</Top>
-      <Left>745</Left>
-      <Width>265</Width>
-      <Height>72</Height>
+      <Top>3</Top>
+      <Left>510</Left>
+      <Width>262</Width>
+      <Height>21</Height>
       <Id>e5fbbc06-8f81-0000-0013-f56bb52ed361</Id>
       <Name>מוצר ישראלי</Name>
       <IsDeleted>false</IsDeleted>
@@ -48,8 +48,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>3</Top>
-      <Left>965</Left>
+      <Top>147</Top>
+      <Left>256</Left>
       <Width>143</Width>
       <Height>144</Height>
       <Id>e5fbbc06-8f81-0000-0000-f56bb52ed361</Id>
@@ -83,10 +83,10 @@
   </Advertisements>
   <Sections>
     <Section>
-      <Top>8</Top>
-      <Left>508</Left>
-      <Width>112</Width>
-      <Height>35</Height>
+      <Top>183</Top>
+      <Left>900</Left>
+      <Width>63</Width>
+      <Height>16</Height>
       <Id>e5fbbc06-8f81-0003-0000-f56bb52ed361</Id>
       <Name>פוליטי/מדיני</Name>
       <IsDeleted>false</IsDeleted>
@@ -94,8 +94,8 @@
     <Section>
       <Top>39</Top>
       <Left>719</Left>
-      <Width>34</Width>
-      <Height>29</Height>
+      <Width>41</Width>
+      <Height>87</Height>
       <Id>e5fbbc06-8f81-0001-0000-f56bb52ed361</Id>
       <Name>ספורט</Name>
       <IsDeleted>false</IsDeleted>

@@ -11,8 +11,6 @@
     FONT-SIZE: 11px;
     padding-top: 90px;
 }
-
-
 .centreposition
 {
 }
@@ -64,7 +62,6 @@
 
 }
 */
-
 div.Issue 
 {
     background-repeat: no-repeat;
@@ -96,7 +93,6 @@ UL.ToolBar
     PADDING-LEFT: 0px;
     PADDING-RIGHT: 15px;
     PADDING-TOP: 0px;
-    height: 300px;
     overflow: auto;
     border: 1px solid grey;
 }
