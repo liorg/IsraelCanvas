@@ -94,7 +94,7 @@ var isHideFirma = false;
 var c_hasDeleteAreaMessage = "יש מודעות מבוטלות";
 var c_toContinueMessage = "האם להמשיך?";
 var c_newLine = "<br/>";
-var c_thereIsExtraAdvsMessage  = "יש מודעות נוספות בארגז כלים";
+var c_thereIsExtraAdvsMessage = "יש מודעות נוספות בארגז כלים";
 
 $.extend({
     customAlert: function (message, title) {
@@ -131,7 +131,7 @@ $.extend({
 });
 function setResizeOnScreen() {
     var width = screen.availWidth - $("#tabs").width() - "40";
-    var height = screen.availHeight - $("#ribbon").height() - "130";
+    var height = screen.availHeight - $("#ribbon").height() - "150";
 
     $("#myScreen").width(width);
     $("#tabs").height(height);
@@ -923,8 +923,8 @@ jQuery.fn.liveDraggable = function (opts) {
 var dragDetailsUi = {
     getDragElementPosition: function (dragElement) {
         var obj = {};
-        obj.width = dragElement.outerWidth();
-        obj.height = dragElement.outerHeight();
+        obj.width = dragElement.innerWidth();
+        obj.height = dragElement.innerHeight();
         obj.top = dragElement.position().top;
         obj.left = dragElement.position().left;
         return obj;
