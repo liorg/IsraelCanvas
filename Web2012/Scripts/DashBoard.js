@@ -235,15 +235,40 @@ function loadAjax(successHandler) {
 
 function onSuccessHandler(data, status) {
     context = data;
+    setTitleIssue();
     setAdvertisementsToolbarData();
     setSectionsToolbarData();
     setImageTemplate();
     setCurrent(extendAdvertisingItem, extendBehaviourItem, extendSectionItem);
     registerElementEvents();
+
+}
+function setTitleIssue() {
+    var title = context.Title;
+    var dt = getISODateTime();
+    if (context.Current != null && context.Current.ModifiedOn!=null) {
+        dt = convertDtCSharpToString(context.Current.ModifiedOn);  
+    }
+    $(generateTitleHtm(title,dt)).appendTo(c_issue_className);
 }
 
+function generateTitleHtm(title,currentDate) {
+    return "<div style='top:0:right:0;'><span class='title-header'>" + title + "</span><br/><span id='currentDateTimeTitle' class='title-date-issue'>" + currentDate + " </span></div>";
+}
+
+function setCurrentDateTime( currentDate) {
+    $("#currentDateTimeTitle").text(currentDate);
+}
+
+function convertDtCSharpToString(dateJson) {
+    var re = /-?\d+/;
+    var m = re.exec(dateJson);
+    // var dt = new Date(parseInt(m[0]));
+   return getISODateTime(new Date(parseInt(m[0])));
+}
 function onSuccessPrevHandler(data, status) {
     context = data;
+    setTitleIssue();
     setImageTemplate();
     setCurrent();
 }
@@ -869,6 +894,7 @@ function upload() {
 }
 function uploadSuccessHandler(data, status) {
     var d = data;
+    setCurrentDateTime(d);
 
 }
 function getISODateTime(d){
