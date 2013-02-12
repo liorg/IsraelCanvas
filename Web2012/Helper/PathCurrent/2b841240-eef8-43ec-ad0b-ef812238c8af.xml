@@ -15,8 +15,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>207</Top>
-      <Left>639</Left>
+      <Top>80</Top>
+      <Left>754</Left>
       <Width>122</Width>
       <Height>83</Height>
       <Id>e5fbbc06-8f81-0000-0004-f56bb52ed361</Id>
@@ -113,5 +113,5 @@
     </Section>
   </Sections>
   <Colors />
-  <ModifiedOn>2013-02-12T10:44:24</ModifiedOn>
+  <ModifiedOn>2013-02-12T10:52:44</ModifiedOn>
 </AdvertismentAreaContext>

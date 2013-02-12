@@ -335,10 +335,10 @@ function registerDocumentEvents() {
         if (e.keyCode == ctrlKey) ctrlDown = true;
     }).keyup(function (e) {
         if (e.keyCode == ctrlKey) ctrlDown = false;
-        if (e.keyCode == deleteKey) {
-            if (!onfocusOnSizeLabel)
-                deleteHandler();
-        }
+        //if (e.keyCode == deleteKey) {
+        //    if (!onfocusOnSizeLabel)
+        //        deleteHandler();
+        //}
     });
 
     $(document).on(c_keypress, c_advertisment_size_className, function (e) {
