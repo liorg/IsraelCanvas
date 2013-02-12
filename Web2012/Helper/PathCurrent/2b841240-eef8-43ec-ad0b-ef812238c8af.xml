@@ -4,8 +4,8 @@
   <Title>test</Title>
   <Advertisements>
     <Advertisement>
-      <Top>231</Top>
-      <Left>465</Left>
+      <Top>3</Top>
+      <Left>863</Left>
       <Width>166</Width>
       <Height>111</Height>
       <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
@@ -15,8 +15,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>29</Top>
-      <Left>428</Left>
+      <Top>207</Top>
+      <Left>639</Left>
       <Width>122</Width>
       <Height>83</Height>
       <Id>e5fbbc06-8f81-0000-0004-f56bb52ed361</Id>
@@ -48,8 +48,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>147</Top>
-      <Left>256</Left>
+      <Top>28</Top>
+      <Left>200</Left>
       <Width>143</Width>
       <Height>144</Height>
       <Id>e5fbbc06-8f81-0000-0000-f56bb52ed361</Id>
@@ -80,6 +80,17 @@
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
+    <Advertisement>
+      <Top>331</Top>
+      <Left>846</Left>
+      <Width>75</Width>
+      <Height>83</Height>
+      <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
+      <Name> הבית היהודי</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
   </Advertisements>
   <Sections>
     <Section>
@@ -102,4 +113,5 @@
     </Section>
   </Sections>
   <Colors />
+  <ModifiedOn>2013-02-12T10:33:05</ModifiedOn>
 </AdvertismentAreaContext>

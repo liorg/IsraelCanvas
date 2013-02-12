@@ -36,8 +36,10 @@ namespace Web2012.DashBoard
             IAdvertismentAreaService mockService = new AdvertismentAreaServiceMock();
             
             mockService.Set(upload);
-
-            context.Response.Write("File Save");
+            context.Response.StatusCode = 200;
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            var d = serializer.Serialize(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            context.Response.Write(d);
         }
 
         public bool IsReusable

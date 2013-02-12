@@ -17,7 +17,6 @@ namespace Web2012.Server
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            // context.Request.Params["id"]==null:Guid.NewGuid()
                 var id = context.Request.QueryString["id"];
 
                 var mockService = new AdvertismentAreaServiceMock();

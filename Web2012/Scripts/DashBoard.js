@@ -610,7 +610,7 @@ function extendBehaviourItem(dragClone, draggableStartHandler, resizableStartHan
     dragClone.draggable(
         {
             containment: c_drop, cursor: "move", scroll: true,
-            start: draggableStartHandler,
+            start: draggableStartHandler
         }).bind(c_mousedown, onFocusElement).resizable({
             containment: c_drop,
             start: resizableStartHandler,
@@ -862,12 +862,31 @@ function upload() {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(context.Current),
         dataType: "json",
+        async: true,
         success: uploadSuccessHandler,
         error: ajaxFailed
     });
 }
 function uploadSuccessHandler(data, status) {
     var d = data;
+
+}
+function getISODateTime(d){
+    // padding function
+    var s = function(a,b){return(1e15+a+"").slice(-b)};
+
+    // default date parameter
+    if (typeof d === 'undefined'){
+        d = new Date();
+    };
+
+    // return ISO datetime
+    return d.getFullYear() + '-' +
+        s(d.getMonth()+1,2) + '-' +
+        s(d.getDate(),2) + ' ' +
+        s(d.getHours(),2) + ':' +
+        s(d.getMinutes(),2) + ':' +
+        s(d.getSeconds(),2);
 }
 
 function loadContext() {
@@ -875,7 +894,9 @@ function loadContext() {
         context.Current = {};
         context.Current.Title = context.Title;
         context.Current.IssueId = currentId;
+      
     }
+    context.Current.ModifiedOn = getISODateTime();
     context.Current.Advertisements = [];
     context.Current.Sections = [];
     context.Current.Colors = [];
