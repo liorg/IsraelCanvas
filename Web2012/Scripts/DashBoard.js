@@ -527,13 +527,7 @@ function createAdvertismentOnIssueIeBelowVersion9(title, id, size) {
 function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHandler, extendPropSectionItemHandler) {
     if (context.Current) {
         $.each(context.Current.Advertisements, function (index, advertisement) {
-            var createDiv;
-            if (isIEGreaterThen8()) {
-                 createDiv = generateAdvertismentOnIssue(advertisement.Name, advertisement.Id, advertisement.Size);
-            }
-            else {
-                createDiv = createAdvertismentOnIssueIeBelowVersion9(advertisement.Name, advertisement.Id, advertisement.Size);
-            }
+            var createDiv = createAdvertismentOnIssueIeBelowVersion9(advertisement.Name, advertisement.Id, advertisement.Size);
 
             var d = $(createDiv).appendTo(c_issue_className);
             if (advertisement.IsDeleted) {
@@ -583,12 +577,9 @@ function setPositionsElements(d, item) {
 
 function createWhiteSpaceOnIssue(issue, drag, currPoint, copy) {
     var isCopy = copy || false;
-    if (isIEGreaterThen8()) {
-        drag = drag.replaceWith(generateWhiteSpace());
-    }
-    else {
+    
         drag = createWhiteSpaceIeBelowVersion9();
-    }
+    
    // dragClone = dragClone.replaceWith(generateWhiteSpace())
     drag.css({
         position: c_absolute,
@@ -610,13 +601,8 @@ function createSectionOnIssue(issue, drag, currentRow, currPoint, copy) {
         id = drag.find(c_advertisment_id_className).attr(c_id);
     }
 
-    //dragClone = dragClone.replaceWith(generateSectionOnIssue(title, id));
-    if (isIEGreaterThen8()) {
-        drag = drag.replaceWith(generateSectionOnIssue(title, id));
-    }
-    else {
-        drag = createSectionOnIssueIeBelowVersion9(title, id);
-    }
+    drag = createSectionOnIssueIeBelowVersion9(title, id);
+  
     drag.css({
         position: c_absolute,
         left: currPoint.left,
@@ -626,15 +612,6 @@ function createSectionOnIssue(issue, drag, currentRow, currPoint, copy) {
     extendSectionItem(drag, currentRow);
     drag.appendTo(issue);
 }
-function isIEGreaterThen8() {
-    if ( $.browser.msie ){
-        if ($.browser.version == '7.0' || $.browser.version == '8.0')
-
-            return false;
-    }
-    return true;
-}
-
 function createAdvertismentOnIssue(issue, drag, currentRow, currPoint, copy) {
     var isCopy = copy || false;
     var title = drag.text();
@@ -646,12 +623,8 @@ function createAdvertismentOnIssue(issue, drag, currentRow, currPoint, copy) {
         size = drag.find(c_advertisment_size_className).text();
         id = drag.find(c_advertisment_id_className).attr(c_id);
     }
-    if (isIEGreaterThen8()) {
-        drag = drag.replaceWith(generateAdvertismentOnIssue(title, id, size));
-    }
-    else {
-        drag = createAdvertismentOnIssueIeBelowVersion9(title, id, size);
-    }
+    drag = createAdvertismentOnIssueIeBelowVersion9(title, id, size);
+    
     drag.css({
         position: c_absolute,
         left: currPoint.left,

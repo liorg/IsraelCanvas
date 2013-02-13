@@ -4,19 +4,19 @@
   <Title>test</Title>
   <Advertisements>
     <Advertisement>
-      <Top>161</Top>
-      <Left>344</Left>
+      <Top>166</Top>
+      <Left>339</Left>
       <Width>108</Width>
       <Height>61</Height>
       <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
       <Name> הבית היהודי</Name>
       <IsDeleted>false</IsDeleted>
-      <Size>343</Size>
+      <Size />
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
       <Top>51</Top>
-      <Left>898</Left>
+      <Left>897.9999389648438</Left>
       <Width>66</Width>
       <Height>70</Height>
       <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
@@ -26,8 +26,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>180</Top>
-      <Left>898</Left>
+      <Top>181</Top>
+      <Left>896.9999389648438</Left>
       <Width>139</Width>
       <Height>40</Height>
       <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
@@ -37,33 +37,91 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>40</Top>
-      <Left>705</Left>
-      <Width>122</Width>
-      <Height>58</Height>
+      <Top>58</Top>
+      <Left>636</Left>
+      <Width>167</Width>
+      <Height>72</Height>
       <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
       <Name>טויטה קורולה</Name>
       <IsDeleted>false</IsDeleted>
-      <Size>12x12</Size>
+      <Size>333333</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>58</Top>
+      <Left>458</Left>
+      <Width>108</Width>
+      <Height>67</Height>
+      <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
+      <Name>סלקום</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size />
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>363</Top>
+      <Left>739</Left>
+      <Width>101</Width>
+      <Height>55</Height>
+      <Id>e5fbbc06-8f81-0000-0013-f56bb52ed361</Id>
+      <Name>מוצר ישראלי</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>000</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>185</Top>
+      <Left>130</Left>
+      <Width>51</Width>
+      <Height>77</Height>
+      <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
+      <Name> הבית היהודי</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>343</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>353</Top>
+      <Left>477</Left>
+      <Width>148</Width>
+      <Height>75</Height>
+      <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
+      <Name>Nike</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>8888</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
   </Advertisements>
   <Sections />
   <Colors>
     <ElementColor>
-      <Top>244</Top>
-      <Left>667</Left>
+      <Top>162</Top>
+      <Left>677</Left>
       <Width>176</Width>
       <Height>93</Height>
       <ColorName>white</ColorName>
     </ElementColor>
     <ElementColor>
       <Top>342</Top>
-      <Left>973</Left>
+      <Left>972.9999389648438</Left>
       <Width>62</Width>
       <Height>45</Height>
       <ColorName>white</ColorName>
     </ElementColor>
+    <ElementColor>
+      <Top>44</Top>
+      <Left>170</Left>
+      <Width>25</Width>
+      <Height>47</Height>
+      <ColorName>white</ColorName>
+    </ElementColor>
+    <ElementColor>
+      <Top>367</Top>
+      <Left>331</Left>
+      <Width>89</Width>
+      <Height>73</Height>
+      <ColorName>white</ColorName>
+    </ElementColor>
   </Colors>
-  <ModifiedOn>2013-02-14T00:41:18</ModifiedOn>
+  <ModifiedOn>2013-02-14T00:58:38</ModifiedOn>
 </AdvertismentAreaContext>
