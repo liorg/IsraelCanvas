@@ -239,7 +239,7 @@ function onSuccessHandler(data, status) {
     setAdvertisementsToolbarData();
     setSectionsToolbarData();
     setImageTemplate();
-    setCurrent(extendAdvertisingItem, extendBehaviourItem, extendSectionItem);
+    //setCurrent(extendAdvertisingItem, extendBehaviourItem, extendSectionItem);
     registerElementEvents();
 
 }
@@ -366,8 +366,12 @@ function registerDragElement() {
         helper: c_clone,
         cursorAt: { bottom: 0 },
         start: function (event, ui) {
-         //   dragClone = $(this).clone();
+
+           // dragClone = $(this).clone();
+         //   var clone = $(this).get(0).cloneNode(true);
+           // var dragClone = $(clone); // JQUERY object
             dragElement = $(this);
+            //dragClone = dragElement.clone();
         },
         stop: function (event, ui) {
             var w = $(c_drop).outerWidth();
@@ -404,34 +408,39 @@ function onDropHandler(issue, event, ui) {
     }
 }
 
-
+function generateWhiteSpace() {
+    return "<div style='width:25px;height:15px' class='" + c_whitespace_drag_type + " ui-draggable'></div>";
+}
 
 function onInitWhiteSpace(issue, event, ui) {
     var currPoint = getCurrentPointOnScreen(issue, event, ui);
-    createWhiteSpaceOnIssue(issue, dragElement, currPoint);
+    createWhiteSpaceOnIssue(issue, dragClone, currPoint);
     return true;
 }
 
 function onInitSection(issue, event, ui) {
     var currPoint = getCurrentPointOnScreen(issue, event, ui);
-    var row = GetDataInitObj(issue, event, ui, getSectionById);
-    createSectionOnIssue(issue, dragElement, row, currPoint);
-    return true;
-}
-
-function GetDataInitObj(issue, event, ui, getDataByID) {
     var id;
     if (typeof (dragElement) == "undefined")
         id = ui.draggable.find(c_span).attr(c_id);
     else
         id = dragElement.find(c_span).attr(c_id);
-    var row = getDataByID(id);// getAdvertisementById(id);
-    return row;
+    var row = getSectionById(id);
+    createSectionOnIssue(issue, dragElement, row, currPoint);
+
+    return true;
 }
+
 
 function onInitAdv(issue, event, ui) {
     var currPoint = getCurrentPointOnScreen(issue, event, ui);
-    var row = GetDataInitObj(issue, event, ui, getAdvertisementById);
+    var id;
+    if (typeof (dragElement) == "undefined")
+        id = ui.draggable.find(c_span).attr(c_id);
+    else
+        id = dragElement.find(c_span).attr(c_id);
+    var row = getAdvertisementById(id);
+
     createAdvertismentOnIssue(issue, dragElement, row, currPoint);
     dragElement.remove();
     return true;
@@ -465,76 +474,21 @@ function getCurrentPointOnScreen(issue, event, ui) {
     return { top: top, left: left };
 }
 
-
-function generateWhiteSpaceTag(body) {
-    var innerBody = body();
-    return "<div style='width:25px;height:15px' class='" + c_whitespace_drag_type + " ui-draggable'>"+innerBody+"</div>";
-}
-
-function generateWhiteSpaceBody() {
-    return "";
-}
-
-function generateWhiteSpace() {
-    return generateWhiteSpaceTag(generateWhiteSpaceBody);
-}
-
-function createWhiteSpaceIeBelowVersion9() {
-    var tag = generateWhiteSpaceTag(generateWhiteSpaceBody);
-    tag = $(tag).html(generateWhiteSpaceBody());
-    return tag;
-}
-
-function generateSectionOnTag(title, id, body) {
-    var innerBody = body(title, id);
-    return "<div data-title='" + title + "'  class='" + c_section_drag_type + " " + c_remover_border + " ui-draggable ellipsis'>" + innerBody + "</div>";
-}
-function generateSectionBody(title, id) {
-    return "<span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span>";
-}
 function generateSectionOnIssue(title, id) {
-    return generateSectionOnTag(title, id, generateSectionBody);
-}
-function createSectionOnIssueIeBelowVersion9(title, id) {
-    var tag = generateSectionOnTag(title, id, function (title, id) { return ""; });
-    tag = $(tag).html(generateSectionBody(title, id));
-    return tag;
-}
-
-function generateAdvertismentTag(title, id, size, body) {
-    var innerBody = body(title, id, size);
-    return "<div data-title='" + title + "'  class='" + c_adv_drag_type + " ui-draggable ellipsis'>" + innerBody + "</div>";
-}
-function generateAdvertismentBody(title, id, size) {
-    return "<span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span>";
+    return "<div data-title='" + title + "'  class='" + c_section_drag_type +" " + c_remover_border +" ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span></div>";
 }
 
 function generateAdvertismentOnIssue(title, id, size) {
     if (isHideFirma == true) {
         title = "";
     }
-    return generateAdvertismentTag(title, id, size, generateAdvertismentBody);
-}
-function createAdvertismentOnIssueIeBelowVersion9(title, id, size) {
-    if (isHideFirma == true) {
-        title = "";
-    }
-    var tag=generateAdvertismentTag(title,id,size,function(title, id, size){ return ""; } );
-    tag= $(tag).html(generateAdvertismentBody(title,id,size)) ;
-    return tag;
+    return "<div data-title='" + title + "'  class='" + c_adv_drag_type + " ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
 }
 
 function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHandler, extendPropSectionItemHandler) {
     if (context.Current) {
         $.each(context.Current.Advertisements, function (index, advertisement) {
-            var createDiv;
-            if (isIEGreaterThen8()) {
-                 createDiv = generateAdvertismentOnIssue(advertisement.Name, advertisement.Id, advertisement.Size);
-            }
-            else {
-                createDiv = createAdvertismentOnIssueIeBelowVersion9(advertisement.Name, advertisement.Id, advertisement.Size);
-            }
-
+            var createDiv = generateAdvertismentOnIssue(advertisement.Name, advertisement.Id, advertisement.Size);
             var d = $(createDiv).appendTo(c_issue_className);
             if (advertisement.IsDeleted) {
                 $(d).addClass(c_deleted_advertisement);
@@ -564,6 +518,7 @@ function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHa
 
             setPositionsElements(d, section);
         });
+
         onAnyElementsOnDropAreaHandler();
     }
 }
@@ -581,58 +536,38 @@ function setPositionsElements(d, item) {
     });
 }
 
-function createWhiteSpaceOnIssue(issue, drag, currPoint, copy) {
+function createWhiteSpaceOnIssue(issue, dragClone, currPoint, copy) {
     var isCopy = copy || false;
-    if (isIEGreaterThen8()) {
-        drag = drag.replaceWith(generateWhiteSpace());
-    }
-    else {
-        drag = createWhiteSpaceIeBelowVersion9();
-    }
-   // dragClone = dragClone.replaceWith(generateWhiteSpace())
-    drag.css({
+    dragClone = dragClone.replaceWith(generateWhiteSpace())
+    dragClone.css({
         position: c_absolute,
         left: currPoint.left,
         top: currPoint.top
     });
-    drag.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
-    extendBehaviourItem(drag);
-    drag.appendTo(issue);
+    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+    extendBehaviourItem(dragClone);
+    dragClone.appendTo(issue);
 }
 
-function createSectionOnIssue(issue, drag, currentRow, currPoint, copy) {
+function createSectionOnIssue(issue, dragClone, currentRow, currPoint, copy) {
     var isCopy = copy || false;
-    var title = drag.text();
-    var id = drag.find(c_span).attr(c_id);
+    var title = dragClone.text();
+    var id = dragClone.find(c_span).attr(c_id);
 
     if (isCopy) {
-        title = drag.find(c_advertisment_title_className).text();
-        id = drag.find(c_advertisment_id_className).attr(c_id);
+        title = dragClone.find(c_advertisment_title_className).text();
+        id = dragClone.find(c_advertisment_id_className).attr(c_id);
     }
 
-    //dragClone = dragClone.replaceWith(generateSectionOnIssue(title, id));
-    if (isIEGreaterThen8()) {
-        drag = drag.replaceWith(generateSectionOnIssue(title, id));
-    }
-    else {
-        drag = createSectionOnIssueIeBelowVersion9(title, id);
-    }
-    drag.css({
+    dragClone = dragClone.replaceWith(generateSectionOnIssue(title, id));
+    dragClone.css({
         position: c_absolute,
         left: currPoint.left,
         top: currPoint.top
     });
-    drag.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
-    extendSectionItem(drag, currentRow);
-    drag.appendTo(issue);
-}
-function isIEGreaterThen8() {
-    if ( $.browser.msie ){
-        if ($.browser.version == '7.0' || $.browser.version == '8.0')
-
-            return false;
-    }
-    return true;
+    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+    extendSectionItem(dragClone, currentRow);
+    dragClone.appendTo(issue);
 }
 
 function createAdvertismentOnIssue(issue, drag, currentRow, currPoint, copy) {
@@ -646,20 +581,22 @@ function createAdvertismentOnIssue(issue, drag, currentRow, currPoint, copy) {
         size = drag.find(c_advertisment_size_className).text();
         id = drag.find(c_advertisment_id_className).attr(c_id);
     }
-    if (isIEGreaterThen8()) {
-        drag = drag.replaceWith(generateAdvertismentOnIssue(title, id, size));
-    }
-    else {
-        drag = createAdvertismentOnIssueIeBelowVersion9(title, id, size);
-    }
-    drag.css({
+    //jQuery(selector).empty().replaceWith(newContent);
+   // var xxx = jQuery(generateAdvertismentOnIssue(title, id, size));
+    var d = $('<DIV></DIV>').html(generateAdvertismentOnIssue(title, id, size));
+    //var d = z.find("div");
+  //  dragClone = dragClone.html(generateAdvertismentOnIssue(title, id, size));
+    
+
+    d.appendTo(issue);
+    d.css({
         position: c_absolute,
         left: currPoint.left,
         top: currPoint.top
     });
-    drag.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
-    extendAdvertisingItem(drag, currentRow);
-    drag.appendTo(issue);
+    d.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+    extendAdvertisingItem(d, currentRow);
+  
 }
 
 function onFocusElement() {
@@ -709,7 +646,9 @@ function extendBehaviourItem(dragClone, draggableStartHandler, resizableStartHan
         {
             containment: c_drop, cursor: "move", scroll: true,
             start: draggableStartHandler
-        }).bind(c_mousedown, onFocusElement).resizable({
+        });
+    dragClone.bind(c_mousedown, onFocusElement);
+    dragClone.resizable({
             containment: c_drop,
             start: resizableStartHandler,
             stop: resizableStopHandler
@@ -1084,20 +1023,5 @@ function getHideFirma() {
     return false;
 }
 
-/*
-function generateWhiteSpace() {
-    return "<div style='width:25px;height:15px' class='" + c_whitespace_drag_type + " ui-draggable'></div>";
-}
 
-function generateSectionOnIssue(title, id) {
-    return "<div data-title='" + title + "'  class='" + c_section_drag_type +" " + c_remover_border +" ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span></div>";
-}
-
-function generateAdvertismentOnIssue(title, id, size) {
-    if (isHideFirma == true) {
-        title = "";
-    }
-    return "<div data-title='" + title + "'  class='" + c_adv_drag_type + " ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
-}
-*/
 
