@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="DashBoard\Canvas\ComponentUI.html" />
     <Content Include="DashBoard\Canvas\DashBoard.htm" />
+    <Content Include="DashBoard\Canvas\DashBoardAjax.htm" />
     <Content Include="DashBoard\Canvas\DashBoardAjaxWithMenu.htm" />
     <Content Include="DashBoard\Canvas\HtmlPage1.html" />
     <Content Include="DashBoard\Canvas\TestBae64.html" />

@@ -105,10 +105,7 @@ span.advertisment-title
    
 }
 
-span.advertisment-size
-{
-      PADDING-RIGHT: 5px; PADDING-BOTTOM: 0px;
-}
+
 
 li.drag-li
 {
@@ -647,4 +644,8 @@ div.section-drag-type
 	border-radius: 2px 2px 2px 2px;
 	width: 200px;
 	top: 150px !important;
+}
+span.advertisment-size
+{
+      PADDING-RIGHT: 5px; PADDING-BOTTOM: 0px;display:inline;
 }

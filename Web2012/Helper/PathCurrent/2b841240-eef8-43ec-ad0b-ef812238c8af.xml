@@ -16,7 +16,7 @@
     </Advertisement>
     <Advertisement>
       <Top>51</Top>
-      <Left>897.9999389648438</Left>
+      <Left>898</Left>
       <Width>66</Width>
       <Height>70</Height>
       <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
@@ -26,47 +26,47 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>181</Top>
-      <Left>896.9999389648438</Left>
+      <Top>4</Top>
+      <Left>385</Left>
       <Width>139</Width>
       <Height>40</Height>
       <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
       <Name> הבית היהודי</Name>
       <IsDeleted>false</IsDeleted>
-      <Size>343</Size>
+      <Size>56565</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>58</Top>
-      <Left>636</Left>
+      <Top>136</Top>
+      <Left>630</Left>
       <Width>167</Width>
       <Height>72</Height>
       <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
       <Name>טויטה קורולה</Name>
       <IsDeleted>false</IsDeleted>
-      <Size>333333</Size>
+      <Size>5645645</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>58</Top>
-      <Left>458</Left>
+      <Top>109</Top>
+      <Left>480</Left>
       <Width>108</Width>
       <Height>67</Height>
       <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
       <Name>סלקום</Name>
       <IsDeleted>false</IsDeleted>
-      <Size />
+      <Size>6546546</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>363</Top>
-      <Left>739</Left>
-      <Width>101</Width>
-      <Height>55</Height>
+      <Top>431</Top>
+      <Left>854</Left>
+      <Width>49</Width>
+      <Height>39</Height>
       <Id>e5fbbc06-8f81-0000-0013-f56bb52ed361</Id>
       <Name>מוצר ישראלי</Name>
       <IsDeleted>false</IsDeleted>
-      <Size>000</Size>
+      <Size>55555</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
@@ -81,47 +81,69 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>353</Top>
-      <Left>477</Left>
-      <Width>148</Width>
-      <Height>75</Height>
+      <Top>304</Top>
+      <Left>474</Left>
+      <Width>16</Width>
+      <Height>46</Height>
       <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
       <Name>Nike</Name>
       <IsDeleted>false</IsDeleted>
-      <Size>8888</Size>
+      <Size>5645656</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>220</Top>
+      <Left>901</Left>
+      <Width>22</Width>
+      <Height>54</Height>
+      <Id>e5fbbc06-8f81-0000-0001-f56bb52ed361</Id>
+      <Name>אגיס</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>6546546</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>386</Top>
+      <Left>446</Left>
+      <Width>87</Width>
+      <Height>44</Height>
+      <Id>e5fbbc06-8f81-0000-0004-f56bb52ed361</Id>
+      <Name>מודעה חדשה</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>5645645</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
   </Advertisements>
   <Sections />
   <Colors>
     <ElementColor>
-      <Top>162</Top>
-      <Left>677</Left>
-      <Width>176</Width>
-      <Height>93</Height>
+      <Top>261</Top>
+      <Left>583</Left>
+      <Width>89</Width>
+      <Height>58</Height>
       <ColorName>white</ColorName>
     </ElementColor>
     <ElementColor>
       <Top>342</Top>
-      <Left>972.9999389648438</Left>
+      <Left>973</Left>
       <Width>62</Width>
       <Height>45</Height>
       <ColorName>white</ColorName>
     </ElementColor>
     <ElementColor>
-      <Top>44</Top>
-      <Left>170</Left>
-      <Width>25</Width>
+      <Top>59</Top>
+      <Left>201</Left>
+      <Width>177</Width>
       <Height>47</Height>
       <ColorName>white</ColorName>
     </ElementColor>
     <ElementColor>
-      <Top>367</Top>
-      <Left>331</Left>
-      <Width>89</Width>
-      <Height>73</Height>
+      <Top>349</Top>
+      <Left>689</Left>
+      <Width>60</Width>
+      <Height>72</Height>
       <ColorName>white</ColorName>
     </ElementColor>
   </Colors>
-  <ModifiedOn>2013-02-14T00:58:38</ModifiedOn>
+  <ModifiedOn>2013-02-14T11:31:03</ModifiedOn>
 </AdvertismentAreaContext>

@@ -174,13 +174,11 @@ function setTemplateImage(base64Image, IsLandscape) {
 
 function ajaxFailed(xmlRequest) {
     if (xmlRequest.status == "200") {
-        
         return;
     }
-
     messageBox(xmlRequest.status + ' \n\r ' +
           xmlRequest.statusText + '\n\r' +
-          xmlRequest.responseText);
+          "נוצרה שגיאה נא פנה למנהל מערכת");
 }
 
 function setAdvertisementsToolbarData() {
@@ -239,7 +237,7 @@ function onSuccessHandler(data, status) {
     setAdvertisementsToolbarData();
     setSectionsToolbarData();
     setImageTemplate();
-    //setCurrent(extendAdvertisingItem, extendBehaviourItem, extendSectionItem);
+    setCurrent(extendAdvertisingItem, extendBehaviourItem, extendSectionItem);
     registerElementEvents();
 
 }
@@ -366,12 +364,8 @@ function registerDragElement() {
         helper: c_clone,
         cursorAt: { bottom: 0 },
         start: function (event, ui) {
-
-           // dragClone = $(this).clone();
-         //   var clone = $(this).get(0).cloneNode(true);
-           // var dragClone = $(clone); // JQUERY object
+         //   dragClone = $(this).clone();
             dragElement = $(this);
-            //dragClone = dragElement.clone();
         },
         stop: function (event, ui) {
             var w = $(c_drop).outerWidth();
@@ -408,39 +402,32 @@ function onDropHandler(issue, event, ui) {
     }
 }
 
-function generateWhiteSpace() {
-    return "<div style='width:25px;height:15px' class='" + c_whitespace_drag_type + " ui-draggable'></div>";
-}
-
 function onInitWhiteSpace(issue, event, ui) {
     var currPoint = getCurrentPointOnScreen(issue, event, ui);
-    createWhiteSpaceOnIssue(issue, dragClone, currPoint);
+    createWhiteSpaceOnIssue(issue, dragElement, currPoint);
     return true;
 }
 
 function onInitSection(issue, event, ui) {
     var currPoint = getCurrentPointOnScreen(issue, event, ui);
-    var id;
-    if (typeof (dragElement) == "undefined")
-        id = ui.draggable.find(c_span).attr(c_id);
-    else
-        id = dragElement.find(c_span).attr(c_id);
-    var row = getSectionById(id);
+    var row = GetDataInitObj(issue, event, ui, getSectionById);
     createSectionOnIssue(issue, dragElement, row, currPoint);
-
     return true;
 }
 
-
-function onInitAdv(issue, event, ui) {
-    var currPoint = getCurrentPointOnScreen(issue, event, ui);
+function GetDataInitObj(issue, event, ui, getDataByID) {
     var id;
     if (typeof (dragElement) == "undefined")
         id = ui.draggable.find(c_span).attr(c_id);
     else
         id = dragElement.find(c_span).attr(c_id);
-    var row = getAdvertisementById(id);
+    var row = getDataByID(id);// getAdvertisementById(id);
+    return row;
+}
 
+function onInitAdv(issue, event, ui) {
+    var currPoint = getCurrentPointOnScreen(issue, event, ui);
+    var row = GetDataInitObj(issue, event, ui, getAdvertisementById);
     createAdvertismentOnIssue(issue, dragElement, row, currPoint);
     dragElement.remove();
     return true;
@@ -450,7 +437,7 @@ function registerElementEvents() {
     var maxChar = 7;
     $(c_advertisment_size_className).live(c_keyup, function () { checkCharcount($(this), maxChar); });
     $(c_advertisment_size_className).live(c_keydown, function () { checkCharcount($(this), maxChar); });
-    $(c_advertisment_size_className).live(c_dblclick, function () { $(this).selectText(); onfocusOnSizeLabel = true; });
+    $(c_advertisment_size_className).live(c_dblclick, function () { $(this).selectText(); $(this).focus();  onfocusOnSizeLabel = true; });
     $(c_advertisment_size_className).live(c_blur, function () { onfocusOnSizeLabel = false; });
   
     registerDragElement();
@@ -474,21 +461,71 @@ function getCurrentPointOnScreen(issue, event, ui) {
     return { top: top, left: left };
 }
 
+
+function generateWhiteSpaceTag(body) {
+    var innerBody = body();
+    return "<div style='width:25px;height:15px' class='" + c_whitespace_drag_type + " ui-draggable'>"+innerBody+"</div>";
+}
+
+function generateWhiteSpaceBody() {
+    return "";
+}
+
+function generateWhiteSpace() {
+    return generateWhiteSpaceTag(generateWhiteSpaceBody);
+}
+
+function createWhiteSpaceIeBelowVersion9() {
+    var tag = generateWhiteSpaceTag(generateWhiteSpaceBody);
+    tag = $(tag).html(generateWhiteSpaceBody());
+    return tag;
+}
+
+function generateSectionOnTag(title, id, body) {
+    var innerBody = body(title, id);
+    return "<div data-title='" + title + "'  class='" + c_section_drag_type + " " + c_remover_border + " ui-draggable ellipsis'>" + innerBody + "</div>";
+}
+function generateSectionBody(title, id) {
+    return "<span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span>";
+}
 function generateSectionOnIssue(title, id) {
-    return "<div data-title='" + title + "'  class='" + c_section_drag_type +" " + c_remover_border +" ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span></div>";
+    return generateSectionOnTag(title, id, generateSectionBody);
+}
+function createSectionOnIssueIeBelowVersion9(title, id) {
+    var tag = generateSectionOnTag(title, id, function (title, id) { return ""; });
+    tag = $(tag).html(generateSectionBody(title, id));
+    return tag;
+}
+
+function generateAdvertismentTag(title, id, size, body) {
+    var innerBody = body(title, id, size);
+    return "<div data-title='" + title + "'  class='" + c_adv_drag_type + " ui-draggable ellipsis'>" + innerBody + "</div>";
+}
+function generateAdvertismentBody(title, id, size) {
+    
+    return "<span class='" + c_advertisment_id + "' id='" + id + "'></span><span   class='" + c_advertisment_title + "'>" + title + "</span><br><div contenteditable='true'  class='" + c_advertisment_size + "'>" + size + "</div>";
 }
 
 function generateAdvertismentOnIssue(title, id, size) {
     if (isHideFirma == true) {
         title = "";
     }
-    return "<div data-title='" + title + "'  class='" + c_adv_drag_type + " ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
+    return generateAdvertismentTag(title, id, size, generateAdvertismentBody);
+}
+function createAdvertismentOnIssueIeBelowVersion9(title, id, size) {
+    if (isHideFirma == true) {
+        title = "";
+    }
+    var tag=generateAdvertismentTag(title,id,size,function(title, id, size){ return ""; } );
+    tag= $(tag).html(generateAdvertismentBody(title,id,size)) ;
+    return tag;
 }
 
 function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHandler, extendPropSectionItemHandler) {
     if (context.Current) {
         $.each(context.Current.Advertisements, function (index, advertisement) {
-            var createDiv = generateAdvertismentOnIssue(advertisement.Name, advertisement.Id, advertisement.Size);
+            var createDiv = createAdvertismentOnIssueIeBelowVersion9(advertisement.Name, advertisement.Id, advertisement.Size);
+
             var d = $(createDiv).appendTo(c_issue_className);
             if (advertisement.IsDeleted) {
                 $(d).addClass(c_deleted_advertisement);
@@ -518,7 +555,6 @@ function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHa
 
             setPositionsElements(d, section);
         });
-
         onAnyElementsOnDropAreaHandler();
     }
 }
@@ -536,40 +572,43 @@ function setPositionsElements(d, item) {
     });
 }
 
-function createWhiteSpaceOnIssue(issue, dragClone, currPoint, copy) {
+function createWhiteSpaceOnIssue(issue, drag, currPoint, copy) {
     var isCopy = copy || false;
-    dragClone = dragClone.replaceWith(generateWhiteSpace())
-    dragClone.css({
+    
+        drag = createWhiteSpaceIeBelowVersion9();
+    
+   // dragClone = dragClone.replaceWith(generateWhiteSpace())
+    drag.css({
         position: c_absolute,
         left: currPoint.left,
         top: currPoint.top
     });
-    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
-    extendBehaviourItem(dragClone);
-    dragClone.appendTo(issue);
+    drag.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+    extendBehaviourItem(drag);
+    drag.appendTo(issue);
 }
 
-function createSectionOnIssue(issue, dragClone, currentRow, currPoint, copy) {
+function createSectionOnIssue(issue, drag, currentRow, currPoint, copy) {
     var isCopy = copy || false;
-    var title = dragClone.text();
-    var id = dragClone.find(c_span).attr(c_id);
+    var title = drag.text();
+    var id = drag.find(c_span).attr(c_id);
 
     if (isCopy) {
-        title = dragClone.find(c_advertisment_title_className).text();
-        id = dragClone.find(c_advertisment_id_className).attr(c_id);
+        title = drag.find(c_advertisment_title_className).text();
+        id = drag.find(c_advertisment_id_className).attr(c_id);
     }
 
-    dragClone = dragClone.replaceWith(generateSectionOnIssue(title, id));
-    dragClone.css({
+    drag = createSectionOnIssueIeBelowVersion9(title, id);
+  
+    drag.css({
         position: c_absolute,
         left: currPoint.left,
         top: currPoint.top
     });
-    dragClone.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
-    extendSectionItem(dragClone, currentRow);
-    dragClone.appendTo(issue);
+    drag.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+    extendSectionItem(drag, currentRow);
+    drag.appendTo(issue);
 }
-
 function createAdvertismentOnIssue(issue, drag, currentRow, currPoint, copy) {
     var isCopy = copy || false;
     var title = drag.text();
@@ -581,22 +620,16 @@ function createAdvertismentOnIssue(issue, drag, currentRow, currPoint, copy) {
         size = drag.find(c_advertisment_size_className).text();
         id = drag.find(c_advertisment_id_className).attr(c_id);
     }
-    //jQuery(selector).empty().replaceWith(newContent);
-   // var xxx = jQuery(generateAdvertismentOnIssue(title, id, size));
-    var d = $('<DIV></DIV>').html(generateAdvertismentOnIssue(title, id, size));
-    //var d = z.find("div");
-  //  dragClone = dragClone.html(generateAdvertismentOnIssue(title, id, size));
+    drag = createAdvertismentOnIssueIeBelowVersion9(title, id, size);
     
-
-    d.appendTo(issue);
-    d.css({
+    drag.css({
         position: c_absolute,
         left: currPoint.left,
         top: currPoint.top
     });
-    d.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
-    extendAdvertisingItem(d, currentRow);
-  
+    drag.addClass(c_ui_widget_content).addClass(c_AdvertisingSpace);
+    extendAdvertisingItem(drag, currentRow);
+    drag.appendTo(issue);
 }
 
 function onFocusElement() {
@@ -636,8 +669,10 @@ function extendAdvertisingItem(dragClone, currentRow) {
         function (event, ui) { ui.helper.qtip("hide"); },
         function (event, ui) { ui.helper.qtip("hide"); },
          function (event, ui) {
-             var title = $(this).find(c_advertisment_title_className);
-             title.focus();
+             //var title = $(this).find(c_advertisment_title_className);
+             //title.focus();
+             var size = $(this).find(c_advertisment_size_className);
+             size.focus();
          });
 }
 
@@ -652,7 +687,8 @@ function extendBehaviourItem(dragClone, draggableStartHandler, resizableStartHan
             containment: c_drop,
             start: resizableStartHandler,
             stop: resizableStopHandler
-        });
+    });
+
 }
 
 function destroyExtendItems(del) {
@@ -946,14 +982,12 @@ jQuery.fn.selectText = function () {
         range = document.body.createTextRange();
         range.moveToElementText(this[0]);
         range.select();
-      //  this.addClass("selectedText");
     } else if (window.getSelection) {
         selection = window.getSelection();
         range = document.createRange();
         range.selectNodeContents(this[0]);
         selection.removeAllRanges();
         selection.addRange(range);
-      //  this.addClass("selectedText");
     }
 };
 
@@ -1023,5 +1057,36 @@ function getHideFirma() {
     return false;
 }
 
+/*
+function generateWhiteSpace() {
+    return "<div style='width:25px;height:15px' class='" + c_whitespace_drag_type + " ui-draggable'></div>";
+}
 
+function generateSectionOnIssue(title, id) {
+    return "<div data-title='" + title + "'  class='" + c_section_drag_type +" " + c_remover_border +" ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span></div>";
+}
 
+function generateAdvertismentOnIssue(title, id, size) {
+    if (isHideFirma == true) {
+        title = "";
+    }
+    return "<div data-title='" + title + "'  class='" + c_adv_drag_type + " ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
+}
+*/
+
+function xxxx(dragClone) {
+    dragClone.draggable(
+        {
+            containment: c_drop, cursor: "move", scroll: true
+        });
+    //dragClone.draggable({ handle: "span" });
+   // dragClone.draggable({ containment: c_drop, handle: "span" });
+    dragClone.bind(c_mousedown, onFocusElement);
+    dragClone.live("click", function () {
+     //   alert(1);
+        $("#vv").focus();
+
+    }
+    );
+  dragClone.resizable({     containment: c_drop  });
+}

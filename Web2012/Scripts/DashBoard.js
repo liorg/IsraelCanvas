@@ -404,8 +404,6 @@ function onDropHandler(issue, event, ui) {
     }
 }
 
-
-
 function onInitWhiteSpace(issue, event, ui) {
     var currPoint = getCurrentPointOnScreen(issue, event, ui);
     createWhiteSpaceOnIssue(issue, dragElement, currPoint);
@@ -441,7 +439,12 @@ function registerElementEvents() {
     var maxChar = 7;
     $(c_advertisment_size_className).live(c_keyup, function () { checkCharcount($(this), maxChar); });
     $(c_advertisment_size_className).live(c_keydown, function () { checkCharcount($(this), maxChar); });
-    $(c_advertisment_size_className).live(c_dblclick, function () { $(this).selectText(); onfocusOnSizeLabel = true; });
+    $(c_advertisment_size_className).live(c_dblclick, function () {
+        $(this).selectText();
+        // set focus for contenteditable
+        $(this).focus();
+        onfocusOnSizeLabel = true;
+    });
     $(c_advertisment_size_className).live(c_blur, function () { onfocusOnSizeLabel = false; });
   
     registerDragElement();
@@ -506,7 +509,9 @@ function generateAdvertismentTag(title, id, size, body) {
     return "<div data-title='" + title + "'  class='" + c_adv_drag_type + " ui-draggable ellipsis'>" + innerBody + "</div>";
 }
 function generateAdvertismentBody(title, id, size) {
-    return "<span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span>";
+    //So is your app - when I replaced all the contenteditable spans with divs, the editing is working just fine in firefox 3.6 and firefox 6.0.
+    //http://jsfiddle.net/6sTJh/5/
+    return "<span class='" + c_advertisment_id + "' id='" + id + "'></span><span   class='" + c_advertisment_title + "'>" + title + "</span><br><div contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</div>";
 }
 
 function generateAdvertismentOnIssue(title, id, size) {
@@ -577,10 +582,8 @@ function setPositionsElements(d, item) {
 
 function createWhiteSpaceOnIssue(issue, drag, currPoint, copy) {
     var isCopy = copy || false;
+    drag = createWhiteSpaceIeBelowVersion9();
     
-        drag = createWhiteSpaceIeBelowVersion9();
-    
-   // dragClone = dragClone.replaceWith(generateWhiteSpace())
     drag.css({
         position: c_absolute,
         left: currPoint.left,
@@ -976,18 +979,20 @@ function loadContext() {
 
 jQuery.fn.selectText = function () {
     var range, selection;
+    //ie
     if (document.body.createTextRange) {
         range = document.body.createTextRange();
         range.moveToElementText(this[0]);
         range.select();
-      //  this.addClass("selectedText");
-    } else if (window.getSelection) {
+    }
+        // not ie
+    else
+        if (window.getSelection) {
         selection = window.getSelection();
         range = document.createRange();
         range.selectNodeContents(this[0]);
         selection.removeAllRanges();
         selection.addRange(range);
-      //  this.addClass("selectedText");
     }
 };
 
