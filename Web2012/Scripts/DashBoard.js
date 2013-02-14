@@ -2,7 +2,7 @@
 var downloadHandler = "MockData.ashx";
 var preview = "Preview.htm";
 var dropBox;
-var drag;
+var dragAdvertisements;
 var dragSections;
 //var dragClone;
 var dragElement;
@@ -143,7 +143,6 @@ function confirm(s, okCancelHandler) {
     $.customConfirm(s, c_titleAlert, okCancelHandler);
 }
 function messageBox(s) {
-    //alert(s);
     $.customAlert(s, c_titleAlert)
 }
 
@@ -174,10 +173,8 @@ function setTemplateImage(base64Image, IsLandscape) {
 
 function ajaxFailed(xmlRequest) {
     if (xmlRequest.status == "200") {
-        
         return;
     }
-
     messageBox(xmlRequest.status + ' \n\r ' +
           xmlRequest.statusText + '\n\r' +
           xmlRequest.responseText);
@@ -197,9 +194,8 @@ function setSectionsToolbarData() {
     });
 }
 
-
 function appendAdvertisementsToDragToolBox(advertisement) {
-    drag.append('<li class="MenuItem ' + c_adv_type + '" style="height:' + menuItemSize.Height + ';width:' + menuItemSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+    dragAdvertisements.append('<li class="MenuItem ' + c_adv_type + '" style="height:' + menuItemSize.Height + ';width:' + menuItemSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
 }
 
 function appendSectionsToDragToolBox(section) {
@@ -274,7 +270,9 @@ function onSuccessPrevHandler(data, status) {
 }
 
 function setGlobalVar() {
-    dropBox = $(c_drop); drag = $(c_drag); dragSections = $(c_dragSections_Id);
+    dropBox = $(c_drop);
+    dragAdvertisements = $(c_drag);
+    dragSections = $(c_dragSections_Id);
 }
 
 function enabledDeleteButton(enabled) {
@@ -640,8 +638,7 @@ function createAdvertismentOnIssue(issue, drag, currentRow, currPoint, copy) {
 
 function onFocusElement() {
     $(c_AdvertisingSpace_className).removeClass(c_focusObject);
-  //  onfocusOnSizeLabel = false;
-   
+  //  onfocusOnSizeLabel = false; 
     $(c_jquery_class + c_section_drag_type).addClass(c_remover_border);
     if ($(this).hasClass(c_section_drag_type)) {
         $(this).removeClass(c_remover_border);
@@ -823,12 +820,7 @@ function getEleOnFocus() {
 
 
 function saveHandler() {
-    //if (isEmptyOnDropElement()) {
-    //    messageBox("לא נבחרו שטחי פרסום");
-    //    return false;
-    //}
     var messageBuilder = "";
-
     var hasAnyAdvsOnToolBox= hasAdvsOnToolBox();
     var hasAnyDeleteAdvsAndSections= hasDeleteAdvsAndSections();
     if (hasAnyAdvsOnToolBox || hasAnyDeleteAdvsAndSections) {
@@ -985,7 +977,7 @@ jQuery.fn.selectText = function () {
         range.moveToElementText(this[0]);
         range.select();
     }
-        // not ie
+   // not ie
     else
         if (window.getSelection) {
         selection = window.getSelection();
@@ -1061,21 +1053,3 @@ function getHideFirma() {
     }
     return false;
 }
-
-/*
-function generateWhiteSpace() {
-    return "<div style='width:25px;height:15px' class='" + c_whitespace_drag_type + " ui-draggable'></div>";
-}
-
-function generateSectionOnIssue(title, id) {
-    return "<div data-title='" + title + "'  class='" + c_section_drag_type +" " + c_remover_border +" ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span></div>";
-}
-
-function generateAdvertismentOnIssue(title, id, size) {
-    if (isHideFirma == true) {
-        title = "";
-    }
-    return "<div data-title='" + title + "'  class='" + c_adv_drag_type + " ui-draggable ellipsis'><span class='" + c_advertisment_id + "' id='" + id + "'><span   class='" + c_advertisment_title + "'>" + title + "</span><br><span contenteditable='true'   class='" + c_advertisment_size + "'>" + size + "</span></div>";
-}
-*/
-

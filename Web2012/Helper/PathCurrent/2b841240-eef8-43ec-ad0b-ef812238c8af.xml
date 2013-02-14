@@ -4,17 +4,6 @@
   <Title>test</Title>
   <Advertisements>
     <Advertisement>
-      <Top>166</Top>
-      <Left>339</Left>
-      <Width>108</Width>
-      <Height>61</Height>
-      <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
-      <Name> הבית היהודי</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size />
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
       <Top>51</Top>
       <Left>898</Left>
       <Width>66</Width>
@@ -23,28 +12,6 @@
       <Name>אגיס</Name>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>4</Top>
-      <Left>385</Left>
-      <Width>139</Width>
-      <Height>40</Height>
-      <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
-      <Name> הבית היהודי</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>56565</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>136</Top>
-      <Left>630</Left>
-      <Width>167</Width>
-      <Height>72</Height>
-      <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
-      <Name>טויטה קורולה</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>5645645</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
@@ -67,17 +34,6 @@
       <Name>מוצר ישראלי</Name>
       <IsDeleted>false</IsDeleted>
       <Size>55555</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>185</Top>
-      <Left>130</Left>
-      <Width>51</Width>
-      <Height>77</Height>
-      <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
-      <Name> הבית היהודי</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>343</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
@@ -113,6 +69,50 @@
       <Size>5645645</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
+    <Advertisement>
+      <Top>37</Top>
+      <Left>746</Left>
+      <Width>66</Width>
+      <Height>26</Height>
+      <Id>e5fbbc06-8f81-0000-0000-f56bb52ed361</Id>
+      <Name>הליכוד ביתנו</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>1233x1233</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>182</Top>
+      <Left>969</Left>
+      <Width>67</Width>
+      <Height>79</Height>
+      <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
+      <Name>מטרנה</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>6756767</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>287</Top>
+      <Left>348</Left>
+      <Width>84</Width>
+      <Height>86</Height>
+      <Id>e5fbbc06-8f81-0000-0002-f56bb52ed361</Id>
+      <Name>ציפי ליבני - התקווה</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>12x12</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>165</Top>
+      <Left>777</Left>
+      <Width>54</Width>
+      <Height>60</Height>
+      <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
+      <Name>טויטה קורולה</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>12x12</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
   </Advertisements>
   <Sections />
   <Colors>
@@ -145,5 +145,5 @@
       <ColorName>white</ColorName>
     </ElementColor>
   </Colors>
-  <ModifiedOn>2013-02-14T11:31:03</ModifiedOn>
+  <ModifiedOn>2013-02-14T11:35:23</ModifiedOn>
 </AdvertismentAreaContext>
