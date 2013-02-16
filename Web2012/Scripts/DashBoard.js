@@ -32,11 +32,14 @@ var c_jquery_class = ".";
 
 var c_titleAlert = "הודעה";
 
+var c_portrait_width = "204mm";
+var c_portrait_height = "292mm";
+
 //var c_portrait_width = "210mm";
 //var c_portrait_height = "297mm";
 
-var c_portrait_width = "210mm";
-var c_portrait_height = "292mm";
+//var c_portrait_width = "210mm";
+//var c_portrait_height = "292mm";
 
 //width: 297mm;
 //height: 210mm;

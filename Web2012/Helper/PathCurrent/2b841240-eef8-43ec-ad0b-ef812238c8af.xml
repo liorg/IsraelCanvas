@@ -4,8 +4,8 @@
   <Title>test</Title>
   <Advertisements>
     <Advertisement>
-      <Top>51</Top>
-      <Left>898</Left>
+      <Top>4</Top>
+      <Left>889</Left>
       <Width>66</Width>
       <Height>70</Height>
       <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
@@ -15,8 +15,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>109</Top>
-      <Left>480</Left>
+      <Top>41</Top>
+      <Left>546</Left>
       <Width>108</Width>
       <Height>67</Height>
       <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
@@ -26,10 +26,10 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>431</Top>
-      <Left>854</Left>
-      <Width>49</Width>
-      <Height>39</Height>
+      <Top>483</Top>
+      <Left>728</Left>
+      <Width>300</Width>
+      <Height>85</Height>
       <Id>e5fbbc06-8f81-0000-0013-f56bb52ed361</Id>
       <Name>מוצר ישראלי</Name>
       <IsDeleted>false</IsDeleted>
@@ -59,8 +59,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>386</Top>
-      <Left>446</Left>
+      <Top>727</Top>
+      <Left>4</Left>
       <Width>87</Width>
       <Height>44</Height>
       <Id>e5fbbc06-8f81-0000-0004-f56bb52ed361</Id>
@@ -81,8 +81,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>182</Top>
-      <Left>969</Left>
+      <Top>692</Top>
+      <Left>1036</Left>
       <Width>67</Width>
       <Height>79</Height>
       <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
@@ -92,8 +92,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>287</Top>
-      <Left>348</Left>
+      <Top>4</Top>
+      <Left>714</Left>
       <Width>84</Width>
       <Height>86</Height>
       <Id>e5fbbc06-8f81-0000-0002-f56bb52ed361</Id>
@@ -131,8 +131,8 @@
       <ColorName>white</ColorName>
     </ElementColor>
     <ElementColor>
-      <Top>59</Top>
-      <Left>201</Left>
+      <Top>98</Top>
+      <Left>256</Left>
       <Width>177</Width>
       <Height>47</Height>
       <ColorName>white</ColorName>
@@ -145,5 +145,5 @@
       <ColorName>white</ColorName>
     </ElementColor>
   </Colors>
-  <ModifiedOn>2013-02-14T11:35:23</ModifiedOn>
+  <ModifiedOn>2013-02-16T19:34:21</ModifiedOn>
 </AdvertismentAreaContext>

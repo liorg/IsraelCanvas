@@ -3,11 +3,52 @@
   <IssueId>00000000-0000-0000-0000-000000000001</IssueId>
   <Title>test1</Title>
   <Advertisements>
+    <Advertisement>
+      <Top>179</Top>
+      <Left>0</Left>
+      <Width>74</Width>
+      <Height>93</Height>
+      <Id>e5fbbc06-8f81-0000-0000-f56bb52ed361</Id>
+      <Name>הליכוד ביתנו</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>1233x1233</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>4</Top>
+      <Left>4</Left>
+      <Width>56</Width>
+      <Height>65</Height>
+      <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
+      <Name>Nike</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>962</Top>
+      <Left>0</Left>
+      <Width>46</Width>
+      <Height>141</Height>
+      <Id>e5fbbc06-8f81-0000-0013-f56bb52ed361</Id>
+      <Name>מוצר ישראלי</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>1040</Top>
+      <Left>699</Left>
+      <Width>72</Width>
+      <Height>63</Height>
+      <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
+      <Name>אגיס</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
   </Advertisements>
-  <Sections>
-   
-  </Sections>
-  <Colors>
- 
-  </Colors>
+  <Sections />
+  <Colors />
+  <ModifiedOn>2013-02-16T19:27:35</ModifiedOn>
 </AdvertismentAreaContext>

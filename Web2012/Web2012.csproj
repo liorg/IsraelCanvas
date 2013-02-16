@@ -78,6 +78,8 @@
     <Content Include="imgs\A4-SHISHI48-title.png" />
     <Content Include="imgs\A4-SHISHI48.png" />
     <Content Include="imgs\A4.png" />
+    <Content Include="imgs\a4204x292.png" />
+    <Content Include="imgs\a4292x204.png" />
     <Content Include="imgs\app_back.png" />
     <Content Include="imgs\BiggThenA4.png" />
     <Content Include="imgs\icons\disabled\Printer.png" />
@@ -145,7 +147,6 @@
     <Content Include="imgs\adv.gif" />
     <Content Include="imgs\progress2013.gif" />
     <Content Include="imgs\searchclear.gif" />
-    <Content Include="Scripts\Copy of DashBoard.js" />
     <Content Include="Scripts\DashBoard.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-ui.js" />

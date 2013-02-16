@@ -71,7 +71,8 @@ namespace Web2012.Helper.RepositoryMock
             urlsTemplate.Add("/imgs/A4-SHISHI48-title.png");
             urlsTemplate.Add("/imgs/BiggThenA4.png");
             urlsTemplate.Add("/imgs/A4.png");
-
+            urlsTemplate.Add("/imgs/a4204x292.png");
+            urlsTemplate.Add("/imgs/a4292x204.png");
             data.Add(new AdvertismentArea
             {
                 IssueId = new Guid("2b841240-eef8-43ec-ad0b-ef812238c8af"),
@@ -87,7 +88,7 @@ namespace Web2012.Helper.RepositoryMock
                 Title = "test1",
                 Current = Find(new Guid("00000000-0000-0000-0000-000000000001")),
                 IsLandscape = false,
-                UriTemplate = ConvertImageURLToBase64(urlsTemplate[2])
+                UriTemplate = ConvertImageURLToBase64(urlsTemplate[3])
             });
             data.Add(new AdvertismentArea
             {
