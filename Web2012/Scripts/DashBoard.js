@@ -1,5 +1,9 @@
 ﻿var uploadHandler = "mockUpload.ashx";
 var downloadHandler = "MockData.ashx";
+
+//var uploadHandler = "Upload.ashx";
+//var downloadHandler = "Data.ashx";
+
 var preview = "Preview.htm";
 var dropBox;
 var dragAdvertisements;
@@ -178,9 +182,12 @@ function ajaxFailed(xmlRequest) {
     if (xmlRequest.status == "200") {
         return;
     }
+    //messageBox(xmlRequest.status + ' \n\r ' +
+    //      xmlRequest.statusText + '\n\r' +
+    //      xmlRequest.responseText);
     messageBox(xmlRequest.status + ' \n\r ' +
-          xmlRequest.statusText + '\n\r' +
-          xmlRequest.responseText);
+      xmlRequest.statusText + '\n\r' +
+     "נוצרה שגיאה,נא פנה למנהל מערכת");
 }
 
 function setAdvertisementsToolbarData() {
