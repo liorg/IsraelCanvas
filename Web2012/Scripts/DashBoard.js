@@ -169,7 +169,7 @@ function getSectionById(id) {
 
 function setTemplateImage(base64Image, IsLandscape) {
     var url = "url(data:image/png;base64," + base64Image + ")";
-     var ele = $(c_issue_className)[0];
+    var ele = $(c_issue_className)[0];
     ele.style.backgroundImage = url;
 
     if (!IsLandscape) {
@@ -191,6 +191,10 @@ function ajaxFailed(xmlRequest) {
 }
 
 function setAdvertisementsToolbarData() {
+    if (context.Advertisements == null) {
+        messageBox("אין מודעות לגליון זה !!!");
+        return;
+    }
     $.each(context.Advertisements, function (index, advertisement) {
         if (!advertisement.IsDroped && !advertisement.IsDeleted)
             appendAdvertisementsToDragToolBox(advertisement);
@@ -198,6 +202,10 @@ function setAdvertisementsToolbarData() {
 }
 
 function setSectionsToolbarData() {
+    if (context.Sections == null) {
+        messageBox("אין מדורים לגליון זה !!!");
+        return;
+    }
     $.each(context.Sections, function (index, section) {
         if (!section.IsDeleted)
             appendSectionsToDragToolBox(section);
@@ -252,17 +260,17 @@ function onSuccessHandler(data, status) {
 function setTitleIssue() {
     var title = context.Title;
     var dt = getISODateTime();
-    if (context.Current != null && context.Current.ModifiedOn!=null) {
-        dt = convertDtCSharpToString(context.Current.ModifiedOn);  
+    if (context.Current != null && context.Current.ModifiedOn != null) {
+        dt = convertDtCSharpToString(context.Current.ModifiedOn);
     }
-    $(generateTitleHtm(title,dt)).appendTo(c_issue_className);
+    $(generateTitleHtm(title, dt)).appendTo(c_issue_className);
 }
 
-function generateTitleHtm(title,currentDate) {
+function generateTitleHtm(title, currentDate) {
     return "<div style='top:0:right:0;'><span class='title-header'>" + title + "</span><br/><span id='currentDateTimeTitle' class='title-date-issue'>" + currentDate + " </span></div>";
 }
 
-function setCurrentDateTime( currentDate) {
+function setCurrentDateTime(currentDate) {
     $("#currentDateTimeTitle").text(currentDate);
 }
 
@@ -270,7 +278,7 @@ function convertDtCSharpToString(dateJson) {
     var re = /-?\d+/;
     var m = re.exec(dateJson);
     // var dt = new Date(parseInt(m[0]));
-   return getISODateTime(new Date(parseInt(m[0])));
+    return getISODateTime(new Date(parseInt(m[0])));
 }
 function onSuccessPrevHandler(data, status) {
     context = data;
@@ -374,7 +382,7 @@ function registerDragElement() {
         helper: c_clone,
         cursorAt: { bottom: 0 },
         start: function (event, ui) {
-         //   dragClone = $(this).clone();
+            //   dragClone = $(this).clone();
             dragElement = $(this);
         },
         stop: function (event, ui) {
@@ -454,7 +462,7 @@ function registerElementEvents() {
         onfocusOnSizeLabel = true;
     });
     $(c_advertisment_size_className).live(c_blur, function () { onfocusOnSizeLabel = false; });
-  
+
     registerDragElement();
     registerDropElement();
 }
@@ -479,7 +487,7 @@ function getCurrentPointOnScreen(issue, event, ui) {
 
 function generateWhiteSpaceTag(body) {
     var innerBody = body();
-    return "<div style='width:25px;height:15px' class='" + c_whitespace_drag_type + " ui-draggable'>"+innerBody+"</div>";
+    return "<div style='width:25px;height:15px' class='" + c_whitespace_drag_type + " ui-draggable'>" + innerBody + "</div>";
 }
 
 function generateWhiteSpaceBody() {
@@ -532,8 +540,8 @@ function createAdvertismentOnIssueIeBelowVersion9(title, id, size) {
     if (isHideFirma == true) {
         title = "";
     }
-    var tag=generateAdvertismentTag(title,id,size,function(title, id, size){ return ""; } );
-    tag= $(tag).html(generateAdvertismentBody(title,id,size)) ;
+    var tag = generateAdvertismentTag(title, id, size, function (title, id, size) { return ""; });
+    tag = $(tag).html(generateAdvertismentBody(title, id, size));
     return tag;
 }
 
@@ -591,7 +599,7 @@ function setPositionsElements(d, item) {
 function createWhiteSpaceOnIssue(issue, drag, currPoint, copy) {
     var isCopy = copy || false;
     drag = createWhiteSpaceIeBelowVersion9();
-    
+
     drag.css({
         position: c_absolute,
         left: currPoint.left,
@@ -613,7 +621,7 @@ function createSectionOnIssue(issue, drag, currentRow, currPoint, copy) {
     }
 
     drag = createSectionOnIssueIeBelowVersion9(title, id);
-  
+
     drag.css({
         position: c_absolute,
         left: currPoint.left,
@@ -635,7 +643,7 @@ function createAdvertismentOnIssue(issue, drag, currentRow, currPoint, copy) {
         id = drag.find(c_advertisment_id_className).attr(c_id);
     }
     drag = createAdvertismentOnIssueIeBelowVersion9(title, id, size);
-    
+
     drag.css({
         position: c_absolute,
         left: currPoint.left,
@@ -648,14 +656,14 @@ function createAdvertismentOnIssue(issue, drag, currentRow, currPoint, copy) {
 
 function onFocusElement() {
     $(c_AdvertisingSpace_className).removeClass(c_focusObject);
-  //  onfocusOnSizeLabel = false; 
+    //  onfocusOnSizeLabel = false; 
     $(c_jquery_class + c_section_drag_type).addClass(c_remover_border);
     if ($(this).hasClass(c_section_drag_type)) {
         $(this).removeClass(c_remover_border);
     }
     $(this).addClass(c_focusObject);
 
-   
+
     enabledDeleteButton(true);
 }
 
@@ -759,13 +767,13 @@ function delSectionHandler(obj) {
 function deleteHandler() {
     var obj = getEleOnFocus();
     if (obj != null) {
-        if (obj.hasClass(c_adv_drag_type)) 
+        if (obj.hasClass(c_adv_drag_type))
             del = delAdvHandler(obj);
-        else if (obj.hasClass(c_section_drag_type)) 
+        else if (obj.hasClass(c_section_drag_type))
             del = delSectionHandler(obj);
-        else 
+        else
             del = obj;
-        
+
         del.remove();
         menuButtonsHandlerAFterDelElemnts();
         elementCopy = null;
@@ -831,8 +839,8 @@ function getEleOnFocus() {
 
 function saveHandler() {
     var messageBuilder = "";
-    var hasAnyAdvsOnToolBox= hasAdvsOnToolBox();
-    var hasAnyDeleteAdvsAndSections= hasDeleteAdvsAndSections();
+    var hasAnyAdvsOnToolBox = hasAdvsOnToolBox();
+    var hasAnyDeleteAdvsAndSections = hasDeleteAdvsAndSections();
     if (hasAnyAdvsOnToolBox || hasAnyDeleteAdvsAndSections) {
         messageBuilder += hasAnyAdvsOnToolBox ? c_thereIsExtraAdvsMessage : "";
         messageBuilder += hasAnyAdvsOnToolBox ? c_newLine : "";
@@ -948,22 +956,22 @@ function uploadSuccessHandler(data, status) {
     setCurrentDateTime(d);
 
 }
-function getISODateTime(d){
+function getISODateTime(d) {
     // padding function
-    var s = function(a,b){return(1e15+a+"").slice(-b)};
+    var s = function (a, b) { return (1e15 + a + "").slice(-b) };
 
     // default date parameter
-    if (typeof d === 'undefined'){
+    if (typeof d === 'undefined') {
         d = new Date();
     };
 
     // return ISO datetime
     return d.getFullYear() + '-' +
-        s(d.getMonth()+1,2) + '-' +
-        s(d.getDate(),2) + ' ' +
-        s(d.getHours(),2) + ':' +
-        s(d.getMinutes(),2) + ':' +
-        s(d.getSeconds(),2);
+        s(d.getMonth() + 1, 2) + '-' +
+        s(d.getDate(), 2) + ' ' +
+        s(d.getHours(), 2) + ':' +
+        s(d.getMinutes(), 2) + ':' +
+        s(d.getSeconds(), 2);
 }
 
 function loadContext() {
@@ -971,7 +979,7 @@ function loadContext() {
         context.Current = {};
         context.Current.Title = context.Title;
         context.Current.IssueId = currentId;
-      
+
     }
     context.Current.ModifiedOn = getISODateTime();
     context.Current.Advertisements = [];
@@ -987,15 +995,15 @@ jQuery.fn.selectText = function () {
         range.moveToElementText(this[0]);
         range.select();
     }
-   // not ie
+        // not ie
     else
         if (window.getSelection) {
-        selection = window.getSelection();
-        range = document.createRange();
-        range.selectNodeContents(this[0]);
-        selection.removeAllRanges();
-        selection.addRange(range);
-    }
+            selection = window.getSelection();
+            range = document.createRange();
+            range.selectNodeContents(this[0]);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
 };
 
 

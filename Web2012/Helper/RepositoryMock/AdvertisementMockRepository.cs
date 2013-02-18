@@ -13,7 +13,7 @@ namespace Web2012.Helper.RepositoryMock
             get {
                 return GetDataMock();
         } }
-        List<Advertisement> GetDataMockNULL()
+        List<Advertisement> GetDataMockf()
         {
             return new List<Advertisement>();
         }
