@@ -251,7 +251,7 @@ function excuteBlockUi(message) {
     // $.blockUI({ message: message, overlayCSS: { backgroundColor: '#00f' } });
     $.blockUI({
         theme: true,
-        title: 'הודעה',
+        title: c_titleAlert,
         message: '<p>' + message + '.</p>'
        //, timeout: 2000
     });
