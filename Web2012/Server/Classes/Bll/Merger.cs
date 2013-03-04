@@ -12,6 +12,7 @@ namespace Web2012.Server.Classes.Bll
     {
         public static AdvertismentArea Merge(AdvertismentArea crm, ICollection<Section> sections, ICollection<Advertisement> advertisements)
         {
+
             UpdateTitle(crm, ref advertisements);
             SetIsDeletedAdvertisements(crm,ref advertisements);
            // SetIsDeletedSections(crm, ref sections);

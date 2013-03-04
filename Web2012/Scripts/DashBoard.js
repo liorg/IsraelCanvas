@@ -1,10 +1,9 @@
 ﻿var uploadHandler = "mockUpload.ashx";
 var downloadHandler = "MockData.ashx";
-
+var preview = "Preview.htm";
 //var uploadHandler = "Upload.ashx";
 //var downloadHandler = "Data.ashx";
 
-var preview = "Preview.htm";
 var dropBox;
 var dragAdvertisements;
 var dragSections;
@@ -38,12 +37,6 @@ var c_titleAlert = "הודעה";
 
 var c_portrait_width = "204mm";
 var c_portrait_height = "292mm";
-
-//var c_portrait_width = "210mm";
-//var c_portrait_height = "297mm";
-
-//var c_portrait_width = "210mm";
-//var c_portrait_height = "292mm";
 
 //width: 297mm;
 //height: 210mm;
@@ -102,6 +95,12 @@ var c_hasDeleteAreaMessage = "יש מודעות מבוטלות";
 var c_toContinueMessage = "האם להמשיך?";
 var c_newLine = "<br/>";
 var c_thereIsExtraAdvsMessage = "יש מודעות נוספות בארגז כלים";
+
+var c_pleaseWait = "נא המתן...";
+var c_pleaseWaitSaveData = "שומר נתונים ,נא המתן";
+
+var c_noSections = "אין מדורים לגליון זה !!!";
+var c_noAdvertisements = "אין מודעות לגליון זה !!!";
 
 $.extend({
     customAlert: function (message, title) {
@@ -179,6 +178,7 @@ function setTemplateImage(base64Image, IsLandscape) {
 }
 
 function ajaxFailed(xmlRequest) {
+    $.unblockUI();
     if (xmlRequest.status == "200") {
         return;
     }
@@ -192,7 +192,7 @@ function ajaxFailed(xmlRequest) {
 
 function setAdvertisementsToolbarData() {
     if (context.Advertisements == null) {
-        messageBox("אין מודעות לגליון זה !!!");
+        messageBox(c_noAdvertisements);
         return;
     }
     $.each(context.Advertisements, function (index, advertisement) {
@@ -203,7 +203,7 @@ function setAdvertisementsToolbarData() {
 
 function setSectionsToolbarData() {
     if (context.Sections == null) {
-        messageBox("אין מדורים לגליון זה !!!");
+        messageBox(c_noSections);
         return;
     }
     $.each(context.Sections, function (index, section) {
@@ -235,6 +235,7 @@ function setToolboxUi() {
 }
 
 function loadAjax(successHandler) {
+    excuteBlockUi(c_pleaseWait);
     $.ajax({
         type: "POST",
         url: downloadHandler + "?id=" + currentId,
@@ -246,8 +247,17 @@ function loadAjax(successHandler) {
         error: ajaxFailed
     });
 }
-
+function excuteBlockUi(message) {
+    // $.blockUI({ message: message, overlayCSS: { backgroundColor: '#00f' } });
+    $.blockUI({
+        theme: true,
+        title: 'הודעה',
+        message: '<p>' + message + '.</p>'
+       //, timeout: 2000
+    });
+}
 function onSuccessHandler(data, status) {
+    $.unblockUI();
     context = data;
     setTitleIssue();
     setAdvertisementsToolbarData();
@@ -277,10 +287,10 @@ function setCurrentDateTime(currentDate) {
 function convertDtCSharpToString(dateJson) {
     var re = /-?\d+/;
     var m = re.exec(dateJson);
-    // var dt = new Date(parseInt(m[0]));
     return getISODateTime(new Date(parseInt(m[0])));
 }
 function onSuccessPrevHandler(data, status) {
+    $.unblockUI();
     context = data;
     setTitleIssue();
     setImageTemplate();
@@ -569,7 +579,7 @@ function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHa
             setPositionsElements(d, whiteColor);
         });
         $.each(context.Current.Sections, function (index, section) {
-            var createDiv = generateSectionOnIssue(section.Name, section.Id);
+            var createDiv = createSectionOnIssueIeBelowVersion9(section.Name, section.Id);//generateSectionOnIssue(section.Name, section.Id);
             var d = $(createDiv).appendTo(c_issue_className);
             if (section.IsDeleted) {
                 $(d).addClass(c_deleted_advertisement);
@@ -939,6 +949,8 @@ function delredsHandler() {
 }
 
 function upload() {
+    excuteBlockUi(c_pleaseWaitSaveData);
+
     $.ajax({
         type: "POST",
         url: uploadHandler,
@@ -952,6 +964,7 @@ function upload() {
     });
 }
 function uploadSuccessHandler(data, status) {
+    $.unblockUI();
     var d = data;
     setCurrentDateTime(d);
 
@@ -995,7 +1008,7 @@ jQuery.fn.selectText = function () {
         range.moveToElementText(this[0]);
         range.select();
     }
-        // not ie
+    // not ie
     else
         if (window.getSelection) {
             selection = window.getSelection();

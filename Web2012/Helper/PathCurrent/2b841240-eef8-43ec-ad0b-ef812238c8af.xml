@@ -4,58 +4,14 @@
   <Title>test</Title>
   <Advertisements>
     <Advertisement>
-      <Top>4</Top>
-      <Left>889</Left>
-      <Width>66</Width>
-      <Height>70</Height>
-      <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
-      <Name>אגיס</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>41</Top>
-      <Left>546</Left>
-      <Width>108</Width>
-      <Height>67</Height>
-      <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
-      <Name>סלקום</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>6546546</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>483</Top>
-      <Left>728</Left>
-      <Width>300</Width>
-      <Height>85</Height>
-      <Id>e5fbbc06-8f81-0000-0013-f56bb52ed361</Id>
-      <Name>מוצר ישראלי</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>55555</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>201</Top>
-      <Left>333</Left>
+      <Top>116</Top>
+      <Left>622</Left>
       <Width>80</Width>
       <Height>79</Height>
       <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
       <Name>Nike</Name>
       <IsDeleted>false</IsDeleted>
       <Size>5645656</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>220</Top>
-      <Left>901</Left>
-      <Width>22</Width>
-      <Height>54</Height>
-      <Id>e5fbbc06-8f81-0000-0001-f56bb52ed361</Id>
-      <Name>אגיס</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>6546546</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
@@ -70,8 +26,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>692</Top>
-      <Left>1036</Left>
+      <Top>608</Top>
+      <Left>515</Left>
       <Width>67</Width>
       <Height>79</Height>
       <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
@@ -81,34 +37,54 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>165</Top>
-      <Left>777</Left>
-      <Width>54</Width>
-      <Height>60</Height>
-      <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
-      <Name>טויטה קורולה</Name>
+      <Top>159</Top>
+      <Left>157</Left>
+      <Width>70</Width>
+      <Height>57</Height>
+      <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
+      <Name>Nike</Name>
       <IsDeleted>false</IsDeleted>
-      <Size>12x12</Size>
+      <Size>5645656</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>83</Top>
-      <Left>837</Left>
-      <Width>89</Width>
-      <Height>81</Height>
-      <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
-      <Name> הבית היהודי</Name>
+      <Top>8</Top>
+      <Left>302</Left>
+      <Width>62</Width>
+      <Height>38</Height>
+      <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
+      <Name>Nike</Name>
       <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
+      <Size>124</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>25</Top>
+      <Left>541</Left>
+      <Width>48</Width>
+      <Height>51</Height>
+      <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
+      <Name>Nike</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>9999999</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
   </Advertisements>
   <Sections>
     <Section>
-      <Top>302</Top>
-      <Left>354</Left>
-      <Width>67</Width>
-      <Height>20</Height>
+      <Top>24</Top>
+      <Left>647</Left>
+      <Width>64</Width>
+      <Height>45</Height>
+      <Id>e5fbbc06-8f81-0003-0000-f56bb52ed361</Id>
+      <Name>פוליטי/מדיני</Name>
+      <IsDeleted>false</IsDeleted>
+    </Section>
+    <Section>
+      <Top>92</Top>
+      <Left>794</Left>
+      <Width>61</Width>
+      <Height>10</Height>
       <Id>e5fbbc06-8f81-0003-0000-f56bb52ed361</Id>
       <Name>פוליטי/מדיני</Name>
       <IsDeleted>false</IsDeleted>
@@ -116,33 +92,26 @@
   </Sections>
   <Colors>
     <ElementColor>
-      <Top>261</Top>
-      <Left>583</Left>
-      <Width>89</Width>
-      <Height>58</Height>
+      <Top>332</Top>
+      <Left>985</Left>
+      <Width>61</Width>
+      <Height>44</Height>
       <ColorName>white</ColorName>
     </ElementColor>
     <ElementColor>
-      <Top>342</Top>
-      <Left>973</Left>
-      <Width>62</Width>
-      <Height>45</Height>
-      <ColorName>white</ColorName>
-    </ElementColor>
-    <ElementColor>
-      <Top>98</Top>
-      <Left>256</Left>
+      <Top>121</Top>
+      <Left>347</Left>
       <Width>177</Width>
       <Height>47</Height>
       <ColorName>white</ColorName>
     </ElementColor>
     <ElementColor>
-      <Top>349</Top>
-      <Left>689</Left>
-      <Width>60</Width>
-      <Height>72</Height>
+      <Top>332</Top>
+      <Left>774</Left>
+      <Width>48</Width>
+      <Height>61</Height>
       <ColorName>white</ColorName>
     </ElementColor>
   </Colors>
-  <ModifiedOn>2013-02-17T18:15:52</ModifiedOn>
+  <ModifiedOn>2013-03-04T10:30:10</ModifiedOn>
 </AdvertismentAreaContext>
