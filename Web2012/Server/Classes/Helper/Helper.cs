@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,17 @@ namespace Guardian.Advertisment
             xml = xml.Substring(0, (xml.LastIndexOf(Convert.ToChar(62)) + 1));
             return xml;
 
+        }
+
+        public static string TitleDateUpload(DateTime dt)
+        {
+            return String.Format("עדכון אחרון: {2}  {1}' {0} ", dt.ToString("hh:mm"), GetDayNameByDate(dt), dt.ToString("dd/MM/yyyy"));
+        }
+
+        public static string GetDayNameByDate(DateTime dt)
+        {
+            var culture = new CultureInfo("he-il");
+            return dt.ToString("ddd", culture);
         }
     }
 }

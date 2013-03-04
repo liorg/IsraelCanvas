@@ -198,6 +198,7 @@
     <Compile Include="Server\Classes\DataModel\Advertisement.cs" />
     <Compile Include="Server\Classes\DataModel\AdvertismentArea.cs" />
     <Compile Include="Server\Classes\DataModel\ElementAreaBase.cs" />
+    <Compile Include="Server\Classes\DataModel\Result.cs" />
     <Compile Include="Server\Classes\DataModel\Section.cs" />
     <Compile Include="DashBoard\MockData.ashx.cs">
       <DependentUpon>MockData.ashx</DependentUpon>

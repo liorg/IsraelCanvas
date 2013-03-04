@@ -3,7 +3,7 @@ var downloadHandler = "MockData.ashx";
 var preview = "Preview.htm";
 //var uploadHandler = "Upload.ashx";
 //var downloadHandler = "Data.ashx";
-
+//var preview = "Preview.aspx";
 var dropBox;
 var dragAdvertisements;
 var dragSections;
@@ -180,15 +180,14 @@ function setTemplateImage(base64Image, IsLandscape) {
 function ajaxFailed(xmlRequest) {
     $.unblockUI();
     if (xmlRequest.status == "200") {
-        return;
+        messageBox(".נוצרה שגיאה,נא פנה למנהל מערכת");
     }
     //messageBox(xmlRequest.status + ' \n\r ' +
     //      xmlRequest.statusText + '\n\r' +
     //      xmlRequest.responseText);
-    messageBox(xmlRequest.status + ' \n\r ' +
-      xmlRequest.statusText + '\n\r' +
-     "נוצרה שגיאה,נא פנה למנהל מערכת");
+    messageBox("..נוצרה שגיאה,נא פנה למנהל מערכת");
 }
+
 
 function setAdvertisementsToolbarData() {
     if (context.Advertisements == null) {
@@ -253,12 +252,14 @@ function excuteBlockUi(message) {
         theme: true,
         title: c_titleAlert,
         message: '<p>' + message + '.</p>'
-       //, timeout: 2000
+        //, timeout: 2000
     });
 }
 function onSuccessHandler(data, status) {
     $.unblockUI();
-    context = data;
+    if (handleIfIsErrors(data) == true)
+        return;
+    context = data.Obj;
     setTitleIssue();
     setAdvertisementsToolbarData();
     setSectionsToolbarData();
@@ -267,13 +268,26 @@ function onSuccessHandler(data, status) {
     registerElementEvents();
 
 }
+function handleIfIsErrors(data) {
+    if (data.IsUnandleException) {
+        messageBox("!נוצרה שגיאה,נא פנה למנהל מערכת");
+        return true;
+    }
+    if (!data.IsSuccess) {
+        messageBox(data.Desc);
+        return true;
+    }
+    return false;
+}
+
 function setTitleIssue() {
     var title = context.Title;
     var dt = getISODateTime();
-    if (context.Current != null && context.Current.ModifiedOn != null) {
-        dt = convertDtCSharpToString(context.Current.ModifiedOn);
-    }
-    $(generateTitleHtm(title, dt)).appendTo(c_issue_className);
+    //if (context.Current != null && context.Current.ModifiedOn != null) {
+    //    dt = convertDtCSharpToString(context.Current.ModifiedOn);
+    //}
+    if (context.Current != null && context.Current.ModifiedTitle != null)
+        $(generateTitleHtm(title, context.Current.ModifiedTitle)).appendTo(c_issue_className);
 }
 
 function generateTitleHtm(title, currentDate) {
@@ -291,7 +305,9 @@ function convertDtCSharpToString(dateJson) {
 }
 function onSuccessPrevHandler(data, status) {
     $.unblockUI();
-    context = data;
+    if (handleIfIsErrors(data) == true)
+        return;
+    context = data.Obj;
     setTitleIssue();
     setImageTemplate();
     setCurrent();
@@ -449,7 +465,7 @@ function GetDataInitObj(issue, event, ui, getDataByID) {
         id = ui.draggable.find(c_span).attr(c_id);
     else
         id = dragElement.find(c_span).attr(c_id);
-    var row = getDataByID(id);// getAdvertisementById(id);
+    var row = getDataByID(id); // getAdvertisementById(id);
     return row;
 }
 
@@ -579,7 +595,7 @@ function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHa
             setPositionsElements(d, whiteColor);
         });
         $.each(context.Current.Sections, function (index, section) {
-            var createDiv = createSectionOnIssueIeBelowVersion9(section.Name, section.Id);//generateSectionOnIssue(section.Name, section.Id);
+            var createDiv = createSectionOnIssueIeBelowVersion9(section.Name, section.Id); //generateSectionOnIssue(section.Name, section.Id);
             var d = $(createDiv).appendTo(c_issue_className);
             if (section.IsDeleted) {
                 $(d).addClass(c_deleted_advertisement);
@@ -995,6 +1011,7 @@ function loadContext() {
 
     }
     context.Current.ModifiedOn = getISODateTime();
+    
     context.Current.Advertisements = [];
     context.Current.Sections = [];
     context.Current.Colors = [];
@@ -1008,7 +1025,7 @@ jQuery.fn.selectText = function () {
         range.moveToElementText(this[0]);
         range.select();
     }
-    // not ie
+        // not ie
     else
         if (window.getSelection) {
             selection = window.getSelection();

@@ -50,10 +50,16 @@ namespace Web2012.DashBoard
 
 
             IAdvertismentAreaService mockService = new AdvertismentAreaServiceMock();
-            
+            string currentUpdate = Guardian.Advertisment.ContextHelper.TitleDateUpload(upload.ModifiedOn);
+            upload.ModifiedTitle = currentUpdate;
             mockService.Set(upload);
+
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            var d = serializer.Serialize(currentUpdate);
+            context.Response.Write(d);
+          
            // HttpContext.Current.Response.Status = "200";
-            context.Response.Write("File Save");
+           // context.Response.Write("File Save");
         }
 
         public bool IsReusable

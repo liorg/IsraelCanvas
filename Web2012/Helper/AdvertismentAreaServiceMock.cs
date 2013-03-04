@@ -17,23 +17,45 @@ namespace Guardian.Advertisment.Service
         {
 
         }
-        public AdvertismentArea Get(Guid? id=null){
+        public Result<AdvertismentArea> Get(Guid? id = null)
+        {
             //Mock mockData = new Mock();
             //return mockData.Data;
+            Result<AdvertismentArea> result=new Result<AdvertismentArea>();
+            result.IsSuccess=true;
             IssueMockRepository rep = new IssueMockRepository();
             if (id.HasValue)
             {
-                var r= rep.AdvertisementAreas.Where(p => p.IssueId == id.Value).FirstOrDefault();
+                var r = rep.AdvertisementAreas.Where(p => p.IssueId == id.Value).FirstOrDefault();
 
-                return Merger.Merge(r,  new SectionMockRepository().Sections, new AdvertisementMockRepository().Advertisements);
-            
+                var data =Merger.Merge(r, new SectionMockRepository().Sections, new AdvertisementMockRepository().Advertisements);
+                result.Obj = data;
             }
             else
             {
                 Mock mockData = new Mock();
-                return mockData.Data;
+                result.Obj = mockData.Data;
+                
             }
+            return result;
         }
+        //public AdvertismentArea Get(Guid? id=null){
+        //    //Mock mockData = new Mock();
+        //    //return mockData.Data;
+        //    IssueMockRepository rep = new IssueMockRepository();
+        //    if (id.HasValue)
+        //    {
+        //        var r= rep.AdvertisementAreas.Where(p => p.IssueId == id.Value).FirstOrDefault();
+
+        //        return Merger.Merge(r,  new SectionMockRepository().Sections, new AdvertisementMockRepository().Advertisements);
+            
+        //    }
+        //    else
+        //    {
+        //        Mock mockData = new Mock();
+        //        return mockData.Data;
+        //    }
+        //}
 
         public void Set(AdvertismentAreaContext item)
         {

@@ -8,22 +8,22 @@ using Web2012.Helper;
 
 namespace Guardian.Advertisment.Service
 {
-    public class AdvertismentAreaService : IAdvertismentAreaService
-    {
-        public AdvertismentAreaService()
-        {
+    //public class AdvertismentAreaService : IAdvertismentAreaService
+    //{
+    //    public AdvertismentAreaService()
+    //    {
 
-        }
-        public AdvertismentArea Get(Guid? id = null)
-        {
-            return null;
+    //    }
+    //    public AdvertismentArea Get(Guid? id = null)
+    //    {
+    //        return null;
 
-        }
-        public void Set(AdvertismentAreaContext item)
-        {
+    //    }
+    //    public void Set(AdvertismentAreaContext item)
+    //    {
            
 
-        }
+    //    }
 
-    }
+    //}
 }

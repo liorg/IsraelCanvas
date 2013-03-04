@@ -34,11 +34,13 @@ namespace Web2012.DashBoard
             var upload = jsonSerializer.Deserialize<AdvertismentAreaContext>(jsonString);
 
             IAdvertismentAreaService mockService = new AdvertismentAreaServiceMock();
-            
+            string currentUpdate = Guardian.Advertisment.ContextHelper.TitleDateUpload(upload.ModifiedOn);
+            upload.ModifiedTitle = currentUpdate;
+
             mockService.Set(upload);
             context.Response.StatusCode = 200;
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            var d = serializer.Serialize(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            var d = serializer.Serialize(currentUpdate);
             context.Response.Write(d);
         }
 

@@ -23,6 +23,6 @@ namespace Guardian.Advertisment.DataModel
     //    public Guid IssueId { get; set; }
         public List<ElementColor> Colors { get; set; }
         public DateTime ModifiedOn { get; set; }
-        
+        public string ModifiedTitle { get; set; }
     }
 }
