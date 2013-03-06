@@ -18,6 +18,7 @@ var ctrlDown = false;
 var ctrlKey = 17, vKey = 86, cKey = 67; var deleteKey = 46; var savkey = 83;
 
 var c_copy_table_btn = "copy-table-btn";
+var c_print_table_btn = "printer-table-btn"
 var c_paste_table_btn = "paste-table-btn";
 var c_del_table_btn = "del-table-btn";
 var c_save_table_btn = "save-table-btn";
@@ -369,6 +370,9 @@ function registerMenubarEvents() {
     });
     $(c_jquery_id + c_del_red_table_btn).click(function () {
         delredsHandler();
+    });
+    $(c_jquery_id + c_print_table_btn).click(function () {
+        printPrev();
     });
 }
 
@@ -1100,4 +1104,12 @@ function getHideFirma() {
         if (r[c_hidefirma] == 1) return true;
     }
     return false;
+}
+
+function printPrev() {
+    var myWindow = window.open(preview + "?" + c_issueid + "=" + currentId);
+    myWindow.document.close();
+    myWindow.focus();
+    myWindow.print();
+    myWindow.close();
 }
