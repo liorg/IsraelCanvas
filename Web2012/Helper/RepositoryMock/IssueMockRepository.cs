@@ -68,9 +68,9 @@ namespace Web2012.Helper.RepositoryMock
         {
             List<AdvertismentArea> data = new List<AdvertismentArea>();
             List<string> urlsTemplate = new List<string>();
-            urlsTemplate.Add("/imgs/A4-SHISHI48-title.png");
-            urlsTemplate.Add("/imgs/BiggThenA4.png");
-            urlsTemplate.Add("/imgs/A4.png");
+            urlsTemplate.Add("/imgs/A4-SHISHI48-title.png");//0
+            urlsTemplate.Add("/imgs/288x200.png");//1//290x202.png
+            urlsTemplate.Add("/imgs/204x292.png");//2
             urlsTemplate.Add("/imgs/a4204x292.png");
             urlsTemplate.Add("/imgs/a4292x204.png");
             data.Add(new AdvertismentArea
@@ -88,7 +88,7 @@ namespace Web2012.Helper.RepositoryMock
                 Title = "test1",
                 Current = Find(new Guid("00000000-0000-0000-0000-000000000001")),
                 IsLandscape = false,
-                UriTemplate = ConvertImageURLToBase64(urlsTemplate[3])
+                UriTemplate = ConvertImageURLToBase64(urlsTemplate[2])
             });
             data.Add(new AdvertismentArea
             {

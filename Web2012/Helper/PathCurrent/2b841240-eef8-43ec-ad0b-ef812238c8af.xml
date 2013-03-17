@@ -103,10 +103,10 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>44</Top>
-      <Left>622</Left>
-      <Width>104</Width>
-      <Height>46</Height>
+      <Top>286</Top>
+      <Left>620</Left>
+      <Width>69</Width>
+      <Height>37</Height>
       <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
       <Name>טויטה קורולה</Name>
       <IsDeleted>false</IsDeleted>
@@ -157,6 +157,6 @@
       <ColorName>white</ColorName>
     </ElementColor>
   </Colors>
-  <ModifiedOn>2013-03-04T15:08:37</ModifiedOn>
-  <ModifiedTitle>עדכון אחרון: 04/03/2013  יום ב' 03:08 </ModifiedTitle>
+  <ModifiedOn>2013-03-14T11:20:07</ModifiedOn>
+  <ModifiedTitle>עדכון אחרון: 14/03/2013  יום ה' 11:20 </ModifiedTitle>
 </AdvertismentAreaContext>

@@ -10,6 +10,8 @@
     FONT-FAMILY: Tahoma, Arial;
     FONT-SIZE: 11px;
     padding-top: 90px;
+   page-break-after: avoid;
+   page-break-before: avoid;
 }
 .centreposition
 {
@@ -62,7 +64,7 @@
 
 }
 */
-div.Issue 
+div.Issuex 
 {
     background-repeat: no-repeat;
     background-image: url('/imgs/progress2013.gif');
@@ -70,6 +72,16 @@ div.Issue
     width: 292mm;
     height: 204mm;
     list-style-type: none;margin: 4mm; overflow:hidden;padding:1mm;
+
+}
+div.Issue 
+{
+    background-repeat: no-repeat;
+    background-image: url('/imgs/progress2013.gif');
+    background-position: 0px 0px;
+    width: 288mm;
+    height: 200mm;
+    list-style-type: none;margin:8mm; overflow:hidden;padding:0mm;
 
 }
 div.Screen

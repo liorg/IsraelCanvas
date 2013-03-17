@@ -71,15 +71,20 @@
     <Content Include="Helper\PathCurrent\00000000-0000-0000-0000-000000000001.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Helper\PathCurrent\00000000-0000-0000-0000-000000000002.xml" />
+    <Content Include="Helper\PathCurrent\00000000-0000-0000-0000-00000000000x.xml" />
     <Content Include="Helper\PathCurrent\2b841240-eef8-43ec-ad0b-ef812238c8af.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Helper\PathCurrent\JavaScript1.js" />
+    <Content Include="imgs\288x200.png" />
+    <Content Include="imgs\289x201.png" />
+    <Content Include="imgs\290x202.png" />
     <Content Include="imgs\A4-SHISHI48-title.png" />
     <Content Include="imgs\A4-SHISHI48.png" />
     <Content Include="imgs\A4.png" />
-    <Content Include="imgs\a4204x292.png" />
-    <Content Include="imgs\a4292x204.png" />
+    <Content Include="imgs\204x292.png" />
+    <Content Include="imgs\292x204.png" />
     <Content Include="imgs\app_back.png" />
     <Content Include="imgs\BiggThenA4.png" />
     <Content Include="imgs\icons\disabled\Printer.png" />

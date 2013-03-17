@@ -36,10 +36,17 @@ var c_jquery_class = ".";
 
 var c_titleAlert = "הודעה";
 
-var c_portrait_width = "204mm";
-var c_portrait_height = "292mm";
+//var c_portrait_width = "204mm";
+//var c_portrait_height = "292mm";
+
+var c_portrait_width = "201mm";
+var c_portrait_height = "289mm";
+
+//var c_portrait_width = "181mm";
+//var c_portrait_height = "269mm";
 
 //width: 297mm;
+
 //height: 210mm;
 
 var c_issue = "Issue";
@@ -167,6 +174,20 @@ function getSectionById(id) {
     return row[0];
 }
 
+function getIssueStyle() {
+    return $(c_issue_className)[0];
+}
+
+function setTemplateImageUrl(url, IsLandscape) {
+    var ele = $(c_issue_className)[0];
+    ele.style.backgroundImage = "url(" + url + ")";
+
+    if (!IsLandscape) {
+        ele.style.width = c_portrait_width;
+        ele.style.height = c_portrait_height;
+    }
+}
+
 function setTemplateImage(base64Image, IsLandscape) {
     var url = "url(data:image/png;base64," + base64Image + ")";
     var ele = $(c_issue_className)[0];
@@ -177,6 +198,17 @@ function setTemplateImage(base64Image, IsLandscape) {
         ele.style.height = c_portrait_height;
     }
 }
+
+//function setTemplateImage(base64Image, IsLandscape) {
+//    var url = "url(data:image/png;base64," + base64Image + ")";
+//    var ele = $(c_issue_className)[0];
+//    ele.style.backgroundImage = url;
+
+//    if (!IsLandscape) {
+//        ele.style.width = c_portrait_width;
+//        ele.style.height = c_portrait_height;
+//    }
+//}
 
 function ajaxFailed(xmlRequest) {
     $.unblockUI();
@@ -221,8 +253,15 @@ function appendSectionsToDragToolBox(section) {
 }
 
 function setImageTemplate() {
-    setTemplateImage(context.UriTemplate, context.IsLandscape);
+    if (!isUriBase64)
+        setTemplateImageUrl(context.UriTemplate, context.IsLandscape);
+    else
+        setTemplateImage(context.UriTemplate, context.IsLandscape);
 }
+
+//function setImageTemplate() {
+//    setTemplateImage(context.UriTemplate, context.IsLandscape);
+//}
 
 function setToolboxUi() {
     $("#tabs").tabs();
@@ -425,7 +464,7 @@ function registerDropElement() {
     var selector = c_toolbar_ClassName + " " + c_li;
     dropBox.droppable({
         accept: selector + ", " + c_jquery_class + c_ui_widget_content,
-        scroll: true,
+        scroll: false,
         refreshPositions: true,
         drop: function (event, ui) {
             enabledCopyButton(true);
@@ -437,7 +476,7 @@ function registerDropElement() {
 function onDropHandler(issue, event, ui) {
     var draggable = ui.draggable;
     if (draggable.hasClass(c_AdvertisingSpace)) {
-        return true;
+        return validatePos(issue, event, ui);
     }
     if (draggable.hasClass(c_adv_type)) {
         return onInitAdv(issue, event, ui);
@@ -449,6 +488,48 @@ function onDropHandler(issue, event, ui) {
         return onInitSection(issue, event, ui);
     }
 }
+
+function validatePos(issue, event, ui) {
+    return true;
+    //   var pos = getCurrentPointOnScreen(issue, event, ui);
+
+
+    //var eWidth = ui.draggable.outerWidth();
+    //var eHeight = ui.draggable.outerHeight();
+    //var x, y;
+    //var pos = getBoundaryElement(issue);
+
+    //if (event.pageX > pos.rightBoundary)
+    //    return true;
+    //else
+    //    //  y = event.pageY - $(issue).offset().top - eHeight;
+    //{
+    //    if (!ui.draggable.data("originalPosition")) {
+    //        ui.draggable.data("originalPosition",
+    //            ui.draggable.data("draggable").originalPosition);
+    //    }
+    //}
+    ////    x = pos.rightBoundary - (eWidth / 2);
+    ////else
+    ////    x = event.pageX - pos.left - (eWidth / 2);
+
+    //if (event.pageY > pos.bottomBoundary)
+    //    //  y = pos.bottomBoundary - $(issue).offset().top - eHeight;
+    //    return true;
+    //else
+    //    //  y = event.pageY - $(issue).offset().top - eHeight;
+    //{
+    //    if (!ui.draggable.data("originalPosition")) {
+    //        ui.draggable.data("originalPosition",
+    //            ui.draggable.data("draggable").originalPosition);
+    //    }
+    //}
+
+    ////var left = x > 0 ? x : 0 + c_px;
+    ////var top = y > 0 ? y : 0 + c_px;
+    ////return { top: top, left: left };
+}
+
 
 function onInitWhiteSpace(issue, event, ui) {
     var currPoint = getCurrentPointOnScreen(issue, event, ui);
@@ -502,12 +583,32 @@ function checkCharcount(content, max) {
         content.text(content.text().substring(0, max));
     }
 }
+function getBoundaryElement(issue) {
 
+    var t = $(issue);
+    var pos = t.offset();
+    pos.bottomBoundary = pos.top + t.height();
+    pos.rightBoundary = pos.left + t.width();
+
+    return pos;
+}
 function getCurrentPointOnScreen(issue, event, ui) {
+
     var eWidth = ui.draggable.outerWidth();
     var eHeight = ui.draggable.outerHeight();
-    var x = event.pageX - $(issue).offset().left - (eWidth / 2);
-    var y = event.pageY - $(issue).offset().top - (eHeight / 2);
+    var x, y;
+    var pos = getBoundaryElement(issue);
+
+    if (event.pageX > pos.rightBoundary)
+        x = pos.rightBoundary - pos.left - (eWidth / 2);
+    else
+        x = event.pageX - pos.left - (eWidth / 2);
+
+    if (event.pageY > pos.bottomBoundary)
+        y = pos.bottomBoundary - $(issue).offset().top - eHeight;
+    else
+        y = event.pageY - $(issue).offset().top - eHeight;
+
 
     var left = x > 0 ? x : 0 + c_px;
     var top = y > 0 ? y : 0 + c_px;
@@ -1015,7 +1116,7 @@ function loadContext() {
 
     }
     context.Current.ModifiedOn = getISODateTime();
-    
+
     context.Current.Advertisements = [];
     context.Current.Sections = [];
     context.Current.Colors = [];

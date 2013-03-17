@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
         <title>Preview</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
     <link href="../Styles/jquery-ui.css" rel="stylesheet" />
     <script type="text/javascript" src="../Scripts/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="../Scripts/jquery-ui.js"></script>
@@ -12,6 +13,7 @@
     <link href="../Styles/Dashboard.css" rel="stylesheet" />
     <link href="../Styles/ribbon.css" rel="stylesheet" />
     <script type="text/javascript" language="javascript">
+        var isUriBase64 = true;
         $(function () {
             currentId = getCurrentId();//'2b841240-eef8-43ec-ad0b-ef812238c8af';
             isHideFirma = getHideFirma();
@@ -19,11 +21,22 @@
         });
     </script>
  <style>
-     @page { size: A4 landscape }
-   
-
+     /*@page { size: A4 landscape }*/
+   /*border:solid 1px*/
+     @page
+     {
+         size: A4 landscape;
+     }
+     /* Print styles */
+@media print 
+{
+    tr, td, th,div {page-break-inside:avoid}
+    .NoPrint {visibility:hidden; display:none}
+}
  </style>
+    <!-- Print styles. -->
+
 </head>
-<body >  <div style="position:absolute;right:0;top:0;" class="Issue"></div>
+<body >  <div style="margin:0;padding:0mm;position:absolute;right:0;top:0;" class="Issue"></div>
 </body>
 </html>
