@@ -4,8 +4,8 @@
   <Title>test2</Title>
   <Advertisements>
     <Advertisement>
-      <Top>611</Top>
-      <Left>985</Left>
+      <Top>402</Top>
+      <Left>963</Left>
       <Width>88</Width>
       <Height>123</Height>
       <Id>e5fbbc06-8f81-0000-0013-f56bb52ed361</Id>
@@ -16,9 +16,9 @@
     </Advertisement>
     <Advertisement>
       <Top>618</Top>
-      <Left>217</Left>
-      <Width>62</Width>
-      <Height>44</Height>
+      <Left>181</Left>
+      <Width>99</Width>
+      <Height>40</Height>
       <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
       <Name>Nike</Name>
       <IsDeleted>false</IsDeleted>
@@ -48,10 +48,10 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>596</Top>
-      <Left>1050</Left>
-      <Width>35</Width>
-      <Height>156</Height>
+      <Top>455</Top>
+      <Left>824</Left>
+      <Width>69</Width>
+      <Height>118</Height>
       <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
       <Name>מטרנה</Name>
       <IsDeleted>false</IsDeleted>
@@ -59,19 +59,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>159</Top>
-      <Left>621</Left>
-      <Width>66</Width>
-      <Height>28</Height>
-      <Id>e5fbbc06-8f81-0000-0002-f56bb52ed361</Id>
-      <Name>ציפי ליבני - התקווה</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>12x12</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>156</Top>
-      <Left>416</Left>
+      <Top>174</Top>
+      <Left>643</Left>
       <Width>67</Width>
       <Height>54</Height>
       <Id>e5fbbc06-8f81-0000-0000-f56bb52ed361</Id>
@@ -92,8 +81,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>309</Top>
-      <Left>487</Left>
+      <Top>266</Top>
+      <Left>983</Left>
       <Width>71</Width>
       <Height>119</Height>
       <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
@@ -113,19 +102,52 @@
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
+    <Advertisement>
+      <Top>157</Top>
+      <Left>976</Left>
+      <Width>60</Width>
+      <Height>26</Height>
+      <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
+      <Name>אגיס</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>326</Top>
+      <Left>1003</Left>
+      <Width>30</Width>
+      <Height>35</Height>
+      <Id>e5fbbc06-8f81-0000-0001-f56bb52ed361</Id>
+      <Name>אגיס</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>12x12</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>88</Top>
+      <Left>867</Left>
+      <Width>64</Width>
+      <Height>26</Height>
+      <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
+      <Name> הבית היהודי</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
   </Advertisements>
   <Sections>
     <Section>
-      <Top>160</Top>
-      <Left>212</Left>
-      <Width>50</Width>
-      <Height>21</Height>
+      <Top>194</Top>
+      <Left>274</Left>
+      <Width>46</Width>
+      <Height>18</Height>
       <Id>e5fbbc06-8f81-0001-0000-f56bb52ed361</Id>
       <Name>ספורט</Name>
       <IsDeleted>false</IsDeleted>
     </Section>
   </Sections>
   <Colors />
-  <ModifiedOn>2013-03-17T23:00:31</ModifiedOn>
-  <ModifiedTitle>עדכון אחרון: 17/03/2013  יום א' 11:00 </ModifiedTitle>
+  <ModifiedOn>2013-03-18T13:43:28</ModifiedOn>
+  <ModifiedTitle>עדכון אחרון: 18/03/2013  יום ב' 01:43 </ModifiedTitle>
 </AdvertismentAreaContext>

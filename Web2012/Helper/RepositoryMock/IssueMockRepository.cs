@@ -69,8 +69,8 @@ namespace Web2012.Helper.RepositoryMock
             List<AdvertismentArea> data = new List<AdvertismentArea>();
             List<string> urlsTemplate = new List<string>();
             urlsTemplate.Add("/imgs/A4-SHISHI48-title.png");//0
-            urlsTemplate.Add("/imgs/288x200.png");//1//290x202.png
-            urlsTemplate.Add("/imgs/204x292.png");//2
+            urlsTemplate.Add("/imgs/288x199.png");//1//290x202.png
+            urlsTemplate.Add("/imgs/199x288.png");//2
             urlsTemplate.Add("/imgs/a4204x292.png");
             urlsTemplate.Add("/imgs/a4292x204.png");
             data.Add(new AdvertismentArea

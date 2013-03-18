@@ -4,21 +4,10 @@
   <Title>test1</Title>
   <Advertisements>
     <Advertisement>
-      <Top>179</Top>
+      <Top>0</Top>
       <Left>0</Left>
-      <Width>74</Width>
-      <Height>93</Height>
-      <Id>e5fbbc06-8f81-0000-0000-f56bb52ed361</Id>
-      <Name>הליכוד ביתנו</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>1233x1233</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>4</Top>
-      <Left>4</Left>
-      <Width>56</Width>
-      <Height>65</Height>
+      <Width>40</Width>
+      <Height>46</Height>
       <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
       <Name>Nike</Name>
       <IsDeleted>false</IsDeleted>
@@ -26,10 +15,32 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>962</Top>
+      <Top>379</Top>
+      <Left>49</Left>
+      <Width>48</Width>
+      <Height>74</Height>
+      <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
+      <Name> הבית היהודי</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>547</Top>
+      <Left>590</Left>
+      <Width>35</Width>
+      <Height>26</Height>
+      <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
+      <Name>מטרנה</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>981</Top>
       <Left>0</Left>
-      <Width>46</Width>
-      <Height>141</Height>
+      <Width>56</Width>
+      <Height>73</Height>
       <Id>e5fbbc06-8f81-0000-0013-f56bb52ed361</Id>
       <Name>מוצר ישראלי</Name>
       <IsDeleted>false</IsDeleted>
@@ -37,18 +48,19 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>1040</Top>
-      <Left>699</Left>
-      <Width>72</Width>
-      <Height>63</Height>
-      <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
-      <Name>אגיס</Name>
+      <Top>546</Top>
+      <Left>652</Left>
+      <Width>96</Width>
+      <Height>26</Height>
+      <Id>e5fbbc06-8f81-0000-0002-f56bb52ed361</Id>
+      <Name>ציפי ליבני - התקווה</Name>
       <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
+      <Size>12x12</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
   </Advertisements>
   <Sections />
   <Colors />
-  <ModifiedOn>2013-02-16T19:27:35</ModifiedOn>
+  <ModifiedOn>2013-03-18T15:22:45</ModifiedOn>
+  <ModifiedTitle>עדכון אחרון: 18/03/2013  יום ב' 03:22 </ModifiedTitle>
 </AdvertismentAreaContext>

@@ -64,7 +64,7 @@
 
 }
 */
-div.Issuex 
+/*div.Issuex 
 {
     background-repeat: no-repeat;
     background-image: url('/imgs/progress2013.gif');
@@ -73,15 +73,16 @@ div.Issuex
     height: 204mm;
     list-style-type: none;margin: 4mm; overflow:hidden;padding:1mm;
 
-}
+}*/
 div.Issue 
 {
+    border:dotted 1px;
     background-repeat: no-repeat;
     background-image: url('/imgs/progress2013.gif');
     background-position: 0px 0px;
-    width: 288mm;
-    height: 200mm;
-    list-style-type: none;margin:8mm; overflow:hidden;padding:0mm;
+    width: 280mm;
+    height: 199mm;
+    list-style-type: none;margin:0mm; overflow:hidden;padding:0mm;
 
 }
 div.Screen
