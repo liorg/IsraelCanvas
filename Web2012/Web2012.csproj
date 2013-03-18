@@ -77,18 +77,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="imgs\199x288.png" />
-    <Content Include="imgs\200x288.png" />
-    <Content Include="imgs\200x288red.png" />
     <Content Include="imgs\288x199.png" />
-    <Content Include="imgs\288x200.png" />
-    <Content Include="imgs\288x200red.png" />
-    <Content Include="imgs\289x201.png" />
-    <Content Include="imgs\290x202.png" />
     <Content Include="imgs\A4-SHISHI48-title.png" />
-    <Content Include="imgs\A4-SHISHI48.png" />
     <Content Include="imgs\A4.png" />
-    <Content Include="imgs\204x292.png" />
-    <Content Include="imgs\292x204.png" />
     <Content Include="imgs\app_back.png" />
     <Content Include="imgs\BiggThenA4.png" />
     <Content Include="imgs\icons\disabled\Printer.png" />
