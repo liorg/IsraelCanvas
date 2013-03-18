@@ -313,12 +313,23 @@ function handleIfIsErrors(data) {
 function setTitleIssue() {
     var title = context.Title;
     var dt = getISODateTime();
-    //if (context.Current != null && context.Current.ModifiedOn != null) {
-    //    dt = convertDtCSharpToString(context.Current.ModifiedOn);
-    //}
-    if (context.Current != null && context.Current.ModifiedTitle != null)
-        $(generateTitleHtm(title, context.Current.ModifiedTitle)).appendTo(c_issue_className);
+    var modifiedTitle = "";
+    if (context.Current != null && context.Current.ModifiedTitle != null) {
+        // $(generateTitleHtm(title, context.Current.ModifiedTitle)).appendTo(c_issue_className);
+        modifiedTitle = context.Current.ModifiedTitle;
+    }
+    $(generateTitleHtm(title, modifiedTitle)).appendTo(c_issue_className);
 }
+
+//function setTitleIssue() {
+//    var title = context.Title;
+//    var dt = getISODateTime();
+//    //if (context.Current != null && context.Current.ModifiedOn != null) {
+//    //    dt = convertDtCSharpToString(context.Current.ModifiedOn);
+//    //}
+//    if (context.Current != null && context.Current.ModifiedTitle != null)
+//        $(generateTitleHtm(title, context.Current.ModifiedTitle)).appendTo(c_issue_className);
+//}
 
 function generateTitleHtm(title, currentDate) {
     return "<div style='top:0:right:0;'><span class='title-header'>" + title + "</span><br/><span id='currentDateTimeTitle' class='title-date-issue'>" + currentDate + " </span></div>";
