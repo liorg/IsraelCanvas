@@ -4,17 +4,6 @@
   <Title>test2</Title>
   <Advertisements>
     <Advertisement>
-      <Top>402</Top>
-      <Left>963</Left>
-      <Width>88</Width>
-      <Height>123</Height>
-      <Id>e5fbbc06-8f81-0000-0013-f56bb52ed361</Id>
-      <Name>מוצר ישראלי</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
       <Top>618</Top>
       <Left>181</Left>
       <Width>99</Width>
@@ -26,78 +15,12 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>159</Top>
-      <Left>825</Left>
-      <Width>62</Width>
-      <Height>34</Height>
-      <Id>e5fbbc06-8f81-0000-0004-f56bb52ed361</Id>
-      <Name>מודעה חדשה</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>111</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>311</Top>
-      <Left>897</Left>
-      <Width>63</Width>
-      <Height>53</Height>
-      <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
-      <Name>טויטה קורולה</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>12x12</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
       <Top>630</Top>
       <Left>0</Left>
       <Width>69</Width>
       <Height>118</Height>
       <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
       <Name>מטרנה</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>174</Top>
-      <Left>643</Left>
-      <Width>67</Width>
-      <Height>54</Height>
-      <Id>e5fbbc06-8f81-0000-0000-f56bb52ed361</Id>
-      <Name>הליכוד ביתנו</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>312233x</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>308</Top>
-      <Left>415</Left>
-      <Width>69</Width>
-      <Height>118</Height>
-      <Id>e5fbbc06-8f81-0000-0000-f56bb52ed361</Id>
-      <Name>הליכוד ביתנו</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>312233x</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>266</Top>
-      <Left>983</Left>
-      <Width>71</Width>
-      <Height>119</Height>
-      <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
-      <Name>סלקום</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>4x4</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
-    <Advertisement>
-      <Top>0</Top>
-      <Left>0</Left>
-      <Width>34</Width>
-      <Height>26</Height>
-      <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
-      <Name>סלקום</Name>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
@@ -135,17 +58,6 @@
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
-    <Advertisement>
-      <Top>32</Top>
-      <Left>637</Left>
-      <Width>69</Width>
-      <Height>93</Height>
-      <Id>e5fbbc06-8f81-0000-0002-f56bb52ed361</Id>
-      <Name>ציפי ליבני - התקווה</Name>
-      <IsDeleted>false</IsDeleted>
-      <Size>12x12</Size>
-      <IsDroped>true</IsDroped>
-    </Advertisement>
   </Advertisements>
   <Sections>
     <Section>
@@ -159,6 +71,6 @@
     </Section>
   </Sections>
   <Colors />
-  <ModifiedOn>2013-03-18T16:20:53</ModifiedOn>
-  <ModifiedTitle>עדכון אחרון: 18/03/2013  יום ב' 04:20 </ModifiedTitle>
+  <ModifiedOn>2013-04-22T10:50:40</ModifiedOn>
+  <ModifiedTitle>עדכון אחרון: 22/04/2013  יום ב' 10:50 </ModifiedTitle>
 </AdvertismentAreaContext>

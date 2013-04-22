@@ -127,11 +127,10 @@ li.drag-li
 
 li.MenuItem
 {
-   
     background-repeat: no-repeat;
     background-position: right;
-    text-indent: -2em;
-    text-align: left;
+    /*text-indent: 1em;*/
+    text-align: center;
     margin: 1em 0;
     border-bottom: 1px dotted grey;
     border-left: 1px dotted grey;
@@ -243,13 +242,17 @@ div.deleted-advertisement
     background-image:none;
     background-color: red;
 }
-
+li
+{
+     padding-right:10px;
+}
 li.whitespace-type
 {
      background-image: url('/imgs/whitespace.png');
 }
 li.adv-type
 {
+
      background-image: url('/imgs/adv.gif');
 }
 li.section-type
@@ -259,15 +262,18 @@ li.section-type
 
 div.whitespace-drag-type
 {
-   
+    background-color: rgb(195,195,195);
+    background-image: none;
 }
 div.adv-drag-type
 {
-     
+    text-align: center;
+    background-color: rgb(195,195,195);
+    background-image: none;
 }
 div.section-drag-type
 {
- text-decoration:underline;
+    text-decoration: underline;
 }
 
 .draggable-id

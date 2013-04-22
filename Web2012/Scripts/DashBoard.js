@@ -234,8 +234,11 @@ function setSectionsToolbarData() {
     });
 }
 
+//function appendAdvertisementsToDragToolBox(advertisement) {
+//    dragAdvertisements.append('<li class="MenuItem ' + c_adv_type + '" style="height:' + menuItemSize.Height + ';width:' + menuItemSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+//}
 function appendAdvertisementsToDragToolBox(advertisement) {
-    dragAdvertisements.append('<li class="MenuItem ' + c_adv_type + '" style="height:' + menuItemSize.Height + ';width:' + menuItemSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
+    dragAdvertisements.append('<li class="MenuItem ' + c_adv_type + '" style="height:' + menuItemSize.Height + ';width:' + menuItemSize.Width + ';"><span id=' + advertisement.Id + '>' +  advertisement.Name + ' ' + advertisement.Size + '</span></li>');
 }
 
 function appendSectionsToDragToolBox(section) {
@@ -476,6 +479,7 @@ function onDropHandler(issue, event, ui) {
     if (draggable.hasClass(c_AdvertisingSpace)) {
         return true;
     }
+    removeAllFocusElement();
     if (draggable.hasClass(c_adv_type)) {
         return onInitAdv(issue, event, ui);
     }
@@ -720,7 +724,7 @@ function createSectionOnIssue(issue, drag, currentRow, currPoint, copy) {
 }
 function createAdvertismentOnIssue(issue, drag, currentRow, currPoint, copy) {
     var isCopy = copy || false;
-    var title = drag.text();
+    var title = currentRow.Name; //drag.text();
     var size = currentRow.Size;
     var id = drag.find(c_span).attr(c_id);
 
@@ -742,8 +746,9 @@ function createAdvertismentOnIssue(issue, drag, currentRow, currPoint, copy) {
 }
 
 function onFocusElement() {
-    $(c_AdvertisingSpace_className).removeClass(c_focusObject);
+  //  $(c_AdvertisingSpace_className).removeClass(c_focusObject);
     //  onfocusOnSizeLabel = false; 
+    removeAllFocusElement();
     $(c_jquery_class + c_section_drag_type).addClass(c_remover_border);
     if ($(this).hasClass(c_section_drag_type)) {
         $(this).removeClass(c_remover_border);
@@ -1169,4 +1174,7 @@ function printPrev() {
     myWindow.focus();
     myWindow.print();
     myWindow.close();
+}
+function removeAllFocusElement() {
+    $(c_AdvertisingSpace_className).removeClass(c_focusObject);
 }

@@ -35,14 +35,14 @@ namespace Web2012.Helper.RepositoryMock
                 IsDeleted = false,
                 Id = new Guid("e5fbbc06-8f81-0000-0001-f56bb52ed361"),
                 Name = "אגיס",
-                Size = "12x12",
+                Size = "112",
             });
             advertisements.Add(new Advertisement
             {
                 IsDeleted = false,
                 Id = new Guid("e5fbbc06-8f81-0000-0002-f56bb52ed361"),
-                Name = "ציפי ליבני - התקווה",
-                Size = "12x12"
+                Name = "זה חתיכת שורה ארוכה שלחבל על הזמן ממש חבל על הזמן",
+                Size = "12712"
             });
             advertisements.Add(new Advertisement
             {
