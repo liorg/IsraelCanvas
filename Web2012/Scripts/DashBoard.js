@@ -238,7 +238,7 @@ function setSectionsToolbarData() {
 //    dragAdvertisements.append('<li class="MenuItem ' + c_adv_type + '" style="height:' + menuItemSize.Height + ';width:' + menuItemSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
 //}
 function appendAdvertisementsToDragToolBox(advertisement) {
-    dragAdvertisements.append('<li class="MenuItem ' + c_adv_type + '" style="height:' + menuItemSize.Height + ';width:' + menuItemSize.Width + ';"><span id=' + advertisement.Id + '>' +  advertisement.Name + ' ' + advertisement.Size + '</span></li>');
+    dragAdvertisements.append('<li class="MenuItem ' + c_adv_type + '" style="height:' + menuItemSize.Height + ';width:' + menuItemSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + ' ' + advertisement.Size + '</span></li>');
 }
 
 function appendSectionsToDragToolBox(section) {
@@ -746,7 +746,7 @@ function createAdvertismentOnIssue(issue, drag, currentRow, currPoint, copy) {
 }
 
 function onFocusElement() {
-  //  $(c_AdvertisingSpace_className).removeClass(c_focusObject);
+    //  $(c_AdvertisingSpace_className).removeClass(c_focusObject);
     //  onfocusOnSizeLabel = false; 
     removeAllFocusElement();
     $(c_jquery_class + c_section_drag_type).addClass(c_remover_border);
@@ -972,8 +972,18 @@ function populateSectionsOnContext(obj) {
     var dataUi = dragDetailsUi.getDataByDragElement(obj);
     var row = getSectionById(dataUi.id);
     var ele = {};
-    ele.Id = row.Id;
-    ele.Name = row.Name;
+    var id, name;
+    if (typeof row == 'undefined') {
+        id = dataUi.id;
+        name = dataUi.title;
+    }
+    else {
+        id = row.Id;
+        name = row.Name;
+    }
+
+    ele.Id = id;
+    ele.Name = name;
     setElementBase(ele, dataUi);
     context.Current.Sections.push(ele);
 }

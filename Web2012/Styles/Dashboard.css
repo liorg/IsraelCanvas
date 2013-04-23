@@ -237,11 +237,7 @@ BUTTON
 	text-overflow: ellipsis;  
 	-o-text-overflow: ellipsis; 
 }
-div.deleted-advertisement
-{
-    background-image:none;
-    background-color: red;
-}
+
 li
 {
      padding-right:10px;
@@ -669,4 +665,9 @@ div.section-drag-type
 span.advertisment-size
 {
       PADDING-RIGHT: 5px; PADDING-BOTTOM: 0px;display:inline;
+}
+div.deleted-advertisement
+{
+    background-image:none;
+    background-color: red;
 }
