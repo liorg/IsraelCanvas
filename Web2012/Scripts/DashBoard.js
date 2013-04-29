@@ -79,6 +79,7 @@ var c_div = "div";
 
 var c_adv_drag_type = "adv-drag-type";
 var c_whitespace_drag_type = "whitespace-drag-type";
+
 var c_section_drag_type = "section-drag-type";
 var c_whitespace_type = "whitespace-type";
 var c_adv_type = "adv-type"
@@ -109,6 +110,11 @@ var c_pleaseWaitSaveData = "שומר נתונים ,נא המתן";
 
 var c_noSections = "אין מדורים לגליון זה !!!";
 var c_noAdvertisements = "אין מודעות לגליון זה !!!";
+
+var c_whitespace_drag_type_othercolor = "otherColor";
+var c_color_grey = "grey";
+var c_color_white = "white";
+
 
 $.extend({
     customAlert: function (message, title) {
@@ -234,9 +240,6 @@ function setSectionsToolbarData() {
     });
 }
 
-//function appendAdvertisementsToDragToolBox(advertisement) {
-//    dragAdvertisements.append('<li class="MenuItem ' + c_adv_type + '" style="height:' + menuItemSize.Height + ';width:' + menuItemSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + '</span></li>');
-//}
 function appendAdvertisementsToDragToolBox(advertisement) {
     dragAdvertisements.append('<li class="MenuItem ' + c_adv_type + '" style="height:' + menuItemSize.Height + ';width:' + menuItemSize.Width + ';"><span id=' + advertisement.Id + '>' + advertisement.Name + ' ' + advertisement.Size + '</span></li>');
 }
@@ -576,21 +579,25 @@ function getCurrentPointOnScreen(issue, event, ui) {
 }
 
 
-function generateWhiteSpaceTag(body) {
+function generateWhiteSpaceTag(body,colorType) {
     var innerBody = body();
-    return "<div style='width:25px;height:15px' class='" + c_whitespace_drag_type + " ui-draggable'>" + innerBody + "</div>";
+    var classNameGenrates = c_whitespace_drag_type;
+    if (colorType == c_color_grey) {
+        classNameGenrates += " " +c_whitespace_drag_type_othercolor;
+    }
+    return "<div style='width:25px;height:15px' class='" + classNameGenrates + " ui-draggable'>" + innerBody + "</div>";
 }
 
 function generateWhiteSpaceBody() {
     return "";
 }
 
-function generateWhiteSpace() {
-    return generateWhiteSpaceTag(generateWhiteSpaceBody);
+function generateWhiteSpace(colorType) {
+    return generateWhiteSpaceTag(generateWhiteSpaceBody, colorType);
 }
 
-function createWhiteSpaceIeBelowVersion9() {
-    var tag = generateWhiteSpaceTag(generateWhiteSpaceBody);
+function createWhiteSpaceIeBelowVersion9(colorType) {
+    var tag = generateWhiteSpaceTag(generateWhiteSpaceBody, colorType);
     tag = $(tag).html(generateWhiteSpaceBody());
     return tag;
 }
@@ -650,14 +657,14 @@ function setCurrent(extendPropAdvertisingItemHandler, extendPropWhiteSpaceItemHa
 
             setPositionsElements(d, advertisement);
         });
-        $.each(context.Current.Colors, function (index, whiteColor) {
-            var createDiv = generateWhiteSpace();
+        $.each(context.Current.Colors, function (index, color) {
+            var createDiv = generateWhiteSpace(color.ColorName);
             var d = $(createDiv).appendTo(c_issue_className);
 
             if (typeof (extendPropWhiteSpaceItemHandler) == 'function')
-                extendPropWhiteSpaceItemHandler(d, whiteColor);
+                extendPropWhiteSpaceItemHandler(d, color);
 
-            setPositionsElements(d, whiteColor);
+            setPositionsElements(d, color);
         });
         $.each(context.Current.Sections, function (index, section) {
             var createDiv = createSectionOnIssueIeBelowVersion9(section.Name, section.Id); //generateSectionOnIssue(section.Name, section.Id);
@@ -689,7 +696,11 @@ function setPositionsElements(d, item) {
 
 function createWhiteSpaceOnIssue(issue, drag, currPoint, copy) {
     var isCopy = copy || false;
-    drag = createWhiteSpaceIeBelowVersion9();
+    var colorType = c_color_white;
+    if (drag.hasClass(c_whitespace_drag_type_othercolor)) {
+        colorType = c_color_grey;
+    }
+    drag = createWhiteSpaceIeBelowVersion9(colorType);
 
     drag.css({
         position: c_absolute,
@@ -991,7 +1002,10 @@ function populateSectionsOnContext(obj) {
 function populateWhiteSpacesOnContext(obj) {
     var dataUi = dragDetailsUi.getDragElementPosition(obj);
     var ele = {};
-    ele.ColorName = "white";
+    ele.ColorName = c_color_white;
+    if (obj.hasClass(c_whitespace_drag_type_othercolor)) {
+        ele.ColorName =c_color_grey;
+    }
     setElementBase(ele, dataUi);
     context.Current.Colors.push(ele);
 }

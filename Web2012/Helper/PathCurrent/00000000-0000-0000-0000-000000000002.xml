@@ -5,7 +5,7 @@
   <Advertisements>
     <Advertisement>
       <Top>618</Top>
-      <Left>181</Left>
+      <Left>180</Left>
       <Width>99</Width>
       <Height>40</Height>
       <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
@@ -37,7 +37,7 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>326</Top>
+      <Top>325</Top>
       <Left>1003</Left>
       <Width>30</Width>
       <Height>35</Height>
@@ -70,7 +70,22 @@
       <IsDeleted>false</IsDeleted>
     </Section>
   </Sections>
-  <Colors />
-  <ModifiedOn>2013-04-22T10:50:40</ModifiedOn>
-  <ModifiedTitle>עדכון אחרון: 22/04/2013  יום ב' 10:50 </ModifiedTitle>
+  <Colors>
+    <ElementColor>
+      <Top>43</Top>
+      <Left>657</Left>
+      <Width>53</Width>
+      <Height>62</Height>
+      <ColorName>white</ColorName>
+    </ElementColor>
+    <ElementColor>
+      <Top>201</Top>
+      <Left>724</Left>
+      <Width>44</Width>
+      <Height>40</Height>
+      <ColorName>grey</ColorName>
+    </ElementColor>
+  </Colors>
+  <ModifiedOn>2013-04-29T15:44:32</ModifiedOn>
+  <ModifiedTitle>עדכון אחרון: 29/04/2013  יום ב' 03:44 </ModifiedTitle>
 </AdvertismentAreaContext>

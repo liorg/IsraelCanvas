@@ -246,6 +246,12 @@ li.whitespace-type
 {
      background-image: url('/imgs/whitespace.png');
 }
+li.otherColor
+{
+     background-image: url('/imgs/grayspace.png');
+}
+
+
 li.adv-type
 {
 
@@ -258,9 +264,17 @@ li.section-type
 
 div.whitespace-drag-type
 {
+    background-color: white;
+    background-image: none;
+}
+
+div.otherColor
+{
     background-color: rgb(195,195,195);
     background-image: none;
 }
+
+
 div.adv-drag-type
 {
     text-align: center;
