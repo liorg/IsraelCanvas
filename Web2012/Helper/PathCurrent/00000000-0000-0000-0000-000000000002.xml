@@ -15,8 +15,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>630</Top>
-      <Left>0</Left>
+      <Top>608</Top>
+      <Left>18</Left>
       <Width>69</Width>
       <Height>118</Height>
       <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
@@ -86,6 +86,6 @@
       <ColorName>grey</ColorName>
     </ElementColor>
   </Colors>
-  <ModifiedOn>2013-04-29T15:44:32</ModifiedOn>
-  <ModifiedTitle>עדכון אחרון: 29/04/2013  יום ב' 03:44 </ModifiedTitle>
+  <ModifiedOn>2013-05-07T12:08:46</ModifiedOn>
+  <ModifiedTitle>עדכון אחרון: 07/05/2013  יום ג' 12:08 </ModifiedTitle>
 </AdvertismentAreaContext>
