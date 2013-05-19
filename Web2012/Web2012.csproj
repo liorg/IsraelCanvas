@@ -76,8 +76,10 @@
     <Content Include="Helper\PathCurrent\2b841240-eef8-43ec-ad0b-ef812238c8af.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="imgs\1081x687.png" />
     <Content Include="imgs\199x288.png" />
     <Content Include="imgs\288x199.png" />
+    <Content Include="imgs\687x1068.png" />
     <Content Include="imgs\A4-SHISHI48-title.png" />
     <Content Include="imgs\A4.png" />
     <Content Include="imgs\app_back.png" />

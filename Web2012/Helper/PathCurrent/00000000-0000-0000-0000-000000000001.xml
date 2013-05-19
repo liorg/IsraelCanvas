@@ -6,8 +6,8 @@
     <Advertisement>
       <Top>0</Top>
       <Left>0</Left>
-      <Width>40</Width>
-      <Height>46</Height>
+      <Width>55</Width>
+      <Height>54</Height>
       <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
       <Name>Nike</Name>
       <IsDeleted>false</IsDeleted>
@@ -37,7 +37,7 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>981</Top>
+      <Top>991</Top>
       <Left>0</Left>
       <Width>56</Width>
       <Height>73</Height>
@@ -48,12 +48,34 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>546</Top>
-      <Left>652</Left>
+      <Top>232</Top>
+      <Left>587</Left>
       <Width>96</Width>
       <Height>26</Height>
       <Id>e5fbbc06-8f81-0000-0002-f56bb52ed361</Id>
-      <Name>ציפי ליבני - התקווה</Name>
+      <Name>זה חתיכת שורה ארוכה שלחבל על הזמן ממש חבל על הזמן</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>12x12</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>1031</Top>
+      <Left>495</Left>
+      <Width>188</Width>
+      <Height>33</Height>
+      <Id>e5fbbc06-8f81-0000-0001-f56bb52ed361</Id>
+      <Name>אגיס</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>112</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>0</Top>
+      <Left>615</Left>
+      <Width>68</Width>
+      <Height>26</Height>
+      <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
+      <Name>טויטה קורולה</Name>
       <IsDeleted>false</IsDeleted>
       <Size>12x12</Size>
       <IsDroped>true</IsDroped>
@@ -61,6 +83,6 @@
   </Advertisements>
   <Sections />
   <Colors />
-  <ModifiedOn>2013-03-18T15:22:45</ModifiedOn>
-  <ModifiedTitle>עדכון אחרון: 18/03/2013  יום ב' 03:22 </ModifiedTitle>
+  <ModifiedOn>2013-05-19T15:55:11</ModifiedOn>
+  <ModifiedTitle>עדכון אחרון: 19/05/2013  יום א' 03:55 </ModifiedTitle>
 </AdvertismentAreaContext>

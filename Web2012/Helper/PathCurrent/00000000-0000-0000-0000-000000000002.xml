@@ -4,8 +4,8 @@
   <Title>test2</Title>
   <Advertisements>
     <Advertisement>
-      <Top>618</Top>
-      <Left>180</Left>
+      <Top>693</Top>
+      <Left>0</Left>
       <Width>99</Width>
       <Height>40</Height>
       <Id>e5fbbc06-8f81-0000-0012-f56bb52ed361</Id>
@@ -15,10 +15,10 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>608</Top>
-      <Left>18</Left>
-      <Width>69</Width>
-      <Height>118</Height>
+      <Top>410</Top>
+      <Left>479</Left>
+      <Width>67</Width>
+      <Height>113</Height>
       <Id>e5fbbc06-8f81-0000-0010-f56bb52ed361</Id>
       <Name>מטרנה</Name>
       <IsDeleted>false</IsDeleted>
@@ -26,8 +26,8 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>157</Top>
-      <Left>976</Left>
+      <Top>707</Top>
+      <Left>979</Left>
       <Width>60</Width>
       <Height>26</Height>
       <Id>e5fbbc06-8f81-0000-0011-f56bb52ed361</Id>
@@ -37,10 +37,10 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>325</Top>
-      <Left>1003</Left>
-      <Width>30</Width>
-      <Height>35</Height>
+      <Top>512</Top>
+      <Left>0</Left>
+      <Width>31</Width>
+      <Height>171</Height>
       <Id>e5fbbc06-8f81-0000-0001-f56bb52ed361</Id>
       <Name>אגיס</Name>
       <IsDeleted>false</IsDeleted>
@@ -48,23 +48,45 @@
       <IsDroped>true</IsDroped>
     </Advertisement>
     <Advertisement>
-      <Top>88</Top>
-      <Left>867</Left>
-      <Width>64</Width>
-      <Height>26</Height>
+      <Top>1</Top>
+      <Left>0</Left>
+      <Width>186</Width>
+      <Height>36</Height>
       <Id>e5fbbc06-8f81-0000-0007-f56bb52ed361</Id>
       <Name> הבית היהודי</Name>
       <IsDeleted>false</IsDeleted>
       <Size>4x4</Size>
       <IsDroped>true</IsDroped>
     </Advertisement>
+    <Advertisement>
+      <Top>629</Top>
+      <Left>970</Left>
+      <Width>69</Width>
+      <Height>53</Height>
+      <Id>e5fbbc06-8f81-0000-0009-f56bb52ed361</Id>
+      <Name>סלקום</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>4x4</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
+    <Advertisement>
+      <Top>0</Top>
+      <Left>1002</Left>
+      <Width>75</Width>
+      <Height>60</Height>
+      <Id>e5fbbc06-8f81-0000-0003-f56bb52ed361</Id>
+      <Name>טויטה קורולה</Name>
+      <IsDeleted>false</IsDeleted>
+      <Size>12x12</Size>
+      <IsDroped>true</IsDroped>
+    </Advertisement>
   </Advertisements>
   <Sections>
     <Section>
-      <Top>194</Top>
-      <Left>274</Left>
-      <Width>46</Width>
-      <Height>18</Height>
+      <Top>141</Top>
+      <Left>78</Left>
+      <Width>44</Width>
+      <Height>80</Height>
       <Id>e5fbbc06-8f81-0001-0000-f56bb52ed361</Id>
       <Name>ספורט</Name>
       <IsDeleted>false</IsDeleted>
@@ -72,20 +94,20 @@
   </Sections>
   <Colors>
     <ElementColor>
-      <Top>43</Top>
-      <Left>657</Left>
+      <Top>142</Top>
+      <Left>875</Left>
       <Width>53</Width>
       <Height>62</Height>
       <ColorName>white</ColorName>
     </ElementColor>
     <ElementColor>
-      <Top>201</Top>
-      <Left>724</Left>
+      <Top>220</Top>
+      <Left>726</Left>
       <Width>44</Width>
       <Height>40</Height>
       <ColorName>grey</ColorName>
     </ElementColor>
   </Colors>
-  <ModifiedOn>2013-05-07T12:08:46</ModifiedOn>
-  <ModifiedTitle>עדכון אחרון: 07/05/2013  יום ג' 12:08 </ModifiedTitle>
+  <ModifiedOn>2013-05-19T15:21:45</ModifiedOn>
+  <ModifiedTitle>עדכון אחרון: 19/05/2013  יום א' 03:21 </ModifiedTitle>
 </AdvertismentAreaContext>

@@ -39,11 +39,11 @@ var c_titleAlert = "הודעה";
 //var c_portrait_width = "204mm";
 //var c_portrait_height = "292mm";
 
-var c_portrait_width = "199mm";
-var c_portrait_height = "280mm";
-
-//var c_portrait_width = "181mm";
-//var c_portrait_height = "269mm";
+//var c_portrait_width = "199mm";
+//var c_portrait_height = "280mm";
+//687x1081
+var c_portrait_width = "687";
+var c_portrait_height = "1068";
 
 //width: 297mm;
 
