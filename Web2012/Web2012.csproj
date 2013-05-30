@@ -68,6 +68,7 @@
     <Content Include="DashBoard\Canvas\DashBoard2.htm" />
     <Content Include="DashBoard\Canvas\DashBoardxx.htm" />
     <Content Include="DashBoard\Preview.htm" />
+    <Content Include="examples\HAYA.html" />
     <Content Include="Helper\PathCurrent\00000000-0000-0000-0000-000000000001.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -223,9 +224,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="examples\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
